@@ -1,0 +1,27 @@
+development:
+  # Configure available database clients. (required)
+  clients:
+    # Defines the default client. (required)
+    default:
+      # Defines the name of the default database that Mongoid can connect to.
+      # (required).
+      database: thatsaboy_dev
+      # Provides the hosts the default client can connect to. Must be an array
+      # of host:port pairs. (required)
+      hosts:
+        - localhost:27017
+      options:
+        # The name of the user for authentication.
+        user: 'admin'
+        # The password of the user for authentication.
+        password: 'admin'
+test:
+  clients:
+    default:
+      database: thatsaboy_test
+      hosts:
+        - localhost:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
