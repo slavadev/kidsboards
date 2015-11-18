@@ -1,13 +1,25 @@
 # Register command
 class User::Command::RegisterCommand < Core::Command
-  # Inizializator
-  # @param [User::Input::RegisterInput] input
-  def initialize(input)
+  attr_accessor :email, :password
+
+  validates :email, :password, presence: true
+  validates :email, :format => {:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+  validates :password, length: {minimum: 6}
+  validate :user_doesnt_exists
+
+  # Checks if the email is registered
+  def user_doesnt_exists
+    if User::User.where(email: email).exists?
+      errors.add(:email, "User already exists")
+    end
+  end
+
+  # Run command
+  def execute
     user = User::User.new
-    user.email = input.email
-    user.password = input.password
+    user.email = email
+    user.password = password
     user.save
-    self.status = 200
-    self.response = user
+    {id: user['_id']}
   end
 end

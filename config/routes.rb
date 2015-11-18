@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :user do
-    get '/register' => 'user#register'
+    post '/register' => 'user#register'
+    post '/login'    => 'user#login'
   end
 end

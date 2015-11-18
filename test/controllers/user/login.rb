@@ -1,33 +1,34 @@
 require 'test_helper'
 
 class User::UserControllerTest < ActionController::TestCase
-
-  test 'register success' do
+  test 'login success' do
     #prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = {email: email, password: password}
-
-    #action
     post :register, params
 
+    #action
+    post :login, params
+
     #check results
-    assert_response :success
+    assert_response 200
     json = JSON.parse(response.body)
-    id = json['id']
-    user = User::User.find(id)
-    assert_not_nil user, 'The user does not exist'
-    assert_equal user.email, email, 'Wrong email'
+    token = json['token']
+    token = User::Token.where(code: token).first
+    assert_equal token.user.email, email
+    assert_equal token.is_expired, false
+    assert_equal token.type, User::Token::TYPE_LOGIN
   end
 
-  test 'register fail invalid params' do
+  test 'login fail invalid params' do
     #prepare
     email = 'qwe'
     password = 'asd'
     params = {email: email, password: password}
 
     #action
-    post :register, params
+    post :login, params
 
     #check results
     assert_response 422
@@ -36,9 +37,9 @@ class User::UserControllerTest < ActionController::TestCase
     assert_includes json['password'], 'is too short (minimum is 6 characters)'
   end
 
-  test 'register fail without params' do
+  test 'login fail without params' do
     #action
-    post :register
+    post :login
 
     #check results
     assert_response 422
@@ -49,20 +50,37 @@ class User::UserControllerTest < ActionController::TestCase
     assert_includes json['password'], 'can\'t be blank'
   end
 
-
-  test 'register fail email exists' do
+  test 'login fail wrong email' do
     #prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = {email: email, password: password}
     post :register, params
 
+    params['email'] = Faker::Internet.free_email
     #action
-    post :register, params
+    post :login, params
 
     #check results
     assert_response 422
     json = JSON.parse(response.body)
-    assert_includes json['email'], 'User already exists'
+    assert_includes json['email'], 'Wrong email or password'
+  end
+
+  test 'login fail wrong password' do
+    #prepare
+    email = Faker::Internet.free_email
+    password = Faker::Internet.password
+    params = {email: email, password: password}
+    post :register, params
+
+    params['password'] = Faker::Internet.password
+    #action
+    post :login, params
+
+    #check results
+    assert_response 422
+    json = JSON.parse(response.body)
+    assert_includes json['email'], 'Wrong email or password'
   end
 end

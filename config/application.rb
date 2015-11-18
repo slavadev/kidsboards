@@ -30,7 +30,9 @@ module Thatsaboy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    Faker::Config.locale = :ru
+    if Rails.env=='test'
+      Faker::Config.locale = :ru
+    end
     Mongoid.logger.level = Logger::INFO
     Mongo::Logger.logger.level = Logger::INFO
 

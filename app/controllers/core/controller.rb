@@ -1,14 +1,24 @@
 # Common controller methods
 class Core::Controller < ApplicationController
-  # Checks validation and render 422 if there are some errors
-  # @param [Core::Input] input
-  # @return [Boolean]
-  def check_validation(input)
-    if input.valid?
-      return true
+  # Runs the action
+  # @param [Core::Command] command
+  def run(command)
+    if command.invalid?
+      raise Core::Errors::ValidationError.new(command)
     end
-    render json:input.errors, status: 422
-    return false
+
+    result = command.execute
+
+    if result.nil?
+      render json: nil, status: 204
+    else
+      render json: result, status: 200
+    end
+  end
+
+  # Catch validation errors
+  rescue_from Core::Errors::ValidationError do |exception|
+    render json: exception.command.errors, status: 422
   end
 
 end
