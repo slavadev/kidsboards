@@ -15,4 +15,11 @@ class User::UserController < Core::Controller
     run(command)
   end
 
+  # Method for logout
+  # @see User::Command::LogoutCommand
+  def logout
+    command = User::Command::LogoutCommand.new(params)
+    run(command)
+  end
+
 end

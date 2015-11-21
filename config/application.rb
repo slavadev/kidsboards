@@ -30,11 +30,16 @@ module Thatsaboy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # Faker
     if Rails.env=='test'
       Faker::Config.locale = :ru
     end
+
+    # Mute mongo
     Mongoid.logger.level = Logger::INFO
     Mongo::Logger.logger.level = Logger::INFO
 
+    # Add authentication rules
+    config.authentication_rules = config_for('authentication_rules')
   end
 end

@@ -36,5 +36,6 @@ class User::Token
   # Set expired flag
   def expire
     self.is_expired = true
+    self.save
   end
 end

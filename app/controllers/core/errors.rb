@@ -19,4 +19,8 @@ class Core::Errors
   ## Unauthorized error
   class UnauthorizedError < StandardError
   end
+
+  ## Internal error
+  class InternalError < StandardError
+  end
 end

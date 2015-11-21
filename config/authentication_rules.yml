@@ -1,0 +1,3 @@
+test:
+  - action: User::Command::LogoutCommand
+    token: :login
