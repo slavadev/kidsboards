@@ -1,7 +1,6 @@
 require 'test_helper'
 
-class User::UserControllerTest < ActionController::TestCase
-
+class User::RegistrationTest < ActionDispatch::IntegrationTest
   test 'register success' do
     #prepare
     email = Faker::Internet.free_email
@@ -9,7 +8,7 @@ class User::UserControllerTest < ActionController::TestCase
     params = {email: email, password: password}
 
     #action
-    post :register, params
+    post '/api/v1/user/register', params
 
     #check results
     assert_response :success
@@ -18,6 +17,20 @@ class User::UserControllerTest < ActionController::TestCase
     user = User::User.find(id)
     assert_not_nil user, 'The user does not exist'
     assert_equal user.email, email, 'Wrong email'
+
+    # get code from email
+    confirmation_email = ActionMailer::Base.deliveries.last
+    text = confirmation_email.body.to_s
+    string_to_find = ENV['SITE_HOST'] + '/api/v1/user/confirm/'
+    regexp = Regexp.new(Regexp.escape(string_to_find) + '\w*')
+    code = text.scan(regexp).first.to_s.gsub(string_to_find, '')
+
+    #check token
+    token = User::Token.where(code: code, type: User::Token::TYPE_CONFIRMATION).first
+    assert_not_nil(token)
+    token_user = token.user
+    assert_equal token_user, user
+
   end
 
   test 'register fail invalid params' do
@@ -27,7 +40,7 @@ class User::UserControllerTest < ActionController::TestCase
     params = {email: email, password: password}
 
     #action
-    post :register, params
+    post '/api/v1//user/register', params
 
     #check results
     assert_response 422
@@ -38,7 +51,7 @@ class User::UserControllerTest < ActionController::TestCase
 
   test 'register fail without params' do
     #action
-    post :register
+    post '/api/v1//user/register'
 
     #check results
     assert_response 422
@@ -55,10 +68,10 @@ class User::UserControllerTest < ActionController::TestCase
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = {email: email, password: password}
-    post :register, params
+    post '/api/v1//user/register', params
 
     #action
-    post :register, params
+    post '/api/v1//user/register', params
 
     #check results
     assert_response 422

@@ -1,15 +1,15 @@
 require 'test_helper'
 
-class User::UserControllerTest < ActionController::TestCase
+class User::LoginTest < ActionDispatch::IntegrationTest
   test 'login success' do
     #prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = {email: email, password: password}
-    post :register, params
+    post '/api/v1//user/register', params
 
     #action
-    post :login, params
+    post '/api/v1//user/login', params
 
     #check results
     assert_response 200
@@ -28,7 +28,7 @@ class User::UserControllerTest < ActionController::TestCase
     params = {email: email, password: password}
 
     #action
-    post :login, params
+    post '/api/v1//user/login', params
 
     #check results
     assert_response 422
@@ -39,7 +39,7 @@ class User::UserControllerTest < ActionController::TestCase
 
   test 'login fail without params' do
     #action
-    post :login
+    post '/api/v1//user/login'
 
     #check results
     assert_response 422
@@ -55,11 +55,11 @@ class User::UserControllerTest < ActionController::TestCase
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = {email: email, password: password}
-    post :register, params
+    post '/api/v1//user/register', params
 
     params['email'] = Faker::Internet.free_email
     #action
-    post :login, params
+    post '/api/v1//user/login', params
 
     #check results
     assert_response 422
@@ -72,11 +72,11 @@ class User::UserControllerTest < ActionController::TestCase
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = {email: email, password: password}
-    post :register, params
+    post '/api/v1//user/register', params
 
     params['password'] = Faker::Internet.password
     #action
-    post :login, params
+    post '/api/v1//user/login', params
 
     #check results
     assert_response 422

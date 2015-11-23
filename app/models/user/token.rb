@@ -27,7 +27,7 @@ class User::Token
   def initialize(user, type)
     super()
     self.user = user
-    self.code = SecureRandom.base64
+    self.code = SecureRandom.hex
     self.created_at = DateTime.now.new_offset(0)
     self.is_expired = false
     self.type = type

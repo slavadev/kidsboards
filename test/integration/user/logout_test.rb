@@ -1,19 +1,18 @@
 require 'test_helper'
 
-class User::UserControllerTest < ActionController::TestCase
-
+class User::LogoutTest < ActionDispatch::IntegrationTest
   test 'logout success' do
     #prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = {email: email, password: password}
-    post :register, params
-    post :login, params
+    post '/api/v1//user/register', params
+    post '/api/v1//user/login', params
     json = JSON.parse(response.body)
     token = json['token']
 
     #action
-    post :logout, {token: token}
+    post '/api/v1//user/logout', {token: token}
 
     #check results
     assert_response 204
@@ -24,7 +23,7 @@ class User::UserControllerTest < ActionController::TestCase
 
   test 'logout fail without params' do
     #action
-    post :logout
+    post '/api/v1//user/logout'
 
     #check results
     assert_response 401
@@ -32,7 +31,7 @@ class User::UserControllerTest < ActionController::TestCase
 
   test 'logout fail wrong token' do
     #action
-    post :logout, {token: Faker::Lorem.characters(10)}
+    post '/api/v1//user/logout', {token: Faker::Lorem.characters(10)}
 
     #check results
     assert_response 401
