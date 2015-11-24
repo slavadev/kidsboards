@@ -39,7 +39,7 @@ module Thatsaboy
     Mongoid.logger.level = Logger::INFO
     Mongo::Logger.logger.level = Logger::INFO
 
-    # Add authentication rules
-    config.authentication_rules = config_for('authentication_rules')
+    # Add authorization rules
+    config.authorization_rules = config_for('authorization_rules')
   end
 end
