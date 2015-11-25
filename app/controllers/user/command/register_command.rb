@@ -19,6 +19,7 @@ class User::Command::RegisterCommand < Core::Command
     user = User::User.new
     user.email = email
     user.password = password
+    user.confirmed_at = nil
     user.save
     token = User::Token.new(user, User::Token::TYPE_CONFIRMATION)
     token.save

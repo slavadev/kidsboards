@@ -22,4 +22,25 @@ class User::UserController < Core::Controller
     run(command)
   end
 
+  # Method for confirm
+  # @see User::Command::ConfirmCommand
+  def confirm
+    command = User::Command::ConfirmCommand.new(params)
+    run(command)
+  end
+
+  # Method for request password recovery
+  # @see User::Command::RequestRecoveryCommand
+  def request_recovery
+    command = User::Command::RequestRecoveryCommand.new(params)
+    run(command)
+  end
+
+  # Method for password recovery
+  # @see User::Command::RequestRecoveryCommand
+  def recovery
+    command = User::Command::RecoveryCommand.new(params)
+    run(command)
+  end
+
 end

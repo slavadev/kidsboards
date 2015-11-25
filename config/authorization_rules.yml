@@ -1,2 +1,6 @@
 test:
   - action: User::Command::LogoutCommand
+  - action: User::Command::ConfirmCommand
+    token: :confirmation
+  - action: User::Command::RecoveryCommand
+    token: :recovery
