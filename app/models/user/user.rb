@@ -4,6 +4,7 @@
 #  [String]        encrypted_password
 #  [String]        salt
 #  [DateTime]      confirmed_at
+#  [String]       pin                  4 digital Pin code for adults
 #  [[User::Token]] tokens
 class User::User
   include Mongoid::Document
@@ -11,6 +12,7 @@ class User::User
   field :encrypted_password, type: String, default: ''
   field :salt,               type: String, default: ''
   field :confirmed_at,       type: DateTime
+  field :pin,                type: String, default: '0000'
 
   has_many :tokens, :class_name => 'User::Token'
 
@@ -44,5 +46,11 @@ class User::User
   def confirm
     self.confirmed_at = DateTime.now.new_offset(0)
     self.save
+  end
+
+  # Get user by token
+  def self.get_user_by_token_code(code, type)
+    token = User::Token.where(code: code, type: type).first
+    token.user
   end
 end

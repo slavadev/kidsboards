@@ -26,4 +26,14 @@ class ActiveSupport::TestCase
     # Add code that need to be executed after each test
     DatabaseCleaner.clean
   end
+
+  def login
+    email = Faker::Internet.free_email
+    password = Faker::Internet.password
+    params = {email: email, password: password}
+    post '/api/v1//user/register', params
+    post '/api/v1//user/login', params
+    json = JSON.parse(response.body)
+    json['token']
+  end
 end

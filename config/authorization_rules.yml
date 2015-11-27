@@ -4,3 +4,5 @@ test:
     token: :confirmation
   - action: User::Command::RecoveryCommand
     token: :recovery
+  - action: User::Command::PinSetCommand
+  - action: User::Command::PinCheckCommand
