@@ -4,8 +4,9 @@
 #  [String]        encrypted_password
 #  [String]        salt
 #  [DateTime]      confirmed_at
-#  [String]       pin                  4 digital Pin code for adults
+#  [String]        pin                  4 digital Pin code for adults
 #  [[User::Token]] tokens
+#  [[File::Photo]] photos
 class User::User
   include Mongoid::Document
   field :email,              type: String, default: ''
@@ -15,6 +16,7 @@ class User::User
   field :pin,                type: String, default: '0000'
 
   has_many :tokens, :class_name => 'User::Token'
+  has_many :photos, :class_name => 'File::Photo'
 
   # Set password
   # @param [String] password

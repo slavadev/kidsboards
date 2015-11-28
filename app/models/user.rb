@@ -1,4 +1,4 @@
-# All what is about users
+# All about users
 module User
 end
 

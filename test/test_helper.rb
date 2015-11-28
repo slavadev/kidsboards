@@ -20,11 +20,13 @@ class ActiveSupport::TestCase
   def setup
     # Add code that need to be executed before each test
     DatabaseCleaner.start
+    FileUtils.rm_rf('public/images')
   end
 
   def teardown
     # Add code that need to be executed after each test
     DatabaseCleaner.clean
+    FileUtils.rm_rf('public/images')
   end
 
   def login

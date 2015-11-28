@@ -7,7 +7,11 @@ gem 'mongoid', '~> 5.0.0'
 #documentation
 gem 'yard'
 
+#server
 gem 'passenger'
+
+#files
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
 
 gem 'minitest-rails'
 group :test do

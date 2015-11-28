@@ -10,5 +10,9 @@ Rails.application.routes.draw do
       patch '/pin' => 'user#pin_set'
       get '/pin' => 'user#pin_check'
     end
+
+    namespace :file do
+      post '/photo' => 'photo#create'
+    end
   end
 end
