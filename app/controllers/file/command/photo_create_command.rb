@@ -18,6 +18,6 @@ class File::Command::PhotoCreateCommand < Core::Command
     user = User::User.get_user_by_token_code(self.token, User::Token::TYPE_LOGIN)
     photo = File::Photo.new(user, self.file)
     photo.save
-    {url: photo.file.url}
+    {url: photo.url}
   end
 end

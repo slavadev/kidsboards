@@ -7,4 +7,11 @@ class File::PhotoController < Core::Controller
     command = File::Command::PhotoCreateCommand.new(params)
     run(command)
   end
+
+  # Get list of photos
+  # @see File::Command::PhotoIndexCommand
+  def index
+    command = File::Command::PhotoIndexCommand.new(params)
+    run(command)
+  end
 end

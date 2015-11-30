@@ -7,3 +7,4 @@ test:
   - action: User::Command::PinSetCommand
   - action: User::Command::PinCheckCommand
   - action: File::Command::PhotoCreateCommand
+  - action: File::Command::PhotoIndexCommand

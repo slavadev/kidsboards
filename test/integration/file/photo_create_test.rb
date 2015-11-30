@@ -14,7 +14,8 @@ class File::PhotoCreateTest < ActionDispatch::IntegrationTest
     assert_response 200
     json = JSON.parse(response.body)
     url = json['url']
-    assert_equal File.exist?(ENV['UPLOAD_FOLDER'] + url), true
+    folder = url.sub(ENV['UPLOAD_HOST'], ENV['UPLOAD_FOLDER'])
+    assert_equal File.exist?(folder), true
   end
 
   test 'photo create wrong params' do

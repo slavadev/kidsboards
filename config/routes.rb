@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     namespace :file do
       post '/photo' => 'photo#create'
+      get '/photo' => 'photo#index'
     end
   end
 end

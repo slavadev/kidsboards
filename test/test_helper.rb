@@ -2,33 +2,29 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
-
-# To add Capybara feature tests add `gem "minitest-rails-capybara"`
-# to the test group in the Gemfile and uncomment the following:
-# require "minitest/rails/capybara"
-
-# Uncomment for awesome colorful output
 require "minitest/pride"
 
+# Common function for tests
 class ActiveSupport::TestCase
 
+  # Code that needs to be executed before test suite start
   def self.prepare
-    # Add code that needs to be executed before test suite start
   end
   prepare
 
+  # Code that need to be executed before each test
   def setup
-    # Add code that need to be executed before each test
     DatabaseCleaner.start
     FileUtils.rm_rf('public/images')
   end
 
+  # Code that need to be executed after each test
   def teardown
-    # Add code that need to be executed after each test
     DatabaseCleaner.clean
     FileUtils.rm_rf('public/images')
   end
 
+  # Quick login and returns token code
   def login
     email = Faker::Internet.free_email
     password = Faker::Internet.password
