@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     namespace :file do
       post '/photo' => 'photo#create'
       get '/photo' => 'photo#index'
+      delete '/photo' => 'photo#delete'
     end
   end
 end

@@ -8,7 +8,7 @@ class File::PhotoCreateTest < ActionDispatch::IntegrationTest
 
     #action
     file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
-    post '/api/v1//file/photo', {token: token, file: file}
+    post '/api/v1/file/photo', {token: token, file: file}
 
     #check results
     assert_response 200
@@ -24,7 +24,7 @@ class File::PhotoCreateTest < ActionDispatch::IntegrationTest
 
     #action 1
     file = fixture_file_upload('test/fixtures/test.mp3', 'audio/mp3')
-    post '/api/v1//file/photo', {token: token, file: file}
+    post '/api/v1/file/photo', {token: token, file: file}
 
     #check results
     assert_response 422
@@ -32,7 +32,7 @@ class File::PhotoCreateTest < ActionDispatch::IntegrationTest
     assert_includes json['file'], 'wrong type'
 
     #action 2
-    post '/api/v1//file/photo', {token: token}
+    post '/api/v1/file/photo', {token: token}
 
     #check results
     assert_response 422
@@ -46,14 +46,14 @@ class File::PhotoCreateTest < ActionDispatch::IntegrationTest
 
     #action 1
     file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
-    post '/api/v1//file/photo', {token: token, file: file}
+    post '/api/v1/file/photo', {token: token, file: file}
 
     #check results
     assert_response 401
 
     #action 2
     file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
-    post '/api/v1//file/photo', {file: file}
+    post '/api/v1/file/photo', {file: file}
 
     #check results
     assert_response 401

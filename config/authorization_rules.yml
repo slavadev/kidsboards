@@ -8,3 +8,4 @@ test:
   - action: User::Command::PinCheckCommand
   - action: File::Command::PhotoCreateCommand
   - action: File::Command::PhotoIndexCommand
+  - action: File::Command::PhotoDeleteCommand

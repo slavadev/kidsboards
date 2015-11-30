@@ -14,4 +14,11 @@ class File::PhotoController < Core::Controller
     command = File::Command::PhotoIndexCommand.new(params)
     run(command)
   end
+
+  # Delete photo
+  # @see File::Command::PhotoDeleteCommand
+  def delete
+    command = File::Command::PhotoDeleteCommand.new(params)
+    run(command)
+  end
 end
