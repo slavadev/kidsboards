@@ -1,4 +1,15 @@
-language: ruby
-rvm:
- - "2.2.3"
-script: bundle exec rake test
+sudo: required
+services:
+  - docker
+
+env:
+  COMPOSE_VERSION: 1.5.2
+
+before_install:
+ - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+ - chmod +x docker-compose
+ - sudo mv docker-compose /usr/local/bin
+
+script:
+  - docker-compose build
+  - docker-compose run api bundler exec rake test
