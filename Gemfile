@@ -18,6 +18,7 @@ group :test do
   gem 'minitest-focus'
   gem 'faker'
   gem 'database_cleaner'
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :development, :test do

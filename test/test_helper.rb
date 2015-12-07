@@ -1,8 +1,14 @@
 ENV["RAILS_ENV"] = "test"
+ENV["CODECLIMATE_REPO_TOKEN"] = "497eb1d6581d560277807f87b4a41f795558faa623dd7cf509dc8c991909090a"
+
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
 require "minitest/pride"
+
 
 # Common function for tests
 class ActiveSupport::TestCase

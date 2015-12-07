@@ -7,9 +7,9 @@ class Core::Controller < ApplicationController
   # Runs the action
   # @param [Core::Command] command
   def run(command)
-    authorized? (command)
-    valid? (command)
-    result = execute (command)
+    authorized? command
+    valid? command
+    result = execute command
     if result.nil?
       render json: nil, status: 204
     else

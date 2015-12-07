@@ -13,3 +13,7 @@ before_install:
 script:
   - docker-compose build
   - docker-compose run api bundler exec rake test
+
+addons:
+  code_climate:
+    repo_token: 497eb1d6581d560277807f87b4a41f795558faa623dd7cf509dc8c991909090a
