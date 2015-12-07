@@ -9,7 +9,7 @@ development:
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - localhost:27017
+        - db:27017
       options:
         # The name of the user for authentication.
         user: 'admin'
@@ -20,7 +20,7 @@ test:
     default:
       database: thatsaboy_test
       hosts:
-        - localhost:27017
+        - db:27017
       options:
         read:
           mode: :primary

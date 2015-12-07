@@ -143,6 +143,3 @@ DEPENDENCIES
   rails (= 4.2.4)
   spring
   yard
-
-BUNDLED WITH
-   1.10.6
