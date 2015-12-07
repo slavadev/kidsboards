@@ -3,3 +3,11 @@ engines:
     enabled: true
   bundler-audit:
     enabled: true
+ratings:
+   paths:
+   - app/**
+   - lib/**
+   - "**.rb"
+exclude_paths:
+- test/**/*
+- vendor/**/*
