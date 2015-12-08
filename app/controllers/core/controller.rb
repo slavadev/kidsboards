@@ -19,12 +19,12 @@ class Core::Controller < ApplicationController
 
   # Catch unauthorized error
   rescue_from Core::Errors::UnauthorizedError do
-    render json: {error: 'Unauthorized'}, status: 401
+    render json: { error: 'Unauthorized' }, status: 401
   end
 
   # Catch forbidden error
   rescue_from Core::Errors::ForbiddenError do
-    render json: {error: 'Forbidden'}, status: 403
+    render json: { error: 'Forbidden' }, status: 403
   end
 
   # Catch validation errors
@@ -34,6 +34,6 @@ class Core::Controller < ApplicationController
 
   # Catch another errors
   rescue_from Core::Errors::InternalError do
-    render json: {error: 'Internal server error'}, status: 500
+    render json: { error: 'Internal server error' }, status: 500
   end
 end

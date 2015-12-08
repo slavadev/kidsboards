@@ -7,8 +7,8 @@ class File::Command::PhotoDeleteCommand < Core::Command
 
   # Checks that photo exists
   def url_exists
-    return if self.url.nil?
-    user = User::User.get_user_by_token_code(self.token, User::Token::TYPE_LOGIN)
+    return if url.nil?
+    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
     if File::Photo.where(url: url, deleted_at: nil, user: user).first.nil?
       errors.add(:url, 'not exists')
     end
@@ -16,7 +16,7 @@ class File::Command::PhotoDeleteCommand < Core::Command
 
   # Run command
   def execute
-    user = User::User.get_user_by_token_code(self.token, User::Token::TYPE_LOGIN)
+    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
     photo = File::Photo.where(url: url, deleted_at: nil, user: user).first
     photo.deleted_at = DateTime.now.new_offset(0)
     photo.save

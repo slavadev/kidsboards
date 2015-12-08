@@ -3,8 +3,8 @@ class User::Command::LoginCommand < Core::Command
   attr_accessor :email, :password
 
   validates :email, :password, presence: true
-  validates :email, :format => {:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
-  validates :password, length: {minimum: 6}
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :password, length: { minimum: 6 }
   validate :if_the_credentials_are_right
 
   # Checks if the email and password are right
@@ -24,6 +24,6 @@ class User::Command::LoginCommand < Core::Command
     user = User::User.where(email: email).first
     token = User::Token.new(user, User::Token::TYPE_LOGIN)
     token.save
-    {token: token.code}
+    { token: token.code }
   end
 end

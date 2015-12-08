@@ -11,7 +11,7 @@ class User::Token
   field :is_expired, type: Boolean
   field :type, type: Integer
 
-  belongs_to :user, :inverse_of => :tokens, :class_name => 'User::User'
+  belongs_to :user, inverse_of: :tokens, class_name: 'User::User'
 
   # Types
   # For Login
@@ -36,6 +36,6 @@ class User::Token
   # Set expired flag
   def expire
     self.is_expired = true
-    self.save
+    save
   end
 end

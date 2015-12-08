@@ -15,8 +15,8 @@ class User::User
   field :confirmed_at,       type: DateTime
   field :pin,                type: String, default: '0000'
 
-  has_many :tokens, :class_name => 'User::Token'
-  has_many :photos, :class_name => 'File::Photo'
+  has_many :tokens, class_name: 'User::Token'
+  has_many :photos, class_name: 'File::Photo'
 
   # Set password
   # @param [String] password
@@ -36,7 +36,7 @@ class User::User
   # @param [String] password
   # @return [String]
   def encrypt_password(password)
-    Digest::SHA2.hexdigest(self.salt + password)
+    Digest::SHA2.hexdigest(salt + password)
   end
 
   # Generate salt
@@ -47,7 +47,7 @@ class User::User
   # Confirm
   def confirm
     self.confirmed_at = DateTime.now.new_offset(0)
-    self.save
+    save
   end
 
   # Get user by token
@@ -56,7 +56,7 @@ class User::User
   # @return [User::User]
   def self.get_user_by_token_code(code, type)
     token = User::Token.where(code: code, type: type).first
-    raise Core::Errors::UnauthorizedError.new if token.nil?
+    fail Core::Errors::UnauthorizedError.new if token.nil?
     token.user
   end
 end

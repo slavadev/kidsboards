@@ -7,17 +7,17 @@ class File::Command::PhotoCreateCommand < Core::Command
 
   # Checks type of file
   def correct_content_type
-    return if self.file.nil?
-    unless self.file.content_type.chomp.match(/\Aimage\/.*\Z/)
+    return if file.nil?
+    unless file.content_type.chomp.match %r{\Aimage/.*\Z}
       errors.add(:file, 'wrong type')
     end
   end
 
   # Run command
   def execute
-    user = User::User.get_user_by_token_code(self.token, User::Token::TYPE_LOGIN)
-    photo = File::Photo.new(user, self.file)
+    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
+    photo = File::Photo.new(user, file)
     photo.save
-    {url: photo.url}
+    { url: photo.url }
   end
 end

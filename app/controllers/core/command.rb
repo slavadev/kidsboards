@@ -6,8 +6,8 @@ class Core::Command
   # @param [Hash] attributes
   def initialize(attributes = {})
     attributes.each do |name, value|
-      if self.methods.include? (name+'=').to_sym
-        self.method((name+'=').to_sym).call(value)
+      if methods.include? "#{name}=".to_sym
+        method("#{name}=".to_sym).call(value)
       end
     end
   end
@@ -16,6 +16,3 @@ class Core::Command
   def execute
   end
 end
-
-
-

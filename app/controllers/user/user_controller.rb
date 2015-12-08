@@ -1,6 +1,5 @@
 # User controller
 class User::UserController < Core::Controller
-
   # Method for registration
   # @see User::Command::RegisterCommand
   def register
