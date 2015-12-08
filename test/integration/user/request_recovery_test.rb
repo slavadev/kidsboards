@@ -1,23 +1,22 @@
 require 'test_helper'
 
 class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
-
   test 'request recovery success' do
-    #prepare
+    # prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
-    params = {email: email, password: password}
+    params = { email: email, password: password }
 
-    #register
+    # register
     post '/api/v1/user/register', params
 
-    #check results
+    # check results
     json = JSON.parse(response.body)
     id = json['id']
     user = User::User.find(id)
-    params = {email: email}
+    params = { email: email }
 
-    #action
+    # action
     post '/api/v1/user/request', params
 
     # get code from email
@@ -28,7 +27,7 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
     regexp = Regexp.new(Regexp.escape(string_to_find) + '\w*')
     code = text.scan(regexp).first.to_s.gsub(string_to_find, '')
 
-    #check token
+    # check token
     token = User::Token.where(code: code, type: User::Token::TYPE_RECOVERY).first
     assert_not_nil(token)
     token_user = token.user
@@ -36,26 +35,25 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
   end
 
   test 'request recovery success with wrong email' do
-    #prepare
+    # prepare
     email = Faker::Internet.free_email
-    params = {email: email}
+    params = { email: email }
 
-    #action
+    # action
     post '/api/v1/user/request', params
 
-    #check results
+    # check results
     assert_response :success
   end
 
   test 'request recovery fail without email' do
-    #action
+    # action
     post '/api/v1/user/request'
 
-    #check results
+    # check results
     assert_response 422
     json = JSON.parse(response.body)
     assert_includes json['email'], 'is invalid'
     assert_includes json['email'], 'can\'t be blank'
   end
-
 end

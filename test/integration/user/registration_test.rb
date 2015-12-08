@@ -2,15 +2,15 @@ require 'test_helper'
 
 class User::RegistrationTest < ActionDispatch::IntegrationTest
   test 'register success' do
-    #prepare
+    # prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
-    params = {email: email, password: password}
+    params = { email: email, password: password }
 
-    #action
+    # action
     post '/api/v1/user/register', params
 
-    #check results
+    # check results
     assert_response :success
     json = JSON.parse(response.body)
     id = json['id']
@@ -25,24 +25,23 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     regexp = Regexp.new(Regexp.escape(string_to_find) + '\w*')
     code = text.scan(regexp).first.to_s.gsub(string_to_find, '')
 
-    #check token
+    # check token
     token = User::Token.where(code: code, type: User::Token::TYPE_CONFIRMATION).first
     assert_not_nil(token)
     token_user = token.user
     assert_equal token_user, user
-
   end
 
   test 'register fail invalid params' do
-    #prepare
+    # prepare
     email = 'qwe'
     password = 'asd'
-    params = {email: email, password: password}
+    params = { email: email, password: password }
 
-    #action
+    # action
     post '/api/v1//user/register', params
 
-    #check results
+    # check results
     assert_response 422
     json = JSON.parse(response.body)
     assert_includes json['email'], 'is invalid'
@@ -50,10 +49,10 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
   end
 
   test 'register fail without params' do
-    #action
+    # action
     post '/api/v1//user/register'
 
-    #check results
+    # check results
     assert_response 422
     json = JSON.parse(response.body)
     assert_includes json['email'], 'is invalid'
@@ -62,18 +61,17 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     assert_includes json['password'], 'can\'t be blank'
   end
 
-
   test 'register fail email exists' do
-    #prepare
+    # prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
-    params = {email: email, password: password}
+    params = { email: email, password: password }
     post '/api/v1//user/register', params
 
-    #action
+    # action
     post '/api/v1//user/register', params
 
-    #check results
+    # check results
     assert_response 422
     json = JSON.parse(response.body)
     assert_includes json['email'], 'User already exists'

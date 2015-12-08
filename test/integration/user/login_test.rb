@@ -2,16 +2,16 @@ require 'test_helper'
 
 class User::LoginTest < ActionDispatch::IntegrationTest
   test 'login success' do
-    #prepare
+    # prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
-    params = {email: email, password: password}
+    params = { email: email, password: password }
     post '/api/v1//user/register', params
 
-    #action
+    # action
     post '/api/v1//user/login', params
 
-    #check results
+    # check results
     assert_response 200
     json = JSON.parse(response.body)
     token = json['token']
@@ -22,15 +22,15 @@ class User::LoginTest < ActionDispatch::IntegrationTest
   end
 
   test 'login fail invalid params' do
-    #prepare
+    # prepare
     email = 'qwe'
     password = 'asd'
-    params = {email: email, password: password}
+    params = { email: email, password: password }
 
-    #action
+    # action
     post '/api/v1//user/login', params
 
-    #check results
+    # check results
     assert_response 422
     json = JSON.parse(response.body)
     assert_includes json['email'], 'is invalid'
@@ -38,10 +38,10 @@ class User::LoginTest < ActionDispatch::IntegrationTest
   end
 
   test 'login fail without params' do
-    #action
+    # action
     post '/api/v1//user/login'
 
-    #check results
+    # check results
     assert_response 422
     json = JSON.parse(response.body)
     assert_includes json['email'], 'is invalid'
@@ -51,34 +51,34 @@ class User::LoginTest < ActionDispatch::IntegrationTest
   end
 
   test 'login fail wrong email' do
-    #prepare
+    # prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
-    params = {email: email, password: password}
+    params = { email: email, password: password }
     post '/api/v1//user/register', params
 
     params['email'] = Faker::Internet.free_email
-    #action
+    # action
     post '/api/v1//user/login', params
 
-    #check results
+    # check results
     assert_response 422
     json = JSON.parse(response.body)
     assert_includes json['email'], 'Wrong email or password'
   end
 
   test 'login fail wrong password' do
-    #prepare
+    # prepare
     email = Faker::Internet.free_email
     password = Faker::Internet.password
-    params = {email: email, password: password}
+    params = { email: email, password: password }
     post '/api/v1//user/register', params
 
     params['password'] = Faker::Internet.password
-    #action
+    # action
     post '/api/v1//user/login', params
 
-    #check results
+    # check results
     assert_response 422
     json = JSON.parse(response.body)
     assert_includes json['email'], 'Wrong email or password'
