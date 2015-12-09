@@ -2,6 +2,7 @@ ENV['RAILS_ENV'] = 'test'
 ENV['CODECLIMATE_REPO_TOKEN'] = '497eb1d6581d560277807f87b4a41f795558faa623dd7cf509dc8c991909090a'
 
 require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.configuration.git_dir = ".."
 CodeClimate::TestReporter.start
 
 require File.expand_path('../../config/environment', __FILE__)

@@ -1,13 +1,16 @@
 engines:
   rubocop:
     enabled: true
+    checks:
+      Rubocop/Style/ClassAndModuleChildren:
+        EnforcedStyle: compact
   bundler-audit:
     enabled: true
 ratings:
    paths:
-   - app/**
-   - lib/**
-   - "**.rb"
+   - api/app/**
+   - api/lib/**
+   - "api/**.rb"
 exclude_paths:
-- test/**/*
-- vendor/**/*
+- api/test/**/*
+- api/vendor/**/*
