@@ -48,20 +48,26 @@ Frontend - 0%
  
 ## Usage
 Build 
+
 ```
 docker-compose build
 ``` 
+
 and run 
+
 ```
 docker-compose up
 ```
 
 ## Backend Tests
 Build 
+
 ```
 docker-compose build
 ```
+
 and run 
+
 ```
 docker-compose run api bundle exec rake test
 ```
