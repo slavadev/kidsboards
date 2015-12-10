@@ -16,6 +16,5 @@
 /.idea
 /.vagrant
 /vendor/bundle
-/doc
 .byebug_history
 /.yardoc

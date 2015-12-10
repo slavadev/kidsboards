@@ -8,9 +8,9 @@ engines:
     enabled: true
 ratings:
    paths:
-   - api/app/**
-   - api/lib/**
-   - "api/**.rb"
+   - app/**
+   - lib/**
+   - "**.rb"
 exclude_paths:
-- api/test/**/*
-- api/vendor/**/*
+- test/**/*
+- vendor/**/*

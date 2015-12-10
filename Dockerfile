@@ -2,8 +2,7 @@ FROM ruby:2.2.0
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 RUN mkdir /api
 WORKDIR /api
-ADD ./api/Gemfile /api/Gemfile
-ADD ./api/Gemfile.lock /api/Gemfile.lock
+ADD Gemfile /api/Gemfile
+ADD Gemfile.lock /api/Gemfile.lock
 RUN bundle install
-ADD ./api /api
-ADD .git /.git
+ADD . /api
