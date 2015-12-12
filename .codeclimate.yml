@@ -3,7 +3,7 @@ engines:
     enabled: true
     checks:
       Rubocop/Style/ClassAndModuleChildren:
-        EnforcedStyle: compact
+        enabled: false
   bundler-audit:
     enabled: true
 ratings:
