@@ -15,6 +15,17 @@ class Core::Controller < ApplicationController
     else
       render json: result, status: 200
     end
+  rescue StandardError => e
+    handle_error(e)
+  end
+
+  # Decide what to do with exception
+  # @param [StandardError] e
+  def handle_error(e)
+    if [Core::Errors::UnauthorizedError, Core::Errors::ForbiddenError, Core::Errors::ValidationError].include? e.class
+      fail e
+    end
+    fail Core::Errors::InternalError, e.message
   end
 
   # Catch unauthorized error
@@ -33,7 +44,7 @@ class Core::Controller < ApplicationController
   end
 
   # Catch another errors
-  rescue_from Core::Errors::InternalError do
-    render json: { error: 'Internal server error' }, status: 500
+  rescue_from Core::Errors::InternalError do |exception|
+    render json: { error: exception.message }, status: 500
   end
 end

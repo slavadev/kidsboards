@@ -56,7 +56,7 @@ class User::User
   # @return [User::User]
   def self.get_user_by_token_code(code, type)
     token = User::Token.where(code: code, type: type).first
-    fail Core::Errors::UnauthorizedError.new if token.nil?
+    fail Core::Errors::UnauthorizedError if token.nil?
     token.user
   end
 end
