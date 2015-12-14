@@ -21,7 +21,7 @@ With bright illustrations **Thatsaboy** makes this process more interesting for 
 
 ## Progress
 
-Backend - 75%
+Backend - 70%
 
 Frontend - 0%
 
