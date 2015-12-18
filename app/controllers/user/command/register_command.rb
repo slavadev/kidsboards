@@ -23,6 +23,8 @@ class User::Command::RegisterCommand < Core::Command
     user.save
     token = User::Token.new(user, User::Token::TYPE_CONFIRMATION)
     token.save
+    family = Family::Family.new(user)
+    family.save
     Mailer.confirmation_email(user.email, token.code).deliver_later
     { id: user['_id'] }
   end

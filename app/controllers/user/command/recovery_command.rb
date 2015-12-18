@@ -1,6 +1,6 @@
 # Recovery command
 class User::Command::RecoveryCommand < Core::Command
-  attr_accessor :token, :password
+  attr_accessor :password
 
   validates :password, presence: true
   validates :password, length: { minimum: 6 }

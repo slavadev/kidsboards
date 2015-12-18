@@ -2,6 +2,8 @@
 class Core::Command
   include ActiveModel::Validations
 
+  attr_accessor :token
+
   # Fulfill input with attributes
   # @param [Hash] attributes
   def initialize(attributes = {})

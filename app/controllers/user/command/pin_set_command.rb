@@ -1,6 +1,6 @@
 # Set pin command
 class User::Command::PinSetCommand < Core::Command
-  attr_accessor :token, :pin
+  attr_accessor :pin
 
   validates :pin, presence: true
   validates :pin, length: { is: 4 }

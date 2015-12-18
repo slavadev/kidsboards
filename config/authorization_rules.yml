@@ -1,4 +1,5 @@
 test:
+  # User
   - action: User::Command::LogoutCommand
   - action: User::Command::ConfirmCommand
     token: :confirmation
@@ -6,6 +7,10 @@ test:
     token: :recovery
   - action: User::Command::PinSetCommand
   - action: User::Command::PinCheckCommand
+  - action: User::Command::ViewCommand
+  # File
   - action: File::Command::PhotoCreateCommand
   - action: File::Command::PhotoIndexCommand
   - action: File::Command::PhotoDeleteCommand
+  # Family
+  - action: Family::Command::UpdateCommand

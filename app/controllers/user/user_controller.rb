@@ -55,4 +55,11 @@ class User::UserController < Core::Controller
     command = User::Command::PinCheckCommand.new(params)
     run(command)
   end
+
+  # View all info about user
+  # @see User::Command::ViewCommand
+  def view
+    command = User::Command::ViewCommand.new(params)
+    run(command)
+  end
 end

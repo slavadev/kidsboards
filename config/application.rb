@@ -14,9 +14,6 @@ Bundler.require(*Rails.groups)
 
 module Thatsaboy
   class Application < Rails::Application
-    # Faker
-    Faker::Config.locale = :ru if Rails.env == 'test'
-
     # Mute mongo
     Mongoid.logger.level = Logger::INFO
     Mongoid.raise_not_found_error = false

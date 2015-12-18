@@ -1,6 +1,6 @@
 # Photo delete command
 class File::Command::PhotoDeleteCommand < Core::Command
-  attr_accessor :token, :url
+  attr_accessor :url
 
   validates :url, presence: true
   validate :url_exists

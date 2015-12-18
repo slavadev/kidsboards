@@ -15,8 +15,9 @@ class User::User
   field :confirmed_at,       type: DateTime
   field :pin,                type: String, default: '0000'
 
-  has_many :tokens, class_name: 'User::Token'
-  has_many :photos, class_name: 'File::Photo'
+  has_many   :tokens, class_name: 'User::Token'
+  has_many   :photos, class_name: 'File::Photo'
+  embeds_one :family, class_name: 'Family::Family'
 
   # Set password
   # @param [String] password
@@ -58,5 +59,15 @@ class User::User
     token = User::Token.where(code: code, type: type).first
     fail Core::Errors::UnauthorizedError if token.nil?
     token.user
+  end
+
+
+  # Attributes visible for public
+  def view
+      {
+          id: self.id,
+          email: self.email,
+          family: self.family.view
+      }
   end
 end

@@ -30,6 +30,9 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     assert_not_nil(token)
     token_user = token.user
     assert_equal token_user, user
+
+    # check family
+    assert_not_nil user.family
   end
 
   test 'register fail invalid params' do

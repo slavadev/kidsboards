@@ -9,12 +9,17 @@ Rails.application.routes.draw do
       post '/recovery' => 'user#recovery'
       patch '/pin' => 'user#pin_set'
       get '/pin' => 'user#pin_check'
+      get '/' => 'user#view'
     end
 
     namespace :file do
       post '/photo' => 'photo#create'
       get '/photo' => 'photo#index'
       delete '/photo' => 'photo#delete'
+    end
+
+    namespace :family do
+      put '/' => 'family#update'
     end
   end
 end

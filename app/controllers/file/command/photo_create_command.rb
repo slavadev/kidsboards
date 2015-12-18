@@ -1,6 +1,6 @@
 # Photo create command
 class File::Command::PhotoCreateCommand < Core::Command
-  attr_accessor :token, :file
+  attr_accessor :file
 
   validates :file, presence: true
   validate :correct_content_type
