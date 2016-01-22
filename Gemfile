@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'mongo'
+gem 'pg'
 gem 'rails', '4.2.4'
-gem 'mongoid', '~> 5.0.0'
 
 # documentation
 gem 'yard'
@@ -11,7 +10,7 @@ gem 'yard'
 gem 'passenger'
 
 # files
-gem 'mongoid-paperclip', require: 'mongoid_paperclip'
+gem 'paperclip'
 
 gem 'minitest-rails'
 group :test do

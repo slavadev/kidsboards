@@ -27,8 +27,9 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
     password = Faker::Internet.password
     params = { password: password, token: code }
     post '/api/v1/user/recovery', params
+
     assert_response :success
-    token = User::Token.where(code: code, type: User::Token::TYPE_RECOVERY).first
+    token = User::Token.where(code: code, token_type: User::Token::TYPE_RECOVERY).first
     assert_equal token.is_expired, true
 
     # check new password

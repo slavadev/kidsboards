@@ -5,26 +5,34 @@ class File::PhotoCreateTest < ActionDispatch::IntegrationTest
     # prepare
     token = login
     urls = []
+    ids = []
     file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
 
     post '/api/v1/file/photo', token: token, file: file
     json = JSON.parse(response.body)
+    ids.push(json['id'])
     urls.push(json['url'])
 
     post '/api/v1/file/photo', token: token, file: file
     json = JSON.parse(response.body)
+    ids.push(json['id'])
     urls.push(json['url'])
 
     post '/api/v1/file/photo', token: token, file: file
     json = JSON.parse(response.body)
+    ids.push(json['id'])
     urls.push(json['url'])
 
     # action
     get '/api/v1/file/photo', token: token
     json = JSON.parse(response.body)
-    photo_urls = json['photo_urls']
+    photo_ids = json['photos'].map{ |x| x['id'] }
+    photo_urls = json['photos'].map{ |x| x['url'] }
 
     # check results
+    ids.each do |id|
+      assert_includes photo_ids, id
+    end
     urls.each do |url|
       assert_includes photo_urls, url
     end
@@ -37,9 +45,11 @@ class File::PhotoCreateTest < ActionDispatch::IntegrationTest
     # action
     get '/api/v1/file/photo', token: token
     json = JSON.parse(response.body)
-    photo_urls = json['photo_urls']
+    photo_ids = json['photos'].map{ |x| x['id'] }
+    photo_urls = json['photos'].map{ |x| x['url'] }
 
     # check results
+    assert_equal [], photo_ids
     assert_equal [], photo_urls
   end
 

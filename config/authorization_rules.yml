@@ -12,5 +12,12 @@ test:
   - action: File::Command::PhotoCreateCommand
   - action: File::Command::PhotoIndexCommand
   - action: File::Command::PhotoDeleteCommand
+    owner: true
   # Family
-  - action: Family::Command::UpdateCommand
+  - action: Family::Command::FamilyUpdateCommand
+  - action: Family::Command::FamilyViewCommand
+  - action: Family::Command::PersonCreateCommand
+  - action: Family::Command::PersonUpdateCommand
+    owner: true
+  - action: Family::Command::PersonDeleteCommand
+    owner: true

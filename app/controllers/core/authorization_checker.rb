@@ -3,16 +3,24 @@ module Core::AuthorizationChecker
   # Check for authorization
   # @param [Core::Command] command
   def authorized?(command)
+    get_token command
+  end
+
+  # Get the token
+  # @param [Core::Command] command
+  # @return [User::Token] token
+  def get_token(command)
     rules = Rails.configuration.authorization_rules
     return if rules.select { |rule| rule['action'] == command.class.name }.blank?
     token = params['token']
     fail Core::Errors::UnauthorizedError if token.nil?
     type = get_type(rules, command)
-    token = User::Token.where(code: token, type: type).first
+    token = User::Token.where(code: token, token_type: type).first
     fail Core::Errors::UnauthorizedError if token.nil?
+    token
   end
 
-  # Get type of token
+  # Get type of the token
   # @param [Array] rules
   # @param [Core::Command] command
   # @return [Integer]

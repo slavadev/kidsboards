@@ -1,5 +1,5 @@
 # Update family command
-class Family::Command::UpdateCommand < Core::Command
+class Family::Command::FamilyUpdateCommand < Core::Command
   attr_accessor :name, :photo_url
 
   validates :name,      length: { maximum: 50 }

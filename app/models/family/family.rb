@@ -1,28 +1,20 @@
 # Family class
 # Fileds:
+#  [Integer]    id
 #  [String]     name
 #  [String]     photo_url
+#  [DateTime]   created_at
+#  [DateTime]   updated_at
 #  [User::User] user
-class Family::Family
-  include Mongoid::Document
-  field :name,      type: String, default: ''
-  field :photo_url, type: String, default: nil
-
-  embedded_in :user, inverse_of: :family, class_name: 'User::User'
+#  [Family::Adult][] adults
+class Family::Family < ActiveRecord::Base
+  belongs_to :user, inverse_of: :family, class_name: 'User::User'
+  has_many :adults, class_name: 'Family::Adult'
 
   # Generates family with user
   # @param [User::User] user
   def initialize(user)
     super()
     self.user = user
-  end
-
-  # Attributes visible for public
-  def view
-    {
-        id: self.id,
-        name: self.name,
-        photo_url: self.photo_url
-    }
   end
 end

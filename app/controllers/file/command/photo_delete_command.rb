@@ -1,25 +1,21 @@
 # Photo delete command
 class File::Command::PhotoDeleteCommand < Core::Command
-  attr_accessor :url
+  attr_accessor :id
 
-  validates :url, presence: true
-  validate :url_exists
-
-  # Checks that photo exists
-  def url_exists
-    return if url.nil?
-    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
-    if File::Photo.where(url: url, deleted_at: nil, user: user).first.nil?
-      errors.add(:url, 'not exists')
-    end
-  end
+  validates :id, presence: true,
+                 exists: lambda { |x| {id: x.id, deleted_at: nil } }
 
   # Run command
   def execute
-    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
-    photo = File::Photo.where(url: url, deleted_at: nil, user: user).first
+    photo = File::Photo.where(id: id, deleted_at: nil).first
     photo.deleted_at = DateTime.now.new_offset(0)
     photo.save
     nil
+  end
+
+  # Get the model to validate
+  # @return [Class]
+  def model_to_validate
+    File::Photo
   end
 end

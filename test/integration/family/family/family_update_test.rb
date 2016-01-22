@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class Family::UpdateTest < ActionDispatch::IntegrationTest
+class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
 
-  test 'update success' do
+  test 'family update success' do
     # prepare
     token = login
 
@@ -19,7 +19,7 @@ class Family::UpdateTest < ActionDispatch::IntegrationTest
     assert_equal url, family.photo_url
   end
 
-  test 'update wrong params' do
+  test 'family update fail wrong params' do
     # prepare
     token = login
 
@@ -46,7 +46,7 @@ class Family::UpdateTest < ActionDispatch::IntegrationTest
     assert_includes json['photo_url'], 'has wrong protocol (use http or https)'
   end
 
-  test 'update fail wrong token' do
+  test 'family update fail wrong token' do
     # prepare
     token = Faker::Lorem.characters(10)
 
@@ -59,7 +59,7 @@ class Family::UpdateTest < ActionDispatch::IntegrationTest
     assert_response 401
   end
 
-  test 'update fail without token' do
+  test 'family update fail without token' do
     # action
     name = Faker::Name.name
     url = Faker::Internet.url

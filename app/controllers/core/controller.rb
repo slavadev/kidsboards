@@ -1,7 +1,8 @@
 # Common controller methods
 class Core::Controller < ApplicationController
-  include Core::ValidationChecker
   include Core::AuthorizationChecker
+  include Core::OwnerChecker
+  include Core::ValidationChecker
   include Core::Executor
 
   # Runs the action
@@ -9,6 +10,7 @@ class Core::Controller < ApplicationController
   def run(command)
     authorized? command
     valid? command
+    owner? command
     result = execute command
     if result.nil?
       render json: nil, status: 204

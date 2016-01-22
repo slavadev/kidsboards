@@ -1,23 +1,20 @@
 # User class
 # Fileds:
-#  [String]        email
-#  [String]        encrypted_password
-#  [String]        salt
-#  [DateTime]      confirmed_at
-#  [String]        pin                  4 digital Pin code for adults
-#  [[User::Token]] tokens
-#  [[File::Photo]] photos
-class User::User
-  include Mongoid::Document
-  field :email,              type: String, default: ''
-  field :encrypted_password, type: String, default: ''
-  field :salt,               type: String, default: ''
-  field :confirmed_at,       type: DateTime
-  field :pin,                type: String, default: '0000'
-
-  has_many   :tokens, class_name: 'User::Token'
-  has_many   :photos, class_name: 'File::Photo'
-  embeds_one :family, class_name: 'Family::Family'
+#  [Integer]          id
+#  [String]           email
+#  [String]           encrypted_password
+#  [String]           salt
+#  [DateTime]         confirmed_at
+#  [String]           pin                  4 digital Pin code for adults
+#  [[User::Token]][]  tokens
+#  [[File::Photo]][]  photos
+#  [[Family::Family]] family
+class User::User < ActiveRecord::Base
+  has_many   :tokens,   class_name: 'User::Token'
+  has_many   :photos,   class_name: 'File::Photo'
+  has_many   :adults,   class_name: 'Family::Adult'
+  has_many   :children, class_name: 'Family::Child'
+  has_one    :family,   class_name: 'Family::Family'
 
   # Set password
   # @param [String] password
@@ -56,18 +53,8 @@ class User::User
   # @param [Integer] type
   # @return [User::User]
   def self.get_user_by_token_code(code, type)
-    token = User::Token.where(code: code, type: type).first
+    token = User::Token.where(code: code, token_type: type).first
     fail Core::Errors::UnauthorizedError if token.nil?
     token.user
-  end
-
-
-  # Attributes visible for public
-  def view
-      {
-          id: self.id,
-          email: self.email,
-          family: self.family.view
-      }
   end
 end

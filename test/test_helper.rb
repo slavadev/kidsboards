@@ -2,7 +2,7 @@ ENV['RAILS_ENV'] = 'test'
 ENV['CODECLIMATE_REPO_TOKEN'] = '497eb1d6581d560277807f87b4a41f795558faa623dd7cf509dc8c991909090a'
 
 require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
+CodeClimate::TestReporter.start if ARGV.include? 'coverage'
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
@@ -37,5 +37,10 @@ class ActiveSupport::TestCase
     post '/api/v1/user/login', params
     json = JSON.parse(response.body)
     json['token']
+  end
+
+  # Assert one array to include in other
+  def assert_includes_like(what, where)
+
   end
 end

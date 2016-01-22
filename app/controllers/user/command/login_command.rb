@@ -5,7 +5,7 @@ class User::Command::LoginCommand < Core::Command
   validates :email, :password, presence: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :password, length: { minimum: 6 }
-  validate :if_the_credentials_are_right
+  validate  :if_the_credentials_are_right
 
   # Checks if the email and password are right
   def if_the_credentials_are_right

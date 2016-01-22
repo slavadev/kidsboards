@@ -18,7 +18,7 @@ class User::LoginTest < ActionDispatch::IntegrationTest
     token = User::Token.where(code: token).first
     assert_equal token.user.email, email
     assert_equal token.is_expired, false
-    assert_equal token.type, User::Token::TYPE_LOGIN
+    assert_equal token.token_type, User::Token::TYPE_LOGIN
   end
 
   test 'login fail invalid params' do

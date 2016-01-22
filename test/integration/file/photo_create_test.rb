@@ -12,6 +12,11 @@ class File::PhotoCreateTest < ActionDispatch::IntegrationTest
     # check results
     assert_response 200
     json = JSON.parse(response.body)
+    # check that record exists
+    id = json['id']
+    photo = File::Photo.where(id: id).first
+    assert_not_nil photo
+    # check that file exists
     url = json['url']
     folder = url.sub(ENV['UPLOAD_HOST'], ENV['UPLOAD_FOLDER'])
     assert_equal File.exist?(folder), true

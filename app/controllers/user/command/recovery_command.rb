@@ -7,7 +7,7 @@ class User::Command::RecoveryCommand < Core::Command
 
   # Run command
   def execute
-    token = User::Token.where(code: self.token, type: User::Token::TYPE_RECOVERY).first
+    token = User::Token.where(code: self.token, token_type: User::Token::TYPE_RECOVERY).first
     token.expire
     user = token.user
     user.password = password

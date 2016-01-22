@@ -12,7 +12,8 @@ before_install:
 
 script:
   - docker-compose build
-  - docker-compose run api bundler exec rake test
+  - docker-compose run migrator
+  - docker-compose run tester
 
 addons:
   code_climate:

@@ -22,7 +22,7 @@ class User::ConfirmationTest < ActionDispatch::IntegrationTest
     # check token
     get '/api/v1/user/confirm/' + code
     assert_response :success
-    token = User::Token.where(code: code, type: User::Token::TYPE_CONFIRMATION).first
+    token = User::Token.where(code: code, token_type: User::Token::TYPE_CONFIRMATION).first
     user = User::User.find(id)
     assert_equal token.is_expired, true
     assert_not_nil user.confirmed_at

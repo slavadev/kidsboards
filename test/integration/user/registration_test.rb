@@ -26,7 +26,7 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     code = text.scan(regexp).first.to_s.gsub(string_to_find, '')
 
     # check token
-    token = User::Token.where(code: code, type: User::Token::TYPE_CONFIRMATION).first
+    token = User::Token.where(code: code, token_type: User::Token::TYPE_CONFIRMATION).first
     assert_not_nil(token)
     token_user = token.user
     assert_equal token_user, user
@@ -77,6 +77,6 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     # check results
     assert_response 422
     json = JSON.parse(response.body)
-    assert_includes json['email'], 'User already exists'
+    assert_includes json['email'], 'is not unique'
   end
 end

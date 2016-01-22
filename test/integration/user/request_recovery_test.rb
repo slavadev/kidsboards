@@ -28,7 +28,7 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
     code = text.scan(regexp).first.to_s.gsub(string_to_find, '')
 
     # check token
-    token = User::Token.where(code: code, type: User::Token::TYPE_RECOVERY).first
+    token = User::Token.where(code: code, token_type: User::Token::TYPE_RECOVERY).first
     assert_not_nil(token)
     token_user = token.user
     assert_equal token_user, user

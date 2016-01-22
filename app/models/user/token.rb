@@ -1,16 +1,12 @@
 # Token class
 # Fileds:
+#  [Integer]    id
 #  [String]     code
 #  [DateTime]   created_at
 #  [Integer]    is_expired
+#  [Integer]    token_type
 #  [User::User] user
-class User::Token
-  include Mongoid::Document
-  field :code, type: String, default: ''
-  field :created_at, type: DateTime
-  field :is_expired, type: Boolean
-  field :type, type: Integer
-
+class User::Token < ActiveRecord::Base
   belongs_to :user, inverse_of: :tokens, class_name: 'User::User'
 
   # Types
@@ -30,7 +26,7 @@ class User::Token
     self.code = SecureRandom.hex
     self.created_at = DateTime.now.new_offset(0)
     self.is_expired = false
-    self.type = type
+    self.token_type = type
   end
 
   # Set expired flag

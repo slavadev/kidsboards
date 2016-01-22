@@ -23,4 +23,8 @@ class Core::Errors
   ## Internal error
   class InternalError < StandardError
   end
+
+  ## No model to validate error
+  class NoModelToValidateError < StandardError
+  end
 end

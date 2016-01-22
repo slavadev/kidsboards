@@ -21,7 +21,7 @@ With bright illustrations **Thatsaboy** makes this process more interesting for 
 
 ## Progress
 
-Backend - 70%
+Backend - 80%
 
 Frontend - 0%
 
@@ -29,7 +29,7 @@ Frontend - 0%
 
 ### Backend
  - [Ruby on Rails](http://rubyonrails.org/)
- - [MongoDB](https://www.mongodb.org/)
+ - [PostgreSQL](http://www.postgresql.org/)
  - [Minitest](https://github.com/seattlerb/minitest) for testing
  - [YARD](http://yardoc.org/) for documentation
  - [Docker](https://www.docker.com/) for easy setup and great portability

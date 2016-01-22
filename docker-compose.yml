@@ -1,11 +1,36 @@
-db:
-  image: mongo
-api:
-  build: .
-  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+data:
+  image: debian:jessie
   volumes:
     - .:/api
+postgres:
+  image: postgres
+  env_file: .env
+migrator:
+  build: .
+  dockerfile: ./docker/api/Dockerfile
+  command: bash ./migrate.sh
+  volumes_from:
+    - data:rw
+  links:
+    - postgres
+  env_file: .env
+api:
+  build: .
+  dockerfile: ./docker/api/Dockerfile
+  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  volumes_from:
+    - data:rw
   ports:
     - "3000:3000"
   links:
-    - db
+    - postgres
+  env_file: .env
+tester:
+  build: .
+  dockerfile: ./docker/api/Dockerfile
+  command: bundle exec rake test
+  volumes_from:
+    - data:rw
+  links:
+    - postgres
+  env_file: .env

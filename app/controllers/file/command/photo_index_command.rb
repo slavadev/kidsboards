@@ -7,8 +7,8 @@ class File::Command::PhotoIndexCommand < Core::Command
     if photos.nil?
       photos = []
     else
-      photos = photos.map(&:url)
+      photos = photos.map{ |x| {id: x.id, url:ENV['UPLOAD_HOST'] + x.file.url} }
     end
-    { photo_urls: photos }
+    { photos: photos }
   end
 end

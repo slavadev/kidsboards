@@ -9,17 +9,30 @@ Rails.application.routes.draw do
       post '/recovery' => 'user#recovery'
       patch '/pin' => 'user#pin_set'
       get '/pin' => 'user#pin_check'
-      get '/' => 'user#view'
     end
 
     namespace :file do
       post '/photo' => 'photo#create'
       get '/photo' => 'photo#index'
+      delete '/photo/:id' => 'photo#delete'
       delete '/photo' => 'photo#delete'
     end
 
     namespace :family do
-      put '/' => 'family#update'
+      put '/' => 'family#family_update'
+      get '/' => 'family#family_view'
+      # adult
+      post '/adult' => 'family#adult_create'
+      put '/adult/:id' => 'family#adult_update'
+      put '/adult' => 'family#adult_update'
+      delete '/adult/:id' => 'family#adult_delete'
+      delete '/adult' => 'family#adult_delete'
+      # child
+      post '/child' => 'family#child_create'
+      put '/child/:id' => 'family#child_update'
+      put '/child' => 'family#child_update'
+      delete '/child/:id' => 'family#child_delete'
+      delete '/child' => 'family#child_delete'
     end
   end
 end
