@@ -95,7 +95,7 @@
   
     
       <dt class="r2">Includes:</dt>
-      <dd class="r2"><span class='object_link'><a href="AuthorizationChecker.html" title="Core::AuthorizationChecker (module)">AuthorizationChecker</a></span>, <span class='object_link'><a href="Executor.html" title="Core::Executor (module)">Executor</a></span>, <span class='object_link'><a href="ValidationChecker.html" title="Core::ValidationChecker (module)">ValidationChecker</a></span></dd>
+      <dd class="r2"><span class='object_link'><a href="AuthorizationChecker.html" title="Core::AuthorizationChecker (module)">AuthorizationChecker</a></span>, <span class='object_link'><a href="Executor.html" title="Core::Executor (module)">Executor</a></span>, <span class='object_link'><a href="OwnerChecker.html" title="Core::OwnerChecker (module)">OwnerChecker</a></span>, <span class='object_link'><a href="ValidationChecker.html" title="Core::ValidationChecker (module)">ValidationChecker</a></span></dd>
       
     
   
@@ -120,7 +120,7 @@
 
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="../File/PhotoController.html" title="File::PhotoController (class)">File::PhotoController</a></span>, <span class='object_link'><a href="../User/UserController.html" title="User::UserController (class)">User::UserController</a></span></p>
+  <p class="children"><span class='object_link'><a href="../Family/FamilyController.html" title="Family::FamilyController (class)">Family::FamilyController</a></span>, <span class='object_link'><a href="../File/PhotoController.html" title="File::PhotoController (class)">File::PhotoController</a></span>, <span class='object_link'><a href="../User/UserController.html" title="User::UserController (class)">User::UserController</a></span></p>
 </div>
 
 
@@ -136,6 +136,30 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handle_error-instance_method" title="#handle_error (instance method)">- (Object) <strong>handle_error</strong>(e) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Decide what to do with exception.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -184,8 +208,8 @@
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="AuthorizationChecker.html" title="Core::AuthorizationChecker (module)">AuthorizationChecker</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="AuthorizationChecker.html#authorized%3F-instance_method" title="Core::AuthorizationChecker#authorized? (method)">#authorized?</a></span>, <span class='object_link'><a href="AuthorizationChecker.html#get_type-instance_method" title="Core::AuthorizationChecker#get_type (method)">#get_type</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="ValidationChecker.html" title="Core::ValidationChecker (module)">ValidationChecker</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ValidationChecker.html#valid%3F-instance_method" title="Core::ValidationChecker#valid? (method)">#valid?</a></span></p>
 
   
   
@@ -195,8 +219,19 @@
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="ValidationChecker.html" title="Core::ValidationChecker (module)">ValidationChecker</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="ValidationChecker.html#valid%3F-instance_method" title="Core::ValidationChecker#valid? (method)">#valid?</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="OwnerChecker.html" title="Core::OwnerChecker (module)">OwnerChecker</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="OwnerChecker.html#get_owner_param-instance_method" title="Core::OwnerChecker#get_owner_param (method)">#get_owner_param</a></span>, <span class='object_link'><a href="OwnerChecker.html#owner%3F-instance_method" title="Core::OwnerChecker#owner? (method)">#owner?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="AuthorizationChecker.html" title="Core::AuthorizationChecker (module)">AuthorizationChecker</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="AuthorizationChecker.html#authorized%3F-instance_method" title="Core::AuthorizationChecker#authorized? (method)">#authorized?</a></span>, <span class='object_link'><a href="AuthorizationChecker.html#get_token-instance_method" title="Core::AuthorizationChecker#get_token (method)">#get_token</a></span>, <span class='object_link'><a href="AuthorizationChecker.html#get_type-instance_method" title="Core::AuthorizationChecker#get_type (method)">#get_type</a></span></p>
 
   
   
@@ -211,7 +246,69 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="run-instance_method">
+  <h3 class="signature first" id="handle_error-instance_method">
+  
+    - (<tt>Object</tt>) <strong>handle_error</strong>(e) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Decide what to do with exception</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>e</span>
+      
+      
+        <span class='type'>(<tt>StandardError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/core/controller.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_handle_error'>handle_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lbracket'>[</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>UnauthorizedError</span><span class='comma'>,</span> <span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>ForbiddenError</span><span class='comma'>,</span> <span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>ValidationError</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span>
+    <span class='id identifier rubyid_fail'>fail</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_fail'>fail</span> <span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>InternalError</span><span class='comma'>,</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="run-instance_method">
   
     - (<tt>Object</tt>) <strong>run</strong>(command) 
   
@@ -251,7 +348,6 @@
       <pre class="lines">
 
 
-9
 10
 11
 12
@@ -260,20 +356,27 @@
 15
 16
 17
-18</pre>
+18
+19
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/core/controller.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/core/controller.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_authorized?'>authorized?</span> <span class='id identifier rubyid_command'>command</span>
   <span class='id identifier rubyid_valid?'>valid?</span> <span class='id identifier rubyid_command'>command</span>
+  <span class='id identifier rubyid_owner?'>owner?</span> <span class='id identifier rubyid_command'>command</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_execute'>execute</span> <span class='id identifier rubyid_command'>command</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
     <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>204</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_result'>result</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>200</span>
   <span class='kw'>end</span>
+<span class='kw'>rescue</span> <span class='const'>StandardError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='id identifier rubyid_handle_error'>handle_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -285,7 +388,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Dec 10 21:07:11 2015 by
+  Generated on Sun Jan 24 08:21:42 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.0).
 </div>

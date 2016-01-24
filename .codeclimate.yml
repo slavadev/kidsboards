@@ -9,8 +9,6 @@ engines:
 ratings:
    paths:
    - app/**
-   - lib/**
-   - "**.rb"
 exclude_paths:
 - test/**/*
 - vendor/**/*

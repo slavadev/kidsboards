@@ -73,10 +73,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName">Object</span>
+      <span class="inheritName">ActiveRecord::Base</span>
       
         <ul class="fullTree">
           <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
           
             <li class="next">User::Token</li>
           
@@ -90,15 +92,11 @@
     
   
     
-      <dt class="r2">Includes:</dt>
-      <dd class="r2">Mongoid::Document</dd>
-      
-    
   
   
   
-    <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">app/models/user/token.rb</dd>
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/models/user/token.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -108,9 +106,11 @@
     
 <p>Token class Fileds:</p>
 
-<pre class="code ruby"><code class="ruby">[String]     code
+<pre class="code ruby"><code class="ruby">[Integer]    id
+[String]     code
 [DateTime]   created_at
 [Integer]    is_expired
+[Integer]    token_type
 [User::User] user</code></pre>
 
 
@@ -298,17 +298,17 @@
       <pre class="lines">
 
 
+23
+24
+25
+26
 27
 28
 29
-30
-31
-32
-33
-34</pre>
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user/token.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'app/models/user/token.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
@@ -316,7 +316,7 @@
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_hex'>hex</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_created_at'>created_at</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_new_offset'>new_offset</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_is_expired'>is_expired</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_token_type'>token_type</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -356,13 +356,13 @@
       <pre class="lines">
 
 
-37
-38
-39
-40</pre>
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user/token.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/models/user/token.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expire'>expire</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_is_expired'>is_expired</span> <span class='op'>=</span> <span class='kw'>true</span>
@@ -378,7 +378,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Dec 10 21:07:11 2015 by
+  Generated on Sun Jan 24 08:21:41 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.0).
 </div>

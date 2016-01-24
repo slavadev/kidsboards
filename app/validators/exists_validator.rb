@@ -2,9 +2,9 @@
 class ExistsValidator < ActiveModel::EachValidator
 
   # Validation function
-  # @param Object record
-  # @param String attribute
-  # @param Object value
+  # @param [Object] record
+  # @param [String] attribute
+  # @param [Object] value
   def validate_each(record, attribute, value)
     model = record.model_to_validate
     conditions = options[:with].call(record)

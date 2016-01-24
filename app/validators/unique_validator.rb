@@ -2,9 +2,9 @@
 class UniqueValidator < ActiveModel::EachValidator
 
   # Validation function
-  # @param Object record
-  # @param String attribute
-  # @param Object value
+  # @param [Object] record
+  # @param [String] attribute
+  # @param [Object] value
   def validate_each(record, attribute, value)
     model = options[:model]
     conditions = options[:conditions].call(record)

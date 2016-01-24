@@ -73,10 +73,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName">Object</span>
+      <span class="inheritName">ActiveRecord::Base</span>
       
         <ul class="fullTree">
           <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
           
             <li class="next">User::User</li>
           
@@ -90,15 +92,11 @@
     
   
     
-      <dt class="r2">Includes:</dt>
-      <dd class="r2">Mongoid::Document</dd>
-      
-    
   
   
   
-    <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">app/models/user/user.rb</dd>
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/models/user/user.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -108,13 +106,15 @@
     
 <p>User class Fileds:</p>
 
-<pre class="code ruby"><code class="ruby">[String]        email
-[String]        encrypted_password
-[String]        salt
-[DateTime]      confirmed_at
-[String]        pin                  4 digital Pin code for adults
-[[User::Token]] tokens
-[[File::Photo]] photos</code></pre>
+<pre class="code ruby"><code class="ruby">[Integer]          id
+[String]           email
+[String]           encrypted_password
+[String]           salt
+[DateTime]         confirmed_at
+[String]           pin                  4 digital Pin code for adults
+[[User::Token]][]  tokens
+[[File::Photo]][]  photos
+[[Family::Family]] family</code></pre>
 
 
   </div>
@@ -365,18 +365,18 @@
       <pre class="lines">
 
 
+55
+56
 57
 58
-59
-60
-61</pre>
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_user_by_token_code'>get_user_by_token_code</span><span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_token'>token</span> <span class='op'>=</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>Token</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>code:</span> <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='label'>type:</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-  <span class='id identifier rubyid_fail'>fail</span> <span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>UnauthorizedError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>if</span> <span class='id identifier rubyid_token'>token</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_token'>token</span> <span class='op'>=</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>Token</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>code:</span> <span class='id identifier rubyid_code'>code</span><span class='comma'>,</span> <span class='label'>token_type:</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+  <span class='id identifier rubyid_fail'>fail</span> <span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>UnauthorizedError</span> <span class='kw'>if</span> <span class='id identifier rubyid_token'>token</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
   <span class='id identifier rubyid_token'>token</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -416,13 +416,13 @@
       <pre class="lines">
 
 
+46
+47
 48
-49
-50
-51</pre>
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_confirm'>confirm</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_confirmed_at'>confirmed_at</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_new_offset'>new_offset</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
@@ -487,12 +487,12 @@
       <pre class="lines">
 
 
-38
-39
-40</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypt_password'>encrypt_password</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
   <span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA2</span><span class='period'>.</span><span class='id identifier rubyid_hexdigest'>hexdigest</span><span class='lparen'>(</span><span class='id identifier rubyid_salt'>salt</span> <span class='op'>+</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
@@ -528,12 +528,12 @@
       <pre class="lines">
 
 
-43
-44
-45</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_salt'>generate_salt</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_salt'>salt</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_base64'>base64</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span>
@@ -584,13 +584,13 @@
       <pre class="lines">
 
 
+21
+22
 23
-24
-25
-26</pre>
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_password='>password=</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_generate_salt'>generate_salt</span>
@@ -655,12 +655,12 @@
       <pre class="lines">
 
 
-31
-32
-33</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'app/models/user/user.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_password_is_right?'>password_is_right?</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_encrypted_password'>encrypted_password</span> <span class='op'>==</span> <span class='id identifier rubyid_encrypt_password'>encrypt_password</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
@@ -675,7 +675,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Dec 10 21:07:11 2015 by
+  Generated on Sun Jan 24 08:21:41 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.0).
 </div>
