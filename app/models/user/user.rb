@@ -1,14 +1,16 @@
 # User class
 # Fileds:
-#  [Integer]          id
-#  [String]           email
-#  [String]           encrypted_password
-#  [String]           salt
-#  [DateTime]         confirmed_at
-#  [String]           pin                  4 digital Pin code for adults
-#  [[User::Token]][]  tokens
-#  [[File::Photo]][]  photos
-#  [[Family::Family]] family
+#  [Integer]           id
+#  [String]            email
+#  [String]            encrypted_password
+#  [String]            salt
+#  [DateTime]          confirmed_at
+#  [String]            pin                  4 digital Pin code for adults
+#  [[User::Token]][]   tokens
+#  [[File::Photo]][]   photos
+#  [[Family::Adult]][] adults
+#  [[Family::Child]][] children
+#  [[Family::Family]]  family
 class User::User < ActiveRecord::Base
   has_many   :tokens,   class_name: 'User::Token'
   has_many   :photos,   class_name: 'File::Photo'

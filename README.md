@@ -51,12 +51,14 @@ Build
 
 ```
 docker-compose build
+docker-compose run dbcreator
+docker-compose run migrator
 ``` 
 
 and run 
 
 ```
-docker-compose up
+docker-compose run api
 ```
 
 ## Backend Tests
@@ -69,5 +71,5 @@ docker-compose build
 and run 
 
 ```
-docker-compose run api bundle exec rake test
+docker-compose run tester
 ```
