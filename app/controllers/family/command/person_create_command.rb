@@ -1,4 +1,4 @@
-# Create person(adult or child) command
+# Create a person(an adult or a child) command
 class Family::Command::PersonCreateCommand < Core::Command
   attr_accessor :name, :photo_url, :model
 
@@ -9,10 +9,10 @@ class Family::Command::PersonCreateCommand < Core::Command
   # Run command
   def execute
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
-    person = self.model.new(user)
+    person = model.new(user)
     person.name = name
     person.photo_url = photo_url
     person.save
-    {id: person.id}
+    { id: person.id }
   end
 end

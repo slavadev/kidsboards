@@ -8,9 +8,7 @@ class Core::Controller < ApplicationController
   # Runs the action
   # @param [Core::Command] command
   def run(command)
-    authorized? command
-    valid? command
-    owner? command
+    everything_alright? command
     result = execute command
     if result.nil?
       render json: nil, status: 204
@@ -19,6 +17,14 @@ class Core::Controller < ApplicationController
     end
   rescue StandardError => e
     handle_error(e)
+  end
+
+  # Checks that all the tests are passing
+  # @param [Core::Command] command
+  def everything_alright?(command)
+    authorized? command
+    valid? command
+    owner? command
   end
 
   # Decide what to do with exception

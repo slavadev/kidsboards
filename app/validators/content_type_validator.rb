@@ -1,6 +1,5 @@
-# Checks that content type is right
+# Checks that the content type is right
 class ContentTypeValidator < ActiveModel::EachValidator
-
   # Validation function
   # @param [Object] record
   # @param [String] attribute

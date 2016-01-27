@@ -1,11 +1,10 @@
-# Checks that model unique
+# Checks that the model is unique
 class UniqueValidator < ActiveModel::EachValidator
-
   # Validation function
   # @param [Object] record
   # @param [String] attribute
-  # @param [Object] value
-  def validate_each(record, attribute, value)
+  # @param [Object] _value
+  def validate_each(record, attribute, _value)
     model = options[:model]
     conditions = options[:conditions].call(record)
     if model.where(conditions).first

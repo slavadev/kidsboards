@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class File::PhotoCreateTest < ActionDispatch::IntegrationTest
+class File::PhotoIndexTest < ActionDispatch::IntegrationTest
   test 'photo index success' do
     # prepare
     token = login

@@ -1,11 +1,10 @@
-# Checks that model exists
+# Checks that the model exists
 class ExistsValidator < ActiveModel::EachValidator
-
   # Validation function
   # @param [Object] record
   # @param [String] attribute
-  # @param [Object] value
-  def validate_each(record, attribute, value)
+  # @param [Object] _value
+  def validate_each(record, attribute, _value)
     model = record.model_to_validate
     conditions = options[:with].call(record)
     unless model.where(conditions).first

@@ -5,24 +5,19 @@ module Core::OwnerChecker
   # Check that user is the owner
   # @param [Core::Command] command
   def owner?(command)
-    rules = Rails.configuration.authorization_rules
-    return if rules.select { |rule| rule['action'] == command.class.name }.blank?
-    return unless get_owner_param rules, command
+    rule = get_rule command
+    return if rule.blank?
+    return unless get_owner_param rule
     token = get_token command
     user = User::User.get_user_by_token_code(token.code, token.token_type)
     model = command.model_to_validate
-    raise Core::Errors::ForbiddenError if model.where(user_id: user.id).first.nil?
+    fail Core::Errors::ForbiddenError if model.where(user_id: user.id).first.nil?
   end
 
   # Get owner param
-  # @param [Array] rules
-  # @param [Core::Command] command
+  # @param [Array] rule
   # @return [Boolean]
-  def get_owner_param(rules, command)
-    if rules.select { |rule| rule['action'] == command.class.name }[0]['owner']
-      return true
-    end
-    false
+  def get_owner_param(rule)
+    rule[0]['owner']
   end
-
 end

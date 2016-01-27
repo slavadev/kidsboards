@@ -3,7 +3,7 @@ class File::Command::PhotoDeleteCommand < Core::Command
   attr_accessor :id
 
   validates :id, presence: true,
-                 exists: lambda { |x| {id: x.id, deleted_at: nil } }
+                 exists: ->(x) { { id: x.id, deleted_at: nil } }
 
   # Run command
   def execute

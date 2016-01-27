@@ -21,6 +21,6 @@ class Core::Command
   # Get the model to validate
   # @return [Class]
   def model_to_validate
-    raise Core::Errors::NoModelToValidateError
+    fail Core::Errors::NoModelToValidateError
   end
 end

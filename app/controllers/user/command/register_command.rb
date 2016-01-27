@@ -5,7 +5,7 @@ class User::Command::RegisterCommand < Core::Command
   validates :email, :password, presence: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :email, unique: { model: User::User,
-                              conditions: lambda { |x| { email: x.email } }
+                              conditions: ->(x) { { email: x.email } }
                             }
   validates :password, length: { minimum: 6 }
 
