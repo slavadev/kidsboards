@@ -1,5 +1,16 @@
 require "#{Rails.root}/app/controllers/core/interpolations"
 # Photo class
+# Fields:
+#  [Integer]        id
+#  [String]         file_file_name
+#  [String]         file_content_type
+#  [Integer]        file_file_size
+#  [DateTime]       file_updated_at
+#  [DateTime]       deleted_at
+#  [DateTime]       created_at
+#  [DateTime]       updated_at
+#  [User::User]     user
+#  [Object]         file
 class File::Photo < ActiveRecord::Base
   belongs_to :user, inverse_of: :photos, class_name: 'User::User'
 

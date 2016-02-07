@@ -1,6 +1,7 @@
 # View a family command
 class Family::Command::FamilyViewCommand < Core::Command
   # Run command
+  # @return [Hash]
   def execute
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
     family = user.family

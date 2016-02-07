@@ -1,22 +1,53 @@
 require 'test_helper'
 
 class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
-
   test 'family update success' do
     # prepare
     token = login
 
     # action
     name = Faker::Name.name
-    url = Faker::Internet.url
-    put '/api/v1/family', token: token, name: name, photo_url: url
+    photo_url = Faker::Internet.url
+    put '/api/v1/family', token: token, name: name, photo_url: photo_url
 
     # check results
     assert_response 204
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
     family = user.family
     assert_equal name, family.name
-    assert_equal url, family.photo_url
+    assert_equal photo_url, family.photo_url
+  end
+
+  test 'family update only photo success' do
+    # prepare
+    token = login
+
+    # action
+    photo_url = Faker::Internet.url
+    put '/api/v1/family', token: token, photo_url: photo_url
+
+    # check results
+    assert_response 204
+    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
+    family = user.family
+    assert_equal '', family.name
+    assert_equal photo_url, family.photo_url
+  end
+
+  test 'family update only name success' do
+    # prepare
+    token = login
+
+    # action
+    name = Faker::Name.name
+    put '/api/v1/family', token: token, name: name
+
+    # check results
+    assert_response 204
+    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
+    family = user.family
+    assert_equal name, family.name
+    assert_equal nil, family.photo_url
   end
 
   test 'family update fail wrong params' do
@@ -25,8 +56,8 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
 
     # action 1
     name = Faker::Lorem.characters(300)
-    url = 'fqweeqw'
-    put '/api/v1/family', token: token, name: name, photo_url: url
+    photo_url = 'fqweeqw'
+    put '/api/v1/family', token: token, name: name, photo_url: photo_url
 
     # check results
     assert_response 422
@@ -36,8 +67,8 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
 
     # action 2
     name = Faker::Lorem.characters(300)
-    url = 'ftp://asdasd.ru'
-    put '/api/v1/family', token: token, name: name, photo_url: url
+    photo_url = 'ftp://asdasd.ru'
+    put '/api/v1/family', token: token, name: name, photo_url: photo_url
 
     # check results
     assert_response 422
@@ -52,8 +83,8 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
 
     # action
     name = Faker::Name.name
-    url = Faker::Internet.url
-    put '/api/v1/family', token: token, name: name, photo_url: url
+    photo_url = Faker::Internet.url
+    put '/api/v1/family', token: token, name: name, photo_url: photo_url
 
     # check results
     assert_response 401
@@ -62,8 +93,8 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
   test 'family update fail without token' do
     # action
     name = Faker::Name.name
-    url = Faker::Internet.url
-    put '/api/v1/family', name: name, photo_url: url
+    photo_url = Faker::Internet.url
+    put '/api/v1/family', name: name, photo_url: photo_url
 
     # check results
     assert_response 401

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Family::FamilyViewTest < ActionDispatch::IntegrationTest
-
   test 'family view success' do
     # prepare
     token = login
@@ -13,7 +12,7 @@ class Family::FamilyViewTest < ActionDispatch::IntegrationTest
     3.times do
       adult_name = Faker::Name.name
       adult_photo_url = Faker::Internet.url
-      adult = {'name' => adult_name, 'photo_url' => adult_photo_url}
+      adult = { 'name' => adult_name, 'photo_url' => adult_photo_url }
       post '/api/v1/family/adult', token: token, name: adult_name, photo_url: adult_photo_url
       json = JSON.parse(response.body)
       adult['id'] = json['id']
@@ -21,7 +20,7 @@ class Family::FamilyViewTest < ActionDispatch::IntegrationTest
 
       child_name = Faker::Name.name
       child_photo_url = Faker::Internet.url
-      child = {'name' => child_name, 'photo_url' => child_photo_url}
+      child = { 'name' => child_name, 'photo_url' => child_photo_url }
       post '/api/v1/family/child', token: token, name: child_name, photo_url: child_photo_url
       json = JSON.parse(response.body)
       child['id'] = json['id']
@@ -41,7 +40,7 @@ class Family::FamilyViewTest < ActionDispatch::IntegrationTest
     assert_equal photo_url, json['photo_url']
     response_adults = json['adults']
     response_children = json['children']
-    [0,1].each do |i|
+    [0, 1].each do |i|
       assert_equal adults[i]['id'], response_adults[i]['id']
       assert_equal adults[i]['name'], response_adults[i]['name']
       assert_equal adults[i]['photo_url'], response_adults[i]['photo_url']
@@ -50,7 +49,6 @@ class Family::FamilyViewTest < ActionDispatch::IntegrationTest
       assert_equal children[i]['photo_url'], response_children[i]['photo_url']
     end
   end
-
 
   test 'family view fail wrong token' do
     # prepare

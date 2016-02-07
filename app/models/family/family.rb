@@ -1,5 +1,5 @@
 # Family class
-# Fileds:
+# Fields:
 #  [Integer]    id
 #  [String]     name
 #  [String]     photo_url

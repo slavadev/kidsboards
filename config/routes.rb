@@ -19,20 +19,36 @@ Rails.application.routes.draw do
     end
 
     namespace :family do
-      put '/' => 'family#family_update'
-      get '/' => 'family#family_view'
+      put '/' => 'family#update'
+      get '/' => 'family#view'
       # adult
-      post '/adult' => 'family#adult_create'
-      put '/adult/:id' => 'family#adult_update'
-      put '/adult' => 'family#adult_update'
-      delete '/adult/:id' => 'family#adult_delete'
-      delete '/adult' => 'family#adult_delete'
+      post '/adult' => 'adult#create'
+      put '/adult/:id' => 'adult#update'
+      put '/adult' => 'adult#update'
+      delete '/adult/:id' => 'adult#delete'
+      delete '/adult' => 'adult#delete'
+      # goal
+      post '/child/:id/goal' => 'goal#create'
+      post '/child/goal' => 'goal#create'
+      get '/child/:id/goal' => 'goal#index'
+      get '/child/goal' => 'goal#index'
       # child
-      post '/child' => 'family#child_create'
-      put '/child/:id' => 'family#child_update'
-      put '/child' => 'family#child_update'
-      delete '/child/:id' => 'family#child_delete'
-      delete '/child' => 'family#child_delete'
+      post '/child' => 'child#create'
+      put '/child/:id' => 'child#update'
+      put '/child' => 'child#update'
+      delete '/child/:id' => 'child#delete'
+      delete '/child' => 'child#delete'
+    end
+
+    namespace :goal do
+      get '/:id' => 'goal#view'
+      get '/' => 'goal#view'
+      put '/:id' => 'goal#update'
+      put '/' => 'goal#update'
+      delete '/:id' => 'goal#delete'
+      delete '/' => 'goal#delete'
+      patch '/:id/points' => 'goal#points_update'
+      patch '/points' => 'goal#points_update'
     end
   end
 end

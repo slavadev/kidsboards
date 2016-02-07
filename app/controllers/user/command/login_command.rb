@@ -20,6 +20,7 @@ class User::Command::LoginCommand < Core::Command
   end
 
   # Run command
+  # @return [Hash]
   def execute
     user = User::User.where(email: email).first
     token = User::Token.new(user, User::Token::TYPE_LOGIN)

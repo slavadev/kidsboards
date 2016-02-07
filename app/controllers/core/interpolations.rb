@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Custom interpolations for Paperclip
 module Paperclip::Interpolations
   # Returns a the attachment hash.

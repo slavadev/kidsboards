@@ -13,7 +13,7 @@ Thatsaboy is a website which helps you to manage your children.
 **How it works?** 
 
  - Create the purpose for the kid, e.g. toy or trip
- - Establish how much points is needed to reach the aim
+ - Establish how much points is needed to reach the goal
  - Assign points for good acts and withdraw for bad
  - Watch how your kid is getting better
 
@@ -55,21 +55,14 @@ docker-compose run dbcreator
 docker-compose run migrator
 ``` 
 
-and run 
-
-```
-docker-compose run api
-```
-
-## Backend Tests
-Build 
-
-```
-docker-compose build
-```
-
-and run 
+Test
 
 ```
 docker-compose run tester
+```
+
+Run
+
+```
+docker-compose run api
 ```

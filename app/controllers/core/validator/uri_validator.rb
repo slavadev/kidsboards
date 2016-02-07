@@ -1,7 +1,8 @@
 # Checks that the attribute is a valid uri
-class UriValidator < ActiveModel::EachValidator
+class Core::Validator::UriValidator < ActiveModel::EachValidator
   # Validation function
   def validate_each(record, attribute, value)
+    return if value.nil?
     uri = URI.parse(value)
     fail unless uri.scheme && uri.host && uri
     unless %w(http https).include?(uri.scheme)

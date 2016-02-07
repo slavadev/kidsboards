@@ -10,12 +10,16 @@
 #  [[File::Photo]][]   photos
 #  [[Family::Adult]][] adults
 #  [[Family::Child]][] children
+#  [[Goal::Goal]][]    goals
+#  [[Goal::Action]][]  actions
 #  [[Family::Family]]  family
 class User::User < ActiveRecord::Base
   has_many   :tokens,   class_name: 'User::Token'
   has_many   :photos,   class_name: 'File::Photo'
   has_many   :adults,   class_name: 'Family::Adult'
   has_many   :children, class_name: 'Family::Child'
+  has_many   :goals,    class_name: 'Goal::Goal'
+  has_many   :actions,  class_name: 'Goal::Action'
   has_one    :family,   class_name: 'Family::Family'
 
   # Set password

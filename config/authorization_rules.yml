@@ -21,3 +21,16 @@ test:
     owner: true
   - action: Family::Command::PersonDeleteCommand
     owner: true
+  # Goal
+  - action: Goal::Command::GoalCreateCommand
+    owner: true
+  - action: Goal::Command::GoalIndexCommand
+    owner: true
+  - action: Goal::Command::GoalUpdateCommand
+    owner: true
+  - action: Goal::Command::GoalDeleteCommand
+    owner: true
+  - action: Goal::Command::GoalViewCommand
+    owner: true
+  - action: Goal::Command::GoalPointsUpdateCommand
+    owner: true

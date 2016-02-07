@@ -2,9 +2,10 @@
 class File::Command::PhotoCreateCommand < Core::Command
   attr_accessor :file
 
-  validates :file, presence: true, content_type: %r{\Aimage/.*\Z}
+  validates :file, presence: true, 'Core::Validator::ContentType' => %r{\Aimage/.*\Z}
 
   # Run command
+  # @return [Hash]
   def execute
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
     photo = File::Photo.new(user, file)

@@ -2,7 +2,7 @@
 class Family::Command::PersonDeleteCommand < Core::Command
   attr_accessor :id, :name, :photo_url, :model
 
-  validates :id, presence: true, exists: ->(x) { { id: x.id, deleted_at: nil } }
+  validates :id, presence: true, 'Core::Validator::Exists' => ->(x) { { id: x.id, deleted_at: nil } }
 
   # Run command
   def execute

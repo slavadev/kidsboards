@@ -41,6 +41,5 @@ class ActiveSupport::TestCase
 
   # Assert one array to include in other
   def assert_includes_like(what, where)
-
   end
 end

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Family::ChildDeleteTest < ActionDispatch::IntegrationTest
-
   test 'child delete success' do
     token = login
     name = Faker::Name.name

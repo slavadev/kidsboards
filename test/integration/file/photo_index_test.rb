@@ -26,8 +26,8 @@ class File::PhotoIndexTest < ActionDispatch::IntegrationTest
     # action
     get '/api/v1/file/photo', token: token
     json = JSON.parse(response.body)
-    photo_ids = json['photos'].map{ |x| x['id'] }
-    photo_urls = json['photos'].map{ |x| x['url'] }
+    photo_ids = json['photos'].map { |x| x['id'] }
+    photo_urls = json['photos'].map { |x| x['url'] }
 
     # check results
     ids.each do |id|
@@ -45,8 +45,8 @@ class File::PhotoIndexTest < ActionDispatch::IntegrationTest
     # action
     get '/api/v1/file/photo', token: token
     json = JSON.parse(response.body)
-    photo_ids = json['photos'].map{ |x| x['id'] }
-    photo_urls = json['photos'].map{ |x| x['url'] }
+    photo_ids = json['photos'].map { |x| x['id'] }
+    photo_urls = json['photos'].map { |x| x['url'] }
 
     # check results
     assert_equal [], photo_ids
