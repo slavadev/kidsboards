@@ -104,7 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Create person(adult or child) command</p>
+<p>Create a person(an adult or a child) command</p>
 
 
   </div>
@@ -221,7 +221,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#execute-instance_method" title="#execute (instance method)">- (Object) <strong>execute</strong> </a>
+      <a href="#execute-instance_method" title="#execute (instance method)">- (Hash) <strong>execute</strong> </a>
     
 
     
@@ -406,7 +406,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="execute-instance_method">
   
-    - (<tt>Object</tt>) <strong>execute</strong> 
+    - (<tt>Hash</tt>) <strong>execute</strong> 
   
 
   
@@ -422,6 +422,19 @@
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -429,25 +442,25 @@
       <pre class="lines">
 
 
-10
 11
 12
 13
 14
 15
 16
-17</pre>
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/family/command/person_create_command.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/family/command/person_create_command.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_get_user_by_token_code'>get_user_by_token_code</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>Token</span><span class='op'>::</span><span class='const'>TYPE_LOGIN</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_model'>model</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_person'>person</span> <span class='op'>=</span> <span class='id identifier rubyid_model'>model</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
   <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_photo_url'>photo_url</span> <span class='op'>=</span> <span class='id identifier rubyid_photo_url'>photo_url</span>
   <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
-  <span class='lbrace'>{</span><span class='label'>id:</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span>
+  <span class='lbrace'>{</span> <span class='label'>id:</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -459,9 +472,9 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Jan 24 08:21:43 2016 by
+  Generated on Sun Feb  7 10:54:31 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.0).
+  0.8.7.6 (ruby-2.3.0).
 </div>
 
   </body>

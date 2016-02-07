@@ -104,7 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>View family command</p>
+<p>View a family command</p>
 
 
   </div>
@@ -135,7 +135,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#execute-instance_method" title="#execute (instance method)">- (Object) <strong>execute</strong> </a>
+      <a href="#execute-instance_method" title="#execute (instance method)">- (Hash) <strong>execute</strong> </a>
     
 
     
@@ -234,7 +234,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="execute-instance_method">
   
-    - (<tt>Object</tt>) <strong>execute</strong> 
+    - (<tt>Hash</tt>) <strong>execute</strong> 
   
 
   
@@ -250,6 +250,19 @@
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -274,7 +287,7 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_get_user_by_token_code'>get_user_by_token_code</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>Token</span><span class='op'>::</span><span class='const'>TYPE_LOGIN</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_family'>family</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_family'>family</span>
-  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_response'>response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_family'>family</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
   <span class='id identifier rubyid_response'>response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>photo_url</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_family'>family</span><span class='period'>.</span><span class='id identifier rubyid_photo_url'>photo_url</span>
   <span class='id identifier rubyid_response'>response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>adults</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_get_persons'>get_persons</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_adults'>adults</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>deleted_at:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -325,9 +338,9 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_person'>get_person</span><span class='lparen'>(</span><span class='id identifier rubyid_person'>person</span><span class='rparen'>)</span>
   <span class='lbrace'>{</span>
-      <span class='label'>id:</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span>
-      <span class='label'>name:</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
-      <span class='label'>photo_url:</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_photo_url'>photo_url</span>
+    <span class='label'>id:</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span>
+    <span class='label'>name:</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='label'>photo_url:</span> <span class='id identifier rubyid_person'>person</span><span class='period'>.</span><span class='id identifier rubyid_photo_url'>photo_url</span>
   <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -388,7 +401,7 @@
       <pre class="code"><span class="info file"># File 'app/controllers/family/command/family_view_command.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_persons'>get_persons</span><span class='lparen'>(</span><span class='id identifier rubyid_persons'>persons</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_persons'>persons</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_person'>person</span><span class='op'>|</span>
     <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_get_person'>get_person</span><span class='lparen'>(</span><span class='id identifier rubyid_person'>person</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -404,9 +417,9 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Jan 24 08:21:42 2016 by
+  Generated on Sun Feb  7 10:54:31 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.0).
+  0.8.7.6 (ruby-2.3.0).
 </div>
 
   </body>

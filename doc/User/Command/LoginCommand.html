@@ -194,7 +194,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#execute-instance_method" title="#execute (instance method)">- (Object) <strong>execute</strong> </a>
+      <a href="#execute-instance_method" title="#execute (instance method)">- (Hash) <strong>execute</strong> </a>
     
 
     
@@ -360,7 +360,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="execute-instance_method">
   
-    - (<tt>Object</tt>) <strong>execute</strong> 
+    - (<tt>Hash</tt>) <strong>execute</strong> 
   
 
   
@@ -376,6 +376,19 @@
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -383,15 +396,15 @@
       <pre class="lines">
 
 
-23
 24
 25
 26
 27
-28</pre>
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/user/command/login_command.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/user/command/login_command.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>email:</span> <span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -464,9 +477,9 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Jan 24 08:21:42 2016 by
+  Generated on Sun Feb  7 10:54:30 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.0).
+  0.8.7.6 (ruby-2.3.0).
 </div>
 
   </body>

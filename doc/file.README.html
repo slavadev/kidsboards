@@ -83,7 +83,7 @@ src="http://img.shields.io/badge/docs-rdoc.info-blue.svg"></a></p>
 <ul><li>
 <p>Create the purpose for the kid, e.g. toy or trip</p>
 </li><li>
-<p>Establish how much points is needed to reach the aim</p>
+<p>Establish how much points is needed to reach the goal</p>
 </li><li>
 <p>Assign points for good acts and withdraw for bad</p>
 </li><li>
@@ -95,7 +95,7 @@ more interesting for children.</p>
 
 <h2 id="label-Progress">Progress</h2>
 
-<p>Backend - 80%</p>
+<p>Backend - 90%</p>
 
 <p>Frontend - 0%</p>
 
@@ -141,27 +141,23 @@ Compose</a></p>
 
 <p>Build</p>
 
-<pre class="code ruby"><code class="ruby">docker-compose build</code></pre>
+<pre class="code ruby"><code class="ruby">docker-compose build
+docker-compose run dbcreator
+docker-compose run migrator</code></pre>
 
-<p>and run</p>
+<p>Test</p>
 
-<pre class="code ruby"><code class="ruby">docker-compose up</code></pre>
+<pre class="code ruby"><code class="ruby">docker-compose run tester</code></pre>
 
-<h2 id="label-Backend+Tests">Backend Tests</h2>
+<p>Run</p>
 
-<p>Build</p>
-
-<pre class="code ruby"><code class="ruby">docker-compose build</code></pre>
-
-<p>and run</p>
-
-<pre class="code ruby"><code class="ruby">docker-compose run api bundle exec rake test</code></pre>
+<pre class="code ruby"><code class="ruby">docker-compose run api</code></pre>
 </div></div>
 
     <div id="footer">
-  Generated on Sun Jan 24 08:21:41 2016 by
+  Generated on Sun Feb  7 10:54:29 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.0).
+  0.8.7.6 (ruby-2.3.0).
 </div>
 
   </body>

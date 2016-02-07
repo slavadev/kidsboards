@@ -374,8 +374,8 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_get_user_by_token_code'>get_user_by_token_code</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>Token</span><span class='op'>::</span><span class='const'>TYPE_LOGIN</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_family'>family</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_family'>family</span>
-  <span class='id identifier rubyid_family'>family</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
-  <span class='id identifier rubyid_family'>family</span><span class='period'>.</span><span class='id identifier rubyid_photo_url'>photo_url</span> <span class='op'>=</span> <span class='id identifier rubyid_photo_url'>photo_url</span>
+  <span class='id identifier rubyid_family'>family</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span> <span class='kw'>unless</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_family'>family</span><span class='period'>.</span><span class='id identifier rubyid_photo_url'>photo_url</span> <span class='op'>=</span> <span class='id identifier rubyid_photo_url'>photo_url</span> <span class='kw'>unless</span> <span class='id identifier rubyid_photo_url'>photo_url</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
   <span class='id identifier rubyid_family'>family</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
   <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
@@ -389,9 +389,9 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Jan 24 08:21:43 2016 by
+  Generated on Sun Feb  7 10:54:31 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.0).
+  0.8.7.6 (ruby-2.3.0).
 </div>
 
   </body>

@@ -104,7 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Adult class Fileds:</p>
+<p>Adult class Fields:</p>
 
 <pre class="code ruby"><code class="ruby">[Integer]        id
 [String]         name
@@ -112,7 +112,8 @@
 [DateTime]       deleted_at
 [DateTime]       created_at
 [DateTime]       updated_at
-[User::User]     user</code></pre>
+[User::User]     user
+[[Goal::Action]][]  actions</code></pre>
 
 
   </div>
@@ -155,7 +156,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Generates adult.</p>
+<p>Generates an adult.</p>
 </div></span>
   
 </li>
@@ -180,7 +181,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Generates adult</p>
+<p>Generates an adult</p>
 
 
   </div>
@@ -209,13 +210,13 @@
       <pre class="lines">
 
 
-15
-16
 17
-18</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/family/adult.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'app/models/family/adult.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
@@ -232,9 +233,9 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Jan 24 08:21:41 2016 by
+  Generated on Sun Feb  7 10:54:29 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.0).
+  0.8.7.6 (ruby-2.3.0).
 </div>
 
   </body>

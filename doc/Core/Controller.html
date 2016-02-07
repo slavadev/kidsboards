@@ -120,7 +120,7 @@
 
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="../Family/FamilyController.html" title="Family::FamilyController (class)">Family::FamilyController</a></span>, <span class='object_link'><a href="../File/PhotoController.html" title="File::PhotoController (class)">File::PhotoController</a></span>, <span class='object_link'><a href="../User/UserController.html" title="User::UserController (class)">User::UserController</a></span></p>
+  <p class="children"><span class='object_link'><a href="../Family/AdultController.html" title="Family::AdultController (class)">Family::AdultController</a></span>, <span class='object_link'><a href="../Family/ChildController.html" title="Family::ChildController (class)">Family::ChildController</a></span>, <span class='object_link'><a href="../Family/FamilyController.html" title="Family::FamilyController (class)">Family::FamilyController</a></span>, <span class='object_link'><a href="../Family/GoalController.html" title="Family::GoalController (class)">Family::GoalController</a></span>, <span class='object_link'><a href="../File/PhotoController.html" title="File::PhotoController (class)">File::PhotoController</a></span>, <span class='object_link'><a href="../Goal/GoalController.html" title="Goal::GoalController (class)">Goal::GoalController</a></span>, <span class='object_link'><a href="../User/UserController.html" title="User::UserController (class)">User::UserController</a></span></p>
 </div>
 
 
@@ -136,6 +136,30 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#everything_alright%3F-instance_method" title="#everything_alright? (instance method)">- (Boolean) <strong>everything_alright?</strong>(command) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks that all the tests are passing.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -231,7 +255,7 @@
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="AuthorizationChecker.html" title="Core::AuthorizationChecker (module)">AuthorizationChecker</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="AuthorizationChecker.html#authorized%3F-instance_method" title="Core::AuthorizationChecker#authorized? (method)">#authorized?</a></span>, <span class='object_link'><a href="AuthorizationChecker.html#get_token-instance_method" title="Core::AuthorizationChecker#get_token (method)">#get_token</a></span>, <span class='object_link'><a href="AuthorizationChecker.html#get_type-instance_method" title="Core::AuthorizationChecker#get_type (method)">#get_type</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="AuthorizationChecker.html#authorized%3F-instance_method" title="Core::AuthorizationChecker#authorized? (method)">#authorized?</a></span>, <span class='object_link'><a href="AuthorizationChecker.html#get_rule-instance_method" title="Core::AuthorizationChecker#get_rule (method)">#get_rule</a></span>, <span class='object_link'><a href="AuthorizationChecker.html#get_token-instance_method" title="Core::AuthorizationChecker#get_token (method)">#get_token</a></span>, <span class='object_link'><a href="AuthorizationChecker.html#get_type-instance_method" title="Core::AuthorizationChecker#get_type (method)">#get_type</a></span></p>
 
   
   
@@ -246,7 +270,80 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="handle_error-instance_method">
+  <h3 class="signature first" id="everything_alright?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>everything_alright?</strong>(command) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks that all the tests are passing</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>command</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Command.html" title="Core::Command (class)">Core::Command</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/core/controller.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_everything_alright?'>everything_alright?</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_authorized?'>authorized?</span> <span class='id identifier rubyid_command'>command</span>
+  <span class='id identifier rubyid_valid?'>valid?</span> <span class='id identifier rubyid_command'>command</span>
+  <span class='id identifier rubyid_owner?'>owner?</span> <span class='id identifier rubyid_command'>command</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="handle_error-instance_method">
   
     - (<tt>Object</tt>) <strong>handle_error</strong>(e) 
   
@@ -286,15 +383,15 @@
       <pre class="lines">
 
 
-26
-27
-28
-29
-30
-31</pre>
+32
+33
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/core/controller.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/core/controller.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_handle_error'>handle_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lbracket'>[</span><span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>UnauthorizedError</span><span class='comma'>,</span> <span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>ForbiddenError</span><span class='comma'>,</span> <span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>ValidationError</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span>
@@ -358,17 +455,13 @@
 17
 18
 19
-20
-21
-22</pre>
+20</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/core/controller.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_authorized?'>authorized?</span> <span class='id identifier rubyid_command'>command</span>
-  <span class='id identifier rubyid_valid?'>valid?</span> <span class='id identifier rubyid_command'>command</span>
-  <span class='id identifier rubyid_owner?'>owner?</span> <span class='id identifier rubyid_command'>command</span>
+  <span class='id identifier rubyid_everything_alright?'>everything_alright?</span> <span class='id identifier rubyid_command'>command</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_execute'>execute</span> <span class='id identifier rubyid_command'>command</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
     <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>204</span>
@@ -388,9 +481,9 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Jan 24 08:21:42 2016 by
+  Generated on Sun Feb  7 10:54:29 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.0).
+  0.8.7.6 (ruby-2.3.0).
 </div>
 
   </body>
