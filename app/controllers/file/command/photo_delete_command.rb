@@ -8,7 +8,7 @@ class File::Command::PhotoDeleteCommand < Core::Command
   # Run command
   def execute
     photo = File::Photo.where(id: id, deleted_at: nil).first
-    photo.deleted_at = DateTime.now.new_offset(0)
+    photo.deleted_at = DateTime.now.utc
     photo.save
     nil
   end

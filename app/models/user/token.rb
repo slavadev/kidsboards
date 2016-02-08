@@ -24,7 +24,7 @@ class User::Token < ActiveRecord::Base
     super()
     self.user = user
     self.code = SecureRandom.hex
-    self.created_at = DateTime.now.new_offset(0)
+    self.created_at = DateTime.now.utc
     self.is_expired = false
     self.token_type = type
   end

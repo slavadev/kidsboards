@@ -7,7 +7,7 @@ class Family::Command::PersonDeleteCommand < Core::Command
   # Run command
   def execute
     person = model.where(id: id).first
-    person.deleted_at = DateTime.now.new_offset(0)
+    person.deleted_at = DateTime.now.utc
     person.save
     nil
   end

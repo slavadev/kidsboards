@@ -50,7 +50,7 @@ class User::User < ActiveRecord::Base
 
   # Confirm
   def confirm
-    self.confirmed_at = DateTime.now.new_offset(0)
+    self.confirmed_at = DateTime.now.utc
     save
   end
 

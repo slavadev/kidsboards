@@ -9,7 +9,7 @@ class Goal::Command::GoalDeleteCommand < Core::Command
   # @return [Hash]
   def execute
     goal = Goal::Goal.where(id: id).first
-    goal.deleted_at = DateTime.now.new_offset(0)
+    goal.deleted_at = DateTime.now.utc
     goal.save
     nil
   end
