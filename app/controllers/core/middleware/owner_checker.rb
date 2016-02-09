@@ -1,10 +1,17 @@
-# Owner checker
-module Core::OwnerChecker
-  include Core::AuthorizationChecker
+# Class that checks that user is the owner
+class Core::Middleware::OwnerChecker < Core::Middleware
+  include Core::Authorization
 
-  # Check that user is the owner
-  # @param [Core::Command] command
-  def owner?(command)
+  # Checks that user is the owner
+  # @return [Core::Command], [Object]
+  def call
+    owner?
+    self.next
+  end
+
+  # Checks all tests
+  # @raise Core::Errors::ForbiddenError
+  def owner?
     rule = get_rule command
     return if rule.blank?
     return unless get_owner_param rule
@@ -12,12 +19,5 @@ module Core::OwnerChecker
     user = User::User.get_user_by_token_code(token.code, token.token_type)
     model = command.model_to_validate
     fail Core::Errors::ForbiddenError if model.where(user_id: user.id).first.nil?
-  end
-
-  # Get owner param
-  # @param [Array] rule
-  # @return [Boolean]
-  def get_owner_param(rule)
-    rule[0]['owner']
   end
 end
