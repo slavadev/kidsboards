@@ -12,7 +12,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
     json = JSON.parse(response.body)
     id = json['id']
-    target = Faker::Number.number(2).to_i
+    target = Faker::Number.number(2).to_i * 10
     post "/api/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
     json = JSON.parse(response.body)
     id = json['id']
