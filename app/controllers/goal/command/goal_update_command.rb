@@ -13,7 +13,7 @@ class Goal::Command::GoalUpdateCommand < Core::Command
     less_than: 1000
   }, allow_nil: true
 
-  # Run command
+  # Runs command
   # @return [Hash]
   def execute
     goal = Goal::Goal.where(id: id).first
@@ -24,7 +24,7 @@ class Goal::Command::GoalUpdateCommand < Core::Command
     nil
   end
 
-  # Get the model to validate
+  # Gets the model to validate
   # @return [Class]
   def model_to_validate
     Goal::Goal

@@ -7,7 +7,7 @@ class Family::Command::PersonUpdateCommand < Core::Command
   validates :photo_url, length: { maximum: 100 }
   validates :photo_url, 'Core::Validator::Uri' => true
 
-  # Run command
+  # Runs command
   def execute
     person = model.where(id: id).first
     person.name = name unless name.nil?
@@ -16,7 +16,7 @@ class Family::Command::PersonUpdateCommand < Core::Command
     nil
   end
 
-  # Get the model to validate
+  # Gets the model to validate
   # @return [Class]
   def model_to_validate
     model

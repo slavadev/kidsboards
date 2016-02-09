@@ -1,4 +1,4 @@
-# All about users
+# All about the users
 module User
   # Action classes
   module Command end

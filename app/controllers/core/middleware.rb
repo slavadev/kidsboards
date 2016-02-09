@@ -7,7 +7,7 @@ class Core::Middleware
   # @example
   #   def call
   #     action_before
-  #     self.next()
+  #     self.next
   #     action_next
   #   end
   def call

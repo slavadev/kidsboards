@@ -1,6 +1,6 @@
 # Adult controller
 class Family::AdultController < Core::Controller
-  # Create adult
+  # Creates an adult
   # @see Family::Command::PersonCreateCommand
   def create
     params['model'] = Family::Adult
@@ -8,7 +8,7 @@ class Family::AdultController < Core::Controller
     run(command)
   end
 
-  # Update adult
+  # Updates an adult
   # @see Family::Command::PersonUpdateCommand
   def update
     params['model'] = Family::Adult
@@ -16,7 +16,7 @@ class Family::AdultController < Core::Controller
     run(command)
   end
 
-  # Delete adult
+  # Deletes an adult
   # @see Family::Command::PersonDeleteCommand
   def delete
     params['model'] = Family::Adult

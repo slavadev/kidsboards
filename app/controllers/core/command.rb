@@ -1,10 +1,10 @@
-# Common methods for commands
+# Contains common methods for commands
 class Core::Command
   include ActiveModel::Validations
 
   attr_accessor :token
 
-  # Fulfill input with attributes
+  # Fulfills input with attributes
   # @param [Hash] attributes
   def initialize(attributes = {})
     attributes.each do |name, value|
@@ -14,12 +14,13 @@ class Core::Command
     end
   end
 
-  # Run command
+  # Runs command
   def execute
   end
 
-  # Get the model to validate
+  # Gets the model to validate
   # @return [Class]
+  # @raise Core::Errors::NoModelToValidateError
   def model_to_validate
     fail Core::Errors::NoModelToValidateError
   end

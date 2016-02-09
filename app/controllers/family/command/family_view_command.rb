@@ -1,6 +1,6 @@
 # View a family command
 class Family::Command::FamilyViewCommand < Core::Command
-  # Run command
+  # Runs command
   # @return [Hash]
   def execute
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
@@ -13,7 +13,7 @@ class Family::Command::FamilyViewCommand < Core::Command
     response
   end
 
-  # Get persons
+  # Gets persons
   # @param [Object] persons
   def get_persons(persons)
     response = []
@@ -23,7 +23,7 @@ class Family::Command::FamilyViewCommand < Core::Command
     response
   end
 
-  # Get person's attributes
+  # Gets person's attributes
   def get_person(person)
     {
       id: person.id,

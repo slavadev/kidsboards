@@ -5,7 +5,7 @@ class Goal::Command::GoalViewCommand < Core::Command
   validates :id,       presence: true,
                        'Core::Validator::Exists' => ->(x) { { id: x.id, deleted_at: nil } }
 
-  # Run command
+  # Runs command
   # @return [Hash]
   def execute
     goal = Goal::Goal.where(id: id).first
@@ -20,7 +20,7 @@ class Goal::Command::GoalViewCommand < Core::Command
     }
   end
 
-  # Get goal's actions
+  # Gets goal's actions
   # @param [Goal::Goal] goal
   # @return [Hash]
   def get_actions(goal)
@@ -37,7 +37,7 @@ class Goal::Command::GoalViewCommand < Core::Command
     end
   end
 
-  # Get the model to validate
+  # Gets the model to validate
   # @return [Class]
   def model_to_validate
     Goal::Goal

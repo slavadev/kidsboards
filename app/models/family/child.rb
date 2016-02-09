@@ -18,7 +18,7 @@ class Family::Child < ActiveRecord::Base
     self.user = user
   end
 
-  # Get child goals
+  # Gets child goals
   # @param [Boolean] completed
   # @return [Goal::Goal][] goals
   def get_goals(completed)

@@ -7,7 +7,7 @@ class User::Command::RegisterCommand < Core::Command
   validates :email, 'Core::Validator::Unique' => ->(x) { { email: x.email } }
   validates :password, length: { minimum: 6 }
 
-  # Run command
+  # Runs command
   # @return [Hash]
   def execute
     user = User::User.new
@@ -23,7 +23,7 @@ class User::Command::RegisterCommand < Core::Command
     { id: user.id }
   end
 
-  # Get the model to validate
+  # Gets the model to validate
   # @return [Class]
   def model_to_validate
     User::User

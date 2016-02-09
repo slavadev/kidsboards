@@ -4,7 +4,7 @@ class File::Command::PhotoCreateCommand < Core::Command
 
   validates :file, presence: true, 'Core::Validator::ContentType' => %r{\Aimage/.*\Z}
 
-  # Run command
+  # Runs command
   # @return [Hash]
   def execute
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)

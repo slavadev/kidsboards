@@ -4,7 +4,7 @@ class Family::Command::PersonDeleteCommand < Core::Command
 
   validates :id, presence: true, 'Core::Validator::Exists' => ->(x) { { id: x.id, deleted_at: nil } }
 
-  # Run command
+  # Runs command
   def execute
     person = model.where(id: id).first
     person.deleted_at = DateTime.now.utc
@@ -12,7 +12,7 @@ class Family::Command::PersonDeleteCommand < Core::Command
     nil
   end
 
-  # Get the model to validate
+  # Gets the model to validate
   # @return [Class]
   def model_to_validate
     model

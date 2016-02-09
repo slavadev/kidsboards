@@ -14,7 +14,7 @@ class Goal::Command::GoalCreateCommand < Core::Command
                           less_than: 1000
                         }
 
-  # Run command
+  # Runs command
   # @return [Hash]
   def execute
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
@@ -25,7 +25,7 @@ class Goal::Command::GoalCreateCommand < Core::Command
     { id: goal.id }
   end
 
-  # Get the model to validate
+  # Gets the model to validate
   # @return [Class]
   def model_to_validate
     Family::Child

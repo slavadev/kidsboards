@@ -29,7 +29,7 @@ class User::Token < ActiveRecord::Base
     self.token_type = type
   end
 
-  # Set expired flag
+  # Sets expired flag
   def expire
     self.is_expired = true
     save

@@ -13,7 +13,7 @@ class Core::CommandBus
     @middleware = last_middleware
   end
 
-  # Run a command through all of middleware
+  # Runs a command through all of middleware
   # @param [Core::Command] command
   def run(command)
     @middleware.command = command

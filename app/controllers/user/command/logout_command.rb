@@ -1,6 +1,6 @@
 # Logout command
 class User::Command::LogoutCommand < Core::Command
-  # Run command
+  # Runs command
   def execute
     token = User::Token.where(code: self.token, token_type: User::Token::TYPE_LOGIN).first
     token.expire

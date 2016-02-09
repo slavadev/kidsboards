@@ -1,6 +1,6 @@
 # List of errors
 class Core::Errors
-  ## Validation error
+  # Validation error
   class ValidationError < StandardError
     attr_accessor :command
     def initialize(command)
@@ -8,23 +8,23 @@ class Core::Errors
     end
   end
 
-  ## Not found error
+  # Not found error
   class NotFoundError < StandardError
   end
 
-  ## Forbidden error
+  # Forbidden error
   class ForbiddenError < StandardError
   end
 
-  ## Unauthorized error
+  # Unauthorized error
   class UnauthorizedError < StandardError
   end
 
-  ## Internal error
+  # Internal error
   class InternalError < StandardError
   end
 
-  ## No model to validate error
+  # No model to validate error
   class NoModelToValidateError < StandardError
   end
 end

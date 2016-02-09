@@ -6,13 +6,13 @@
 #  [String]            salt
 #  [DateTime]          confirmed_at
 #  [String]            pin                  4 digital Pin code for adults
-#  [[User::Token]][]   tokens
-#  [[File::Photo]][]   photos
-#  [[Family::Adult]][] adults
-#  [[Family::Child]][] children
-#  [[Goal::Goal]][]    goals
-#  [[Goal::Action]][]  actions
-#  [[Family::Family]]  family
+#  [User::Token][]     tokens
+#  [File::Photo][]     photos
+#  [Family::Adult][]   adults
+#  [Family::Child][]   children
+#  [Goal::Goal][]      goals
+#  [Goal::Action][]    actions
+#  [Family::Family]    family
 class User::User < ActiveRecord::Base
   has_many   :tokens,   class_name: 'User::Token'
   has_many   :photos,   class_name: 'File::Photo'
@@ -22,28 +22,28 @@ class User::User < ActiveRecord::Base
   has_many   :actions,  class_name: 'Goal::Action'
   has_one    :family,   class_name: 'Family::Family'
 
-  # Set password
+  # Sets the password
   # @param [String] password
   def password=(password)
     generate_salt
     self.encrypted_password = encrypt_password(password)
   end
 
-  # Check password
+  # Checks the password
   # @param [String] password
   # @return [Boolean]
   def password_is_right?(password)
     encrypted_password == encrypt_password(password)
   end
 
-  # Encrypt password
+  # Encrypts the password
   # @param [String] password
   # @return [String]
   def encrypt_password(password)
     Digest::SHA2.hexdigest(salt + password)
   end
 
-  # Generate salt
+  # Generates a salt
   def generate_salt
     self.salt = SecureRandom.base64(8)
   end
@@ -54,10 +54,11 @@ class User::User < ActiveRecord::Base
     save
   end
 
-  # Get user by token
+  # Gets a user by token
   # @param [String] code
   # @param [Integer] type
   # @return [User::User]
+  # @raise Core::Errors::UnauthorizedError
   def self.get_user_by_token_code(code, type)
     token = User::Token.where(code: code, token_type: type).first
     fail Core::Errors::UnauthorizedError if token.nil?

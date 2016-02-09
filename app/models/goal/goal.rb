@@ -10,7 +10,7 @@
 #  [DateTime]       updated_at
 #  [User::User]     user
 #  [Family::Child]  child
-#  [[Goal::Action]][]  actions
+#  [Goal::Action][] actions
 class Goal::Goal < ActiveRecord::Base
   belongs_to :user, inverse_of: :goals, class_name: 'User::User'
   belongs_to :child, inverse_of: :goals, class_name: 'Family::Child'

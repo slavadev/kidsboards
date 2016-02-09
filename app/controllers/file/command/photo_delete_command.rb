@@ -5,7 +5,7 @@ class File::Command::PhotoDeleteCommand < Core::Command
   validates :id, presence: true,
                  'Core::Validator::Exists' => ->(x) { { id: x.id, deleted_at: nil } }
 
-  # Run command
+  # Runs command
   def execute
     photo = File::Photo.where(id: id, deleted_at: nil).first
     photo.deleted_at = DateTime.now.utc

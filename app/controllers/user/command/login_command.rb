@@ -19,7 +19,7 @@ class User::Command::LoginCommand < Core::Command
     end
   end
 
-  # Run command
+  # Runs command
   # @return [Hash]
   def execute
     user = User::User.where(email: email).first

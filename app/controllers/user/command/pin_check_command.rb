@@ -7,7 +7,7 @@ class User::Command::PinCheckCommand < Core::Command
   validates :pin, format: { with: /\d{4}/,
                             message: 'has wrong format' }
 
-  # Run command
+  # Runs command
   # @return [Hash]
   def execute
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
