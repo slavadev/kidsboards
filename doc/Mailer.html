@@ -145,7 +145,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Send email to confirm email.</p>
+<p>Sends email to confirm email.</p>
 </div></span>
   
 </li>
@@ -169,7 +169,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Send email to recovery password.</p>
+<p>Sends email to recovery password.</p>
 </div></span>
   
 </li>
@@ -197,7 +197,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Send email to confirm email</p>
+<p>Sends email to confirm email</p>
 
 
   </div>
@@ -247,7 +247,7 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_confirmation_email'>confirmation_email</span><span class='lparen'>(</span><span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
   <span class='ivar'>@url</span> <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SITE_HOST</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/api/v1/user/confirm/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_code'>code</span>
-  <span class='id identifier rubyid_mail'>mail</span><span class='lparen'>(</span><span class='label'>to:</span> <span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='label'>subject:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Спасибо за регистрацию на That\&#39;s a boy!</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mail'>mail</span><span class='lparen'>(</span><span class='label'>to:</span> <span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='label'>subject:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Thanks for registration in That\&#39;s a boy!</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -266,7 +266,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Send email to recovery password</p>
+<p>Sends email to recovery password</p>
 
 
   </div>
@@ -316,7 +316,7 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_recovery_email'>recovery_email</span><span class='lparen'>(</span><span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span>
   <span class='ivar'>@url</span> <span class='op'>=</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SITE_RECOVERY_LINK</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_code'>code</span>
-  <span class='id identifier rubyid_mail'>mail</span><span class='lparen'>(</span><span class='label'>to:</span> <span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='label'>subject:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Запрос на смену пароля на That\&#39;s a boy!</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mail'>mail</span><span class='lparen'>(</span><span class='label'>to:</span> <span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='label'>subject:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Password recovery request in That\&#39;s a boy!</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -328,7 +328,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Feb  7 10:54:29 2016 by
+  Generated on Tue Feb  9 14:04:12 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.0).
 </div>

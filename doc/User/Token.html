@@ -207,7 +207,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Set expired flag.</p>
+<p>Sets expired flag.</p>
 </div></span>
   
 </li>
@@ -314,7 +314,7 @@
   <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_hex'>hex</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_created_at'>created_at</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_new_offset'>new_offset</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_created_at'>created_at</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_utc'>utc</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_is_expired'>is_expired</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_token_type'>token_type</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span>
 <span class='kw'>end</span></pre>
@@ -342,7 +342,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Set expired flag</p>
+<p>Sets expired flag</p>
 
 
   </div>
@@ -378,7 +378,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Feb  7 10:54:29 2016 by
+  Generated on Tue Feb  9 14:04:12 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.0).
 </div>

@@ -104,7 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Update goal points</p>
+<p>Command that updates goal&#39;s points</p>
 
 
   </div>
@@ -245,7 +245,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_goal-instance_method" title="#create_goal (instance method)">- (Goal::Goal) <strong>create_goal</strong> </a>
+      <a href="#current_user-instance_method" title="#current_user (instance method)">- (User::User) <strong>current_user</strong> </a>
     
 
     
@@ -260,7 +260,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Creates a goal and returns a real diff of points.</p>
+<p>Gets current user.</p>
 </div></span>
   
 </li>
@@ -284,31 +284,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Run command.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#get_current_user-instance_method" title="#get_current_user (instance method)">- (User::User) <strong>get_current_user</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Get current user.</p>
+<p>Runs command.</p>
 </div></span>
   
 </li>
@@ -332,7 +308,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Get the model to validate.</p>
+<p>Gets the model to validate.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_goal-instance_method" title="#update_goal (instance method)">- (Goal::Goal) <strong>update_goal</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Updates a goal and returns a real diff of points.</p>
 </div></span>
   
 </li>
@@ -573,9 +573,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="create_goal-instance_method">
+  <h3 class="signature " id="current_user-instance_method">
   
-    - (<tt><span class='object_link'><a href="../Goal.html" title="Goal::Goal (class)">Goal::Goal</a></span></tt>) <strong>create_goal</strong> 
+    - (<tt><span class='object_link'><a href="../../User/User.html" title="User::User (class)">User::User</a></span></tt>) <strong>current_user</strong> 
   
 
   
@@ -584,7 +584,173 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Creates a goal and returns a real diff of points</p>
+<p>Gets current user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../User/User.html" title="User::User (class)">User::User</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/goal/command/goal_points_update_command.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_current_user'>current_user</span>
+  <span class='const'>User</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_get_user_by_token_code'>get_user_by_token_code</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>Token</span><span class='op'>::</span><span class='const'>TYPE_LOGIN</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="execute-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>execute</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Runs command</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/goal/command/goal_points_update_command.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
+  <span class='id identifier rubyid_goal'>goal</span><span class='comma'>,</span> <span class='id identifier rubyid_real_diff'>real_diff</span> <span class='op'>=</span> <span class='id identifier rubyid_update_goal'>update_goal</span>
+  <span class='id identifier rubyid_create_action'>create_action</span><span class='lparen'>(</span><span class='id identifier rubyid_goal'>goal</span><span class='comma'>,</span> <span class='id identifier rubyid_real_diff'>real_diff</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span> <span class='label'>current:</span> <span class='id identifier rubyid_goal'>goal</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span><span class='comma'>,</span> <span class='label'>target:</span> <span class='id identifier rubyid_goal'>goal</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="model_to_validate-instance_method">
+  
+    - (<tt>Class</tt>) <strong>model_to_validate</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the model to validate</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/goal/command/goal_points_update_command.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_model_to_validate'>model_to_validate</span>
+  <span class='const'>Goal</span><span class='op'>::</span><span class='const'>Goal</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update_goal-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Goal.html" title="Goal::Goal (class)">Goal::Goal</a></span></tt>) <strong>update_goal</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Updates a goal and returns a real diff of points</p>
 
 
   </div>
@@ -631,7 +797,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/goal/command/goal_points_update_command.rb', line 23</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_create_goal'>create_goal</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_update_goal'>update_goal</span>
   <span class='id identifier rubyid_goal'>goal</span> <span class='op'>=</span> <span class='const'>Goal</span><span class='op'>::</span><span class='const'>Goal</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
   <span class='id identifier rubyid_goal'>goal</span><span class='period'>.</span><span class='id identifier rubyid_lock!'>lock!</span>
   <span class='id identifier rubyid_real_diff'>real_diff</span> <span class='op'>=</span> <span class='id identifier rubyid_goal'>goal</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span>
@@ -647,178 +813,12 @@
 </table>
 </div>
     
-      <div class="method_details ">
-  <h3 class="signature " id="execute-instance_method">
-  
-    - (<tt>Hash</tt>) <strong>execute</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Run command</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-15
-16
-17
-18
-19</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/goal/command/goal_points_update_command.rb', line 15</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
-  <span class='id identifier rubyid_goal'>goal</span><span class='comma'>,</span> <span class='id identifier rubyid_real_diff'>real_diff</span> <span class='op'>=</span> <span class='id identifier rubyid_create_goal'>create_goal</span>
-  <span class='id identifier rubyid_create_action'>create_action</span><span class='lparen'>(</span><span class='id identifier rubyid_goal'>goal</span><span class='comma'>,</span> <span class='id identifier rubyid_real_diff'>real_diff</span><span class='rparen'>)</span>
-  <span class='lbrace'>{</span> <span class='label'>current:</span> <span class='id identifier rubyid_goal'>goal</span><span class='period'>.</span><span class='id identifier rubyid_current'>current</span><span class='comma'>,</span> <span class='label'>target:</span> <span class='id identifier rubyid_goal'>goal</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span> <span class='rbrace'>}</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_current_user-instance_method">
-  
-    - (<tt><span class='object_link'><a href="../../User/User.html" title="User::User (class)">User::User</a></span></tt>) <strong>get_current_user</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Get current user</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../../User/User.html" title="User::User (class)">User::User</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-53
-54
-55</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/goal/command/goal_points_update_command.rb', line 53</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_current_user'>get_current_user</span>
-  <span class='const'>User</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_get_user_by_token_code'>get_user_by_token_code</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='const'>User</span><span class='op'>::</span><span class='const'>Token</span><span class='op'>::</span><span class='const'>TYPE_LOGIN</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="model_to_validate-instance_method">
-  
-    - (<tt>Class</tt>) <strong>model_to_validate</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Get the model to validate</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Class</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-47
-48
-49</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/goal/command/goal_points_update_command.rb', line 47</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_model_to_validate'>model_to_validate</span>
-  <span class='const'>Goal</span><span class='op'>::</span><span class='const'>Goal</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Sun Feb  7 10:54:31 2016 by
+  Generated on Tue Feb  9 14:04:15 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.0).
 </div>

@@ -158,7 +158,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Photo.</p>
+<p>Generates a photo.</p>
 </div></span>
   
 </li>
@@ -183,13 +183,39 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Photo</p>
+<p>Generates a photo</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>user</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../User/User.html" title="User::User (class)">User::User</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>file</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -197,14 +223,14 @@
       <pre class="lines">
 
 
-25
-26
-27
 28
-29</pre>
+29
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/file/photo.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/file/photo.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
@@ -222,7 +248,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Feb  7 10:54:29 2016 by
+  Generated on Tue Feb  9 14:04:12 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.0).
 </div>

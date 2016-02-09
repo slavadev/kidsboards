@@ -106,7 +106,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Common methods for commands</p>
+<p>Contains common methods for commands</p>
 
 
   </div>
@@ -183,7 +183,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Run command.</p>
+<p>Runs command.</p>
 </div></span>
   
 </li>
@@ -209,7 +209,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Fulfill input with attributes.</p>
+<p>Fulfills input with attributes.</p>
 </div></span>
   
 </li>
@@ -233,7 +233,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Get the model to validate.</p>
+<p>Gets the model to validate.</p>
 </div></span>
   
 </li>
@@ -258,7 +258,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Fulfill input with attributes</p>
+<p>Fulfills input with attributes</p>
 
 
   </div>
@@ -379,7 +379,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Run command</p>
+<p>Runs command</p>
 
 
   </div>
@@ -418,7 +418,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Get the model to validate</p>
+<p>Gets the model to validate</p>
 
 
   </div>
@@ -438,6 +438,24 @@
     </li>
   
 </ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Core::Errors::NoModelToValidateError</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -445,12 +463,12 @@
       <pre class="lines">
 
 
-23
 24
-25</pre>
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/core/command.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/core/command.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_model_to_validate'>model_to_validate</span>
   <span class='id identifier rubyid_fail'>fail</span> <span class='const'>Core</span><span class='op'>::</span><span class='const'>Errors</span><span class='op'>::</span><span class='const'>NoModelToValidateError</span>
@@ -465,7 +483,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Feb  7 10:54:29 2016 by
+  Generated on Tue Feb  9 14:04:13 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.0).
 </div>
