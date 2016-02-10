@@ -44,12 +44,15 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-        id: 1
-    }
-    ```
  - 422
+
+Response example:
+
+```
+{
+  id: 1
+}
+```
 
 ### Login
 
@@ -65,12 +68,15 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-        token: 'abcdef12345'
-    }
-    ```
  - 422
+
+Response example:
+
+```
+{
+    token: 'abcdef12345'
+}
+```
 
 Additional validation errors:
 
@@ -168,13 +174,16 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-         equal: true
-    }
-    ```
  - 401
  - 422
+
+Response example:
+
+```
+{
+     equal: true
+}
+```
 
 ## File
 
@@ -192,14 +201,17 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-         id: 1
-         photo_url: 'url'
-    }
-    ```
  - 401
  - 422
+
+Response example:
+
+```
+{
+     id: 1,
+     photo_url: 'url'
+}
+```
 
 Additional validation errors:
 
@@ -218,23 +230,26 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-         photos:
-         [
-             {
-                 id: 1,
-                 photo_url: 'url'
-             },
-             {
-                 id: 2,
-                 photo_url: 'url'
-             },
-             ...
-         ]
-    }
-    ```
  - 401
+
+Response example:
+
+```
+{
+     photos:
+     [
+         {
+             id: 1,
+             photo_url: 'url'
+         },
+         {
+             id: 2,
+             photo_url: 'url'
+         },
+         ...
+     ]
+}
+```
 
 ### Delete a photo
 
@@ -268,41 +283,44 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-       name: Bill,
-       photo_url: url,
-       adults:
-            [
-                {
-                    id: 1,
-                    name: 'Bill',
-                    photo_url: 'url'
-                },
-                {
-                    id: 2,
-                    name: 'John',
-                    photo_url: 'url'
-                },
-                ...
-            ],
-       children:
-            [
-                {
-                    id: 1,
-                    name: 'Bill',
-                    photo_url: 'url'
-                },
-                {
-                    id: 2,
-                    name: 'John',
-                    photo_url: 'url'
-                },
-                ...
-            ]
-    }
-    ```
  - 401
+
+Response example:
+
+```
+{
+   name: Bill,
+   photo_url: url,
+   adults:
+        [
+            {
+                id: 1,
+                name: 'Bill',
+                photo_url: 'url'
+            },
+            {
+                id: 2,
+                name: 'John',
+                photo_url: 'url'
+            },
+            ...
+        ],
+   children:
+        [
+            {
+                id: 1,
+                name: 'Bill',
+                photo_url: 'url'
+            },
+            {
+                id: 2,
+                name: 'John',
+                photo_url: 'url'
+            },
+            ...
+        ]
+}
+```
 
 ### Update
 
@@ -339,13 +357,16 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-      id: 1
-    }
-    ```
  - 401
  - 422
+
+Response example:
+
+```
+{
+  id: 1
+}
+```
 
 #### Update
 
@@ -399,13 +420,16 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-      id: 1
-    }
-    ```
  - 401
  - 422
+
+Response example:
+
+```
+{
+  id: 1
+}
+```
 
 #### Update
 
@@ -460,14 +484,17 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-      id: 1
-    }
-    ```
  - 401
  - 403
  - 422
+
+Response example:
+
+```
+{
+  id: 1
+}
+```
 
 #### Index
 
@@ -483,31 +510,34 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-         goals:
-         [
-             {
-                 id: 1,
-                 name: 'doll',
-                 photo_url: 'url',
-                 target: 50,
-                 current: 10
-             },
-             {
-                 id: 2,
-                 name: 'doll',
-                 photo_url: 'url',
-                 target: 50,
-                 current: 10
-             },
-             ...
-         ]
-    }
-    ```
  - 401
  - 403
  - 422
+
+Response example:
+
+```
+{
+     goals:
+     [
+         {
+             id: 1,
+             name: 'doll',
+             photo_url: 'url',
+             target: 50,
+             current: 10
+         },
+         {
+             id: 2,
+             name: 'doll',
+             photo_url: 'url',
+             target: 50,
+             current: 10
+         },
+         ...
+     ]
+}
+```
 
 ## Goal
 
@@ -524,42 +554,45 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-    {
-       id: 1,
-       name: 'doll',
-       photo_url: 'url',
-       target: 50,
-       current: 10,
-       created_at: datetime_utc,
-       actions:
-            [
-                {
-                    adult:
-                        {
-                            id: 1,
-                            name: 'John',
-                            photo_url: 'url',
-                        }
-                    diff: 12,
-                    created_at: datetime_utc
-                },
-                {
-                    adult:
-                        {
-                            id: 1,
-                            name: 'John',
-                            photo_url: 'url',
-                        }
-                    diff: -2,
-                    created_at: datetime_utc
-                },
-            ]
-    }
-    ```
  - 401
  - 403
  - 422
+
+Response example:
+
+```
+{
+   id: 1,
+   name: 'doll',
+   photo_url: 'url',
+   target: 50,
+   current: 10,
+   created_at: datetime_utc,
+   actions:
+        [
+            {
+                adult:
+                    {
+                        id: 1,
+                        name: 'John',
+                        photo_url: 'url',
+                    }
+                diff: 12,
+                created_at: datetime_utc
+            },
+            {
+                adult:
+                    {
+                        id: 1,
+                        name: 'John',
+                        photo_url: 'url',
+                    }
+                diff: -2,
+                created_at: datetime_utc
+            },
+        ]
+}
+```
 
 ### Update
 
@@ -613,12 +646,15 @@ Parameters:
 Possible responses:
 
  - 200
-    ```
-     {
-       current: 10,
-       target: 12
-     }
-    ```
  - 401
  - 403
  - 422
+
+Response example:
+
+```
+ {
+   current: 10,
+   target: 12
+ }
+```
