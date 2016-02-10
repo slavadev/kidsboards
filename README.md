@@ -40,6 +40,7 @@ Frontend - 0%
  - [Gulp](http://gulpjs.com/) for automatization
 
 ## Documentation
+[API Reference](https://github.com/korolvs/thatsaboy/blob/master/API.md)
 [Docs on rubydoc.info](http://www.rubydoc.info/github/korolvs/thatsaboy/frames)
  
 ## Prerequisites

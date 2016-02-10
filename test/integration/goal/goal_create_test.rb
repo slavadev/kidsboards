@@ -39,7 +39,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
 
     # action
     name = Faker::Name.name
-    target = Faker::Number.number(2).to_i
+    target = Faker::Number.number(2).to_i * 10
     post "/api/v1/family/child/#{id}/goal", token: token, name: name, target: target
 
     # check results

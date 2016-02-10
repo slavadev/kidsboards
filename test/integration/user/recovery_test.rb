@@ -28,13 +28,13 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
     params = { password: password, token: code }
     post '/api/v1/user/recovery', params
 
-    assert_response :success
+    assert_response 204
     token = User::Token.where(code: code, token_type: User::Token::TYPE_RECOVERY).first
     assert_equal token.is_expired, true
 
     # check new password
     params = { email: email, password: password }
-    post '/api/v1//user/login', params
+    post '/api/v1/user/login', params
 
     # check results
     assert_response 200
@@ -80,6 +80,13 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
     assert_response 422
     json = JSON.parse(response.body)
     assert_includes json['password'], 'can\'t be blank'
+  end
+
+  test 'recovery fail wrong token' do
+    post '/api/v1/user/recovery', {token: login}
+
+    # check results
+    assert_response 401
   end
 
   test 'recovery fail without token' do

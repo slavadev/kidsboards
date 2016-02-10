@@ -12,5 +12,6 @@ class User::Command::RecoveryCommand < Core::Command
     user = token.user
     user.password = password
     user.save
+    nil
   end
 end

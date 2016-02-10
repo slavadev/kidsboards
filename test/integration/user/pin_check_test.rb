@@ -7,13 +7,22 @@ class User::PinCheckTest < ActionDispatch::IntegrationTest
     pin = Faker::Number.number(4).to_s
     patch '/api/v1/user/pin', token: token, pin: pin
 
-    # action
+    # action 1
     get '/api/v1/user/pin', token: token, pin: pin
 
     # check results
     assert_response 200
     json = JSON.parse(response.body)
     assert_equal json['equal'], true
+
+    # action 2
+    pin = Faker::Number.number(4).to_s
+    get '/api/v1/user/pin', token: token, pin: pin
+
+    # check results
+    assert_response 200
+    json = JSON.parse(response.body)
+    assert_equal json['equal'], false
   end
 
   test 'pin check wrong params' do
