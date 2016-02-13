@@ -3,7 +3,7 @@ class Core::Middleware::OwnerChecker < Core::Middleware
   include Core::Authorization
 
   # Checks that user is the owner
-  # @return [Core::Command], [Object]
+  # @return [[Core::Command], [Object]]
   def call
     owner?
     self.next

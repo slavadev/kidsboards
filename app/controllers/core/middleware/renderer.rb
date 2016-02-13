@@ -9,7 +9,7 @@ class Core::Middleware::Renderer < Core::Middleware
   end
 
   # Renders response
-  # @return [Core::Command], [Object]
+  # @return [[Core::Command], [Object]]
   def call
     command, result = self.next
     if result.nil?

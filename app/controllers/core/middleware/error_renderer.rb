@@ -9,7 +9,7 @@ class Core::Middleware::ErrorRenderer < Core::Middleware
   end
 
   # Handle errors and process them
-  # @return [Core::Command], [Object]
+  # @return [[Core::Command], [Object]]
   def call
     return self.next
   rescue Core::Errors::UnauthorizedError

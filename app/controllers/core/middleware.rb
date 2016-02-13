@@ -3,7 +3,7 @@ class Core::Middleware
   attr_accessor :next_middleware, :command
 
   # Makes all the magic and call next middleware
-  # @return [Core::Command], [Object]
+  # @return [[Core::Command], [Object]]
   # @example
   #   def call
   #     action_before
@@ -14,7 +14,7 @@ class Core::Middleware
   end
 
   # Calls next middleware
-  # @return [Core::Command], [Object]
+  # @return [[Core::Command], [Object]]
   def next
     @next_middleware.command = @command
     @next_middleware.call

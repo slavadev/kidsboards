@@ -32,7 +32,8 @@ migrator:
 api:
   build: .
   dockerfile: ./docker/api/Dockerfile
-  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+#  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  command: bundle exec yard server -p 3000 -b '0.0.0.0'
   volumes_from:
     - data:rw
   ports:
