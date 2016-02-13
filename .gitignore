@@ -18,3 +18,4 @@
 /vendor/bundle
 .byebug_history
 /.yardoc
+/doc
