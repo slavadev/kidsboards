@@ -13,6 +13,8 @@ class Core::Middleware
   def call
   end
 
+  protected
+
   # Calls next middleware
   # @return [[Core::Command], [Object]]
   def next

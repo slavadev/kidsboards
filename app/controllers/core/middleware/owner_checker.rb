@@ -9,6 +9,8 @@ class Core::Middleware::OwnerChecker < Core::Middleware
     self.next
   end
 
+  private
+
   # Checks all tests
   # @raise Core::Errors::ForbiddenError
   def owner?

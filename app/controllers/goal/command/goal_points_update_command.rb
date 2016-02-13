@@ -18,6 +18,20 @@ class Goal::Command::GoalPointsUpdateCommand < Core::Command
     { current: goal.current, target: goal.target }
   end
 
+  # Gets the model to validate
+  # @return [Class]
+  def model_to_validate
+    Goal::Goal
+  end
+
+  # Gets current user
+  # @return [User::User]
+  def current_user
+    User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
+  end
+
+  private
+
   # Updates a goal and returns a real diff of points
   # @return [Goal::Goal], [Integer]
   def update_goal
@@ -40,17 +54,5 @@ class Goal::Command::GoalPointsUpdateCommand < Core::Command
     adult = Family::Adult.find(adult_id)
     action = Goal::Action.new(user, goal, adult, real_diff)
     action.save
-  end
-
-  # Gets the model to validate
-  # @return [Class]
-  def model_to_validate
-    Goal::Goal
-  end
-
-  # Gets current user
-  # @return [User::User]
-  def current_user
-    User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
   end
 end

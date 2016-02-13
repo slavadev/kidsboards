@@ -43,11 +43,6 @@ class User::User < ActiveRecord::Base
     Digest::SHA2.hexdigest(salt + password)
   end
 
-  # Generates a salt
-  def generate_salt
-    self.salt = SecureRandom.base64(8)
-  end
-
   # Confirm
   def confirm
     self.confirmed_at = DateTime.now.utc
@@ -63,5 +58,12 @@ class User::User < ActiveRecord::Base
     token = User::Token.where(code: code, token_type: type).first
     fail Core::Errors::UnauthorizedError if token.nil?
     token.user
+  end
+
+  private
+
+  # Generates a salt
+  def generate_salt
+    self.salt = SecureRandom.base64(8)
   end
 end

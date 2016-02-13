@@ -20,6 +20,14 @@ class Goal::Command::GoalViewCommand < Core::Command
     }
   end
 
+  # Gets the model to validate
+  # @return [Class]
+  def model_to_validate
+    Goal::Goal
+  end
+
+  private
+
   # Gets goal's actions
   # @param [Goal::Goal] goal
   # @return [Hash]
@@ -35,11 +43,5 @@ class Goal::Command::GoalViewCommand < Core::Command
         created_at: action.created_at
       }
     end
-  end
-
-  # Gets the model to validate
-  # @return [Class]
-  def model_to_validate
-    Goal::Goal
   end
 end

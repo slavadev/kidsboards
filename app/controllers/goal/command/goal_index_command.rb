@@ -16,6 +16,14 @@ class Goal::Command::GoalIndexCommand < Core::Command
     { goals: goals }
   end
 
+  # Gets the model to validate
+  # @return [Class]
+  def model_to_validate
+    Family::Child
+  end
+
+  private
+
   # Prepares goals to show to the user
   # @param [Array] child_goals
   # @return [Array]
@@ -33,11 +41,5 @@ class Goal::Command::GoalIndexCommand < Core::Command
       goals.push item
     end
     goals
-  end
-
-  # Gets the model to validate
-  # @return [Class]
-  def model_to_validate
-    Family::Child
   end
 end

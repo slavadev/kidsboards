@@ -13,6 +13,8 @@ class Family::Command::FamilyViewCommand < Core::Command
     response
   end
 
+  private
+
   # Gets persons
   # @param [Object] persons
   def get_persons(persons)
