@@ -7,7 +7,7 @@
 #  [DateTime]          confirmed_at
 #  [String]            pin                  4 digital Pin code for adults
 #  [User::Token][]     tokens
-#  [File::Photo][]     photos
+#  [Uploaded::Photo][] photos
 #  [Family::Adult][]   adults
 #  [Family::Child][]   children
 #  [Goal::Goal][]      goals
@@ -15,7 +15,7 @@
 #  [Family::Family]    family
 class User::User < ActiveRecord::Base
   has_many   :tokens,   class_name: 'User::Token'
-  has_many   :photos,   class_name: 'File::Photo'
+  has_many   :photos,   class_name: 'Uploaded::Photo'
   has_many   :adults,   class_name: 'Family::Adult'
   has_many   :children, class_name: 'Family::Child'
   has_many   :goals,    class_name: 'Goal::Goal'

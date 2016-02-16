@@ -11,7 +11,7 @@ require "#{Rails.root}/app/controllers/core/interpolations"
 #  [DateTime]       updated_at
 #  [User::User]     user
 #  [Object]         file
-class File::Photo < ActiveRecord::Base
+class Uploaded::Photo < ActiveRecord::Base
   belongs_to :user, inverse_of: :photos, class_name: 'User::User'
 
   has_attached_file :file,

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get '/pin' => 'user#pin_check'
     end
 
-    namespace :file do
+    namespace :uploaded do
       post '/photo' => 'photo#create'
       get '/photo' => 'photo#index'
       delete '/photo/:id' => 'photo#delete'

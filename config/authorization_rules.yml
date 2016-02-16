@@ -9,9 +9,9 @@ test:
   - action: User::Command::PinCheckCommand
   - action: User::Command::ViewCommand
   # File
-  - action: File::Command::PhotoCreateCommand
-  - action: File::Command::PhotoIndexCommand
-  - action: File::Command::PhotoDeleteCommand
+  - action: Uploaded::Command::PhotoCreateCommand
+  - action: Uploaded::Command::PhotoIndexCommand
+  - action: Uploaded::Command::PhotoDeleteCommand
     owner: true
   # Family
   - action: Family::Command::FamilyUpdateCommand

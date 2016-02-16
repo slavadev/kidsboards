@@ -191,7 +191,7 @@ Response example:
 
 Creates a photo.
 
-`` POST /api/v1/file/photo ``
+`` POST /api/v1/uploaded/photo ``
 
 Parameters:
 
@@ -221,7 +221,7 @@ Additional validation errors:
 
 Shows the list of photos uploaded by the user.
 
-`` GET /api/v1/file/photo ``
+`` GET /api/v1/uploaded/photo ``
 
 Parameters:
 
@@ -255,7 +255,7 @@ Response example:
 
 Deletes the photo.
 
-`` DELETE /api/v1/file/photo/:id ``
+`` DELETE /api/v1/uploaded/photo/:id ``
 
 Parameters:
 

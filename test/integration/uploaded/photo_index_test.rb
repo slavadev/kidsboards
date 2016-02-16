@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class File::PhotoIndexTest < ActionDispatch::IntegrationTest
+class Uploaded::PhotoIndexTest < ActionDispatch::IntegrationTest
   test 'photo index success' do
     # prepare
     token = login
@@ -8,23 +8,23 @@ class File::PhotoIndexTest < ActionDispatch::IntegrationTest
     ids = []
     file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
 
-    post '/api/v1/file/photo', token: token, file: file
+    post '/api/v1/uploaded/photo', token: token, file: file
     json = JSON.parse(response.body)
     ids.push(json['id'])
     urls.push(json['url'])
 
-    post '/api/v1/file/photo', token: token, file: file
+    post '/api/v1/uploaded/photo', token: token, file: file
     json = JSON.parse(response.body)
     ids.push(json['id'])
     urls.push(json['url'])
 
-    post '/api/v1/file/photo', token: token, file: file
+    post '/api/v1/uploaded/photo', token: token, file: file
     json = JSON.parse(response.body)
     ids.push(json['id'])
     urls.push(json['url'])
 
     # action
-    get '/api/v1/file/photo', token: token
+    get '/api/v1/uploaded/photo', token: token
     json = JSON.parse(response.body)
     photo_ids = json['photos'].map { |x| x['id'] }
     photo_urls = json['photos'].map { |x| x['url'] }
@@ -43,7 +43,7 @@ class File::PhotoIndexTest < ActionDispatch::IntegrationTest
     token = login
 
     # action
-    get '/api/v1/file/photo', token: token
+    get '/api/v1/uploaded/photo', token: token
     json = JSON.parse(response.body)
     photo_ids = json['photos'].map { |x| x['id'] }
     photo_urls = json['photos'].map { |x| x['url'] }
@@ -58,13 +58,13 @@ class File::PhotoIndexTest < ActionDispatch::IntegrationTest
     token = Faker::Lorem.characters(10)
 
     # action 1
-    get '/api/v1/file/photo', token: token
+    get '/api/v1/uploaded/photo', token: token
 
     # check results
     assert_response 401
 
     # action 2
-    get '/api/v1/file/photo'
+    get '/api/v1/uploaded/photo'
 
     # check results
     assert_response 401

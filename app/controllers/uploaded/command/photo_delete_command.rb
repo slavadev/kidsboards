@@ -1,5 +1,5 @@
 # Photo delete command
-class File::Command::PhotoDeleteCommand < Core::Command
+class Uploaded::Command::PhotoDeleteCommand < Core::Command
   attr_accessor :id
 
   validates :id, presence: true,
@@ -7,7 +7,7 @@ class File::Command::PhotoDeleteCommand < Core::Command
 
   # Runs command
   def execute
-    photo = File::Photo.where(id: id, deleted_at: nil).first
+    photo = Uploaded::Photo.where(id: id, deleted_at: nil).first
     photo.deleted_at = DateTime.now.utc
     photo.save
     nil
@@ -16,6 +16,6 @@ class File::Command::PhotoDeleteCommand < Core::Command
   # Get the model to validate
   # @return [Class]
   def model_to_validate
-    File::Photo
+    Uploaded::Photo
   end
 end
