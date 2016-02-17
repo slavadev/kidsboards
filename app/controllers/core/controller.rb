@@ -1,6 +1,5 @@
 # Common controller methods
-class Core::Controller < ApplicationController
-
+class Core::Controller < ActionController::Base
   # Runs the action
   # @param [Core::Command] command
   # @see Core::CommandBus
