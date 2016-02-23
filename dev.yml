@@ -1,0 +1,54 @@
+# Needed to keep data
+data:
+  image: debian:jessie
+  volumes:
+    - .:/api
+
+# DB container
+postgres:
+  image: postgres
+  env_file: docker/dev/.env
+
+# Giving time for the db to start
+dbcreator:
+  build: .
+  dockerfile: ./docker/dev/api/Dockerfile
+  command: bash docker/dev/dbcreator/create.sh
+  links:
+    - postgres
+
+# Running migrations
+migrator:
+  build: .
+  dockerfile: ./docker/dev/api/Dockerfile
+  command: bash docker/dev/migrator/migrate.sh
+  volumes_from:
+    - data:rw
+  links:
+    - postgres
+  env_file: docker/dev/.env
+
+# All about the rails is here
+api:
+  build: .
+  dockerfile: ./docker/dev/api/Dockerfile
+  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+#  command: bundle exec yard server -p 3000 -b '0.0.0.0'
+  volumes_from:
+    - data:rw
+  ports:
+    - "3000:3000"
+  links:
+    - postgres
+  env_file: docker/dev/.env
+
+# Running api tests
+tester:
+  build: .
+  dockerfile: ./docker/dev/api/Dockerfile
+  command: bash docker/dev/tester/test.sh
+  volumes_from:
+    - data:rw
+  links:
+    - postgres
+  env_file: docker/dev/.env
