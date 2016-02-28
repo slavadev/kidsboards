@@ -54,6 +54,10 @@ GEM
       activesupport (>= 4.1.0)
     i18n (0.7.0)
     json (1.8.3)
+    lograge (0.3.6)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -142,6 +146,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   database_cleaner
   faker
+  lograge
   minitest-focus
   minitest-rails
   paperclip
@@ -151,3 +156,6 @@ DEPENDENCIES
   rubocop
   spring
   yard
+
+BUNDLED WITH
+   1.10.6

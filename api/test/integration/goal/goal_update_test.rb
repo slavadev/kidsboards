@@ -170,7 +170,7 @@ class Family::GoalUpdateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    target = Faker::Number.number(2).to_i
+    target = Faker::Number.number(2).to_i + 1 # + 1 because of the bug with number generation in Faker
     put "/api/v1/goal/#{id}", token: token, name: name, photo_url: photo_url, target: target
 
     # check results

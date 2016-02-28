@@ -16,6 +16,7 @@ class Uploaded::Photo < ActiveRecord::Base
 
   has_attached_file :file,
                     url: '/images/:hash/:id/image.:extension',
+                    path: ENV['UPLOAD_FOLDER'] + '/images/:hash/:id/image.:extension',
                     hash_secret: 'asd1we1478yasdhbjhqbekhjqb',
                     use_timestamp: false
 

@@ -2,7 +2,7 @@
 data:
   image: debian:jessie
   volumes:
-    - .:/api
+    - ./api:/api
 
 # DB container
 postgres:
@@ -13,7 +13,7 @@ postgres:
 dbcreator:
   build: .
   dockerfile: ./docker/dev/api/Dockerfile
-  command: bash docker/dev/dbcreator/create.sh
+  command: bash /docker/dbcreator/create.sh
   links:
     - postgres
 
@@ -21,7 +21,7 @@ dbcreator:
 migrator:
   build: .
   dockerfile: ./docker/dev/api/Dockerfile
-  command: bash docker/dev/migrator/migrate.sh
+  command: bash /docker/migrator/migrate.sh
   volumes_from:
     - data:rw
   links:
@@ -46,7 +46,7 @@ api:
 tester:
   build: .
   dockerfile: ./docker/dev/api/Dockerfile
-  command: bash docker/dev/tester/test.sh
+  command: bash /docker/tester/test.sh
   volumes_from:
     - data:rw
   links:

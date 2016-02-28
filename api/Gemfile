@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'pg'
 gem 'rails', '4.2.4'
 
+# logs
+gem "lograge"
+
 # files
 gem 'paperclip'
 

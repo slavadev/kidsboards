@@ -2,13 +2,19 @@
 code:
   image: debian:jessie
   volumes:
-    - .:/home/app/webapp
+    - ./api:/home/app/webapp
 
 # Needed to keep data
 data:
   image: debian:jessie
   volumes:
-    - ./public:/home/app/data
+    - ./data:/home/app/data
+
+# Needed to keep logs
+logs:
+  image: debian:jessie
+  volumes:
+    - ./logs:/home/app/logs
 
 # DB container
 postgres:
@@ -19,31 +25,23 @@ postgres:
 api:
   build: .
   dockerfile: ./docker/prod/api/Dockerfile
-#  command: chown -R app /home/app/webapp & ls
   volumes_from:
     - code:rw
     - data:rw
+    - logs:rw
   ports:
     - "80:80"
   links:
     - postgres
   env_file: docker/prod/.env
 
-# Giving time for the db to start
-dbcreator:
-  build: .
-  dockerfile: ./docker/prod/api/Dockerfile
-  command: bash docker/prod/dbcreator/create.sh
-  links:
-    - postgres
-
 # Running migrations
 migrator:
   build: .
-  dockerfile: ./docker/prod/api/Dockerfile
-  command: bash docker/prod/migrator/migrate.sh
+  dockerfile: ./docker/prod/migrator/Dockerfile
+  command: bash /docker/migrator/migrate.sh
   volumes_from:
-    - data:rw
+    - code:rw
   links:
     - postgres
   env_file: docker/prod/.env

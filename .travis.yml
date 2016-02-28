@@ -11,10 +11,10 @@ before_install:
  - sudo mv docker-compose /usr/local/bin
 
 script:
-  - docker-compose build
-  - docker-compose run dbcreator
-  - docker-compose run migrator
-  - docker-compose run tester
+  - docker-compose -f dev.yml build
+  - docker-compose -f dev.yml run dbcreator
+  - docker-compose -f dev.yml run migrator
+  - docker-compose -f dev.yml run tester
 
 addons:
   code_climate:

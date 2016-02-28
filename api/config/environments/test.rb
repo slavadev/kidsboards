@@ -41,5 +41,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Turn off paperclip logging
-  Paperclip.options[:log] = false
+  Paperclip.options[:logs] = false
 end
