@@ -42,7 +42,7 @@ Frontend - 0%
  - [Gulp](http://gulpjs.com/)
 
 ## Documentation
- - API Reference ([RubyDoc](http://www.rubydoc.info/github/korolvs/thatsaboy/file/API.md), [GitHub](https://github.com/korolvs/thatsaboy/blob/master/API.md))
+ - API Reference ([RubyDoc](http://www.rubydoc.info/github/korolvs/thatsaboy/file/api/API.md), [GitHub](https://github.com/korolvs/thatsaboy/blob/master/api/API.md))
  - [Docs on rubydoc.info](http://www.rubydoc.info/github/korolvs/thatsaboy/frames)
  
 ## Prerequisites

@@ -4,11 +4,8 @@ engines:
     checks:
       Rubocop/Style/ClassAndModuleChildren:
         enabled: false
-  bundler-audit:
-    enabled: true
 ratings:
    paths:
-   - api/Gemfile.lock
    - api/app/**
 exclude_paths:
 - api/test/**/*
