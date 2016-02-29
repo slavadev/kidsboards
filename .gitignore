@@ -8,18 +8,17 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-api/log/*
-!/api/log/.keep
+/.DS_Store
+/.idea
+/.vagrant
 logs/*
 !/logs/.keep
 data/*
 !/data/.keep
-/tmp
-/public
-/.DS_Store
-/.idea
-/.vagrant
-/vendor/bundle
-.byebug_history
+api/log/*
+!/api/log/.keep
+api/tmp
+api/.byebug_history
 /.yardoc
-/doc
+/api/doc
+/api/coverage

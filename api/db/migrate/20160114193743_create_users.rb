@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :salt, default: ''
       t.datetime :confirmed_at
       t.string   :pin, default: '0000'
-      t.timestamps
+      t.timestamps null:false
     end
   end
 end

@@ -21,7 +21,7 @@ With bright illustrations **Thatsaboy** makes this process more interesting for 
 
 ## Progress
 
-Backend - 90%
+Backend - 95%
 
 Frontend - 0%
 
@@ -29,15 +29,17 @@ Frontend - 0%
 
 ### Backend
  - [Ruby on Rails](http://rubyonrails.org/)
+ - [Phusion Passenger](https://www.phusionpassenger.com/)
+ - [Nginx](http://nginx.org/)
  - [PostgreSQL](http://www.postgresql.org/)
- - [Minitest](https://github.com/seattlerb/minitest) for testing
- - [YARD](http://yardoc.org/) for documentation
- - [Docker](https://www.docker.com/) for easy setup and great portability
+ - [Minitest](https://github.com/seattlerb/minitest)
+ - [YARD](http://yardoc.org/)
+ - [Docker](https://www.docker.com/)
 
 ### Frontend 
  - [AngularJS](https://angularjs.org/)
  - [PostCSS](https://github.com/postcss/postcss)
- - [Gulp](http://gulpjs.com/) for automatization
+ - [Gulp](http://gulpjs.com/)
 
 ## Documentation
  - API Reference ([RubyDoc](http://www.rubydoc.info/github/korolvs/thatsaboy/file/API.md), [GitHub](https://github.com/korolvs/thatsaboy/blob/master/API.md))
@@ -48,22 +50,39 @@ Frontend - 0%
  - [Install Docker Compose](http://docs.docker.com/compose/install/)
  
 ## Usage
+
+### Development
+
 Build 
 
 ```
-docker-compose build
-docker-compose run dbcreator
-docker-compose run migrator
+docker-compose -f dev.yml build
+docker-compose -f dev.yml run dbcreator
+docker-compose -f dev.yml run migrator
 ``` 
 
 Test
 
 ```
-docker-compose run tester
+docker-compose -f dev.yml run tester
 ```
 
 Run
 
 ```
-docker-compose run api
+docker-compose -f dev.yml run api
+```
+
+### Production
+
+Build 
+
+```
+docker-compose -f prod.yml build
+``` 
+
+Run
+
+```
+docker-compose -f prod.yml up
 ```

@@ -9,7 +9,7 @@ class CreateGoals < ActiveRecord::Migration
       t.integer    :user_id, index: true
       t.integer    :child_id, index: true
       t.datetime   :deleted_at
-      t.timestamps
+      t.timestamps null:false
     end
     add_foreign_key :goals, :users
     add_foreign_key :goals, :children

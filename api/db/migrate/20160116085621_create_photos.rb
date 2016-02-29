@@ -5,7 +5,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.attachment :file
       t.integer    :user_id, index: true
       t.datetime   :deleted_at
-      t.timestamps
+      t.timestamps null:false
     end
     add_foreign_key :photos, :users
   end

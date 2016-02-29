@@ -5,7 +5,7 @@ class CreateFamilies < ActiveRecord::Migration
       t.string    :name, default: ''
       t.string    :photo_url
       t.integer   :user_id, index: true
-      t.timestamps
+      t.timestamps null:false
     end
     add_foreign_key :families, :users
   end
