@@ -74,7 +74,7 @@ class Family::GoalIndexTest < ActionDispatch::IntegrationTest
     3.times do
       name = Faker::Name.name
       photo_url = Faker::Internet.url
-      target = Faker::Number.number(2).to_i * 10
+      target = Faker::Number.number(2).to_i
       post "/api/v1/family/child/#{child_id}/goal", token: token, name: name, photo_url: photo_url, target: target
       json = JSON.parse(response.body)
       id = json['id']

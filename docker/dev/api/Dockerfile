@@ -7,3 +7,4 @@ ADD api/Gemfile.lock /api/Gemfile.lock
 RUN bundle install
 ADD api /api
 ADD docker/dev /docker
+ADD .git /.git
