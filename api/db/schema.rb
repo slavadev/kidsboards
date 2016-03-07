@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20160202185421) do
     t.string   "photo_url"
     t.integer  "user_id"
     t.datetime "deleted_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "adults", ["id"], name: "index_adults_on_id", using: :btree
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20160202185421) do
     t.string   "photo_url"
     t.integer  "user_id"
     t.datetime "deleted_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "children", ["id"], name: "index_children_on_id", using: :btree
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20160202185421) do
     t.string   "name",       default: ""
     t.string   "photo_url"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "families", ["id"], name: "index_families_on_id", using: :btree
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 20160202185421) do
     t.integer  "user_id"
     t.integer  "child_id"
     t.datetime "deleted_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "goals", ["child_id"], name: "index_goals_on_child_id", using: :btree
@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 20160202185421) do
     t.datetime "file_updated_at"
     t.integer  "user_id"
     t.datetime "deleted_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "photos", ["id"], name: "index_photos_on_id", using: :btree
@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 20160202185421) do
     t.boolean  "is_expired"
     t.integer  "token_type"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "tokens", ["id"], name: "index_tokens_on_id", using: :btree
@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(version: 20160202185421) do
     t.string   "salt",               default: ""
     t.datetime "confirmed_at"
     t.string   "pin",                default: "0000"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
