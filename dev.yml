@@ -1,8 +1,14 @@
-# Needed to keep data
-data:
+# Needed to keep data for api
+data_api:
   image: debian:jessie
   volumes:
     - ./api:/api
+
+# Needed to keep data for frontend
+data_frontend:
+  image: debian:jessie
+  volumes:
+    - ./frontend:/api/public
 
 # DB container
 postgres:
@@ -23,7 +29,7 @@ migrator:
   dockerfile: ./docker/dev/api/Dockerfile
   command: bash /docker/migrator/migrate.sh
   volumes_from:
-    - data:rw
+    - data_api:rw
   links:
     - postgres
   env_file: docker/dev/.env
@@ -32,12 +38,13 @@ migrator:
 api:
   build: .
   dockerfile: ./docker/dev/api/Dockerfile
-  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  command: bundle exec rails s -p 80 -b '0.0.0.0'
 #  command: bundle exec yard server -p 3000 -b '0.0.0.0'
   volumes_from:
-    - data:rw
+    - data_api:rw
+    - data_frontend:rw
   ports:
-    - "3000:3000"
+    - "80:80"
   links:
     - postgres
   env_file: docker/dev/.env
@@ -48,7 +55,14 @@ tester:
   dockerfile: ./docker/dev/api/Dockerfile
   command: bash /docker/tester/test.sh
   volumes_from:
-    - data:rw
+    - data_api:rw
   links:
     - postgres
   env_file: docker/dev/.env
+
+# All about the frontend is here
+frontend:
+  build: .
+  dockerfile: ./docker/dev/frontend/Dockerfile
+  volumes_from:
+    - data_frontend:rw

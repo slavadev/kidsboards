@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "AddisAbaba";
+  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSketch";
+  src: url("/css/fonts/KGSecondChancesSketch.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSolid";
+  src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
+
+body {
+  height: auto;
+  display: block;
+  width: 100%;
+  background-color: #aa66cc; }
+
+.app {
+  display: block;
+  height: 100%; }
+  @media (min-width: 960px) {
+    .app {
+      position: absolute; } }
+
+.full-height {
+  min-height: 100%; }
+
+md-icon {
+  width: 100%;
+  height: auto; }
+
+.image-copyrights {
+  color: #eeeeee;
+  font-family: "AddisAbaba";
+  text-align: center; }
+  .image-copyrights a {
+    color: #99cc00; }

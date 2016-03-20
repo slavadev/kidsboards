@@ -14,7 +14,7 @@ Thatsaboy is a website which helps you to manage your children.
 
  - Create a purpose for the kid, e.g. toy or trip
  - Establish how much points is needed to reach the goal
- - Assign points for good acts and withdraw for bad
+ - Add points for good acts and remove for bad
  - Watch how your kid is getting better
 
 With bright illustrations **Thatsaboy** makes this process more interesting for children.
@@ -23,7 +23,7 @@ With bright illustrations **Thatsaboy** makes this process more interesting for 
 
 Backend - 95%
 
-Frontend - 0%
+Frontend - 10%
 
 ## Used tools
 

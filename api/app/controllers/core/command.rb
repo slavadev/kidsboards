@@ -4,7 +4,7 @@ class Core::Command
 
   attr_accessor :token
 
-  # Fulfills input with attributes
+  # Fills a command with attributes
   # @param [Hash] attributes
   def initialize(attributes = {})
     attributes.each do |name, value|

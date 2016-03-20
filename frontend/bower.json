@@ -1,0 +1,33 @@
+{
+  "name": "thatsaboy",
+  "description": "Thatsaboy is a website which helps you to manage your children.",
+  "main": "index.html",
+  "authors": [
+    "korolvs@gmail.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "thatsaboy",
+    "kids",
+    "children",
+    "manage"
+  ],
+  "moduleType": [],
+  "homepage": "http://thatsaboy.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-animate": "^1.5.0",
+    "angular-aria": "^1.5.0",
+    "angular-material": "^1.0.6",
+    "angular-ui-router": "^0.2.18",
+    "angular-local-storage": "^0.2.5"
+  }
+}

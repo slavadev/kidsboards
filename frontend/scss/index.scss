@@ -1,0 +1,57 @@
+@import 'globals';
+@import 'fonts';
+
+.index {
+
+  .title-block {
+    display: block;
+    h2 {
+      text-align: center;
+      margin-top: -10px;
+    }
+    button {
+      font-family: "AddisAbaba";
+    }
+    @media (max-width: $layout-breakpoint-sm) {
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    color: $color-white;
+    font-family: "KGSecondChancesSketch";
+  }
+
+  h2 {
+    color: $color-grey;
+    font-family: "AddisAbaba";
+  }
+  md-icon {
+    width: 60%;
+    path {
+      fill: $color-white
+    }
+  }
+
+  .steps {
+    h2 {
+      font-family: "AddisAbaba";
+    }
+    @media (max-width: $layout-breakpoint-sm) {
+      margin-bottom: 100px;
+    }
+  }
+
+  h3 {
+    &:after {
+      content: '';
+      width: 30px;
+      background-color: $color-grey;
+      height: 2px;
+      margin: 30px auto 10px auto;
+      display: block;
+    }
+  }
+}

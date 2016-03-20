@@ -1,0 +1,35 @@
+@import 'globals';
+@import 'fonts';
+
+body {
+  height: auto;
+  display: block;
+  width: 100%;
+  background-color: $color-first;
+}
+
+.app {
+  display: block;
+  height: 100%;
+  @media (min-width: $layout-breakpoint-sm) {
+    position: absolute;
+  }
+}
+
+.full-height {
+  min-height: 100%;
+}
+
+md-icon {
+  width: 100%;
+  height: auto;
+}
+
+.image-copyrights {
+  color: $color-grey;
+  font-family: "AddisAbaba";
+  text-align: center;
+  a {
+    color: $color-second
+  }
+}
