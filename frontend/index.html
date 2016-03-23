@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-
-<div class="full-height app" ng-app="thatsaboy" ng-controller="AppController as AppCtrl">
-    <ui-view class="full-height"></ui-view>
+<div class="app">
+    <div class="full" ng-app="thatsaboy" ng-controller="AppController as AppCtrl">
+        <ui-view class="full"></ui-view>
+    </div>
 </div>
+
+
 
 <!-- vendor -->
 <script src="bower_components/angular/angular.js"></script>
@@ -27,6 +30,13 @@
 <script src="app/core/js/core.js"></script>
 <script src="app/core/js/config.js"></script>
 <script src="app/core/js/routing.js"></script>
+
+<!-- common -->
+<script src="app/modules/common/js/directives/svgInlineDirective.js"></script>
+<script src="app/modules/common/common.js"></script>
+
+<!-- js -->
+<script src="app/js/svg-inject.js"></script>
 
 </body>
 </html>

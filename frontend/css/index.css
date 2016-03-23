@@ -10,43 +10,39 @@
   font-family: "KGSecondChancesSolid";
   src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
 
-.index .title-block {
-  display: block; }
-  .index .title-block h2 {
-    text-align: center;
-    margin-top: -10px; }
-  .index .title-block button {
+.index {
+  background-color: #aa66cc; }
+  .index .title-block {
+    display: block; }
+    .index .title-block h2 {
+      text-align: center;
+      margin-top: -10px; }
+    .index .title-block button {
+      font-family: "AddisAbaba"; }
+    @media (max-width: 960px) {
+      .index .title-block {
+        margin-top: 100px;
+        margin-bottom: 100px; } }
+  .index h1 {
+    margin: 0;
+    color: #ffffff;
+    font-family: "KGSecondChancesSketch"; }
+  .index h2 {
+    color: #eeeeee;
+    font-family: "AddisAbaba"; }
+  .index svg {
+    fill: #ffffff;
+    width: 100px;
+    height: 100px; }
+  .index .steps h2 {
     font-family: "AddisAbaba"; }
   @media (max-width: 960px) {
-    .index .title-block {
-      margin-top: 100px;
+    .index .steps {
       margin-bottom: 100px; } }
-
-.index h1 {
-  margin: 0;
-  color: #ffffff;
-  font-family: "KGSecondChancesSketch"; }
-
-.index h2 {
-  color: #eeeeee;
-  font-family: "AddisAbaba"; }
-
-.index md-icon {
-  width: 60%; }
-  .index md-icon path {
-    fill: #ffffff; }
-
-.index .steps h2 {
-  font-family: "AddisAbaba"; }
-
-@media (max-width: 960px) {
-  .index .steps {
-    margin-bottom: 100px; } }
-
-.index h3:after {
-  content: '';
-  width: 30px;
-  background-color: #eeeeee;
-  height: 2px;
-  margin: 30px auto 10px auto;
-  display: block; }
+  .index h3:after {
+    content: '';
+    width: 30px;
+    background-color: #eeeeee;
+    height: 2px;
+    margin: 30px auto 10px auto;
+    display: block; }

@@ -2,7 +2,7 @@
 @import 'fonts';
 
 .index {
-
+  background-color: $color-first;
   .title-block {
     display: block;
     h2 {
@@ -28,11 +28,10 @@
     color: $color-grey;
     font-family: "AddisAbaba";
   }
-  md-icon {
-    width: 60%;
-    path {
-      fill: $color-white
-    }
+  svg {
+    fill: $color-white;
+    width: 100px;
+    height: 100px;
   }
 
   .steps {

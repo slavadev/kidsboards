@@ -5,7 +5,8 @@
     .module('thatsaboy.core',
     [
       'ui.router',
-      'LocalStorageModule'
+      'LocalStorageModule',
+      'thatsaboy.common'
     ]
   ).controller('AppController', AppController);
 

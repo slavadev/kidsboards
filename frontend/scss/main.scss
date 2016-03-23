@@ -5,19 +5,20 @@ body {
   height: auto;
   display: block;
   width: 100%;
-  background-color: $color-first;
 }
 
 .app {
   display: block;
-  height: 100%;
-  @media (min-width: $layout-breakpoint-sm) {
-    position: absolute;
-  }
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  background-color: $color-first;
 }
 
-.full-height {
+.full {
   min-height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 md-icon {

@@ -41,10 +41,11 @@
         localStorageServiceProvider.setPrefix('thatsaboy');
 
         $mdIconProvider
+          .defaultIconSet('images/svg.svg')
           .icon("index:toy", "images/index/toy.svg", 512)
-          .icon("index:number", "images/index/number.svg", 512)
+          .icon("index:number", "images/svg/number.svg", 512)
           .icon("index:up", "images/index/up.svg", 512)
-          .icon("index:medal", "images/index/medal.svg", 512);
+          .icon("index:medal", "images/svg/medal.svg", 512);
 
         $mdThemingProvider.theme('default')
           .primaryPalette('purple');

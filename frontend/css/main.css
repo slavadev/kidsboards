@@ -13,18 +13,19 @@
 body {
   height: auto;
   display: block;
-  width: 100%;
-  background-color: #aa66cc; }
+  width: 100%; }
 
 .app {
   display: block;
-  height: 100%; }
-  @media (min-width: 960px) {
-    .app {
-      position: absolute; } }
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  background-color: #aa66cc; }
 
-.full-height {
-  min-height: 100%; }
+.full {
+  min-height: 100%;
+  width: 100%;
+  position: absolute; }
 
 md-icon {
   width: 100%;
