@@ -17,8 +17,6 @@
         password: password
       }).then(function (response) {
         return login(email, password);
-      }, function () {
-        return null;
       });
     }
 
@@ -30,8 +28,6 @@
         var token = response.data.token;
         localStorageService.set("token", token);
         return token;
-      }, function () {
-        return null;
       });
     }
 
