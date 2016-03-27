@@ -22,6 +22,20 @@
           templateUrl: "/app/modules/index/templates/index.html"
         }
       }
+    }).state('app.family', {
+      url: "/family",
+      views: {
+        'content': {
+          controller: "familyController",
+          controllerAs: "familyCtrl",
+          templateUrl: "/app/modules/family/templates/family.html",
+          resolve: {
+            family: function (familyFactory) {
+              return familyFactory.view();
+            }
+          }
+        }
+      }
     });
 
   }
