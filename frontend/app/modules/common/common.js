@@ -5,5 +5,6 @@
   angular
     .module('thatsaboy.common',[
       'thatsaboy.common.resourceWrapFactory',
+      'thatsaboy.common.loginFactory',
     ])
 })();
