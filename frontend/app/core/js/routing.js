@@ -6,12 +6,9 @@
   routing.$inject = ['$stateProvider', '$urlRouterProvider'];
   function routing($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/app/index');
 
-    $stateProvider.state('index', {
-      url: "/",
-      templateUrl: "/app/modules/index/templates/index.html"
-    })
+    $stateProvider
       .state('app', {
       url: "/app",
       templateUrl: "/app/core/templates/app.html",
@@ -20,6 +17,8 @@
       url: "/index",
       views: {
         'content': {
+          controller: "indexController",
+          controllerAs: "indexCtrl",
           templateUrl: "/app/modules/index/templates/index.html"
         }
       }

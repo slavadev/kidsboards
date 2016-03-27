@@ -4,6 +4,7 @@
   angular
     .module('thatsaboy',[
       'thatsaboy.core',
-      'ngMaterial'
+      'ngMaterial',
+      'thatsaboy.index'
     ])
 })();
