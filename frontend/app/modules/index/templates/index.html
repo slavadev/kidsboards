@@ -6,10 +6,23 @@
 
                 <h2>Make your kid manageable</h2>
 
-                <div layout="row" layout-align="center center">
-                    <md-button class="md-raised md-accent">Log in</md-button>
-                    <md-button class="md-raised">Sign up</md-button>
+                <div layout="column" layout-align="center center">
+                    <md-input-container>
+                        <label>Email</label>
+                        <input ng-model="indexCtrl.email" type="email">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Password</label>
+                        <input ng-model="indexCtrl.password" type="password">
+                    </md-input-container>
                 </div>
+
+                <label>{{indexCtrl.errorMessage}}</label>
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-raised md-accent" ng-click="indexCtrl.login()">Log in</md-button>
+                    <md-button class="md-raised" ng-click="indexCtrl.register()">Sign up</md-button>
+                </div>
+
             </div>
         </div>
         <div flex layout="row" layout-align="center center">
