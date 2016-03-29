@@ -5,6 +5,7 @@
     .module('thatsaboy',[
       'thatsaboy.core',
       'ngMaterial',
-      'thatsaboy.index'
+      'thatsaboy.index',
+      'thatsaboy.family'
     ])
 })();
