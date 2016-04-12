@@ -115,12 +115,13 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
 
   test 'goal points update with wrong user' do
     # prepare
-    token = login
+    token1 = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/api/v1/family/adult', token: token, name: name, photo_url: photo_url
+    post '/api/v1/family/adult', token: token1, name: name, photo_url: photo_url
     json = JSON.parse(response.body)
     adult_id = json['id']
+    token = login
     post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
     json = JSON.parse(response.body)
     id = json['id']
@@ -131,7 +132,6 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     diff = Faker::Number.number(1).to_i
 
     # action 1
-    token = login
     patch "/api/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
 
     # check results
@@ -140,21 +140,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     assert_includes json['adult_id'], 'does not exist'
 
     # action 2
-    post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
-    json = JSON.parse(response.body)
-    id1 = json['id']
-    patch "/api/v1/goal/#{id1}/points", token: token, adult_id: adult_id, diff: diff
-
-    # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['adult_id'], 'does not exist'
-
-    # action 3
-    post '/api/v1/family/adult', token: token, name: name, photo_url: photo_url
-    json = JSON.parse(response.body)
-    adult_id = json['id']
-    patch "/api/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
+    patch "/api/v1/goal/#{id}/points", token: token1, adult_id: adult_id, diff: diff
 
     # check results
     assert_response 403

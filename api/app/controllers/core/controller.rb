@@ -14,7 +14,6 @@ class Core::Controller < ActionController::Base
   # @see Core::Middleware::Renderer
   # @see Core::Middleware::AuthorizationChecker
   # @see Core::Middleware::ValidationChecker
-  # @see Core::Middleware::OwnerChecker
   # @see Core::Middleware::Executor
   def middleware_list
     [
@@ -22,7 +21,6 @@ class Core::Controller < ActionController::Base
         Core::Middleware::Renderer.new(self),
         Core::Middleware::AuthorizationChecker.new,
         Core::Middleware::ValidationChecker.new,
-        Core::Middleware::OwnerChecker.new,
         Core::Middleware::Executor.new
     ]
   end

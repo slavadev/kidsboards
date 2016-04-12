@@ -8,15 +8,12 @@
 #  [DateTime]       updated_at
 #  [User::User]     user
 class Family::Child < ActiveRecord::Base
+  include Family::PersonMethods
+  include Core::Deletable
+  extend Core::Deletable::ClassMethods
+
   has_many   :goals, class_name: 'Goal::Goal'
   belongs_to :user, inverse_of: :children, class_name: 'User::User'
-
-  # Generates child
-  # @param [User::User] user
-  def initialize(user)
-    super()
-    self.user = user
-  end
 
   # Gets child goals
   # @param [Boolean] completed

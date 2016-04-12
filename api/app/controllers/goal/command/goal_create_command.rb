@@ -3,7 +3,8 @@ class Goal::Command::GoalCreateCommand < Core::Command
   attr_accessor :id, :name, :photo_url, :target
 
   validates :id, presence: true,
-                 'Core::Validator::Exists' => ->(x) { { id: x.id, deleted_at: nil } }
+                 'Core::Validator::Exists' => ->(x) { Family::Child.not_deleted.find_by(id: x.id) }
+  validates :id, 'Core::Validator::Owner' => ->(x) { Family::Child.find_by(id: x.id) }
   validates :name,      presence: true, length: { maximum: 50 }
   validates :photo_url, length: { maximum: 100 }
   validates :photo_url, 'Core::Validator::Uri' => true
@@ -18,16 +19,9 @@ class Goal::Command::GoalCreateCommand < Core::Command
   # @return [Hash]
   def execute
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
-    child = Family::Child.where(id: id).first
-    goal = Goal::Goal.new(user, child, target, name)
-    goal.photo_url = photo_url
+    child = Family::Child.find_by(id: id)
+    goal = Goal::Goal.new(user, child, target, name, photo_url)
     goal.save
     { id: goal.id }
-  end
-
-  # Gets the model to validate
-  # @return [Class]
-  def model_to_validate
-    Family::Child
   end
 end

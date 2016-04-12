@@ -3,7 +3,8 @@ class Goal::Command::GoalUpdateCommand < Core::Command
   attr_accessor :id, :name, :photo_url, :target
 
   validates :id,       presence: true,
-                       'Core::Validator::Exists' => ->(x) { { id: x.id, deleted_at: nil } }
+                       'Core::Validator::Exists' => ->(x) { Goal::Goal.not_deleted.find_by(id: x.id) }
+  validates :id, 'Core::Validator::Owner' => ->(x) { Goal::Goal.find_by(id: x.id) }
   validates :name,      length: { maximum: 50 }
   validates :photo_url, length: { maximum: 100 }
   validates :photo_url, 'Core::Validator::Uri' => true
@@ -16,17 +17,11 @@ class Goal::Command::GoalUpdateCommand < Core::Command
   # Runs command
   # @return [Hash]
   def execute
-    goal = Goal::Goal.where(id: id).first
+    goal = Goal::Goal.find_by(id: id)
     goal.name = name unless name.nil?
     goal.photo_url = photo_url unless photo_url.nil?
     goal.target = target unless target.nil?
     goal.save
     nil
-  end
-
-  # Gets the model to validate
-  # @return [Class]
-  def model_to_validate
-    Goal::Goal
   end
 end

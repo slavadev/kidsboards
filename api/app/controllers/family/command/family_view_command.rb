@@ -8,8 +8,8 @@ class Family::Command::FamilyViewCommand < Core::Command
     response = {}
     response['name'] = family.name
     response['photo_url'] = family.photo_url
-    response['adults'] = get_persons user.adults.where(deleted_at: nil)
-    response['children'] = get_persons user.children.where(deleted_at: nil)
+    response['adults'] = get_persons user.adults.not_deleted
+    response['children'] = get_persons user.children.not_deleted
     response
   end
 
@@ -20,17 +20,8 @@ class Family::Command::FamilyViewCommand < Core::Command
   def get_persons(persons)
     response = []
     persons.each do |person|
-      response.push(get_person(person))
+      response.push(person.to_hash)
     end
     response
-  end
-
-  # Gets person's attributes
-  def get_person(person)
-    {
-      id: person.id,
-      name: person.name,
-      photo_url: person.photo_url
-    }
   end
 end

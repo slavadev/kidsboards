@@ -2,19 +2,13 @@
 class Family::Command::PersonDeleteCommand < Core::Command
   attr_accessor :id, :name, :photo_url, :model
 
-  validates :id, presence: true, 'Core::Validator::Exists' => ->(x) { { id: x.id, deleted_at: nil } }
+  validates :id, presence: true, 'Core::Validator::Exists' => ->(x) { x.model.not_deleted.find_by(id: x.id) }
+  validates :id, 'Core::Validator::Owner' => ->(x) { x.model.find_by(id: x.id) }
 
   # Runs command
   def execute
-    person = model.where(id: id).first
-    person.deleted_at = DateTime.now.utc
-    person.save
+    person = model.find_by(id: id)
+    person.delete
     nil
-  end
-
-  # Gets the model to validate
-  # @return [Class]
-  def model_to_validate
-    model
   end
 end

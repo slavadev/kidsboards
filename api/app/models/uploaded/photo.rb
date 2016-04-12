@@ -12,6 +12,9 @@ require "#{Rails.root}/app/controllers/core/interpolations"
 #  [User::User]     user
 #  [Object]         file
 class Uploaded::Photo < ActiveRecord::Base
+  include Core::Deletable
+  extend Core::Deletable::ClassMethods
+
   belongs_to :user, inverse_of: :photos, class_name: 'User::User'
 
   has_attached_file :file,
@@ -30,5 +33,12 @@ class Uploaded::Photo < ActiveRecord::Base
     super()
     self.user = user
     self.file = file
+  end
+
+  # Finds actual photos owned by user
+  # @param [User::User] user
+  # @return [Uploaded::Photo]
+  def self.find_actual_by_user(user)
+    where(user: user, deleted_at: nil)
   end
 end

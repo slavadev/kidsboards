@@ -10,9 +10,7 @@ class Family::Command::PersonCreateCommand < Core::Command
   # @return [Hash]
   def execute
     user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
-    person = model.new(user)
-    person.name = name
-    person.photo_url = photo_url
+    person = model.new(user, name, photo_url)
     person.save
     { id: person.id }
   end

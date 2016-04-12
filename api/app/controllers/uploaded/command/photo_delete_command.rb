@@ -3,19 +3,13 @@ class Uploaded::Command::PhotoDeleteCommand < Core::Command
   attr_accessor :id
 
   validates :id, presence: true,
-                 'Core::Validator::Exists' => ->(x) { { id: x.id, deleted_at: nil } }
+                 'Core::Validator::Exists' => ->(x) { Uploaded::Photo.not_deleted.find_by(id: x.id) }
+  validates :id, 'Core::Validator::Owner' => ->(x) { Uploaded::Photo.find_by(id: x.id) }
 
   # Runs command
   def execute
-    photo = Uploaded::Photo.where(id: id, deleted_at: nil).first
-    photo.deleted_at = DateTime.now.utc
-    photo.save
+    photo = Uploaded::Photo.find_by(id: id)
+    photo.delete
     nil
-  end
-
-  # Get the model to validate
-  # @return [Class]
-  def model_to_validate
-    Uploaded::Photo
   end
 end

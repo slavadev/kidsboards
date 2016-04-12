@@ -4,7 +4,7 @@ class User::Command::RegisterCommand < Core::Command
 
   validates :email, :password, presence: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validates :email, 'Core::Validator::Unique' => ->(x) { { email: x.email } }
+  validates :email, 'Core::Validator::Unique' => ->(x) { User::User.find_by(email: x.email)  }
   validates :password, length: { minimum: 6 }
 
   # Runs command
@@ -21,11 +21,5 @@ class User::Command::RegisterCommand < Core::Command
     family.save
     Mailer.confirmation_email(user.email, token.code).deliver_later
     { id: user.id }
-  end
-
-  # Gets the model to validate
-  # @return [Class]
-  def model_to_validate
-    User::User
   end
 end

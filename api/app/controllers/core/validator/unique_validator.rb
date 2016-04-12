@@ -5,9 +5,8 @@ class Core::Validator::UniqueValidator < ActiveModel::EachValidator
   # @param [String] attribute
   # @param [Object] _value
   def validate_each(record, attribute, _value)
-    model = options[:model] ? options[:model] : record.model_to_validate
-    conditions = options[:with].call(record)
-    if model.where(conditions).first
+    items = options[:with].call(record)
+    if items
       record.errors.add(attribute, 'is not unique')
     end
   rescue
