@@ -1,6 +1,5 @@
 # Checks that the model owner is current user
 class Core::Validator::OwnerValidator < ActiveModel::EachValidator
-
   # Sets all variables
   # @param [Object] params
   # @see User::AuthorizationService
@@ -21,8 +20,6 @@ class Core::Validator::OwnerValidator < ActiveModel::EachValidator
     user = token.user
     item = options[:with].call(record)
     return unless item
-    unless item.user == user
-      fail Core::Errors::ForbiddenError
-    end
+    raise Core::Errors::ForbiddenError unless item.user == user
   end
 end

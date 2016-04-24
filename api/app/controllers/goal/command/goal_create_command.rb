@@ -3,7 +3,6 @@ class Goal::Command::GoalCreateCommand < Core::Command
   attr_accessor :id, :name, :photo_url, :target
   attr_accessor :authorization_service, :person_service, :goal_service
 
-
   validates :id, presence: true, 'Core::Validator::Exists' => ->(x) { x.person_service.find_not_deleted(x.id) }
   validates :id, 'Core::Validator::Owner' => ->(x) { x.person_service.find(x.id) }
   validates :name,      presence: true, length: { maximum: 50 }

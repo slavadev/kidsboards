@@ -6,9 +6,7 @@ class Core::Validator::ExistsValidator < ActiveModel::EachValidator
   # @param [Object] _value
   def validate_each(record, attribute, _value)
     items = options[:with].call(record)
-    unless items
-      record.errors.add(attribute, 'does not exist')
-    end
+    record.errors.add(attribute, 'does not exist') unless items
   rescue
     record.errors.add(attribute, 'is wrong')
   end

@@ -3,7 +3,6 @@ class User::Command::PinSetCommand < Core::Command
   attr_accessor :pin
   attr_accessor :authorization_service, :user_service
 
-
   validates :pin, presence: true
   validates :pin, length: { is: 4 }
   validates :pin, format: { with: /\d{4}/,

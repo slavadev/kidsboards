@@ -56,7 +56,7 @@ class Goal::Service::GoalService < Core::Service
   # @param [Family::Adult] adult
   # @param [int] diff
   # @return [int]
-  def change_points(goal, adult,  diff)
+  def change_points(goal, adult, diff)
     goal.lock!
     real_diff = goal.current
     goal.current += diff.to_i
@@ -72,11 +72,11 @@ class Goal::Service::GoalService < Core::Service
   # @return [Hash]
   def goal_to_hash(goal)
     {
-        id: goal.id,
-        name: goal.name,
-        photo_url: goal.photo_url,
-        target: goal.target,
-        current: goal.current
+      id: goal.id,
+      name: goal.name,
+      photo_url: goal.photo_url,
+      target: goal.target,
+      current: goal.current
     }
   end
 
@@ -85,13 +85,13 @@ class Goal::Service::GoalService < Core::Service
   # @return [Hash]
   def goal_full_info(goal)
     {
-        id: goal.id,
-        name: goal.name,
-        photo_url: goal.photo_url,
-        target: goal.target,
-        current: goal.current,
-        created_at: goal.created_at,
-        actions: get_actions(goal)
+      id: goal.id,
+      name: goal.name,
+      photo_url: goal.photo_url,
+      target: goal.target,
+      current: goal.current,
+      created_at: goal.created_at,
+      actions: get_actions(goal)
     }
   end
 
@@ -103,13 +103,13 @@ class Goal::Service::GoalService < Core::Service
   def get_actions(goal)
     goal.actions.map do |action|
       {
-          adult: {
-              id: action.adult.id,
-              name: action.adult.name,
-              photo_url: action.adult.photo_url
-          },
-          diff: action.diff,
-          created_at: action.created_at
+        adult: {
+          id: action.adult.id,
+          name: action.adult.name,
+          photo_url: action.adult.photo_url
+        },
+        diff: action.diff,
+        created_at: action.created_at
       }
     end
   end

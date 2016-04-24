@@ -14,8 +14,8 @@ class User::Service::AuthorizationService
     rule = get_rule_by_command(command)
     return if rule.blank?
     code = command.token
-    fail Core::Errors::UnauthorizedError if code.nil?
-    type  = get_token_type_by_rule(rule)
+    raise Core::Errors::UnauthorizedError if code.nil?
+    type = get_token_type_by_rule(rule)
     get_token_by_code_and_type(code, type)
   end
 
@@ -31,12 +31,12 @@ class User::Service::AuthorizationService
   # @return [Integer]
   def get_token_type_by_rule(rule)
     case rule[0]['token']
-      when :confirmation then
-        User::Token::TYPE_CONFIRMATION
-      when :recovery then
-        User::Token::TYPE_RECOVERY
-      else
-        User::Token::TYPE_LOGIN
+    when :confirmation then
+      User::Token::TYPE_CONFIRMATION
+    when :recovery then
+      User::Token::TYPE_RECOVERY
+    else
+      User::Token::TYPE_LOGIN
     end
   end
 
@@ -47,7 +47,7 @@ class User::Service::AuthorizationService
   # @raise Core::Errors::UnauthorizedError
   def get_token_by_code_and_type(code, type)
     token = @token_model.where(code: code, token_type: type).first
-    fail Core::Errors::UnauthorizedError if token.nil?
+    raise Core::Errors::UnauthorizedError if token.nil?
     token
   end
 

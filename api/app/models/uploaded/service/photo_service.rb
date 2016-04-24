@@ -22,8 +22,8 @@ class Uploaded::Service::PhotoService < Core::Service
   # @return [Hash]
   def photo_to_hash(photo)
     {
-        id: photo.id,
-        url: ENV['UPLOAD_HOST'] + photo.file.url
+      id: photo.id,
+      url: ENV['UPLOAD_HOST'] + photo.file.url
     }
   end
 end

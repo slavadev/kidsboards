@@ -17,6 +17,6 @@ class Core::Middleware::Renderer < Core::Middleware
     else
       controller.render json: result, status: 200
     end
-    return command, result
+    [command, result]
   end
 end

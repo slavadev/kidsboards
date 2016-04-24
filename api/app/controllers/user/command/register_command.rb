@@ -5,7 +5,7 @@ class User::Command::RegisterCommand < Core::Command
 
   validates :email, :password, presence: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validates :email, 'Core::Validator::Unique' => ->(x) { x.user_service.find_by_email(x.email)  }
+  validates :email, 'Core::Validator::Unique' => ->(x) { x.user_service.find_by_email(x.email) }
   validates :password, length: { minimum: 6 }
 
   # Sets all services

@@ -4,7 +4,7 @@ class Core::Middleware::ValidationChecker < Core::Middleware
   # @return [[Core::Command], [Object]]
   # @raise Core::Errors::ValidationError
   def call
-    fail(Core::Errors::ValidationError, command) if command.invalid?
+    raise(Core::Errors::ValidationError, command) if command.invalid?
     self.next
   end
 end

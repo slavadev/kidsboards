@@ -25,9 +25,9 @@ class Family::Service::PersonService < Core::Service
   # @return [Hash]
   def person_to_hash(person)
     {
-        id: person.id,
-        name: person.name,
-        photo_url: person.photo_url
+      id: person.id,
+      name: person.name,
+      photo_url: person.photo_url
     }
   end
 

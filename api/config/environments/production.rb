@@ -48,7 +48,7 @@ Rails.application.configure do
   config.lograge.logger = ActiveSupport::Logger.new('/home/app/logs/rails.log')
   # add time to lograge
   config.lograge.custom_options = lambda do |event|
-    {:time => event.time}
+    { time: event.time }
   end
 
   # Use a different cache store in production.

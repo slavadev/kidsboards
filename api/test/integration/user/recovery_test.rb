@@ -83,7 +83,7 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
   end
 
   test 'recovery fail wrong token' do
-    post '/api/v1/user/recovery', {token: login}
+    post '/api/v1/user/recovery', token: login
 
     # check results
     assert_response 401

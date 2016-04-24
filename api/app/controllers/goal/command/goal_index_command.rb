@@ -20,7 +20,6 @@ class Goal::Command::GoalIndexCommand < Core::Command
     @person_service = Family::Service::PersonService.new(@child_model)
   end
 
-
   # Runs command
   # @return [Hash]
   def execute
@@ -39,7 +38,7 @@ class Goal::Command::GoalIndexCommand < Core::Command
   def prepare_goals(child_goals)
     return [] if child_goals.nil?
     child_goals.inject([]) do |goals, goal|
-      goals.push (@goal_service.goal_to_hash(goal))
+      goals.push @goal_service.goal_to_hash(goal)
     end
   end
 end

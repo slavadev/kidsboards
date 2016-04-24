@@ -4,7 +4,7 @@ class Core::Validator::UriValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     return if value.nil?
     uri = URI.parse(value)
-    fail unless uri.scheme && uri.host && uri
+    raise unless uri.scheme && uri.host && uri
     unless %w(http https).include?(uri.scheme)
       record.errors.add(attribute, 'has wrong protocol (use http or https)')
     end

@@ -45,7 +45,6 @@ class User::User < ActiveRecord::Base
     Digest::SHA2.hexdigest(salt + password)
   end
 
-
   # Generates a salt
   def generate_salt
     self.salt = SecureRandom.base64(8)

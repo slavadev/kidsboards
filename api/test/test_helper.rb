@@ -3,8 +3,8 @@ ENV['CODECLIMATE_REPO_TOKEN'] = '497eb1d6581d560277807f87b4a41f795558faa623dd7cf
 
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.configure do |config|
-  config.path_prefix = "api"
-  config.git_dir = ".."
+  config.path_prefix = 'api'
+  config.git_dir = '..'
 end
 CodeClimate::TestReporter.start if ARGV.include? 'coverage'
 

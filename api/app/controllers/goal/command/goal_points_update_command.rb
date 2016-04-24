@@ -4,7 +4,7 @@ class Goal::Command::GoalPointsUpdateCommand < Core::Command
   attr_accessor :authorization_service, :person_service, :goal_service
 
   validates :id,       presence: true,
-                       'Core::Validator::Exists' => ->(x) { x.goal_service.find_not_deleted(x.id)}
+                       'Core::Validator::Exists' => ->(x) { x.goal_service.find_not_deleted(x.id) }
   validates :id, 'Core::Validator::Owner' => ->(x) { x.goal_service.find(x.id) }
   validates :adult_id, presence: true,
                        'Core::Validator::Exists' => -> (x) { x.person_service.find_actual_by_id_and_user(x.adult_id, x.current_user) }

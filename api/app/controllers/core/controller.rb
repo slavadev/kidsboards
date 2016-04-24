@@ -17,11 +17,11 @@ class Core::Controller < ActionController::Base
   # @see Core::Middleware::Executor
   def middleware_list
     [
-        Core::Middleware::ErrorRenderer.new(self),
-        Core::Middleware::Renderer.new(self),
-        Core::Middleware::AuthorizationChecker.new,
-        Core::Middleware::ValidationChecker.new,
-        Core::Middleware::Executor.new
+      Core::Middleware::ErrorRenderer.new(self),
+      Core::Middleware::Renderer.new(self),
+      Core::Middleware::AuthorizationChecker.new,
+      Core::Middleware::ValidationChecker.new,
+      Core::Middleware::Executor.new
     ]
   end
 end

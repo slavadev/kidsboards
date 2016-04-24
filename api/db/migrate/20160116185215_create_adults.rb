@@ -6,7 +6,7 @@ class CreateAdults < ActiveRecord::Migration
       t.string     :photo_url
       t.integer    :user_id, index: true
       t.datetime   :deleted_at
-      t.timestamps null:false
+      t.timestamps null: false
     end
     add_foreign_key :adults, :users
   end

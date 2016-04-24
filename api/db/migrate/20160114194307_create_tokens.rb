@@ -6,7 +6,7 @@ class CreateTokens < ActiveRecord::Migration
       t.boolean    :is_expired
       t.integer    :token_type
       t.integer    :user_id, index: true
-      t.timestamps null:false
+      t.timestamps null: false
     end
     add_foreign_key :tokens, :users
   end
