@@ -10,17 +10,4 @@ class Goal::Action < ActiveRecord::Base
   belongs_to :user,  inverse_of: :actions, class_name: 'User::User'
   belongs_to :goal,  inverse_of: :actions, class_name: 'Goal::Goal'
   belongs_to :adult, inverse_of: :actions, class_name: 'Family::Adult'
-
-  # Generates an action
-  # @param [User::User]    user
-  # @param [Goal::Gaol]    goal
-  # @param [Family::Adult] adult
-  # @param [Integer]       diff
-  def initialize(user, goal, adult, diff)
-    super()
-    self.user = user
-    self.goal = goal
-    self.adult = adult
-    self.diff = diff
-  end
 end

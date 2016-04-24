@@ -12,7 +12,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
 
     # check results
     assert_response 204
-    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
+    user = User::Service::AuthorizationService.new.get_user_by_token_code(token)
     family = user.family
     assert_equal name, family.name
     assert_equal photo_url, family.photo_url
@@ -28,7 +28,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
 
     # check results
     assert_response 204
-    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
+    user = User::Service::AuthorizationService.new.get_user_by_token_code(token)
     family = user.family
     assert_equal '', family.name
     assert_equal photo_url, family.photo_url
@@ -44,7 +44,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
 
     # check results
     assert_response 204
-    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
+    user = User::Service::AuthorizationService.new.get_user_by_token_code(token)
     family = user.family
     assert_equal name, family.name
     assert_equal nil, family.photo_url

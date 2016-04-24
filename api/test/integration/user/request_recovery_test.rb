@@ -13,7 +13,7 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
     # check results
     json = JSON.parse(response.body)
     id = json['id']
-    user = User::User.find(id)
+    user = User::User.find_by_id(id)
     params = { email: email }
 
     # action

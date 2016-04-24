@@ -1,16 +1,14 @@
+# Delete methods
 module Core::Deletable
-  module ClassMethods
-    def deleted
-      self.not.where(deleted_at: nil)
-    end
-
-    def not_deleted
-      where(deleted_at: nil)
-    end
+  # Returns deleted objects
+  # @return [Object]
+  def deleted
+    self.not.where(deleted_at: nil)
   end
 
-  def delete
-    self.deleted_at = DateTime.now.utc
-    self.save
+  # Returns deleted objects
+  # @return [Object]
+  def not_deleted
+    where(deleted_at: nil)
   end
 end

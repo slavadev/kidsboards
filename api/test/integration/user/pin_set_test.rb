@@ -11,7 +11,7 @@ class User::PinSetTest < ActionDispatch::IntegrationTest
 
     # check results
     assert_response 204
-    user = User::User.get_user_by_token_code(token, User::Token::TYPE_LOGIN)
+    user = User::Service::AuthorizationService.new.get_user_by_token_code(token)
     assert_equal user.pin, pin
   end
 

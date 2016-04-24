@@ -14,7 +14,7 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     assert_response :success
     json = JSON.parse(response.body)
     id = json['id']
-    user = User::User.find(id)
+    user = User::User.find_by_id(id)
     assert_not_nil user, 'The user does not exist'
     assert_equal user.email, email, 'Wrong email'
 
