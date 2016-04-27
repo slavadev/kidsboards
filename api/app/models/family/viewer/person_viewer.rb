@@ -1,6 +1,5 @@
 # Contains methods to show adults and children
 class Family::Viewer::PersonViewer
-
   # Sets all variables
   # @see Goal::Viewer::GoalViewer
   def initialize

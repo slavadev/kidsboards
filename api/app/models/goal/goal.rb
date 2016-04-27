@@ -22,9 +22,9 @@ class Goal::Goal < ActiveRecord::Base
   # @param [int] diff
   # @return [int]
   def change_points(diff)
-    real_diff = self.current
+    real_diff = current
     self.current += diff.to_i
-    self.current = self.target if self.current > self.target
+    self.current = target if self.current > target
     self.current = 0 if self.current < 0
     real_diff = self.current - real_diff
     real_diff
