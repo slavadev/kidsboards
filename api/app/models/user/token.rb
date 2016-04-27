@@ -16,4 +16,10 @@ class User::Token < ActiveRecord::Base
   TYPE_CONFIRMATION = 1
   # For recovery
   TYPE_RECOVERY = 2
+
+  # Sets expired flag
+  # @return [User::Token]
+  def expire
+    self.is_expired = true
+  end
 end

@@ -4,4 +4,8 @@ module User
   module Command end
   # Service classes
   module Service end
+  # Repository classes
+  module Repository end
+  # Factory classes
+  module Factory end
 end

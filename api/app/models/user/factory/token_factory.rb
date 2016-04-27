@@ -1,5 +1,5 @@
-# Contains basic methods to work with tokens
-class User::Service::TokenService < Core::Service
+# Contains methods to create tokens
+class User::Factory::TokenFactory
   # Sets all variables
   # @see User::Token
   def initialize
@@ -16,14 +16,6 @@ class User::Service::TokenService < Core::Service
     model.created_at = DateTime.now.utc
     model.is_expired = false
     model.token_type = type
-    model
-  end
-
-  # Sets expired flag
-  # @param [User::Token] model
-  # @return [User::Token]
-  def expire(model)
-    model.is_expired = true
     model
   end
 end

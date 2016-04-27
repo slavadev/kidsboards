@@ -1,5 +1,13 @@
-# Contains create methods to work with goals
-module Goal::Service::GoalServiceCreateMethods
+# Contains methods to create goals
+class Goal::Factory::GoalFactory
+  # Sets all variables
+  # @see Goal::Goal
+  # @see Goal::Action
+  def initialize
+    @model = Goal::Goal
+    @action_model = Goal::Action
+  end
+
   # Creates a goal
   # @param [User::User]    user
   # @param [Family::Child] child

@@ -1,5 +1,5 @@
-# Contains basic methods to work with photos
-class Uploaded::Service::PhotoService < Core::Service
+# Contains methods to create photos
+class Uploaded::Factory::PhotoFactory
   # Sets all variables
   # @see Uploaded::Photo
   def initialize
@@ -15,15 +15,5 @@ class Uploaded::Service::PhotoService < Core::Service
     model.user = user
     model.file = file
     model
-  end
-
-  # Converts attributes to hash
-  # @param [Uploaded::Photo] photo
-  # @return [Hash]
-  def photo_to_hash(photo)
-    {
-      id: photo.id,
-      url: ENV['UPLOAD_HOST'] + photo.file.url
-    }
   end
 end

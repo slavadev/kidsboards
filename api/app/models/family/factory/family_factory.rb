@@ -1,5 +1,5 @@
-# Contains methods to work with families
-class Family::Service::FamilyService < Core::Service
+# Contains methods to create families
+class Family::Factory::FamilyFactory
   # Sets all variables
   # @see Family::Family
   def initialize

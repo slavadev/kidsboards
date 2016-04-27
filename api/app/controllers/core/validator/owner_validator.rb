@@ -2,7 +2,7 @@
 class Core::Validator::OwnerValidator < ActiveModel::EachValidator
   # Sets all variables
   # @param [Object] params
-  # @see User::AuthorizationService
+  # @see User::Service::AuthorizationService
   def initialize(params)
     super(params)
     @authorization_service = User::Service::AuthorizationService.new

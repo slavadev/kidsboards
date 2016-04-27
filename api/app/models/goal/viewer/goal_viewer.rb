@@ -1,16 +1,5 @@
-# Contains update methods to work with goals
-module Goal::Service::GoalServiceReadMethods
-  # Gets child goals
-  # @param [Family::Child] child
-  # @param [Boolean] completed
-  # @return [Goal::Goal][] goals
-  def get_goals_by_child(child, completed)
-    goals = child.goals.not_deleted
-    return goals if completed.nil?
-    return goals.where('current >= target') if completed
-    goals.where('current < target')
-  end
-
+# Contains methods to show goals
+class Goal::Viewer::GoalViewer
   # Gets hash from goal
   # @param [Goal::Gaol] goal
   # @return [Hash]
@@ -27,7 +16,7 @@ module Goal::Service::GoalServiceReadMethods
   # Gets hash with full info from goal
   # @param [Goal::Gaol] goal
   # @return [Hash]
-  def goal_full_info(goal)
+  def goal_to_hash_with_full_info(goal)
     {
         id: goal.id,
         name: goal.name,

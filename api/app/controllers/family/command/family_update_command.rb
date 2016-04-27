@@ -1,7 +1,6 @@
 # Update family command
 class Family::Command::FamilyUpdateCommand < Core::Command
   attr_accessor :name, :photo_url
-  attr_accessor :authorization_service
 
   validates :name,      length: { maximum: 50 }
   validates :photo_url, length: { maximum: 100 }
@@ -10,9 +9,11 @@ class Family::Command::FamilyUpdateCommand < Core::Command
   # Sets all variables
   # @param [Object] params
   # @see User::Service::AuthorizationService
+  # @see Family::Repository::FamilyRepository
   def initialize(params)
     super(params)
     @authorization_service = User::Service::AuthorizationService.new
+    @family_repository = Family::Repository::FamilyRepository.new
   end
 
   # Runs command
@@ -21,7 +22,7 @@ class Family::Command::FamilyUpdateCommand < Core::Command
     family = user.family
     family.name = name unless name.nil?
     family.photo_url = photo_url unless photo_url.nil?
-    family.save
+    @family_repository.save!(family)
     nil
   end
 end

@@ -19,6 +19,6 @@ class Core::Middleware::ErrorRenderer < Core::Middleware
   rescue Core::Errors::ValidationError => e
     controller.render json: e.command.errors, status: 422
   rescue StandardError => e
-    controller.render json: { error: e.message }, status: 500
+    controller.render json: { error: e.message, backtrace: e.backtrace }, status: 500
   end
 end

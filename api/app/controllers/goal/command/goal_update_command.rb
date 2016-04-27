@@ -1,11 +1,11 @@
 # Update a goal command
 class Goal::Command::GoalUpdateCommand < Core::Command
   attr_accessor :id, :name, :photo_url, :target
-  attr_accessor :goal_service
+  attr_accessor :goal_repository
 
   validates :id,       presence: true,
-                       'Core::Validator::Exists' => ->(x) { x.goal_service.find_not_deleted(x.id) }
-  validates :id, 'Core::Validator::Owner' => ->(x) { x.goal_service.find(x.id) }
+                       'Core::Validator::Exists' => ->(x) { x.goal_repository.find_not_deleted(x.id) }
+  validates :id, 'Core::Validator::Owner' => ->(x) { x.goal_repository.find(x.id) }
   validates :name,      length: { maximum: 50 }
   validates :photo_url, length: { maximum: 100 }
   validates :photo_url, 'Core::Validator::Uri' => true
@@ -17,20 +17,20 @@ class Goal::Command::GoalUpdateCommand < Core::Command
 
   # Sets all variables
   # @param [Object] params
-  # @see Goal::Service::GoalService
+  # @see Goal::Repository::GoalRepository
   def initialize(params)
     super(params)
-    @goal_service = Goal::Service::GoalService.new
+    @goal_repository = Goal::Repository::GoalRepository.new
   end
 
   # Runs command
   # @return [Hash]
   def execute
-    goal = @goal_service.find(id)
+    goal = @goal_repository.find(id)
     goal.name = name unless name.nil?
     goal.photo_url = photo_url unless photo_url.nil?
     goal.target = target unless target.nil?
-    @goal_service.save!(goal)
+    @goal_repository.save!(goal)
     nil
   end
 end

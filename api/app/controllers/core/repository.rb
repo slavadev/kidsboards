@@ -1,5 +1,5 @@
-# Contains common methods for services
-class Core::Service
+# Contains common methods for repositories
+class Core::Repository
   # Saves an object
   # @param [ActiveRecord::Base] model
   # @return [ActiveRecord::Base]

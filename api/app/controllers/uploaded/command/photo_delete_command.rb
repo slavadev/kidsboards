@@ -1,24 +1,24 @@
 # Photo delete command
 class Uploaded::Command::PhotoDeleteCommand < Core::Command
   attr_accessor :id
-  attr_accessor :photo_service
+  attr_accessor :photo_repository
 
   validates :id, presence: true,
-                 'Core::Validator::Exists' => ->(x) { x.photo_service.find_not_deleted(x.id) }
-  validates :id, 'Core::Validator::Owner' => ->(x) { x.photo_service.find(x.id) }
+                 'Core::Validator::Exists' => ->(x) { x.photo_repository.find_not_deleted(x.id) }
+  validates :id, 'Core::Validator::Owner' => ->(x) { x.photo_repository.find(x.id) }
 
   # Sets all services
   # @param [Object] params
-  # @see Uploaded::Service::PhotoService
+  # @see Uploaded::Repository::PhotoRepository
   def initialize(params)
     super(params)
-    @photo_service = Uploaded::Service::PhotoService.new
+    @photo_repository = Uploaded::Repository::PhotoRepository.new
   end
 
   # Runs command
   def execute
-    photo = @photo_service.find(id)
-    @photo_service.delete(photo)
+    photo = @photo_repository.find(id)
+    @photo_repository.delete(photo)
     nil
   end
 end

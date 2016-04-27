@@ -1,7 +1,6 @@
 # Check pin command
 class User::Command::PinCheckCommand < Core::Command
   attr_accessor :pin
-  attr_accessor :authorization_service
 
   validates :pin, presence: true
   validates :pin, length: { is: 4 }

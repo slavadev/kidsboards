@@ -1,7 +1,7 @@
 # Class needed to check that user is authorized
 class Core::Middleware::AuthorizationChecker < Core::Middleware
   # Sets all variables
-  # @see User::AuthorizationService
+  # @see User::Service::AuthorizationService
   def initialize
     @authorization_service = User::Service::AuthorizationService.new
   end

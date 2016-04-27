@@ -36,6 +36,12 @@ class User::User < ActiveRecord::Base
     encrypted_password == encrypt_password(password)
   end
 
+  # Confirms email
+  # @return [User::User]
+  def confirm
+    self.confirmed_at = DateTime.now.utc
+  end
+
   private
 
   # Encrypts the password
