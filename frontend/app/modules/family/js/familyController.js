@@ -2,17 +2,17 @@
   'use strict';
 
   angular
-    .module('thatsaboy.family.familyController',
-      [
-        'thatsaboy.family.familyFactory'
-      ]
-    ).controller('familyController', familyController);
+    .module('thatsaboy.family')
+    .controller('familyController', familyController);
 
-  familyController.$inject = ['familyFactory', 'family'];
+  familyController.$inject = ['familyRepository', 'family'];
 
-  function familyController(familyFactory, family) {
+  function familyController(familyRepository, family) {
     var vm = this;
     vm.family = family;
+    vm.update = function(){
+      return familyRepository.update(vm.family.name, vm.family.photo_url);
+    };
     return vm;
   }
 

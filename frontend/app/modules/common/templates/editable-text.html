@@ -1,0 +1,10 @@
+<div>
+    <div ng-show="mode == 'view'">
+        {{editableText}} <button ng-click="turnOnEditMode()" show-in-adult-mode>Edit</button>
+    </div>
+    <div ng-show="mode == 'edit'">
+        <input type="text" ng-model="editableText"></input>
+        <button ng-click="saveText()">Save</button>
+        <button ng-click="cancel()">Cancel</button>
+    </div>
+</div>

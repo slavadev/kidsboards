@@ -1,44 +1,63 @@
 (function () {
   'use strict';
+
+  /**
+   * Application routing
+   */
   angular.module('thatsaboy')
     .config(routing);
 
   routing.$inject = ['$stateProvider', '$urlRouterProvider'];
   function routing($stateProvider, $urlRouterProvider) {
 
+    /**
+     * Default path
+     */
     $urlRouterProvider.otherwise('/app/index');
 
+    /**
+     * Abstract state
+     */
     $stateProvider
       .state('app', {
-      url: "/app",
-      templateUrl: "/app/core/templates/app.html",
-      abstract: true
-    }).state('app.index', {
-      url: "/index",
-      views: {
-        'content': {
-          controller: "indexController",
-          controllerAs: "indexCtrl",
-          templateUrl: "/app/modules/index/templates/index.html"
+        url        : "/app",
+        templateUrl: "/app/core/templates/app.html",
+        abstract   : true
+      });
+    
+    /**
+     * Main page
+     */
+    $stateProvider
+      .state('app.index', {
+        url  : "/index",
+        views: {
+          'content': {
+            controller  : "indexController",
+            controllerAs: "indexCtrl",
+            templateUrl : "/app/modules/index/templates/index.html"
+          }
         }
-      }
-    }).state('app.family', {
-      url: "/family",
-      views: {
-        'content': {
-          controller: "familyController",
-          controllerAs: "familyCtrl",
-          templateUrl: "/app/modules/family/templates/family.html",
-          resolve: {
-            family: function (familyFactory) {
-              return familyFactory.view();
+      });
+    
+    /**
+     * Family page
+     */
+    $stateProvider
+      .state('app.family', {
+        url  : "/family",
+        views: {
+          'content': {
+            controller  : "familyController",
+            controllerAs: "familyCtrl",
+            templateUrl : "/app/modules/family/templates/family.html",
+            resolve     : {
+              family: function (familyRepository) {
+                return familyRepository.get();
+              }
             }
           }
         }
-      }
-    });
-
+      });
   }
-
-
 })();

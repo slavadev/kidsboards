@@ -3,10 +3,10 @@
 <head>
     <base href="/">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <!--<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">-->
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/index.css">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <!--<link rel="stylesheet" href="css/index.css">-->
 </head>
 <body>
 <div class="app">
@@ -25,6 +25,12 @@
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+
+<!-- js -->
+<script src="app/js/svg-inject.js"></script>
+<script src="app/js/classList.min.js"></script>
 
 <!-- core -->
 <script src="app/core/js/module.js"></script>
@@ -33,20 +39,26 @@
 <script src="app/core/js/routing.js"></script>
 
 <!-- common -->
-<script src="app/modules/common/js/directives/svgInlineDirective.js"></script>
 <script src="app/modules/common/common.js"></script>
-<script src="app/modules/common/js/factories/loginFactory.js"></script>
-<script src="app/modules/common/js/factories/resourceWrapFactory.js"></script>
+<script src="app/modules/common/js/directives/showInAdultModeDirective.js"></script>
+<script src="app/modules/common/js/directives/hideInAdultModeDirective.js"></script>
+<script src="app/modules/common/js/directives/adultModeDirective.js"></script>
+<script src="app/modules/common/js/directives/editableTextDirective.js"></script>
+<script src="app/modules/common/js/directives/editableImageDirective.js"></script>
+<script src="app/modules/common/js/directives/logoutDirective.js"></script>
+<script src="app/modules/common/js/directives/svgInlineDirective.js"></script>
+<script src="app/modules/common/js/services/photoUploadService.js"></script>
+<script src="app/modules/common/js/services/loginService.js"></script>
+<script src="app/modules/common/js/services/resourceWrapService.js"></script>
 
-<!-- js -->
-<script src="app/js/svg-inject.js"></script>
 <!-- family -->
-<script src="app/modules/family/js/factories/familyFactory.js"></script>
-<script src="app/modules/family/js/familyController.js"></script>
 <script src="app/modules/family/family.js"></script>
+<script src="app/modules/family/js/repositories/familyRepository.js"></script>
+<script src="app/modules/family/js/familyController.js"></script>
+
 <!-- common -->
-<script src="app/modules/index/js/indexController.js"></script>
 <script src="app/modules/index/index.js"></script>
+<script src="app/modules/index/js/indexController.js"></script>
 
 </body>
 </html>

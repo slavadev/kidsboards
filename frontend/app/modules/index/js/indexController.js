@@ -2,30 +2,27 @@
     'use strict';
 
     angular
-        .module('thatsaboy.index.indexController',
-            [
-                'thatsaboy.common.loginFactory'
-            ]
-        ).controller('indexController', indexController);
+        .module('thatsaboy.index')
+      .controller('indexController', indexController);
 
-    indexController.$inject = ['loginFactory'];
+    indexController.$inject = ['loginService', '$state'];
     
-    function indexController(loginFactory) {
+    function indexController(loginService, $state) {
         var vm = this;
         vm.login = function () {
-            loginFactory.login(vm.email, vm.password).then(function (token) {
-                console.log(token)
+            loginService.login(vm.email, vm.password).then(function (token) {
+               $state.go('app.family');
             }, function (response) {
                 vm.errorMessage = response.data;
-                console.log(response)
+                console.log(response);
             })
         };
         vm.register = function () {
-            loginFactory.register(vm.email, vm.password).then(function (token) {
-                console.log(token)
+            loginService.register(vm.email, vm.password).then(function (token) {
+                $state.go('app.family');
             }, function (response) {
                 vm.errorMessage = response.data;
-                console.log(response)
+                console.log(response);
             })
         };
 

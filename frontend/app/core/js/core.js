@@ -8,13 +8,16 @@
       'LocalStorageModule',
       'thatsaboy.common'
     ]
-  ).controller('AppController', AppController);
+  );
+  
+  angular
+    .module('thatsaboy.core')
+    .controller('AppController', AppController);
 
 
   function AppController() {
     var vm = this;
-
     return vm;
-  };
+  }
 
 })();

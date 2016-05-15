@@ -1,0 +1,18 @@
+<div>
+    <div ng-show="mode == 'view'">
+        <img ng-src="{{editableImage}}">
+        <button ng-click="turnOnEditMode()" show-in-adult-mode>Edit</button>
+    </div>
+    <div ng-show="mode == 'edit'">
+        <ul>
+            <li ng-repeat="image in images">
+                <img ng-src="{{image.url}}" style="max-height: 150px;" ng-click="chooseImage(image)">
+                <button ng-click="deleteImage(image)" ng-show="image.id">Delete</button>
+            </li>
+            <li><button type="file" ngf-select="uploadFile($file)"
+                        accept="image/*" ngf-max-size="20MB">
+                Upload File</button></li>
+        </ul>
+        <button ng-click="cancel()">Cancel</button>
+    </div>
+</div>

@@ -4,7 +4,7 @@
 
   angular
     .module('thatsaboy.index',[
-      'thatsaboy.index.indexController'
+      'thatsaboy.common',
     ])
 })();
 

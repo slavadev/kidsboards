@@ -1,18 +1,21 @@
-<div class="full family" layout="column" layout-align="start start">
-    <div flex layout="row" layout-align="start start">
-        <h1 flex="auto">
-            Family name: {{ familyCtrl.family.name }}
-        </h1>
-        <md-button class="md-raised md-accent" ng-click="familyCtrl.updateName()">Change</md-button>
-    </div>
-
-
-
-
-    <div flex="" ng-repeat="adult in familyCtrl.family.adults">
-        {{ adult }}
-    </div>
-
-    <md-button class="md-raised md-accent" ng-click="familyCtrl.addAdult()"><svg><use xlink:href="#plus" /></svg></md-button>
-
+<div class="full family">
+    <logout></logout>
+    <adult-mode></adult-mode>
+    <h1>Name:</h1>
+    <h1 editable-text="familyCtrl.family.name"
+        update-method="familyCtrl.update()"></h1>
+    <h1>Image:</h1>
+    <div editable-image="familyCtrl.family.photo_url"
+        update-method="familyCtrl.update()"
+        image-banks="['family-photos']"></div>
+    <h2>Children:</h2>
+    <ul>
+        <li ng-repeat="child in familyCtrl.family.children">children.name</li>
+        <li show-in-adult-mode><button ui-sref="app.add_child">Add</button></li>
+    </ul>
+    <h2>Adults:</h2>
+    <ul>
+        <li ng-repeat="adult in familyCtrl.family.adults">adult.name</li>
+        <li show-in-adult-mode><button ui-sref="app.add_adult">Add</button></li>
+    </ul>
 </div>

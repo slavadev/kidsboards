@@ -1,10 +1,6 @@
-
 (function(){
   'use strict';
 
   angular
-    .module('thatsaboy.family',[
-      'thatsaboy.family.familyController',
-      'thatsaboy.family.familyFactory'
-    ])
+    .module('thatsaboy.family', ['thatsaboy.common'])
 })();

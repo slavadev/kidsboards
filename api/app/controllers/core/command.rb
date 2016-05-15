@@ -17,11 +17,4 @@ class Core::Command
   # Runs command
   def execute
   end
-
-  # Gets the model to validate
-  # @return [Class]
-  # @raise Core::Errors::NoModelToValidateError
-  def model_to_validate
-    raise Core::Errors::NoModelToValidateError
-  end
 end

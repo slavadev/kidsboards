@@ -1,8 +1,8 @@
 (function () {
   'use strict';
-
+  
   angular
-    .module('thatsaboy.common.resourceWrapFactory',[])
+    .module('thatsaboy.common')
     .directive('use', svgInlineDirective);
 
   svgInlineDirective.$inject = ['$window', '$rootScope', '$timeout'];

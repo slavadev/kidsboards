@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('thatsaboy.common.resourceWrapFactory', ['ngResource', 'thatsaboy.common.loginFactory'])
-    .factory('resourceWrapFactory', resourceWrapFactory);
+    .module('thatsaboy.common')
+    .factory('resourceWrapService', resourceWrapService);
 
-  resourceWrapFactory.$inject = ['$resource', 'loginFactory'];
+  resourceWrapService.$inject = ['$resource', 'loginService', '$state'];
 
-  function resourceWrapFactory($resource, loginFactory) {
+  function resourceWrapService($resource, loginService, $state) {
 
 
     function _successFunction(responce) {
@@ -16,6 +16,8 @@
 
     function _errorFunction(responce) {
       if (responce.status == 401) {
+        loginService.logout();
+        $state.go('app.index');
         return '401';
       } else if (responce.status == 403) {
         return '403';
@@ -27,7 +29,7 @@
     function wrapAction(resource, action, params, object) {
       var errorHandler = _errorFunction;
       if (params) {
-        params.token = loginFactory.getToken();
+        params.token = loginService.getToken();
         if (params.errorHandler){
           errorHandler = function(responce) {
             _errorFunction(responce);

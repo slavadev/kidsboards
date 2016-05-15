@@ -1,0 +1,18 @@
+<div>
+    <div ng-show="mode == 'view'">
+        <button ng-click="showLoginDialog()" hide-in-adult-mode>Enter adult mode</button>
+        <button ng-click="exitAdultMode()" show-in-adult-mode>Exit adult mode</button>
+        <button ng-click="showChangePinDialog()" show-in-adult-mode>Change pin</button>
+    </div>
+    <div ng-show="mode == 'login'">
+        <input type="text" ng-model="pin">
+        <label ng-show="error">Wrong pin!</label>
+        <button ng-click="login(pin)">Login</button>
+        <button ng-click="closeLoginDialog()">Cancel</button>
+    </div>
+    <div ng-show="mode == 'change'">
+        <input type="text" ng-model="pin">
+        <button ng-click="changePin(pin)">Change pin</button>
+        <button ng-click="closeLoginDialog()">Cancel</button>
+    </div>
+</div>
