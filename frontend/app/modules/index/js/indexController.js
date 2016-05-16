@@ -19,7 +19,7 @@
         };
         vm.register = function () {
             loginService.register(vm.email, vm.password).then(function (token) {
-                $state.go('app.family');
+                $state.go('app.family_new');
             }, function (response) {
                 vm.errorMessage = response.data;
                 console.log(response);

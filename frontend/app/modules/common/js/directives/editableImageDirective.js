@@ -5,9 +5,9 @@
     .module('thatsaboy.common')
     .directive('editableImage', editableImage);
 
-  editableImage.$inject = ['photoUploadService', '$http', '$q', '$timeout'];
+  editableImage.$inject = ['photoUploadService', '$http', '$q', '$timeout', '$rootScope'];
 
-  function editableImage(photoUploadService, $http, $q, $timeout) {
+  function editableImage(photoUploadService, $http, $q, $timeout, $rootScope) {
 
     return {
       restrict   : 'A',
@@ -16,9 +16,11 @@
       scope      : {
         editableImage: '=',
         updateMethod : '&',
-        imageBanks   : '='
+        imageBanks   : '=',
+        onlyEdit     : '@'
       },
       link       : function ($scope, element, attrs, ctrl) {
+        $scope.onlyEdit = $scope.onlyEdit ? true : false;
         $scope.images = [];
 
         // load images
@@ -39,7 +41,7 @@
           })
         });
 
-        $scope.mode = 'view';
+        $scope.mode = $scope.onlyEdit ? 'edit' : 'view';
 
         $scope.turnOnEditMode = function () {
           $scope.mode = 'edit';
@@ -63,7 +65,11 @@
           $timeout(
             function () {
               $scope.updateMethod().then(function () {
-                $scope.mode = 'view';
+                if($scope.onlyEdit) {
+                  $rootScope.$emit('nextStep');
+                } else {
+                  $scope.mode = 'view';
+                }
               })
             });
         };

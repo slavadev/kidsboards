@@ -5,9 +5,9 @@
     .module('thatsaboy.common')
     .directive('editableText', editableText);
 
-  editableText.$inject = [];
+  editableText.$inject = ['$rootScope'];
 
-  function editableText() {
+  function editableText($rootScope) {
 
     return {
       restrict: 'A',
@@ -15,10 +15,13 @@
       templateUrl: '/app/modules/common/templates/editable-text.html',
       scope: {
         editableText: '=',
-        updateMethod: '&'
+        updateMethod: '&',
+        onlyEdit: '@'
       },
       link    : function ($scope, element, attrs, ctrl) {
-        $scope.mode = 'view';
+
+        $scope.onlyEdit = $scope.onlyEdit ? true : false;
+        $scope.mode = $scope.onlyEdit ? 'edit' : 'view';
         var text = '';
 
         $scope.turnOnEditMode = function(){
@@ -28,7 +31,11 @@
         
         $scope.saveText = function(){
           $scope.updateMethod().then(function(){
-            $scope.mode = 'view';
+            if($scope.onlyEdit) {
+              $rootScope.$emit('nextStep');
+            } else {
+              $scope.mode = 'view';
+            }
           });
         };
 

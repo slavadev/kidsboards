@@ -1,6 +1,6 @@
 <div>
     <div ng-show="mode == 'view'">
-        <img ng-src="{{editableImage}}">
+        <img ng-src="{{editableImage}}" style="max-height: 150px;">
         <button ng-click="turnOnEditMode()" show-in-adult-mode>Edit</button>
     </div>
     <div ng-show="mode == 'edit'">
@@ -13,6 +13,6 @@
                         accept="image/*" ngf-max-size="20MB">
                 Upload File</button></li>
         </ul>
-        <button ng-click="cancel()">Cancel</button>
+        <button ng-click="cancel()" ng-hide="onlyEdit">Cancel</button>
     </div>
 </div>

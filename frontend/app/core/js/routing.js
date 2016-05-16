@@ -13,7 +13,7 @@
     /**
      * Default path
      */
-    $urlRouterProvider.otherwise('/app/index');
+    $urlRouterProvider.otherwise('/index');
 
     /**
      * Abstract state
@@ -30,12 +30,27 @@
      */
     $stateProvider
       .state('app.index', {
-        url  : "/index",
+        url  : "^/index",
         views: {
           'content': {
             controller  : "indexController",
             controllerAs: "indexCtrl",
             templateUrl : "/app/modules/index/templates/index.html"
+          }
+        }
+      });
+
+    /**
+     * Create new family page
+     */
+    $stateProvider
+      .state('app.family_new', {
+        url  : "^/new",
+        views: {
+          'content': {
+            controller  : "familyNewController",
+            controllerAs: "familyCtrl",
+            templateUrl : "/app/modules/family/templates/family_new.html",
           }
         }
       });
@@ -45,7 +60,7 @@
      */
     $stateProvider
       .state('app.family', {
-        url  : "/family",
+        url  : "^/family",
         views: {
           'content': {
             controller  : "familyController",

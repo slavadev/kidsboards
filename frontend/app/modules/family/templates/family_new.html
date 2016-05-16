@@ -1,0 +1,21 @@
+<div class="full family">
+    <div ng-show="familyCtrl.step == 1">
+        <h1>Name:</h1>
+        <h1 editable-text="familyCtrl.name"
+            update-method="familyCtrl.update()"
+            only-edit="true"
+        ></h1>
+    </div>
+    <div ng-show="familyCtrl.step == 2">
+        <h1>Image:</h1>
+        <div editable-image="familyCtrl.photo_url"
+             update-method="familyCtrl.update()"
+             image-banks="['family-photos']"
+             only-edit="true"
+             ng-show="familyCtrl.step == 2"></div>
+    </div>
+    <div ng-show="familyCtrl.step == 3">
+        <h1>Set pin:</h1>
+        <set-pin></set-pin>
+    </div>
+</div>

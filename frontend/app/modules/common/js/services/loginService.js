@@ -60,6 +60,11 @@
         });
     }
 
+    function forceAdultMode() {
+      localStorageService.set("adult-mode", true);
+      return $q.when();
+    }
+
     function exitAdultMode() {
       localStorageService.remove("adult-mode");
       return $q.when();
@@ -79,7 +84,8 @@
       setPin        : setPin,
       enterAdultMode: enterAdultMode,
       exitAdultMode : exitAdultMode,
-      isAdultMode   : isAdultMode
+      isAdultMode   : isAdultMode,
+      forceAdultMode: forceAdultMode
     }
   }
 })();
