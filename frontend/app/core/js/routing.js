@@ -74,5 +74,83 @@
           }
         }
       });
+
+    /**
+     * Create new adult page
+     */
+    $stateProvider
+      .state('app.adult_new', {
+        url  : "^/adult/new",
+        views: {
+          'content': {
+            controller  : "adultNewController",
+            controllerAs: "adultCtrl",
+            templateUrl : "/app/modules/adults/templates/adult_new.html"
+          }
+        }
+      });
+
+    /**
+     * Adult page
+     */
+    $stateProvider
+      .state('app.adult', {
+        url  : "^/adult/:id",
+        views: {
+          'content': {
+            controller  : "adultController",
+            controllerAs: "adultCtrl",
+            templateUrl : "/app/modules/adults/templates/adult.html",
+            resolve     : {
+              adult: function (familyRepository, $stateParams) {
+                return familyRepository.get().then(function(family){
+                  return family.adults.filter(function(adult) {
+                    return adult.id.toString() === $stateParams.id;
+                  })[0]
+                });
+              }
+            }
+          }
+        }
+      });
+
+    /**
+     * Create new child page
+     */
+    $stateProvider
+      .state('app.child_new', {
+        url  : "^/child/new",
+        views: {
+          'content': {
+            controller  : "childNewController",
+            controllerAs: "childCtrl",
+            templateUrl : "/app/modules/children/templates/child_new.html"
+          }
+        }
+      });
+
+    /**
+     * Child page
+     */
+    $stateProvider
+      .state('app.child', {
+        url  : "^/child/:id",
+        views: {
+          'content': {
+            controller  : "childController",
+            controllerAs: "childCtrl",
+            templateUrl : "/app/modules/children/templates/child.html",
+            resolve     : {
+              child: function (familyRepository, $stateParams) {
+                return familyRepository.get().then(function(family){
+                  return family.children.filter(function(child) {
+                    return child.id.toString() === $stateParams.id;
+                  })[0]
+                });
+              }
+            }
+          }
+        }
+      });
   }
 })();

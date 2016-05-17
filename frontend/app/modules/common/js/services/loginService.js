@@ -13,6 +13,8 @@
 
   function loginService($http, localStorageService, $q) {
 
+    exitAdultMode();
+
     function register(email, password) {
       return $http.post('/api/v1/user/register', {
         email   : email,

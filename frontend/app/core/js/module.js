@@ -6,6 +6,8 @@
       'thatsaboy.core',
       'ngMaterial',
       'thatsaboy.index',
-      'thatsaboy.family'
+      'thatsaboy.family',
+      'thatsaboy.adults',
+      'thatsaboy.children'
     ])
 })();

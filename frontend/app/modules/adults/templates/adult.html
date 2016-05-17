@@ -1,0 +1,13 @@
+<div>
+    <logout></logout>
+    <adult-mode></adult-mode>
+    <button ui-sref="app.family">Back to Family</button>
+    <h1>Name:</h1>
+    <h1 editable-text="adultCtrl.adult.name"
+        update-method="adultCtrl.update()"></h1>
+    <h1>Image:</h1>
+    <div editable-image="adultCtrl.adult.photo_url"
+        update-method="adultCtrl.update()"
+        image-banks="['adult-photos']"></div>
+    <button show-in-adult-mode ng-click="adultCtrl.delete()">Delete</button>
+</div>

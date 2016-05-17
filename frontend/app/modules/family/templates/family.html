@@ -1,4 +1,4 @@
-<div class="full family">
+<div>
     <logout></logout>
     <adult-mode></adult-mode>
     <h1>Name:</h1>
@@ -10,12 +10,18 @@
         image-banks="['family-photos']"></div>
     <h2>Children:</h2>
     <ul>
-        <li ng-repeat="child in familyCtrl.family.children">children.name</li>
-        <li show-in-adult-mode><button ui-sref="app.add_child">Add</button></li>
+        <li ng-repeat="child in familyCtrl.family.children">
+            <img ng-src="{{child.photo_url}}" style="max-height: 150px;" ui-sref="app.child({id: child.id})">
+            {{child.name}}
+        </li>
+        <li show-in-adult-mode><button ui-sref="app.child_new">Add</button></li>
     </ul>
     <h2>Adults:</h2>
     <ul>
-        <li ng-repeat="adult in familyCtrl.family.adults">adult.name</li>
-        <li show-in-adult-mode><button ui-sref="app.add_adult">Add</button></li>
+        <li ng-repeat="adult in familyCtrl.family.adults">
+            <img ng-src="{{adult.photo_url}}" style="max-height: 150px;" ui-sref="app.adult({id: adult.id})">
+            {{adult.name}}
+        </li>
+        <li show-in-adult-mode><button ui-sref="app.adult_new">Add</button></li>
     </ul>
 </div>

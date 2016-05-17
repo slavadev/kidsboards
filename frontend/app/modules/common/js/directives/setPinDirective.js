@@ -5,16 +5,15 @@
     .module('thatsaboy.common')
     .directive('setPin', setPin);
 
-  setPin.$inject = ['$rootScope', 'loginService'];
+  setPin.$inject = ['loginService'];
 
-  function setPin($rootScope, loginService) {
+  function setPin(loginService) {
 
     return {
       restrict: 'E',
       replace: true,
       templateUrl: '/app/modules/common/templates/set-pin.html',
       link    : function ($scope, element, attrs, ctrl) {
-        console.log('asd');
         $scope.step = 1;
         $scope.pin = '';
         var pin1 = '';
@@ -27,7 +26,7 @@
           } else {
             if(pin1 == $scope.pin) {
               loginService.setPin($scope.pin).then(function(){
-                $rootScope.$emit('nextStep');
+                $scope.$emit('nextStep');
               });
             } else {
               $scope.step = 1;

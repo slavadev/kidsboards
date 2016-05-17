@@ -5,9 +5,9 @@
     .module('thatsaboy.common')
     .directive('editableText', editableText);
 
-  editableText.$inject = ['$rootScope'];
+  editableText.$inject = [];
 
-  function editableText($rootScope) {
+  function editableText() {
 
     return {
       restrict: 'A',
@@ -32,7 +32,7 @@
         $scope.saveText = function(){
           $scope.updateMethod().then(function(){
             if($scope.onlyEdit) {
-              $rootScope.$emit('nextStep');
+              $scope.$emit('nextStep');
             } else {
               $scope.mode = 'view';
             }

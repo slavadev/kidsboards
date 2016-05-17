@@ -8,6 +8,10 @@
     indexController.$inject = ['loginService', '$state'];
     
     function indexController(loginService, $state) {
+        if(loginService.getToken()) {
+          $state.go('app.family');
+        }
+
         var vm = this;
         vm.login = function () {
             loginService.login(vm.email, vm.password).then(function (token) {

@@ -16,6 +16,7 @@
       link    : function ($scope, element, attrs, ctrl) {
         $scope.logout = function(){
           loginService.logout().then(function(){
+            loginService.exitAdultMode();
             $state.go('app.index');
           });
         }

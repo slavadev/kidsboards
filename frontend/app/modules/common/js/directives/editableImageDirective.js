@@ -5,9 +5,9 @@
     .module('thatsaboy.common')
     .directive('editableImage', editableImage);
 
-  editableImage.$inject = ['photoUploadService', '$http', '$q', '$timeout', '$rootScope'];
+  editableImage.$inject = ['photoUploadService', '$http', '$q', '$timeout'];
 
-  function editableImage(photoUploadService, $http, $q, $timeout, $rootScope) {
+  function editableImage(photoUploadService, $http, $q, $timeout) {
 
     return {
       restrict   : 'A',
@@ -66,7 +66,7 @@
             function () {
               $scope.updateMethod().then(function () {
                 if($scope.onlyEdit) {
-                  $rootScope.$emit('nextStep');
+                  $scope.$emit('nextStep');
                 } else {
                   $scope.mode = 'view';
                 }
