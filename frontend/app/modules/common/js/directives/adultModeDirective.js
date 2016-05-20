@@ -26,8 +26,8 @@
         $scope.closeLoginDialog = function(){
           $scope.mode = 'view';
         };
-        $scope.login = function(pin) {
-          loginService.enterAdultMode(pin).then(function(equals){
+        $scope.login = function() {
+          loginService.enterAdultMode($scope.pin).then(function(equals){
             if(equals == true) {
               $scope.mode = 'view';
             } else {
@@ -38,8 +38,8 @@
             }
           });
         };
-        $scope.changePin = function(pin) {
-          loginService.setPin(pin).then(function(){
+        $scope.changePin = function() {
+          loginService.setPin($scope.pin).then(function(){
             $scope.mode = 'view';
           });
         };
