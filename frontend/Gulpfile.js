@@ -44,3 +44,5 @@ gulp.task('svgstore', function () {
 });
 
 gulp.task('watch', ['sass:watch']);
+
+gulp.task('build', ['sass', 'svgstore']);
