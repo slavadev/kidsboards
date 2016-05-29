@@ -38,8 +38,7 @@ migrator:
 api:
   build: .
   dockerfile: ./docker/dev/api/Dockerfile
-  command: bundle exec rails s -p 80 -b '0.0.0.0'
-#  command: bundle exec yard server -p 3000 -b '0.0.0.0'
+  command: bash -c "rm /api/tmp/pids/server.pid && bundle exec rails s -p 80 -b '0.0.0.0'"
   volumes_from:
     - data_api:rw
     - data_frontend:rw

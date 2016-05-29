@@ -147,6 +147,49 @@
                     return child.id.toString() === $stateParams.id;
                   })[0]
                 });
+              },
+              goals: function (childRepository, $stateParams) {
+                return childRepository.getGoals($stateParams.id);
+              }
+            }
+          }
+        }
+      });
+
+    /**
+     * Create new goal page
+     */
+    $stateProvider
+      .state('app.goal_new', {
+        url  : "^/child/:id/goal/new",
+        views: {
+          'content': {
+            controller  : "goalNewController",
+            controllerAs: "goalCtrl",
+            templateUrl : "/app/modules/goals/templates/goal_new.html"
+          }
+        }
+      });
+
+    /**
+     * Goal page
+     */
+    $stateProvider
+      .state('app.goal', {
+        url  : "^/child/:child_id/goal/:id",
+        views: {
+          'content': {
+            controller  : "goalController",
+            controllerAs: "goalCtrl",
+            templateUrl : "/app/modules/goals/templates/goal.html",
+            resolve     : {
+              goal: function (goalRepository, $stateParams) {
+                return goalRepository.get($stateParams.id);
+              },
+              adults: function (familyRepository) {
+                return familyRepository.get().then(function(family){
+                  return family.adults;
+                });
               }
             }
           }

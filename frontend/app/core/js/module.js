@@ -8,6 +8,7 @@
       'thatsaboy.index',
       'thatsaboy.family',
       'thatsaboy.adults',
-      'thatsaboy.children'
+      'thatsaboy.children',
+      'thatsaboy.goals'
     ])
 })();

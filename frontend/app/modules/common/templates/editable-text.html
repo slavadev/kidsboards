@@ -4,7 +4,7 @@
     </div>
     <div ng-show="mode == 'edit'">
         <input type="text" ng-model="editableText"></input>
-        <button ng-click="saveText()">Save</button>
+        <button ng-click="saveText()">{{label}}</button>
         <button ng-click="cancel()" ng-hide="onlyEdit">Cancel</button>
     </div>
 </div>

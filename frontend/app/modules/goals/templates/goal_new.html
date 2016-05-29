@@ -1,0 +1,29 @@
+<div>
+    <logout></logout>
+    <button ui-sref="app.child({id: goalCtrl.id})">Back to Child</button>
+    <div ng-show="goalCtrl.step == 1">
+        <h1>Name:</h1>
+        <h1 editable-text="goalCtrl.name"
+            update-method="goalCtrl.nothing()"
+            only-edit="true"
+            label="next"
+        ></h1>
+    </div>
+    <div ng-show="goalCtrl.step == 2">
+        <h1>Image:</h1>
+        <div editable-image="goalCtrl.photo_url"
+             update-method="goalCtrl.nothing()"
+             image-banks="['goal-photos']"
+             only-edit="true"
+             ng-show="goalCtrl.step == 2"></div>
+    </div>
+    <div ng-show="goalCtrl.step == 3">
+        <num-pad text="Set target"
+                 num="goalCtrl.target"
+                 on-ok="goalCtrl.create()"
+                 only-ok="true"
+                 min="1"
+                 max="4"
+        ></num-pad>
+    </div>
+</div>

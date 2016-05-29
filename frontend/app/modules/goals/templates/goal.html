@@ -1,0 +1,51 @@
+<div>
+    <logout></logout>
+    <adult-mode></adult-mode>
+    <button ui-sref="app.child({id: goalCtrl.child_id})">Back to Child</button>
+    <h1>Name:</h1>
+    <h1 editable-text="goalCtrl.goal.name"
+        update-method="goalCtrl.update()"></h1>
+    <h1>Points:</h1>
+    <h1>{{goalCtrl.goal.current}}/{{goalCtrl.goal.target}}</h1>
+    <h1>Image:</h1>
+    <div editable-image="goalCtrl.goal.photo_url"
+        update-method="goalCtrl.update()"
+        image-banks="['goal-photos']"></div>
+    <h1>History:</h1>
+    <ul>
+        <li ng-repeat="action in goalCtrl.goal.actions">
+            {{action.diff}} by {{action.adult.name}} at {{action.created_at}}
+        </li>
+    </ul>
+    <div ng-show="goalCtrl.goal.current < goalCtrl.goal.target">
+        <button show-in-adult-mode ng-click="goalCtrl.add()">Add points</button>
+    </div>
+    <div ng-show="goalCtrl.goal.current > 0">
+        <button show-in-adult-mode ng-click="goalCtrl.remove()">Remove points</button>
+    </div>
+    <hr>
+    <button show-in-adult-mode ng-click="goalCtrl.delete()">Delete</button>
+    <hr>
+    <div ng-show="goalCtrl.step == 2">
+        <h1>Choose an adult</h1>
+        <ul>
+            <li ng-repeat="adult in goalCtrl.adults" ng-click="goalCtrl.chooseAdult(adult)">
+                <img ng-src="{{adult.photo_url}}" style="max-height: 150px;">
+                {{adult.name}}
+            </li>
+            <li show-in-adult-mode><button ui-sref="app.adult_new">Add</button></li>
+        </ul>
+        <button ng-click="goalCtrl.step = 1">Cancel</button>
+    </div>
+    <div ng-show="goalCtrl.step == 3">
+        <div ng-show="goalCtrl.step == 3">
+            <num-pad text="How much points?"
+                     num="goalCtrl.points"
+                     on-ok="goalCtrl.updatePoints()"
+                     on-cancel="goalCtrl.cancel()"
+                     min="1"
+                     max="4"
+            ></num-pad>
+        </div>
+    </div>
+</div>

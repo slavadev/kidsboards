@@ -9,5 +9,14 @@
     <div editable-image="childCtrl.child.photo_url"
         update-method="childCtrl.update()"
         image-banks="['child-photos']"></div>
+    <h1>Goals:</h1>
+    <ul>
+        <li ng-repeat="goal in childCtrl.goals">
+            <img ng-src="{{goal.photo_url}}" style="max-height: 150px;" ui-sref="app.goal({child_id: childCtrl.child.id, id: goal.id})">
+            {{goal.name}} {{goal.current}}/{{goal.target}}
+        </li>
+        <li show-in-adult-mode><button ui-sref="app.goal_new({id: childCtrl.child.id})">Add</button></li>
+    </ul>
+    <hr>
     <button show-in-adult-mode ng-click="childCtrl.delete()">Delete</button>
 </div>

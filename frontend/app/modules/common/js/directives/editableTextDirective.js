@@ -16,10 +16,12 @@
       scope: {
         editableText: '=',
         updateMethod: '&',
-        onlyEdit: '@'
+        onlyEdit: '@',
+        label: '@'
       },
       link    : function ($scope, element, attrs, ctrl) {
 
+        $scope.label = $scope.label ? $scope.label : 'save';
         $scope.onlyEdit = $scope.onlyEdit ? true : false;
         $scope.mode = $scope.onlyEdit ? 'edit' : 'view';
         var text = '';
