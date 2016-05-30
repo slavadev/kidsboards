@@ -10,10 +10,18 @@ data_frontend:
   volumes:
     - ./frontend:/api/public
 
+# Needed to keep data for db
+data_postgres:
+  image: debian:jessie
+  volumes:
+    - ./pgdata:/var/lib/postgresql/data
+
 # DB container
 postgres:
   image: postgres
   env_file: docker/dev/.env
+  volumes_from:
+      - data_postgres:rw
 
 # Giving time for the db to start
 dbcreator:

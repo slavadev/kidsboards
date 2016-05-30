@@ -10,6 +10,12 @@ data:
   volumes:
     - ./data:/home/app/data
 
+# Needed to keep data for db
+data_postgres:
+  image: debian:jessie
+  volumes:
+    - ./pgdata:/var/lib/postgresql/data
+
 # Needed to keep logs
 logs:
   image: debian:jessie
@@ -20,6 +26,8 @@ logs:
 postgres:
   image: postgres
   env_file: docker/prod/.env
+  volumes_from:
+      - data_postgres:rw
 
 # All about the rails is here
 api:

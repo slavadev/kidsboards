@@ -22,3 +22,8 @@ api/.byebug_history
 /.yardoc
 /api/doc
 /api/coverage
+pgdata/pgdata
+frontend/images/
+api/.yardoc/
+api/.bundle/
+thatsaboy.iml
