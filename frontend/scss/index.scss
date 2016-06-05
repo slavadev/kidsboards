@@ -2,6 +2,7 @@
 @import 'fonts';
 
 .index {
+  min-height: 100%;
   background-color: $color-first;
   .title-block {
     display: block;
@@ -20,37 +21,60 @@
 
   h1 {
     margin: 0;
-    color: $color-white;
+    color: $color-grey;
     font-family: "KGSecondChancesSketch";
   }
 
-  h2 {
+  h2, h3 {
     color: $color-grey;
     font-family: "AddisAbaba";
   }
   svg {
-    fill: $color-white;
+    fill: $color-grey;
     width: 100px;
     height: 100px;
   }
 
   .steps {
-    h2 {
+    h2, h3 {
       font-family: "AddisAbaba";
+      @media (max-width: $layout-breakpoint-sm) {
+
+      }
     }
     @media (max-width: $layout-breakpoint-sm) {
       margin-bottom: 100px;
     }
   }
 
-  h3 {
-    &:after {
-      content: '';
-      width: 30px;
-      background-color: $color-grey;
-      height: 2px;
-      margin: 30px auto 10px auto;
-      display: block;
+  md-input-container
+  {
+    font-family: "AddisAbaba";
+    width: 200px;
+    .md-input-message-animation {
+      max-width: 200px;
     }
+    label, label:after {
+      color: $color-grey !important;
+    }
+    .md-input {
+      font-family: "AddisAbaba";
+      border-color: $color-grey !important;
+    }
+    &.md-input-invalid {
+      label, label:after,
+      .md-input-message-animation {
+        color: $color-second !important;
+      }
+
+      .md-input {
+        border-color: $color-second !important;
+      }
+    }
+  }
+
+  .forget a {
+    font-family: "AddisAbaba";
+    color: $color-grey;
   }
 }

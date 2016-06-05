@@ -16,7 +16,15 @@
         localStorageServiceProvider.setPrefix('thatsaboy');
 
         $mdThemingProvider.theme('default')
-          .primaryPalette('purple');
+          .primaryPalette('purple')
+          .accentPalette('pink');
+
+        $mdThemingProvider.theme('dark', 'default')
+          .primaryPalette('purple')
+          .accentPalette('pink')
+          .dark();
+
+
       }]
   )
 })();

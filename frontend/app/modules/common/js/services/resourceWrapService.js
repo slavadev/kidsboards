@@ -5,10 +5,18 @@
     .module('thatsaboy.common')
     .factory('resourceWrapService', resourceWrapService);
 
-  resourceWrapService.$inject = ['$resource', 'loginService', '$state'];
+  resourceWrapService.$inject = ['$resource', 'localStorageService', '$state', 'errorHandlerService', '$q'];
 
-  function resourceWrapService($resource, loginService, $state) {
+  function resourceWrapService($resource, localStorageService, $state, errorHandlerService, $q) {
 
+    function logout() {
+      localStorageService.remove("token");
+      return $q.when();
+    }
+
+    function getToken() {
+      return localStorageService.get("token");
+    }
 
     function _successFunction(responce) {
       return responce;
@@ -16,20 +24,23 @@
 
     function _errorFunction(responce) {
       if (responce.status == 401) {
-        loginService.logout();
+        logout();
         $state.go('app.index');
         return '401';
       } else if (responce.status == 403) {
         return '403';
-      } else if (responce.status == 500 || responce.status == 422) {
-        return 'error';
+      } else if (responce.status == 422) {
+        errorHandlerService.handle422(responce.data);
+      } else if (responce.status == 500) {
+        return '500';
       }
+      return;
     }
 
     function wrapAction(resource, action, params, object) {
       var errorHandler = _errorFunction;
       if (params) {
-        params.token = loginService.getToken();
+        params.token = getToken();
         if (params.errorHandler){
           errorHandler = function(responce) {
             _errorFunction(responce);
@@ -71,10 +82,16 @@
           'save': function (params, object) {
             return wrapAction(resource, 'save', params, object);
           },
+          'post': function (params, object) {
+            return wrapAction(resource, 'save', params, object);
+          },
           'query': function (params, object) {
             return wrapAction(resource, 'query', params, object);
           },
           'update': function (params, object) {
+            return wrapAction(resource, 'update', params, object);
+          },
+          'put': function (params, object) {
             return wrapAction(resource, 'update', params, object);
           },
           'patch': function (params, object) {

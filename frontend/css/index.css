@@ -11,7 +11,8 @@
   src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
 
 .index {
-  background-color: #aa66cc; }
+  min-height: 100%;
+  background-color: #9C27B0; }
   .index .title-block {
     display: block; }
     .index .title-block h2 {
@@ -25,24 +26,35 @@
         margin-bottom: 100px; } }
   .index h1 {
     margin: 0;
-    color: #ffffff;
+    color: #E1BEE7;
     font-family: "KGSecondChancesSketch"; }
-  .index h2 {
-    color: #eeeeee;
+  .index h2, .index h3 {
+    color: #E1BEE7;
     font-family: "AddisAbaba"; }
   .index svg {
-    fill: #ffffff;
+    fill: #E1BEE7;
     width: 100px;
     height: 100px; }
-  .index .steps h2 {
+  .index .steps h2, .index .steps h3 {
     font-family: "AddisAbaba"; }
   @media (max-width: 960px) {
     .index .steps {
       margin-bottom: 100px; } }
-  .index h3:after {
-    content: '';
-    width: 30px;
-    background-color: #eeeeee;
-    height: 2px;
-    margin: 30px auto 10px auto;
-    display: block; }
+  .index md-input-container {
+    font-family: "AddisAbaba";
+    width: 200px; }
+    .index md-input-container .md-input-message-animation {
+      max-width: 200px; }
+    .index md-input-container label, .index md-input-container label:after {
+      color: #E1BEE7 !important; }
+    .index md-input-container .md-input {
+      font-family: "AddisAbaba";
+      border-color: #E1BEE7 !important; }
+    .index md-input-container.md-input-invalid label, .index md-input-container.md-input-invalid label:after,
+    .index md-input-container.md-input-invalid .md-input-message-animation {
+      color: #FF4081 !important; }
+    .index md-input-container.md-input-invalid .md-input {
+      border-color: #FF4081 !important; }
+  .index .forget a {
+    font-family: "AddisAbaba";
+    color: #E1BEE7; }

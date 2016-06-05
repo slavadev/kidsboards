@@ -1,36 +1,38 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('thatsaboy.index')
-      .controller('indexController', indexController);
+  angular
+    .module('thatsaboy.index')
+    .controller('indexController', indexController);
 
-    indexController.$inject = ['loginService', '$state'];
-    
-    function indexController(loginService, $state) {
-        if(loginService.getToken()) {
+  indexController.$inject = ['loginService', '$state', '$scope'];
+
+  function indexController(loginService, $state, $scope) {
+    if (loginService.getToken()) {
+      $state.go('app.family');
+    }
+
+    var vm = this;
+
+    vm.login = function () {
+      $scope.loginForm.$setSubmitted();
+      if ($scope.loginForm.$valid) {
+        loginService.login(vm.email, vm.password).then(function (token) {
           $state.go('app.family');
-        }
-
-        var vm = this;
-        vm.login = function () {
-            loginService.login(vm.email, vm.password).then(function (token) {
-               $state.go('app.family');
-            }, function (response) {
-                vm.errorMessage = response.data;
-                console.log(response);
-            })
-        };
-        vm.register = function () {
-            loginService.register(vm.email, vm.password).then(function (token) {
-                $state.go('app.family_new');
-            }, function (response) {
-                vm.errorMessage = response.data;
-                console.log(response);
-            })
-        };
-
-        return vm;
+        });
+      }
     };
+
+    vm.register = function () {
+      $scope.loginForm.$setSubmitted();
+      if ($scope.loginForm.$valid) {
+        loginService.register(vm.email, vm.password).then(function (token) {
+          $state.go('app.family_new');
+        });
+      }
+    };
+
+    return vm;
+  }
 
 })();

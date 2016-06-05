@@ -5,6 +5,7 @@
     .module('thatsaboy',[
       'thatsaboy.core',
       'ngMaterial',
+      'ngMessages',
       'thatsaboy.index',
       'thatsaboy.family',
       'thatsaboy.adults',

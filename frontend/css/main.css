@@ -10,30 +10,45 @@
   font-family: "KGSecondChancesSolid";
   src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
 
-body {
-  height: auto;
-  display: block;
-  width: 100%; }
-
-.app {
-  display: block;
-  position: absolute;
-  min-height: 100%;
-  width: 100%;
-  background-color: #aa66cc; }
-
-.full {
-  min-height: 100%;
-  width: 100%;
-  position: absolute; }
-
 md-icon {
   width: 100%;
   height: auto; }
 
-.image-copyrights {
-  color: #eeeeee;
-  font-family: "AddisAbaba";
-  text-align: center; }
-  .image-copyrights a {
-    color: #99cc00; }
+.full {
+  display: block;
+  height: 100%;
+  min-height: 100%; }
+
+.dialog {
+  min-width: 400px;
+  min-height: 352px; }
+
+.copyright {
+  color: #E1BEE7;
+  font-family: "AddisAbaba"; }
+  .copyright a {
+    color: #FF4081; }
+
+.hint {
+  /* Position the hint */
+  position: absolute;
+  left: 2px;
+  right: auto;
+  bottom: 7px;
+  /* Copy styles from ng-messages */
+  font-size: 12px;
+  line-height: 14px;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+  /* Set our own color */
+  color: grey; }
+
+.hint.ng-hide,
+.hint.ng-enter,
+.hint.ng-leave.ng-leave-active {
+  bottom: 26px;
+  opacity: 0; }
+
+.hint.ng-leave,
+.hint.ng-enter.ng-enter-active {
+  bottom: 7px;
+  opacity: 1; }

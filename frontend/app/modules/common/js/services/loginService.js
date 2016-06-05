@@ -6,17 +6,20 @@
 
 
   loginService.$inject = [
-    '$http',
+    'resourceWrapService',
     'localStorageService',
     '$q'
   ];
 
-  function loginService($http, localStorageService, $q) {
+  function loginService(resourceWrapService, localStorageService, $q) {
 
     exitAdultMode();
 
+    var loginResource = resourceWrapService.wrap('/api/v1/user/:action');
+
     function register(email, password) {
-      return $http.post('/api/v1/user/register', {
+      return loginResource.post({
+        action  : 'register',
         email   : email,
         password: password
       }).then(function (response) {
@@ -25,7 +28,8 @@
     }
 
     function login(email, password) {
-      return $http.post('/api/v1/user/login', {
+      return loginResource.post({
+        action  : 'login',
         email   : email,
         password: password
       }).then(function (response) {
@@ -45,21 +49,25 @@
     }
 
     function setPin(pin) {
-      return $http.patch('/api/v1/user/pin', {
-        pin  : pin,
-        token: getToken()
+      return loginResource.patch({
+        action: 'pin',
+        pin   : pin,
+        token : getToken()
       });
     }
 
     function enterAdultMode(pin) {
-      return $http.get('/api/v1/user/pin?pin=' + pin + '&token=' + getToken())
-        .then(function (response) {
-          var equal = response.data.equal;
-          if (equal == true) {
-            localStorageService.set("adult-mode", true);
-          }
-          return equal;
-        });
+      return loginResource.get({
+        action: 'pin',
+        pin   : pin,
+        token : getToken()
+      }).then(function (response) {
+        var equal = response.data.equal;
+        if (equal == true) {
+          localStorageService.set("adult-mode", true);
+        }
+        return equal;
+      });
     }
 
     function forceAdultMode() {
