@@ -1,0 +1,25 @@
+<div class="index" layout="column" layout-align="center center">
+    <div layout="column" layout-align="center center">
+        <h2 ng-show="recoveryCtrl.step == 1">We will send instructions for recovery on your email</h2>
+        <h2 ng-show="recoveryCtrl.step == 2">We sent instructions for recovery on your email!</h2>
+        <form name="recoveryForm" ng-show="recoveryCtrl.step == 1">
+            <div layout="column" layout-align="center center" md-theme="dark">
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="recoveryCtrl.email" type="email" name="email" required
+                           ng-pattern="/^.+@.+\..+$/">
+                    <div ng-messages="recoveryForm.email.$error">
+                        <div ng-message-exp="['pattern', 'minlength']">It must be a valid email</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </form>
+
+        <div layout="row" layout-align="center center" ng-show="recoveryCtrl.step == 1">
+            <md-button class="md-raised md-accent" ng-click="recoveryCtrl.send()">Send</md-button>
+        </div>
+        <div layout="row" layout-align="center center">
+            <a href="index.html">Back</a>
+        </div>
+    </div>
+</div>

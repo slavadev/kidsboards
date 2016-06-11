@@ -34,7 +34,6 @@
       } else if (responce.status == 500) {
         return '500';
       }
-      return;
     }
 
     function wrapAction(resource, action, params, object) {

@@ -41,6 +41,21 @@
       });
 
     /**
+     * Request recovery page
+     */
+    $stateProvider
+      .state('app.request', {
+        url  : "^/request",
+        views: {
+          'content': {
+            controller  : "requestRecoveryController",
+            controllerAs: "recoveryCtrl",
+            templateUrl : "/app/modules/index/templates/request-recovery.html"
+          }
+        }
+      });
+
+    /**
      * Create new family page
      */
     $stateProvider

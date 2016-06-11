@@ -27,6 +27,7 @@
 
   h2, h3 {
     color: $color-grey;
+    text-align: center;
     font-family: "AddisAbaba";
   }
   svg {
@@ -73,7 +74,7 @@
     }
   }
 
-  .forget a {
+  a {
     font-family: "AddisAbaba";
     color: $color-grey;
   }

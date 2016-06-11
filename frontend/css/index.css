@@ -30,6 +30,7 @@
     font-family: "KGSecondChancesSketch"; }
   .index h2, .index h3 {
     color: #E1BEE7;
+    text-align: center;
     font-family: "AddisAbaba"; }
   .index svg {
     fill: #E1BEE7;
@@ -55,6 +56,6 @@
       color: #FF4081 !important; }
     .index md-input-container.md-input-invalid .md-input {
       border-color: #FF4081 !important; }
-  .index .forget a {
+  .index a {
     font-family: "AddisAbaba";
     color: #E1BEE7; }

@@ -33,9 +33,28 @@
         email   : email,
         password: password
       }).then(function (response) {
-        var token = response.data.token;
+        var token = response.token;
         localStorageService.set("token", token);
         return token;
+      });
+    }
+
+    function requestRecovery(email) {
+      return loginResource.post({
+        action: 'request',
+        email : email
+      }).then(function (response) {
+        return response;
+      });
+    }
+
+    function recovery(password, token) {
+      return loginResource.post({
+        action: 'recovery',
+        email : password,
+        token : token
+      }).then(function (response) {
+        return response;
       });
     }
 
@@ -86,16 +105,18 @@
 
 
     return {
-      getToken      : getToken,
-      login         : login,
-      logout        : logout,
-      register      : register,
+      getToken       : getToken,
+      login          : login,
+      logout         : logout,
+      register       : register,
+      requestRecovery: requestRecovery,
+      recovery       : recovery,
       // Adult mode
-      setPin        : setPin,
-      enterAdultMode: enterAdultMode,
-      exitAdultMode : exitAdultMode,
-      isAdultMode   : isAdultMode,
-      forceAdultMode: forceAdultMode
+      setPin         : setPin,
+      enterAdultMode : enterAdultMode,
+      exitAdultMode  : exitAdultMode,
+      isAdultMode    : isAdultMode,
+      forceAdultMode : forceAdultMode
     }
   }
 })();
