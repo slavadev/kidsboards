@@ -46,7 +46,7 @@ class Family::GoalViewTest < ActionDispatch::IntegrationTest
 
     actions = []
     3.times do
-      diff = Faker::Number.number(1).to_i
+      diff = Faker::Number.number(1).to_i + 1
       patch "/api/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
       actions.push('adult' => {
                      'id' => adult_id,
