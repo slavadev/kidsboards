@@ -11,11 +11,14 @@ class User::Token < ActiveRecord::Base
 
   # Types
   # For Login
-  TYPE_LOGIN = 0
+  TYPE_LOGIN        = 0
   # For confirmation
   TYPE_CONFIRMATION = 1
   # For recovery
-  TYPE_RECOVERY = 2
+  TYPE_RECOVERY     = 2
+
+  validates :code, :created_at, :token_type, presence: true, on: :create
+  validates :token_type, inclusion: { in: [TYPE_LOGIN, TYPE_CONFIRMATION, TYPE_RECOVERY] }
 
   # Sets expired flag
   # @return [User::Token]

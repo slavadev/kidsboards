@@ -9,6 +9,10 @@
 class Family::Family < ActiveRecord::Base
   belongs_to :user, inverse_of: :family, class_name: 'User::User'
 
+  validates :name, presence: true, allow_blank: true, length: { maximum: 50 }
+  validates :photo_url, length: { maximum: 100 }
+  validates :photo_url, 'Core::Validator::Uri' => true
+
   # Gets adults
   def adults
     user.adults
