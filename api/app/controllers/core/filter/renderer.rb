@@ -1,5 +1,5 @@
 # Renderer
-class Core::Middleware::Renderer < Core::Middleware
+class Core::Filter::Renderer < Core::Filter
   attr_accessor :controller
 
   # Sets a controller to render

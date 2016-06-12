@@ -1,5 +1,5 @@
 # Error handler that render errors
-class Core::Middleware::ErrorRenderer < Core::Middleware
+class Core::Filter::ErrorRenderer < Core::Filter
   attr_accessor :controller
 
   # Sets a controller to render

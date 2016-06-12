@@ -2,26 +2,26 @@
 class Core::Controller < ActionController::Base
   # Runs the action
   # @param [Core::Command] command
-  # @see Core::CommandBus
+  # @see Core::FilterChain
   def run(command)
-    Core::CommandBus.new(middleware_list).run(command)
+    Core::FilterChain.new(filters_list).run(command)
   end
 
-  # Returns a list of middleware needed to process commands
+  # Returns a list of filters needed to process commands
   # @return [Array]
-  # @see Core::Middleware
-  # @see Core::Middleware::ErrorRenderer
-  # @see Core::Middleware::Renderer
-  # @see Core::Middleware::AuthorizationChecker
-  # @see Core::Middleware::ValidationChecker
-  # @see Core::Middleware::Executor
-  def middleware_list
+  # @see Core::Filter
+  # @see Core::Filter::ErrorRenderer
+  # @see Core::Filter::Renderer
+  # @see Core::Filter::AuthorizationChecker
+  # @see Core::Filter::ValidationChecker
+  # @see Core::Filter::Executor
+  def filters_list
     [
-      Core::Middleware::ErrorRenderer.new(self),
-      Core::Middleware::Renderer.new(self),
-      Core::Middleware::AuthorizationChecker.new,
-      Core::Middleware::ValidationChecker.new,
-      Core::Middleware::Executor.new
+        Core::Filter::ErrorRenderer.new(self),
+        Core::Filter::Renderer.new(self),
+        Core::Filter::AuthorizationChecker.new,
+        Core::Filter::ValidationChecker.new,
+        Core::Filter::Executor.new
     ]
   end
 end

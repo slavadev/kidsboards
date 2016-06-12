@@ -152,6 +152,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     assert_response 401
   end
 
+  # focus
   test 'goal create without token' do
     # prepare
     id = Faker::Number.number(9)

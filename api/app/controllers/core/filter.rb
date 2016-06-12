@@ -1,8 +1,8 @@
-# Class for middleware
-class Core::Middleware
-  attr_accessor :next_middleware, :command
+# Class for filter
+class Core::Filter
+  attr_accessor :next_filter, :command
 
-  # Makes all the magic and call next middleware
+  # Makes all the magic and call next filter
   # @return [[Core::Command], [Object]]
   # @example
   #   def call
@@ -15,10 +15,10 @@ class Core::Middleware
 
   protected
 
-  # Calls next middleware
+  # Calls next filter
   # @return [[Core::Command], [Object]]
   def next
-    @next_middleware.command = @command
-    @next_middleware.call
+    @next_filter.command = @command
+    @next_filter.call
   end
 end
