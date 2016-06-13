@@ -16,16 +16,4 @@ class Family::Presenter::FamilyPresenter
       children: @family.children.not_deleted
     }
   end
-
-  private
-
-  # Gets persons
-  # @param [Object] persons
-  def get_persons(persons)
-    response = []
-    persons.each do |person|
-      response.push(Family::Presenter::PersonPresenter.new(person).person_to_hash)
-    end
-    response
-  end
 end
