@@ -1,24 +1,28 @@
 # Error handler that render errors
-class Core::Filter::ErrorRenderer < Core::Filter
-  attr_accessor :controller
+class Core::Filter::ErrorRenderer
 
-  # Sets a controller to render
-  # @param [Core::Controller] controller
-  def initialize(controller)
-    self.controller = controller
-  end
+  class << self
+    # Handle errors and process them
+    # @param [Core::Controller] controller
+    def around(controller)
+      @controller = controller
+      yield
+    rescue Core::Errors::UnauthorizedError
+      self.render 401, :error => 'Unauthorized'
+    rescue Core::Errors::ForbiddenError
+      self.render 403, :error => 'Forbidden'
+    rescue Core::Errors::ValidationError => e
+      self.render 422, e.command.errors.to_json
+    rescue StandardError => e
+      self.render 500, JSON.generate({ error: e.message, backtrace: e.backtrace })
+    end
 
-  # Handle errors and process them
-  # @return [[Core::Command], [Object]]
-  def call
-    return self.next
-  rescue Core::Errors::UnauthorizedError
-    controller.render json: { error: 'Unauthorized' }, status: 401
-  rescue Core::Errors::ForbiddenError
-    controller.render json: { error: 'Forbidden' }, status: 403
-  rescue Core::Errors::ValidationError => e
-    controller.render json: e.command.errors, status: 422
-  rescue StandardError => e
-    controller.render json: { error: e.message, backtrace: e.backtrace }, status: 500
+    # Handle errors and process them
+    # @param [Integer] status
+    # @param [Hash] json
+    def render(status, json)
+      @controller.response.status = status
+      @controller.response.body = json
+    end
   end
 end

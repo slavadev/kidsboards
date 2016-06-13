@@ -8,7 +8,7 @@ class Goal::Service::GoalService
   def change_points(goal, adult, diff)
     real_diff = goal.change_points(diff)
     action = Goal::Action.new(goal.user, goal, adult, real_diff)
-    action.save!
+    Goal::Repository::ActionRepository.new.save!(action)
     goal
   end
 end
