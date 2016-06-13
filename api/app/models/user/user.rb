@@ -31,6 +31,16 @@ class User::User < ActiveRecord::Base
   validates :pin, length: { is: 4 }
   validates :pin, format: { with: /\d{4}/, message: 'has wrong format' }
 
+  # Creates a user
+  # @param [String] email
+  # @param [String] password
+  def initialize(email, password)
+    super()
+    self.email = email
+    self.password = password
+    self.confirmed_at = nil
+  end
+
   # Sets the password
   # @param [String] password
   def password=(password)

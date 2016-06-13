@@ -16,4 +16,15 @@ class Family::Child < ActiveRecord::Base
 
   has_many   :goals, class_name: 'Goal::Goal'
   belongs_to :user, inverse_of: :children, class_name: 'User::User'
+
+  # Creates a child
+  # @param [User::User] user
+  # @param [String] name
+  # @param [String] photo_url
+  def initialize(user, name, photo_url)
+    super()
+    self.user = user
+    self.name = name
+    self.photo_url = photo_url
+  end
 end

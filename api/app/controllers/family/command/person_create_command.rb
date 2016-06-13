@@ -14,7 +14,6 @@ class Family::Command::PersonCreateCommand < Core::Command
   def initialize(params)
     super(params)
     @authorization_service = User::Service::AuthorizationService.new
-    @person_factory = Family::Factory::PersonFactory.new(model)
     @person_repository = Family::Repository::PersonRepository.new(model)
   end
 
@@ -22,7 +21,7 @@ class Family::Command::PersonCreateCommand < Core::Command
   # @return [Hash]
   def execute
     user = @authorization_service.get_user_by_token_code(token)
-    person = @person_factory.create(user, name, photo_url)
+    person = @model.new(user, name, photo_url)
     person = @person_repository.save!(person)
     { id: person.id }
   end

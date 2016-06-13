@@ -19,14 +19,12 @@ class Goal::Command::GoalCreateCommand < Core::Command
   # @param [Object] params
   # @see Family:Child
   # @see User::Service::AuthorizationService
-  # @see Goal::Factory::GoalFactory
   # @see Goal::Repository::GoalRepository
   # @see Family::Repository::PersonRepository
   def initialize(params)
     super(params)
     @child_model = Family::Child
     @authorization_service = User::Service::AuthorizationService.new
-    @goal_factory = Goal::Factory::GoalFactory.new
     @goal_repository = Goal::Repository::GoalRepository.new
     @person_repository = Family::Repository::PersonRepository.new(@child_model)
   end
@@ -36,7 +34,7 @@ class Goal::Command::GoalCreateCommand < Core::Command
   def execute
     user = @authorization_service.get_user_by_token_code(token)
     child = @person_repository.find(id)
-    goal = @goal_factory.create(user, child, target, name, photo_url)
+    goal = Goal::Goal.new(user, child, target, name, photo_url)
     goal = @goal_repository.save!(goal)
     { id: goal.id }
   end

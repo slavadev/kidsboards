@@ -6,6 +6,4 @@ module User
   module Service end
   # Repository classes
   module Repository end
-  # Factory classes
-  module Factory end
 end

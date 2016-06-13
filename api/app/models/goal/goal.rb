@@ -33,6 +33,21 @@ class Goal::Goal < ActiveRecord::Base
                 less_than:    1000
             }
 
+  # Creates a goal
+  # @param [User::User]    user
+  # @param [Family::Child] child
+  # @param [Integer]       target
+  # @param [String]        name
+  def initialize(user, child, target, name, photo_url)
+    super()
+    self.user = user
+    self.child = child
+    self.target = target
+    self.name = name
+    self.photo_url = photo_url
+    self.current = 0
+  end
+
   # Adds or removes points
   # @param [int] diff
   # @return [int]

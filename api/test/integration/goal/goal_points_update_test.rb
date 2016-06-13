@@ -18,7 +18,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     id = json['id']
 
     # action 1
-    diff = Faker::Number.number(1).to_i
+    diff = Faker::Number.number(1).to_i + 1
     diff0 = diff
     patch "/api/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
 

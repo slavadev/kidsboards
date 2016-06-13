@@ -6,8 +6,6 @@ module Goal
   module Service end
   # Repository classes
   module Repository end
-  # Factory classes
-  module Factory end
-  # Viewer classes
-  module Viewer end
+  # Presenter classes
+  module Presenter end
 end

@@ -8,7 +8,7 @@ class Family::Repository::PersonRepository < Core::Repository
     @model = person_model
   end
 
-  # Find adult owned by user and not deleted
+  # Finds adult owned by user and not deleted
   # @param [int] id
   # @param [User::User] user
   # @return [Family::Adult]

@@ -10,12 +10,10 @@ class User::Command::LoginCommand < Core::Command
   # Sets all services
   # @param [Object] params
   # @see User::Repository::UserRepository
-  # @see User::Factory::UserFactory
   # @see User::Repository::TokenRepository
   def initialize(params)
     super(params)
     @user_repository = User::Repository::UserRepository.new
-    @token_factory = User::Factory::TokenFactory.new
     @token_repository = User::Repository::TokenRepository.new
   end
 
@@ -35,7 +33,7 @@ class User::Command::LoginCommand < Core::Command
   # @return [Hash]
   def execute
     user = @user_repository.find_by_email(email)
-    token = @token_factory.create(user, User::Token::TYPE_LOGIN)
+    token = User::Token.new(user, User::Token::TYPE_LOGIN)
     token = @token_repository.save!(token)
     { token: token.code }
   end

@@ -10,17 +10,15 @@ class Goal::Command::GoalViewCommand < Core::Command
   # Sets all variables
   # @param [Object] params
   # @see Goal::Repository::GoalRepository
-  # @see Goal::Viewer::GoalViewer
   def initialize(params)
     super(params)
     @goal_repository = Goal::Repository::GoalRepository.new
-    @goal_viewer = Goal::Viewer::GoalViewer.new
   end
 
   # Runs command
   # @return [Hash]
   def execute
     goal = goal_repository.find(id)
-    @goal_viewer.goal_to_hash_with_full_info(goal)
+    Goal::Presenter::GoalPresenter.new(goal).goal_to_hash_with_full_info
   end
 end

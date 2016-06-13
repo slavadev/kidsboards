@@ -13,6 +13,17 @@ class Family::Family < ActiveRecord::Base
   validates :photo_url, length: { maximum: 100 }
   validates :photo_url, 'Core::Validator::Uri' => true
 
+  # Creates a family
+  # @param [User::User] user
+  # @param [String] name
+  # @param [String] photo_url
+  def initialize(user, name = '', photo_url = nil)
+    super()
+    self.user = user
+    self.name = name
+    self.photo_url = photo_url
+  end
+
   # Gets adults
   def adults
     user.adults

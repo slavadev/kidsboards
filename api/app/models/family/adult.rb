@@ -17,4 +17,15 @@ class Family::Adult < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :adults, class_name: 'User::User'
   has_many   :actions, class_name: 'Goal::Action'
+
+  # Creates an adult
+  # @param [User::User] user
+  # @param [String] name
+  # @param [String] photo_url
+  def initialize(user, name, photo_url)
+    super()
+    self.user = user
+    self.name = name
+    self.photo_url = photo_url
+  end
 end

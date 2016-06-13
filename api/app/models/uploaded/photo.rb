@@ -24,4 +24,14 @@ class Uploaded::Photo < ActiveRecord::Base
 
   validates_attachment_presence :file
   validates_attachment_content_type :file, content_type: %r{\Aimage/.*\Z}
+
+  # Generates a photo
+  # @param [User::User] user
+  # @param [Object] file
+  # @return [Uploaded::Photo]
+  def initialize(user, file)
+    super()
+    self.user = user
+    self.file = file
+  end
 end

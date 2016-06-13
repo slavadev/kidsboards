@@ -6,6 +6,6 @@ module Uploaded
   module Service end
   # Repository classes
   module Repository end
-  # Factory classes
-  module Factory end
+  # Presenter classes
+  module Presenter end
 end

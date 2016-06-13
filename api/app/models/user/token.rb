@@ -20,6 +20,18 @@ class User::Token < ActiveRecord::Base
   validates :code, :created_at, :token_type, presence: true, on: :create
   validates :token_type, inclusion: { in: [TYPE_LOGIN, TYPE_CONFIRMATION, TYPE_RECOVERY] }
 
+  # Creates a token with user and type
+  # @param [User::User] user
+  # @param [String] type
+  def initialize(user, type)
+    super()
+    self.user = user
+    self.code = SecureRandom.hex
+    self.created_at = DateTime.now.utc
+    self.is_expired = false
+    self.token_type = type
+  end
+
   # Sets expired flag
   # @return [User::Token]
   def expire

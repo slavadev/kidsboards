@@ -6,4 +6,15 @@ class Goal::Repository::GoalRepository < Core::Repository
   def initialize
     @model = Goal::Goal
   end
+
+  # Finds child goals
+  # @param [Family::Child] child
+  # @param [Boolean] completed
+  # @return [Goal::Goal][] goals
+  def find_goals_by_child(child, completed)
+    goals = child.goals.not_deleted
+    return goals if completed.nil?
+    return goals.where('current >= target') if completed
+    goals.where('current < target')
+  end
 end
