@@ -14,7 +14,13 @@ class Family::Command::PersonUpdateCommand < Core::Command
   # @see Family::Repository::PersonRepository
   def initialize(params)
     super(params)
-    @person_repository = Family::Repository::PersonRepository.new(model)
+    @person_repository = Family::Repository::PersonRepository.new(@model)
+  end
+
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :login }
   end
 
   # Runs command

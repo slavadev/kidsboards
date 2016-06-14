@@ -1,9 +1,9 @@
 # Contains methods to work with tokens and users
 class User::Service::AuthorizationService
   # Sets all variables
-  # @see User::Token
+  # @see User::Repository::TokenRepository
   def initialize
-    @token_model = User::Token
+    @token_repository = User::Repository::TokenRepository.new
   end
 
   # Gets the token for command according to authorization rules
@@ -11,32 +11,31 @@ class User::Service::AuthorizationService
   # @return [User::Token]
   # @raise Core::Errors::UnauthorizedError
   def get_token_by_command(command)
-    rule = get_rule_by_command(command)
-    return if rule.blank?
+    rule = command.authorization_rules[:token_type]
+    return if rule.nil?
     code = command.token
     raise Core::Errors::UnauthorizedError if code.nil?
     type = get_token_type_by_rule(rule)
     get_token_by_code_and_type(code, type)
   end
 
-  # Gets the rule for the command from rules file
+  # Checks rules for commands
   # @param [Core::Command] command
-  def get_rule_by_command(command)
-    rules = Rails.configuration.authorization_rules
-    rules.select { |rule| rule['action'] == command.class.name }
+  def check_rules_for_command(command)
+    get_token_by_command(command)
   end
 
   # Gets type of the token
   # @param [Hash] rule
   # @return [Integer]
   def get_token_type_by_rule(rule)
-    case rule[0]['token']
-    when :confirmation then
-      User::Token::TYPE_CONFIRMATION
-    when :recovery then
-      User::Token::TYPE_RECOVERY
-    else
-      User::Token::TYPE_LOGIN
+    case rule
+      when :confirmation then
+        User::Token::TYPE_CONFIRMATION
+      when :recovery then
+        User::Token::TYPE_RECOVERY
+      else
+        User::Token::TYPE_LOGIN
     end
   end
 
@@ -46,7 +45,7 @@ class User::Service::AuthorizationService
   # @return [User::Token]
   # @raise Core::Errors::UnauthorizedError
   def get_token_by_code_and_type(code, type)
-    token = @token_model.where(code: code, token_type: type).first
+    token = @token_repository.find_token_by_code_and_type(code, type)
     raise Core::Errors::UnauthorizedError if token.nil?
     token
   end

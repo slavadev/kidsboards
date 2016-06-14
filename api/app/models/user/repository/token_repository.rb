@@ -1,15 +1,17 @@
 # Contains methods to work with token entities
 class User::Repository::TokenRepository < Core::Repository
   # Sets all variables
-  # @see User::User
+  # @see User::Token
   def initialize
-    @model = User::User
+    @model = User::Token
   end
 
-  # Finds a user by email
-  # @param [String] email
-  # @return [User::User]
-  def find_by_email(email)
-    @model.find_by_email(email)
+  # Finds token by code and type
+  # @param [Integer] code
+  # @param [Integer] type
+  # @return [User::Token]
+  # @raise Core::Errors::UnauthorizedError
+  def find_token_by_code_and_type(code, type)
+    @model.where(code: code, token_type: type).first
   end
 end

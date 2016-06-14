@@ -14,7 +14,7 @@ class Core::Validator::OwnerValidator < ActiveModel::EachValidator
   # @param [Object] _value
   # @raise Core::Errors::ForbiddenError
   def validate_each(record, _attribute, _value)
-    rule = @authorization_service.get_rule_by_command record
+    rule = record.authorization_rules[:token_type]
     return if rule.blank?
     token = @authorization_service.get_token_by_command record
     user = token.user

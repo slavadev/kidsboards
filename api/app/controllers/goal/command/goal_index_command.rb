@@ -13,15 +13,21 @@ class Goal::Command::GoalIndexCommand < Core::Command
   # @see Family:Child
   # @see Goal::Repository::GoalRepository
   # @see Goal::Service::GoalService
-  # @see Goal::Presenter::GoalPresenter
   # @see Family::Repository::PersonRepository
-  # @see Family::Presenter::PersonViewerPersonViewer
+  # @see Family::Presenter::PersonPresenter
   def initialize(params)
     super(params)
     @child_model = Family::Child
     @goal_repository = Goal::Repository::GoalRepository.new
     @goal_service = Goal::Service::GoalService.new
     @person_repository = Family::Repository::PersonRepository.new(@child_model)
+    @person_presenter_class = Family::Presenter::PersonPresenter
+  end
+
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :login }
   end
 
   # Runs command
@@ -29,7 +35,7 @@ class Goal::Command::GoalIndexCommand < Core::Command
   def execute
     child = @person_repository.find(id)
     is_completed = completed.nil? ? nil : completed == 'true'
-    goals = Family::Presenter::PersonPresenter.new(child).child_goals_to_hash(is_completed)
+    goals = @person_presenter_class.new(child).child_goals_to_hash(is_completed)
     { goals: goals }
   end
 end

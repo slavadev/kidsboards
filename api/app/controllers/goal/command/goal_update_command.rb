@@ -10,10 +10,10 @@ class Goal::Command::GoalUpdateCommand < Core::Command
   validates :photo_url, length: { maximum: 100 }
   validates :photo_url, 'Core::Validator::Uri' => true
   validates :target,    numericality: {
-    only_integer: true,
-    greater_than: 0,
-    less_than: 1000
-  }, allow_nil: true
+                                        only_integer: true,
+                                        greater_than: 0,
+                                        less_than: 1000
+                                      }, allow_nil: true
 
   # Sets all variables
   # @param [Object] params
@@ -21,6 +21,12 @@ class Goal::Command::GoalUpdateCommand < Core::Command
   def initialize(params)
     super(params)
     @goal_repository = Goal::Repository::GoalRepository.new
+  end
+
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :login }
   end
 
   # Runs command

@@ -12,6 +12,12 @@ class User::Command::ConfirmCommand < Core::Command
     @token_repository = User::Repository::TokenRepository.new
   end
 
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :confirmation }
+  end
+
   # Runs command
   def execute
     token = @authorization_service.get_token_by_code_and_type(self.token, User::Token::TYPE_CONFIRMATION)

@@ -17,6 +17,12 @@ class User::Command::RecoveryCommand < Core::Command
     @authorization_service = User::Service::AuthorizationService.new
   end
 
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :recovery }
+  end
+
   # Runs command
   def execute
     token = @authorization_service.get_token_by_code_and_type(self.token, User::Token::TYPE_RECOVERY)

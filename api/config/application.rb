@@ -15,9 +15,6 @@ Bundler.require(*Rails.groups)
 
 module Thatsaboy
   class Application < Rails::Application
-    # Add authorization rules
-    config.authorization_rules = config_for('authorization_rules')
-
     # Some AR warnings
     config.active_record.raise_in_transactional_callbacks = true
   end

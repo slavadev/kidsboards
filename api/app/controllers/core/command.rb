@@ -19,6 +19,12 @@ class Core::Command
   def execute
   end
 
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: nil }
+  end
+
   # Checks that command can be executed by the user
   def check_authorization
     User::Service::AuthorizationService.new.get_token_by_command self

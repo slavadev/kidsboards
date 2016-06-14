@@ -15,6 +15,12 @@ class Uploaded::Command::PhotoDeleteCommand < Core::Command
     @photo_repository = Uploaded::Repository::PhotoRepository.new
   end
 
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :login }
+  end
+
   # Runs command
   def execute
     photo = @photo_repository.find(id)

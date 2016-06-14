@@ -8,10 +8,18 @@ class Uploaded::Command::PhotoCreateCommand < Core::Command
   # @param [Object] params
   # @see User::Service::AuthorizationService
   # @see Uploaded::Repository::PhotoRepository
+  # @see Uploaded::Presenter::PhotoPresenter
   def initialize(params)
     super(params)
     @authorization_service = User::Service::AuthorizationService.new
     @photo_repository = Uploaded::Repository::PhotoRepository.new
+    @photo_presenter_class = Uploaded::Presenter::PhotoPresenter
+  end
+
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :login }
   end
 
   # Runs command
@@ -20,6 +28,6 @@ class Uploaded::Command::PhotoCreateCommand < Core::Command
     user = @authorization_service.get_user_by_token_code(token)
     photo = Uploaded::Photo.new(user, file)
     photo = @photo_repository.save!(photo)
-    Uploaded::Presenter::PhotoPresenter.new(photo).photo_to_hash
+    @photo_presenter_class.new(photo).photo_to_hash
   end
 end

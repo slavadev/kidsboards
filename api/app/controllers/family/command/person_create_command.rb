@@ -9,12 +9,17 @@ class Family::Command::PersonCreateCommand < Core::Command
   # Sets all variables
   # @param [Object] params
   # @see User::Service::AuthorizationService
-  # @see Family::Factory::PersonFactory
   # @see Family::Repository::PersonRepository
   def initialize(params)
     super(params)
     @authorization_service = User::Service::AuthorizationService.new
     @person_repository = Family::Repository::PersonRepository.new(model)
+  end
+
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :login }
   end
 
   # Runs command

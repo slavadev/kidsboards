@@ -17,6 +17,12 @@ class User::Command::PinSetCommand < Core::Command
     @user_repository = User::Repository::UserRepository.new
   end
 
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :login }
+  end
+
   # Runs command
   def execute
     user = @authorization_service.get_user_by_token_code(token)

@@ -15,6 +15,12 @@ class User::Command::PinCheckCommand < Core::Command
     @authorization_service = User::Service::AuthorizationService.new
   end
 
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: :login }
+  end
+
   # Runs command
   # @return [Hash]
   def execute
