@@ -70,7 +70,7 @@ docker-compose -f dev.yml run tester
 Run
 
 ```
-docker-compose -f dev.yml run api
+docker-compose -f dev.yml up
 ```
 
 ### Production
