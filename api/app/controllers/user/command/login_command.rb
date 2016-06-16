@@ -29,6 +29,12 @@ class User::Command::LoginCommand < Core::Command
     end
   end
 
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: nil }
+  end
+
   # Runs command
   # @return [Hash]
   def execute

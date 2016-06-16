@@ -16,12 +16,6 @@ class Uploaded::Command::PhotoCreateCommand < Core::Command
     @photo_presenter_class = Uploaded::Presenter::PhotoPresenter
   end
 
-  # Rules for authorization
-  # @return [Hash]
-  def authorization_rules
-    { token_type: :login }
-  end
-
   # Runs command
   # @return [Hash]
   def execute

@@ -22,6 +22,12 @@ class User::Command::RegisterCommand < Core::Command
     @mailer_service = User::Service::MailerService.new
   end
 
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: nil }
+  end
+
   # Runs command
   # @return [Hash]
   def execute

@@ -1,3 +1,4 @@
 --private
 api/app/**/* -
+api/config/modules.rb -
 api/API.md

@@ -15,12 +15,6 @@ class Goal::Command::GoalDeleteCommand < Core::Command
     @goal_repository = Goal::Repository::GoalRepository.new
   end
 
-  # Rules for authorization
-  # @return [Hash]
-  def authorization_rules
-    { token_type: :login }
-  end
-
   # Runs command
   # @return [Hash]
   def execute

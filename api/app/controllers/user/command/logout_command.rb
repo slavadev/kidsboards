@@ -17,10 +17,4 @@ class User::Command::LogoutCommand < Core::Command
     @token_repository.save!(token)
     nil
   end
-
-  # Rules for authorization
-  # @return [Hash]
-  def authorization_rules
-    { token_type: :login }
-  end
 end

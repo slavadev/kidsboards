@@ -10,12 +10,6 @@ class Family::Command::FamilyViewCommand < Core::Command
     @family_presenter_class = Family::Presenter::FamilyPresenter
   end
 
-  # Rules for authorization
-  # @return [Hash]
-  def authorization_rules
-    { token_type: :login }
-  end
-
   # Runs command
   # @return [Hash]
   def execute

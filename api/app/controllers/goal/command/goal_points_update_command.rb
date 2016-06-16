@@ -26,12 +26,6 @@ class Goal::Command::GoalPointsUpdateCommand < Core::Command
     @person_repository = Family::Repository::PersonRepository.new(@adult_model)
   end
 
-  # Rules for authorization
-  # @return [Hash]
-  def authorization_rules
-    { token_type: :login }
-  end
-
   # Runs command
   # @return [Hash]
   def execute

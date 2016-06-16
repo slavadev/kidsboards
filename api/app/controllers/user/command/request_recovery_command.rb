@@ -17,6 +17,12 @@ class User::Command::RequestRecoveryCommand < Core::Command
     @mailer_service = User::Service::MailerService.new
   end
 
+  # Rules for authorization
+  # @return [Hash]
+  def authorization_rules
+    { token_type: nil }
+  end
+
   # Runs command
   def execute
     user = @user_repository.find_by_email(email)

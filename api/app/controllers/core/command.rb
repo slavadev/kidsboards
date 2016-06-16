@@ -22,7 +22,7 @@ class Core::Command
   # Rules for authorization
   # @return [Hash]
   def authorization_rules
-    { token_type: nil }
+    { token_type: :login }
   end
 
   # Checks that command can be executed by the user

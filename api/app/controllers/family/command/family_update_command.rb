@@ -16,12 +16,6 @@ class Family::Command::FamilyUpdateCommand < Core::Command
     @family_repository = Family::Repository::FamilyRepository.new
   end
 
-  # Rules for authorization
-  # @return [Hash]
-  def authorization_rules
-    { token_type: :login }
-  end
-
   # Runs command
   def execute
     user = @authorization_service.get_user_by_token_code(token)

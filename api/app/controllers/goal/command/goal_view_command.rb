@@ -15,12 +15,6 @@ class Goal::Command::GoalViewCommand < Core::Command
     @goal_presenter_class = Goal::Presenter::GoalPresenter
   end
 
-  # Rules for authorization
-  # @return [Hash]
-  def authorization_rules
-    { token_type: :login }
-  end
-
   # Runs command
   # @return [Hash]
   def execute

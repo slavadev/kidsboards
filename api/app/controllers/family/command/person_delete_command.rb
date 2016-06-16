@@ -16,12 +16,6 @@ class Family::Command::PersonDeleteCommand < Core::Command
     @person_repository = Family::Repository::PersonRepository.new(model)
   end
 
-  # Rules for authorization
-  # @return [Hash]
-  def authorization_rules
-    { token_type: :login }
-  end
-
   # Runs command
   def execute
     person = @person_repository.find(id)
