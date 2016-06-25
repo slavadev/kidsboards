@@ -9,10 +9,6 @@ class Core::Controller < ActionController::Base
     command.check_authorization
     command.check_validation
     result = command.execute
-    if result.nil?
-      render json: nil, status: 204
-    else
-      render json: result, status: 200
-    end
+    render json: result, status: result ? 200 : 204
   end
 end
