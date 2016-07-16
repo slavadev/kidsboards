@@ -5,46 +5,24 @@
     .module('thatsaboy.common')
     .factory('resourceWrapService', resourceWrapService);
 
-  resourceWrapService.$inject = ['$resource', 'localStorageService', '$state', 'errorHandlerService', '$q'];
+  resourceWrapService.$inject = ['$resource', 'localStorageService', 'errorHandlerService'];
 
-  function resourceWrapService($resource, localStorageService, $state, errorHandlerService, $q) {
-
-    function logout() {
-      localStorageService.remove("token");
-      return $q.when();
-    }
+  function resourceWrapService($resource, localStorageService, errorHandlerService) {
 
     function getToken() {
       return localStorageService.get("token");
     }
 
-    function _successFunction(responce) {
-      return responce;
-    }
-
-    function _errorFunction(responce) {
-      if (responce.status == 401) {
-        logout();
-        $state.go('app.index');
-        return '401';
-      } else if (responce.status == 403) {
-        return '403';
-      } else if (responce.status == 422) {
-        errorHandlerService.handle422(responce.data);
-      } else if (responce.status == 500) {
-        return '500';
-      }
+    function _successFunction(response) {
+      return response;
     }
 
     function wrapAction(resource, action, params, object) {
-      var errorHandler = _errorFunction;
+      var errorHandler = errorHandlerService.basicErrorHandler;
       if (params) {
         params.token = getToken();
         if (params.errorHandler){
-          errorHandler = function(responce) {
-            _errorFunction(responce);
-            params.errorHandler(responce);
-          };
+          errorHandler = params.errorHandler;
           params.errorHandler = null;
         }
       }

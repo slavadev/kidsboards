@@ -6,10 +6,12 @@
 
 
   errorHandlerService.$inject = [
-    '$mdDialog'
+    '$mdDialog',
+    '$state',
+    'localStorageService'
   ];
 
-  function errorHandlerService($mdDialog) {
+  function errorHandlerService($mdDialog, $state, localStorageService) {
 
     var handlersList = [
       wrongPassword,
@@ -87,8 +89,56 @@
       );
     }
 
+    function handle401(data) {
+      localStorageService.remove("token");
+      $state.go('app.index');
+    }
+
+    function recoveryHandle401(data) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.body))
+          .clickOutsideToClose(true)
+          .title('Error')
+          .textContent('The link is broken or has already been used.')
+          .ok('Ok')
+      );
+      $state.go('app.index');
+    }
+
+    function handle403(data) {
+    }
+
+    function handle500(data) {
+    }
+
+    function basicErrorHandler(response) {
+      if (response.status == 401) {
+        handle401(response.data);
+      } else if (response.status == 403) {
+        handle403(response.data);
+      } else if (response.status == 422) {
+        handle422(response.data);
+      } else if (response.status == 500) {
+        handle500(response.data);
+      }
+    }
+
+    function recoveryErrorHandler(response) {
+      if (response.status == 401) {
+        recoveryHandle401(response.data);
+      } else if (response.status == 403) {
+        handle403(response.data);
+      } else if (response.status == 422) {
+        handle422(response.data);
+      } else if (response.status == 500) {
+        handle500(response.data);
+      }
+    }
+
     return {
-      handle422: handle422
+      basicErrorHandler   : basicErrorHandler,
+      recoveryErrorHandler: recoveryErrorHandler
     }
   }
 })();

@@ -8,9 +8,9 @@ class Core::Filter::ErrorRenderer
       @controller = controller
       yield
     rescue Core::Errors::UnauthorizedError
-      self.render 401, :error => 'Unauthorized'
+      self.render 401, JSON.generate(:error => 'Unauthorized')
     rescue Core::Errors::ForbiddenError
-      self.render 403, :error => 'Forbidden'
+      self.render 403, JSON.generate(:error => 'Forbidden')
     rescue Core::Errors::ValidationError => e
       self.render 422, e.command.errors.to_json
     rescue StandardError => e

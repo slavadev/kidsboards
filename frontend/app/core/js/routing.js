@@ -56,6 +56,21 @@
       });
 
     /**
+     * Recovery page
+     */
+    $stateProvider
+      .state('app.recovery', {
+        url  : "^/recovery/:token",
+        views: {
+          'content': {
+            controller  : "recoveryController",
+            controllerAs: "recoveryCtrl",
+            templateUrl : "/app/modules/index/templates/recovery.html"
+          }
+        }
+      });
+
+    /**
      * Create new family page
      */
     $stateProvider

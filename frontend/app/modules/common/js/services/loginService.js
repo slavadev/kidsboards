@@ -8,10 +8,11 @@
   loginService.$inject = [
     'resourceWrapService',
     'localStorageService',
+    'errorHandlerService',
     '$q'
   ];
 
-  function loginService(resourceWrapService, localStorageService, $q) {
+  function loginService(resourceWrapService, localStorageService, errorHandlerService, $q) {
 
     exitAdultMode();
 
@@ -49,10 +50,11 @@
     }
 
     function recovery(password, token) {
+      localStorageService.set("token", token);
       return loginResource.post({
-        action: 'recovery',
-        email : password,
-        token : token
+        action  : 'recovery',
+        password: password,
+        errorHandler: errorHandlerService.recoveryErrorHandler
       }).then(function (response) {
         return response;
       });

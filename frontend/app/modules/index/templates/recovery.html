@@ -1,0 +1,25 @@
+<div class="index" layout="column" layout-align="center center">
+    <div layout="column" layout-align="center center">
+        <h2 ng-show="recoveryCtrl.step == 1">Enter new password</h2>
+        <h2 ng-show="recoveryCtrl.step == 2">Password was changed</h2>
+        <form name="recoveryForm" ng-show="recoveryCtrl.step == 1">
+            <div layout="column" layout-align="center center" md-theme="dark">
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="recoveryCtrl.password" type="password" name="password" password
+                           minlength="6">
+                    <div ng-messages="recoveryForm.password.$error">
+                        <div ng-message-exp="['pattern', 'minlength']">Password must have at least 6 characters.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </form>
+
+        <div layout="row" layout-align="center center" ng-show="recoveryCtrl.step == 1">
+            <md-button class="md-raised md-accent" ng-click="recoveryCtrl.change()">Change</md-button>
+        </div>
+        <div layout="row" layout-align="center center" ng-show="recoveryCtrl.step == 2">
+            <a href="index.html">Back</a>
+        </div>
+    </div>
+</div>
