@@ -83,7 +83,7 @@
         pin   : pin,
         token : getToken()
       }).then(function (response) {
-        var equal = response.data.equal;
+        var equal = response.equal;
         if (equal == true) {
           localStorageService.set("adult-mode", true);
         }

@@ -1,0 +1,85 @@
+@import 'globals';
+@import 'fonts';
+
+.editable-image {
+  .editable-image-popup {
+    height: 100%;
+    background-color: $color-second;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    transition: all .5s;
+    overflow: auto;
+    z-index: 10;
+    &.ng-hide {
+      height: 0;
+      overflow: hidden;
+    }
+    h1 {
+      color: $color-white;
+      margin: 0;
+      text-align: center;
+      font-family: "AddisAbaba";
+    }
+
+    .item {
+      padding: 0;
+      overflow: hidden;
+      .delete {
+        display: block;
+        position: absolute;
+        top: -40px;
+        left: 0;
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        background: rgba($color-first , .8);
+        font-family: "AddisAbaba";
+        color: $color-white;
+        transition: all 0.5s;
+        &:hover {
+          background: $color-first;
+        }
+      }
+      &:hover {
+        .delete {
+          top: 0;
+        }
+      }
+    }
+
+    label.upload input[type="file"] {
+      position: fixed;
+      top: -1000px;
+    }
+
+    .upload {
+      display: block;
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+      border: solid 2px $color-white;
+      span {
+        line-height: 200px;
+        text-align: center;
+        font-family: "AddisAbaba";
+        color: $color-white;
+      }
+    }
+
+    .container {
+      min-height: 100%;
+      max-width: 1000px;
+      margin: auto;
+
+      .copyright {
+        a {
+          color: $color-grey;
+        }
+      }
+    }
+  }
+}

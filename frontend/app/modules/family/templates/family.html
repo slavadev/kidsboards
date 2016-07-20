@@ -1,27 +1,40 @@
-<div>
-    <logout></logout>
-    <adult-mode></adult-mode>
-    <h1>Name:</h1>
-    <h1 editable-text="familyCtrl.family.name"
-        update-method="familyCtrl.update()"></h1>
-    <h1>Image:</h1>
-    <div editable-image="familyCtrl.family.photo_url"
-        update-method="familyCtrl.update()"
-        image-banks="['family-photos']"></div>
-    <h2>Children:</h2>
-    <ul>
-        <li ng-repeat="child in familyCtrl.family.children">
-            <img ng-src="{{child.photo_url}}" style="max-height: 150px;" ui-sref="app.child({id: child.id})">
-            {{child.name}}
-        </li>
-        <li show-in-adult-mode><button ui-sref="app.child_new">Add</button></li>
-    </ul>
-    <h2>Adults:</h2>
-    <ul>
-        <li ng-repeat="adult in familyCtrl.family.adults">
-            <img ng-src="{{adult.photo_url}}" style="max-height: 150px;" ui-sref="app.adult({id: adult.id})">
-            {{adult.name}}
-        </li>
-        <li show-in-adult-mode><button ui-sref="app.adult_new">Add</button></li>
-    </ul>
+<div class="family" layout="row" layout-align="center stretch">
+    <div class="left-panel" flex="none" layout="column"
+         layout-align="center center" layout-padding
+         md-theme="dark"
+    >
+        <div flex="" layout="column" layout-align="top center">
+            <div editable-image="familyCtrl.family.photo_url"
+                 title="Choose a photo"
+                 update-method="familyCtrl.update()"
+                 image-banks="['family-photos']"></div>
+            <div editable-text="familyCtrl.family.name"
+                 title="Enter new name"
+                 update-method="familyCtrl.update()"></div>
+        </div>
+        <adult-mode flex="none"></adult-mode>
+        <logout flex="none"></logout>
+    </div>
+    <div class="right-panel" flex>
+        <h2>Children:</h2>
+        <ul>
+            <li ng-repeat="child in familyCtrl.family.children">
+                <img ng-src="{{child.photo_url}}" style="max-height: 150px;" ui-sref="app.child({id: child.id})">
+                {{child.name}}
+            </li>
+            <li show-in-adult-mode>
+                <button ui-sref="app.child_new">Add</button>
+            </li>
+        </ul>
+        <h2>Adults:</h2>
+        <ul>
+            <li ng-repeat="adult in familyCtrl.family.adults">
+                <img ng-src="{{adult.photo_url}}" style="max-height: 150px;" ui-sref="app.adult({id: adult.id})">
+                {{adult.name}}
+            </li>
+            <li show-in-adult-mode>
+                <button ui-sref="app.adult_new">Add</button>
+            </li>
+        </ul>
+    </div>
 </div>

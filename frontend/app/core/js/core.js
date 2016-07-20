@@ -6,7 +6,8 @@
     [
       'ui.router',
       'LocalStorageModule',
-      'thatsaboy.common'
+      'thatsaboy.common',
+      'ngAnimate'
     ]
   );
   
@@ -14,6 +15,7 @@
     .module('thatsaboy.core')
     .controller('AppController', AppController);
 
+  AppController.$inject = [];
 
   function AppController() {
     var vm = this;

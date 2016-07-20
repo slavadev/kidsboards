@@ -48,32 +48,6 @@
     }
   }
 
-  md-input-container
-  {
-    font-family: "AddisAbaba";
-    width: 200px;
-    .md-input-message-animation {
-      max-width: 200px;
-    }
-    label, label:after {
-      color: $color-grey !important;
-    }
-    .md-input {
-      font-family: "AddisAbaba";
-      border-color: $color-grey !important;
-    }
-    &.md-input-invalid {
-      label, label:after,
-      .md-input-message-animation {
-        color: $color-second !important;
-      }
-
-      .md-input {
-        border-color: $color-second !important;
-      }
-    }
-  }
-
   a {
     font-family: "AddisAbaba";
     color: $color-grey;

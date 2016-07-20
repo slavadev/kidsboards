@@ -1,10 +1,23 @@
-<div>
-    <div ng-show="mode == 'view'">
-        {{editableText}} <button ng-click="turnOnEditMode()" show-in-adult-mode>Edit</button>
+<div class="editable-text" md-theme="dark">
+    <div ng-show="mode == 'view'" class="editable-text-block ng-hide">
+        {{editableText}}
+        <button ng-click="turnOnEditMode()" show-in-adult-mode>Edit</button>
     </div>
-    <div ng-show="mode == 'edit'">
-        <input type="text" ng-model="editableText"></input>
-        <button ng-click="saveText()">{{label}}</button>
-        <button ng-click="cancel()" ng-hide="onlyEdit">Cancel</button>
+    <div ng-show="mode == 'edit'"
+         class="editable-text-popup ng-hide"
+         layout="column"
+         layout-align="center center"
+         ng-cloak
+    >
+        <h1>{{title}}</h1>
+        <md-input-container>
+            <label></label>
+            <input type="text" ng-model="editableText">
+        </md-input-container>
+        <div layout="row"
+             layout-align="center center">
+            <md-button class="md-raised md-accent" ng-click="saveText()">{{label}}</md-button>
+            <md-button class="md-raised" ng-click="cancel()" ng-hide="onlyEdit">Cancel</md-button>
+        </div>
     </div>
 </div>

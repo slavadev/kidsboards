@@ -1,23 +1,25 @@
 <div>
-    <div ng-show="mode == 'view'">
-        <button ng-click="showLoginDialog()" hide-in-adult-mode>Enter adult mode</button>
-        <button ng-click="exitAdultMode()" show-in-adult-mode>Exit adult mode</button>
-        <button ng-click="showChangePinDialog()" show-in-adult-mode>Change pin</button>
+    <div ng-show="mode == 'view'" class="control-buttons">
+        <md-button ng-click="showLoginDialog()" hide-in-adult-mode>Enter adult mode</md-button>
+        <md-button ng-click="exitAdultMode()" show-in-adult-mode>Exit adult mode</md-button>
+        <md-button ng-click="showChangePinDialog()" show-in-adult-mode>Change the PIN code</md-button>
     </div>
     <div ng-show="mode == 'login'">
-        <num-pad text="Enter pin"
+        <num-pad text="Enter the PIN code"
                  num="pin"
                  on-ok="login()"
                  on-cancel="closeLoginDialog()"
+                 type="password"
                  min="4"
                  max="4"
         ></num-pad>
     </div>
     <div ng-show="mode == 'change'">
-        <num-pad text="Change pin"
+        <num-pad text="Enter new PIN code"
                  num="pin"
                  on-ok="changePin()"
                  on-cancel="closeLoginDialog()"
+                 type="password"
                  min="4"
                  max="4"
         ></num-pad>

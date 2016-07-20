@@ -41,21 +41,6 @@
   @media (max-width: 960px) {
     .index .steps {
       margin-bottom: 100px; } }
-  .index md-input-container {
-    font-family: "AddisAbaba";
-    width: 200px; }
-    .index md-input-container .md-input-message-animation {
-      max-width: 200px; }
-    .index md-input-container label, .index md-input-container label:after {
-      color: #E1BEE7 !important; }
-    .index md-input-container .md-input {
-      font-family: "AddisAbaba";
-      border-color: #E1BEE7 !important; }
-    .index md-input-container.md-input-invalid label, .index md-input-container.md-input-invalid label:after,
-    .index md-input-container.md-input-invalid .md-input-message-animation {
-      color: #FF4081 !important; }
-    .index md-input-container.md-input-invalid .md-input {
-      border-color: #FF4081 !important; }
   .index a {
     font-family: "AddisAbaba";
     color: #E1BEE7; }

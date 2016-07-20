@@ -5,9 +5,9 @@
     .module('thatsaboy.common')
     .directive('editableText', editableText);
 
-  editableText.$inject = [];
+  editableText.$inject = ['$timeout'];
 
-  function editableText() {
+  function editableText($timeout) {
 
     return {
       restrict: 'A',
@@ -17,7 +17,8 @@
         editableText: '=',
         updateMethod: '&',
         onlyEdit: '@',
-        label: '@'
+        label: '@',
+        title: '@'
       },
       link    : function ($scope, element, attrs, ctrl) {
 

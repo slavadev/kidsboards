@@ -16,6 +16,7 @@
       link    : function ($scope, element, attrs, ctrl) {
         $scope.step = 1;
         $scope.pin = '';
+        $scope.text = 'Set up a PIN code';
         var pin1 = '';
 
         $scope.next = function(){
@@ -23,6 +24,7 @@
             pin1 = $scope.pin;
             $scope.pin = '';
             $scope.step = 2;
+            $scope.text = 'Repeat the PIN code';
           } else {
             if(pin1 == $scope.pin) {
               loginService.setPin($scope.pin).then(function(){
@@ -31,6 +33,7 @@
             } else {
               $scope.step = 1;
               $scope.pin = '';
+              $scope.text = 'Set up a PIN code';
             }
           }
         };

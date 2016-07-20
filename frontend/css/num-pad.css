@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "AddisAbaba";
+  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSketch";
+  src: url("/css/fonts/KGSecondChancesSketch.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSolid";
+  src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
+
+.num-pad {
+  height: 100%;
+  background-color: #9C27B0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  transition: all 0.5s;
+  overflow: auto;
+  z-index: 10; }
+  .num-pad.ng-hide {
+    height: 0;
+    overflow: hidden; }
+  .num-pad h1 {
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    font-family: "AddisAbaba"; }
+  .num-pad .num-pad-container {
+    min-height: 100%; }
+  .num-pad md-input-container {
+    margin-bottom: 0; }
+    .num-pad md-input-container input {
+      color: #ffffff !important;
+      font-size: 32px;
+      height: 48px; }
+  .num-pad .calc {
+    max-width: 320px; }
+    .num-pad .calc .calc-button {
+      width: 70px;
+      height: 70px;
+      padding: 0;
+      font-size: 24px; }

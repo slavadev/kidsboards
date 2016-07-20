@@ -1,6 +1,36 @@
-<div>
-    <div>{{text}}</div>
-    <input type="text" ng-model="num">
-    <button ng-click="ok()">OK</button>
-    <button ng-click="cancel()" ng-hide="onlyOk">Cancel</button>
+<div class="num-pad" md-theme="dark" id="myDIV">
+    <div layout="column"
+         layout-align="center center"
+         class="num-pad-container"
+    >
+        <h1>{{text}}</h1>
+        <md-input-container>
+            <label></label>
+            <input ng-model="num" type="{{type}}" disabled>
+        </md-input-container>
+        <div class="calc" layout="row" layout-wrap
+             layout-align="center center">
+            <md-button ng-repeat="button in buttons"
+                       ng-click="press(button)"
+                       class="md-raised calc-button">
+                <span>{{button}}</span>
+            </md-button>
+        </div>
+        <div layout="row"
+             layout-align="center center">
+            <md-button ng-click="ok()"
+                       class="md-raised md-accent"
+                       ng-disabled="!lengthIsOk()"
+            >
+                OK
+            </md-button>
+            <md-button ng-click="cancel()"
+                       ng-hide="onlyOk"
+                       class="md-raised"
+            >
+                Cancel
+            </md-button>
+        </div>
+
+    </div>
 </div>

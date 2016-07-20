@@ -1,18 +1,36 @@
-<div>
-    <div ng-show="mode == 'view'">
+<div class="editable-image" md-theme="dark">
+    <div ng-show="mode == 'view'" class="editable-image-block ng-hide">
         <img ng-src="{{editableImage}}" style="max-height: 150px;">
         <button ng-click="turnOnEditMode()" show-in-adult-mode>Edit</button>
     </div>
-    <div ng-show="mode == 'edit'">
-        <ul>
-            <li ng-repeat="image in images">
-                <img ng-src="{{image.url}}" style="max-height: 150px;" ng-click="chooseImage(image)">
-                <button ng-click="deleteImage(image)" ng-show="image.id">Delete</button>
-            </li>
-            <li><button type="file" ngf-select="uploadFile($file)"
-                        accept="image/*" ngf-max-size="20MB">
-                Upload File</button></li>
-        </ul>
-        <button ng-click="cancel()" ng-hide="onlyEdit">Cancel</button>
+    <div ng-show="mode == 'edit'"
+         class="editable-image-popup ng-hide"
+         ng-cloak
+    >
+        <div layout="column"
+             layout-align="center center"
+             class="container"
+        >
+            <h1>{{title}}</h1>
+            <div layout="row"
+                 layout-align="center center"
+                 layout-wrap
+                 layout-margin>
+                <md-button ng-repeat="image in images" class="item">
+                    <div image="image.url" ng-click="chooseImage(image)"></div>
+                    <div class="delete" ng-click="deleteImage(image)" ng-show="image.id">Delete</div>
+                </md-button>
+                <md-button class="item">
+                    <label class="upload">
+                        <input type="file" ngf-select="uploadFile($file)" accept="image/*" ngf-max-size="20MB"/>
+                        <span>Upload new photo</span>
+                    </label>
+                </md-button>
+            </div>
+            <md-button class="md-raised" ng-click="cancel()" ng-hide="onlyEdit">Cancel</md-button>
+            <div flex="none" class="copyright">
+                Icons and images designed by <a href="http://www.freepik.com" title="Freepik">Freepik</a>
+            </div>
+        </div>
     </div>
 </div>

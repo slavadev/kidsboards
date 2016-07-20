@@ -48,3 +48,51 @@ md-icon {
   bottom: 7px;
   opacity: 1; }
 
+md-input-container
+{
+  font-family: "AddisAbaba";
+  width: 200px;
+  .md-input-message-animation {
+    max-width: 200px;
+  }
+  label, label:after {
+    color: $color-grey !important;
+  }
+  .md-input {
+    font-family: "AddisAbaba";
+    border-color: $color-grey !important;
+    text-align: center;
+  }
+  &.md-input-invalid {
+    label, label:after,
+    .md-input-message-animation {
+      color: $color-second !important;
+    }
+
+    .md-input {
+      border-color: $color-second !important;
+    }
+  }
+}
+
+div[image] {
+  height: 200px;
+  width: 200px;
+  display: block;
+  background: url(/images/dino.jpg) repeat center center fixed;
+  background-size: 200px;
+  &.loaded {
+    background: no-repeat center center;
+    background-size: cover;
+  }
+}
+
+button {
+  font-family: "AddisAbaba" !important;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+  height: 0;
+}
+

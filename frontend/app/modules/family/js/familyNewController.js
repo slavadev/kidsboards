@@ -5,13 +5,16 @@
     .module('thatsaboy.family')
     .controller('familyNewController', familyNewController);
 
-  familyNewController.$inject = ['familyRepository', 'loginService', '$scope', '$state'];
+  familyNewController.$inject = ['familyRepository', 'loginService', '$scope', '$state', '$timeout'];
 
-  function familyNewController(familyRepository, loginService, $scope, $state) {
+  function familyNewController(familyRepository, loginService, $scope, $state, $timeout) {
     var vm = this;
     loginService.forceAdultMode();
-    vm.step = 1;
-    vm.name = 'New family';
+    vm.step = 0;
+    $timeout(function () {
+      vm.step = 1;
+    }, 2000);
+    vm.name = '';
     vm.update = function(){
       return familyRepository.update(vm.name, vm.photo_url);
     };

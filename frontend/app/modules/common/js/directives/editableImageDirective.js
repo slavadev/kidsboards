@@ -17,7 +17,8 @@
         editableImage: '=',
         updateMethod : '&',
         imageBanks   : '=',
-        onlyEdit     : '@'
+        onlyEdit     : '@',
+        title        : '@'
       },
       link       : function ($scope, element, attrs, ctrl) {
         $scope.onlyEdit = $scope.onlyEdit ? true : false;

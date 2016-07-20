@@ -1,8 +1,9 @@
-<div>
-    <num-pad text="Set pin"
+<div class="ng-hide">
+    <num-pad text="{{text}}"
              num="pin"
              on-ok="next()"
              only-ok="true"
+             type="password"
              min="4"
              max="4"
     ></num-pad>

@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "AddisAbaba";
+  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSketch";
+  src: url("/css/fonts/KGSecondChancesSketch.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSolid";
+  src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
+
+.editable-text .editable-text-popup {
+  height: 100%;
+  background-color: #9C27B0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  transition: all 0.5s;
+  overflow: auto;
+  z-index: 10; }
+  .editable-text .editable-text-popup.ng-hide {
+    height: 0;
+    overflow: hidden; }
+  .editable-text .editable-text-popup h1 {
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    font-family: "AddisAbaba"; }
+  .editable-text .editable-text-popup md-input-container {
+    margin-bottom: 0; }

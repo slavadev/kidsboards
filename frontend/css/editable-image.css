@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "AddisAbaba";
+  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSketch";
+  src: url("/css/fonts/KGSecondChancesSketch.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSolid";
+  src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
+
+.editable-image .editable-image-popup {
+  height: 100%;
+  background-color: #FF4081;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  transition: all .5s;
+  overflow: auto;
+  z-index: 10; }
+  .editable-image .editable-image-popup.ng-hide {
+    height: 0;
+    overflow: hidden; }
+  .editable-image .editable-image-popup h1 {
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    font-family: "AddisAbaba"; }
+  .editable-image .editable-image-popup .item {
+    padding: 0;
+    overflow: hidden; }
+    .editable-image .editable-image-popup .item .delete {
+      display: block;
+      position: absolute;
+      top: -40px;
+      left: 0;
+      width: 200px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      background: rgba(156, 39, 176, 0.8);
+      font-family: "AddisAbaba";
+      color: #ffffff;
+      transition: all 0.5s; }
+      .editable-image .editable-image-popup .item .delete:hover {
+        background: #9C27B0; }
+    .editable-image .editable-image-popup .item:hover .delete {
+      top: 0; }
+  .editable-image .editable-image-popup label.upload input[type="file"] {
+    position: fixed;
+    top: -1000px; }
+  .editable-image .editable-image-popup .upload {
+    display: block;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    border: solid 2px #ffffff; }
+    .editable-image .editable-image-popup .upload span {
+      line-height: 200px;
+      text-align: center;
+      font-family: "AddisAbaba";
+      color: #ffffff; }
+  .editable-image .editable-image-popup .container {
+    min-height: 100%;
+    max-width: 1000px;
+    margin: auto; }
+    .editable-image .editable-image-popup .container .copyright a {
+      color: #E1BEE7; }

@@ -9,7 +9,7 @@
                     <input ng-model="recoveryCtrl.email" type="email" name="email" required
                            ng-pattern="/^.+@.+\..+$/">
                     <div ng-messages="recoveryForm.email.$error">
-                        <div ng-message-exp="['pattern', 'minlength']">It must be a valid email</div>
+                        <div ng-message-exp="['pattern', 'required']">It must be a valid email</div>
                     </div>
                 </md-input-container>
             </div>
