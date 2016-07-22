@@ -10,6 +10,27 @@
   font-family: "KGSecondChancesSolid";
   src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
 
+.editable-image .image-item {
+  padding: 0;
+  overflow: hidden; }
+  .editable-image .image-item .action {
+    display: block;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background: rgba(156, 39, 176, 0.8);
+    font-family: "AddisAbaba";
+    color: #ffffff;
+    transition: all 0.5s; }
+    .editable-image .image-item .action:hover {
+      background: #9C27B0; }
+  .editable-image .image-item:hover .action, .editable-image .image-item.adminable .action {
+    top: 0; }
+
 .editable-image .editable-image-popup {
   height: 100%;
   background-color: #FF4081;
@@ -29,26 +50,6 @@
     margin: 0;
     text-align: center;
     font-family: "AddisAbaba"; }
-  .editable-image .editable-image-popup .item {
-    padding: 0;
-    overflow: hidden; }
-    .editable-image .editable-image-popup .item .delete {
-      display: block;
-      position: absolute;
-      top: -40px;
-      left: 0;
-      width: 200px;
-      height: 40px;
-      text-align: center;
-      line-height: 40px;
-      background: rgba(156, 39, 176, 0.8);
-      font-family: "AddisAbaba";
-      color: #ffffff;
-      transition: all 0.5s; }
-      .editable-image .editable-image-popup .item .delete:hover {
-        background: #9C27B0; }
-    .editable-image .editable-image-popup .item:hover .delete {
-      top: 0; }
   .editable-image .editable-image-popup label.upload input[type="file"] {
     position: fixed;
     top: -1000px; }

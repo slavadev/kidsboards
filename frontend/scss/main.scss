@@ -75,6 +75,10 @@ md-input-container
   }
 }
 
+button {
+  font-family: "AddisAbaba" !important;
+}
+
 div[image] {
   height: 200px;
   width: 200px;
@@ -85,10 +89,6 @@ div[image] {
     background: no-repeat center center;
     background-size: cover;
   }
-}
-
-button {
-  font-family: "AddisAbaba" !important;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

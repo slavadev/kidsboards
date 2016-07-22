@@ -1,7 +1,9 @@
 <div class="editable-image" md-theme="dark">
     <div ng-show="mode == 'view'" class="editable-image-block ng-hide">
-        <img ng-src="{{editableImage}}" style="max-height: 150px;">
-        <button ng-click="turnOnEditMode()" show-in-adult-mode>Edit</button>
+        <md-button class="image-item adminable">
+            <div image="editableImage"></div>
+            <div class="action" ng-click="turnOnEditMode()" show-in-adult-mode>Change</div>
+        </md-button>
     </div>
     <div ng-show="mode == 'edit'"
          class="editable-image-popup ng-hide"
@@ -11,16 +13,16 @@
              layout-align="center center"
              class="container"
         >
-            <h1>{{title}}</h1>
+            <h1>{{text}}</h1>
             <div layout="row"
                  layout-align="center center"
                  layout-wrap
                  layout-margin>
-                <md-button ng-repeat="image in images" class="item">
+                <md-button ng-repeat="image in images" class="image-item">
                     <div image="image.url" ng-click="chooseImage(image)"></div>
-                    <div class="delete" ng-click="deleteImage(image)" ng-show="image.id">Delete</div>
+                    <div class="action" ng-click="deleteImage(image)" ng-show="image.id">Delete</div>
                 </md-button>
-                <md-button class="item">
+                <md-button class="image-item">
                     <label class="upload">
                         <input type="file" ngf-select="uploadFile($file)" accept="image/*" ngf-max-size="20MB"/>
                         <span>Upload new photo</span>

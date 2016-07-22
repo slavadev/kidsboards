@@ -10,6 +10,9 @@
   font-family: "KGSecondChancesSolid";
   src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
 
+.editable-text .md-button {
+  color: #ffffff; }
+
 .editable-text .editable-text-popup {
   height: 100%;
   background-color: #9C27B0;

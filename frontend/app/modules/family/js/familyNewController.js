@@ -19,12 +19,37 @@
       return familyRepository.update(vm.name, vm.photo_url);
     };
     $scope.$on('nextStep', function () {
-      if (vm.step < 3) {
-        vm.step = vm.step + 1;
-      } else {
-        $state.go('app.family');
-      }
+      vm.step = vm.step + 1;
     });
+
+
+    // change password part
+    $scope.change_step = 1;
+    $scope.pin = '';
+    $scope.change_text = 'Set up a PIN code';
+    var pin1 = '';
+
+    $scope.change_next = function(){
+      if ($scope.change_step == 1) {
+        pin1 = $scope.pin;
+        $scope.pin = '';
+        $scope.change_step = 2;
+        $scope.change_text = 'Repeat the PIN code';
+      } else {
+        if(pin1 == $scope.pin) {
+          loginService.setPin($scope.pin).then(function(){
+            $state.go('app.family');
+          });
+        } else {
+          $scope.change_step = 1;
+          $scope.pin = '';
+          $scope.change_text = 'Set up a PIN code';
+        }
+      }
+    };
+
+
+
     return vm;
   }
 

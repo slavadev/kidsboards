@@ -18,7 +18,7 @@
         updateMethod: '&',
         onlyEdit: '@',
         label: '@',
-        title: '@'
+        text: '@'
       },
       link    : function ($scope, element, attrs, ctrl) {
 

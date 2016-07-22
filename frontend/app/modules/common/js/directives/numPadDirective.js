@@ -54,12 +54,10 @@
         };
 
         $scope.$watch(function () {
-          return element[0].offsetHeight;
+          return element.hasClass('ng-hide');
         }, function (nv) {
-          console.log(nv);
-          if (nv > 0) {
+          if (nv == false) {
             $document.unbind('keydown').bind('keydown', function (event) {
-              console.log(event.keyCode);
               if (event.keyCode === 8) {
                 event.preventDefault();
                 $scope.press('DEL')
@@ -71,9 +69,10 @@
                 var key = (event.keyCode - 48).toString();
                 $scope.press(key);
               }
+              $scope.$apply();
             });
           }
-          if (nv === 0) {
+          if (nv == true) {
             $document.unbind('keydown');
           }
         });

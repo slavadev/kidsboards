@@ -1,7 +1,8 @@
 <div class="editable-text" md-theme="dark">
-    <div ng-show="mode == 'view'" class="editable-text-block ng-hide">
-        {{editableText}}
-        <button ng-click="turnOnEditMode()" show-in-adult-mode>Edit</button>
+    <div ng-show="mode == 'view'" class="editable-text-block ng-hide" layout="column"
+         layout-align="center center">
+        <h1>{{editableText}}</h1>
+        <md-button ng-click="turnOnEditMode()" show-in-adult-mode>Edit</md-button>
     </div>
     <div ng-show="mode == 'edit'"
          class="editable-text-popup ng-hide"
@@ -9,7 +10,7 @@
          layout-align="center center"
          ng-cloak
     >
-        <h1>{{title}}</h1>
+        <h1>{{text}}</h1>
         <md-input-container>
             <label></label>
             <input type="text" ng-model="editableText">

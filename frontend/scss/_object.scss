@@ -2,19 +2,8 @@
 @import 'fonts';
 
 @mixin object {
-  min-height: 100%;
+  height: 100%;
   width: 100%;
-
-  .left-panel {
-    width: 250px;
-    background-color: $color-first;
-    .control-buttons {
-      .md-button {
-        color: $color-white;
-      }
-    }
-
-  }
 
   h1 {
     color: $color-white;
@@ -33,6 +22,44 @@
     .num-pad {
       height: 0 !important;
       overflow: hidden;
+    }
+  }
+
+  .left-panel {
+    width: 250px;
+    padding: 16px;
+    background-color: $color-first;
+    .control-buttons {
+      .md-button {
+        color: $color-white;
+      }
+    }
+  }
+
+  .right-panel {
+    height: 100%;
+    overflow: auto;
+    display: block;
+    .container {
+      min-height: 100%;
+    }
+    h1 {
+      color: $color-black;
+    }
+    .item {
+      padding: 0;
+      text-transform: none;
+      font-family: "AddisAbaba";
+    }
+    p {
+      font-family: "AddisAbaba";
+    }
+
+    .item-add {
+      height: 264px;
+      line-height: 264px;
+      width: 200px;
+      font-family: "AddisAbaba";
     }
   }
 }

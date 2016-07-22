@@ -6,7 +6,7 @@
     </div>
 
     <div editable-text="familyCtrl.name"
-         title="Enter family name"
+         text="Enter family name"
          update-method="familyCtrl.update()"
          only-edit="true"
          ng-show="familyCtrl.step == 1">
@@ -14,12 +14,20 @@
     </div>
     <div ng-show="familyCtrl.step == 2" class="first-background"></div>
     <div editable-image="familyCtrl.photo_url"
-         title="Choose a photo"
+         text="Choose a photo"
          update-method="familyCtrl.update()"
          image-banks="['family-photos']"
          only-edit="true"
          ng-show="familyCtrl.step == 2"></div>
     <div ng-show="familyCtrl.step == 3" class="second-background"></div>
-    <set-pin ng-show="familyCtrl.step == 3"></set-pin>
+    <num-pad text="{{change_text}}"
+             num="pin"
+             on-ok="change_next()"
+             only-ok="true"
+             type="password"
+             min="4"
+             max="4"
+             ng-show="familyCtrl.step == 3"
+    ></num-pad>
 
 </div>

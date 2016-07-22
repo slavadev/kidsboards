@@ -2,6 +2,33 @@
 @import 'fonts';
 
 .editable-image {
+  .image-item {
+    padding: 0;
+    overflow: hidden;
+    .action {
+      display: block;
+      position: absolute;
+      top: -40px;
+      left: 0;
+      width: 200px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      background: rgba($color-first , .8);
+      font-family: "AddisAbaba";
+      color: $color-white;
+      transition: all 0.5s;
+      &:hover {
+        background: $color-first;
+      }
+    }
+    &:hover, &.adminable {
+      .action {
+        top: 0;
+      }
+    }
+  }
+
   .editable-image-popup {
     height: 100%;
     background-color: $color-second;
@@ -22,33 +49,6 @@
       margin: 0;
       text-align: center;
       font-family: "AddisAbaba";
-    }
-
-    .item {
-      padding: 0;
-      overflow: hidden;
-      .delete {
-        display: block;
-        position: absolute;
-        top: -40px;
-        left: 0;
-        width: 200px;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        background: rgba($color-first , .8);
-        font-family: "AddisAbaba";
-        color: $color-white;
-        transition: all 0.5s;
-        &:hover {
-          background: $color-first;
-        }
-      }
-      &:hover {
-        .delete {
-          top: 0;
-        }
-      }
     }
 
     label.upload input[type="file"] {

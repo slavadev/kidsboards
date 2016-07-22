@@ -2,6 +2,9 @@
 @import 'fonts';
 
 .editable-text {
+  .md-button {
+    color: $color-white;
+  }
   .editable-text-popup {
     height: 100%;
     background-color: $color-first;

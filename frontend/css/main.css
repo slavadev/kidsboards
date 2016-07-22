@@ -70,6 +70,9 @@ md-input-container {
   md-input-container.md-input-invalid .md-input {
     border-color: #FF4081 !important; }
 
+button {
+  font-family: "AddisAbaba" !important; }
+
 div[image] {
   height: 200px;
   width: 200px;
@@ -79,9 +82,6 @@ div[image] {
   div[image].loaded {
     background: no-repeat center center;
     background-size: cover; }
-
-button {
-  font-family: "AddisAbaba" !important; }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
