@@ -12,7 +12,7 @@ Thatsaboy is a website which helps you to manage your children.
 
 **How it works?** 
 
- - Create a purpose for the kid, e.g. toy or trip
+ - Create a goal for the kid, e.g. toy or trip
  - Establish how much points is needed to reach the goal
  - Add points for good acts and remove for bad
  - Watch how your kid is getting better
@@ -23,7 +23,7 @@ With bright illustrations **Thatsaboy** makes this process more interesting for 
 
 Backend - 95%
 
-Frontend - 10%
+Frontend - 50%
 
 ## Used tools
 
