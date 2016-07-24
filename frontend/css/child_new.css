@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "AddisAbaba";
+  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSketch";
+  src: url("/css/fonts/KGSecondChancesSketch.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSolid";
+  src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "AddisAbaba";
+  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSketch";
+  src: url("/css/fonts/KGSecondChancesSketch.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSolid";
+  src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
+
+.child_new {
+  min-height: 100%;
+  background-color: #FF4081; }
+  .child_new h1 {
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    font-family: "AddisAbaba"; }
+  .child_new div.ng-hide .editable-text-popup {
+    height: 0 !important; }
+  .child_new div.ng-hide .editable-image-popup {
+    height: 0 !important; }
+  .child_new div.ng-hide .num-pad {
+    height: 0 !important;
+    overflow: hidden; }
+  .child_new .first-background, .child_new .second-background {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .child_new .first-background {
+    background-color: #9C27B0; }
+  .child_new .second-background {
+    background-color: #FF4081; }

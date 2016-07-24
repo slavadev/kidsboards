@@ -64,9 +64,9 @@
       text-align: center;
       font-family: "AddisAbaba";
       color: #ffffff; }
-  .editable-image .editable-image-popup .container {
+  .editable-image .editable-image-popup .image-container {
     min-height: 100%;
     max-width: 1000px;
     margin: auto; }
-    .editable-image .editable-image-popup .container .copyright a {
+    .editable-image .editable-image-popup .image-container .copyright a {
       color: #E1BEE7; }

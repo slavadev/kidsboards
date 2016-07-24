@@ -22,58 +22,58 @@
   font-family: "KGSecondChancesSolid";
   src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
 
-.family {
+.child {
   height: 100%;
   width: 100%; }
-  .family h1 {
+  .child h1 {
     color: #ffffff;
     margin: 0;
     text-align: center;
     font-family: "AddisAbaba"; }
-  .family div.ng-hide .editable-text-popup {
+  .child div.ng-hide .editable-text-popup {
     height: 0 !important; }
-  .family div.ng-hide .editable-image-popup {
+  .child div.ng-hide .editable-image-popup {
     height: 0 !important; }
-  .family div.ng-hide .num-pad {
+  .child div.ng-hide .num-pad {
     height: 0 !important;
     overflow: hidden; }
-  .family .left-panel {
+  .child .left-panel {
     width: 250px;
     overflow: hidden;
     background-color: #9C27B0; }
-    .family .left-panel .scroll-container {
+    .child .left-panel .scroll-container {
       width: 280px;
       height: 100%;
       overflow: auto; }
-      .family .left-panel .scroll-container .content-container {
+      .child .left-panel .scroll-container .content-container {
         width: 250px;
         min-height: 100%;
         padding: 16px; }
-    .family .left-panel .back-button {
+    .child .left-panel .back-button {
       font-family: "AddisAbaba";
       color: #ffffff; }
-    .family .left-panel .delete-button {
+    .child .left-panel .delete-button {
       color: #FF4081; }
-    .family .left-panel .control-buttons .md-button {
+    .child .left-panel .control-buttons .md-button {
       color: #ffffff; }
-  .family .right-panel {
+  .child .right-panel {
     height: 100%;
     overflow: auto;
     display: block;
     background: #E1BEE7;
     padding: 16px; }
-    .family .right-panel .container {
+    .child .right-panel .container {
       min-height: 100%; }
-    .family .right-panel h1 {
+    .child .right-panel h1 {
       color: #212121; }
-    .family .right-panel .item {
+    .child .right-panel .item {
       padding: 0;
       text-transform: none;
       font-family: "AddisAbaba";
       background-color: #ffffff; }
-    .family .right-panel p {
+    .child .right-panel p {
       font-family: "AddisAbaba"; }
-    .family .right-panel .item-add {
+    .child .right-panel .item-add {
       height: 264px;
       line-height: 264px;
       width: 200px;

@@ -1,22 +1,56 @@
-<div>
-    <logout></logout>
-    <adult-mode></adult-mode>
-    <button ui-sref="app.family">Back to Family</button>
-    <h1>Name:</h1>
-    <h1 editable-text="childCtrl.child.name"
-        update-method="childCtrl.update()"></h1>
-    <h1>Image:</h1>
-    <div editable-image="childCtrl.child.photo_url"
-        update-method="childCtrl.update()"
-        image-banks="['child-photos']"></div>
-    <h1>Goals:</h1>
-    <ul>
-        <li ng-repeat="goal in childCtrl.goals">
-            <img ng-src="{{goal.photo_url}}" style="max-height: 150px;" ui-sref="app.goal({child_id: childCtrl.child.id, id: goal.id})">
-            {{goal.name}} {{goal.current}}/{{goal.target}}
-        </li>
-        <li show-in-adult-mode><button ui-sref="app.goal_new({id: childCtrl.child.id})">Add</button></li>
-    </ul>
-    <hr>
-    <button show-in-adult-mode ng-click="childCtrl.delete()">Delete</button>
+<div class="child" layout="row" layout-align="center stretch">
+    <div class="left-panel" flex="none">
+        <div class="scroll-container">
+            <div class="content-container" layout="column"
+                 layout-align="center center"
+                 md-theme="dark">
+                <md-button ui-sref="app.family" class="back-button"
+                           flex="none"
+                >Back to the family
+                </md-button>
+                <div flex="noshrink" layout="column" layout-align="top center">
+                    <div editable-image="childCtrl.child.photo_url"
+                         text="Choose a photo"
+                         update-method="childCtrl.update()"
+                         image-banks="['child-photos']"></div>
+                    <div editable-text="childCtrl.child.name"
+                         text="Enter new name"
+                         update-method="childCtrl.update()"></div>
+                </div>
+                <md-button show-in-adult-mode ng-click="childCtrl.delete()"
+                           class="delete-button"
+                           flex="none"
+                >Delete
+                </md-button>
+                <adult-mode flex="none"></adult-mode>
+                <logout flex="none"></logout>
+            </div>
+        </div>
+    </div>
+    <div class="right-panel" flex>
+        <div class="container" layout="column" layout-align="center center">
+            <h1>Goals:</h1>
+            <p ng-show="childCtrl.goals.length == 0">
+                <span hide-in-adult-mode>Switch to the adult mode and add a goal!</span>
+            </p>
+            <div class="items" layout="row" layout-align="center center" layout-wrap>
+                <md-button class="item"
+                           ng-repeat="goal in childCtrl.goals"
+                           ui-sref="app.goal({child_id: childCtrl.child.id, id: goal.id})"
+                           md-whiteframe="2"
+                >
+                    <div image="goal.photo_url"></div>
+                    <p>{{goal.name}}</p>
+                    <p>{{goal.current}}/{{goal.target}}</p>
+                </md-button>
+                <md-button class="item-add"
+                           ui-sref="app.goal_new({id: childCtrl.child.id})"
+                           md-whiteframe="2"
+                           show-in-adult-mode
+                >
+                    Add a goal
+                </md-button>
+            </div>
+        </div>
+    </div>
 </div>
