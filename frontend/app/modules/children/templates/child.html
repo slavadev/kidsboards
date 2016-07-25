@@ -1,32 +1,26 @@
 <div class="child" layout="row" layout-align="center stretch">
-    <div class="left-panel" flex="none">
-        <div class="scroll-container">
-            <div class="content-container" layout="column"
-                 layout-align="center center"
-                 md-theme="dark">
-                <md-button ui-sref="app.family" class="back-button"
-                           flex="none"
-                >Back to the family
-                </md-button>
-                <div flex="noshrink" layout="column" layout-align="top center">
-                    <div editable-image="childCtrl.child.photo_url"
-                         text="Choose a photo"
-                         update-method="childCtrl.update()"
-                         image-banks="['child-photos']"></div>
-                    <div editable-text="childCtrl.child.name"
-                         text="Enter new name"
-                         update-method="childCtrl.update()"></div>
-                </div>
-                <md-button show-in-adult-mode ng-click="childCtrl.delete()"
-                           class="delete-button"
-                           flex="none"
-                >Delete
-                </md-button>
-                <adult-mode flex="none"></adult-mode>
-                <logout flex="none"></logout>
-            </div>
+    <left-panel>
+        <md-button ui-sref="app.family" class="back-button"
+                   flex="none"
+        >Back to the family
+        </md-button>
+        <div flex="noshrink" layout="column" layout-align="top center">
+            <div editable-image="childCtrl.child.photo_url"
+                 text="Choose a photo"
+                 update-method="childCtrl.update()"
+                 image-banks="['child-photos']"></div>
+            <div editable-text="childCtrl.child.name"
+                 text="Enter new name"
+                 update-method="childCtrl.update()"></div>
         </div>
-    </div>
+        <md-button show-in-adult-mode ng-click="childCtrl.delete()"
+                   class="delete-button"
+                   flex="none"
+        >Delete
+        </md-button>
+        <adult-mode flex="none"></adult-mode>
+        <logout flex="none"></logout>
+    </left-panel>
     <div class="right-panel" flex>
         <div class="container" layout="column" layout-align="center center">
             <h1>Goals:</h1>

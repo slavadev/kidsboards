@@ -39,16 +39,39 @@
     overflow: hidden; }
   .family .left-panel {
     width: 250px;
-    overflow: hidden;
+    z-index: 2;
     background-color: #9C27B0; }
-    .family .left-panel .scroll-container {
-      width: 280px;
+    .family .left-panel .hide-panel {
+      overflow: hidden;
+      width: 250px;
       height: 100%;
-      overflow: auto; }
-      .family .left-panel .scroll-container .content-container {
-        width: 250px;
-        min-height: 100%;
-        padding: 16px; }
+      background-color: #9C27B0;
+      transition: all .5s; }
+      .family .left-panel .hide-panel .scroll-container {
+        width: 320px;
+        height: 100%;
+        overflow: auto; }
+        .family .left-panel .hide-panel .scroll-container .content-container {
+          width: 250px;
+          min-height: 100%;
+          padding: 16px; }
+    @media only screen and (max-width: 600px) {
+      .family .left-panel {
+        transition: all .5s;
+        width: 50px; }
+        .family .left-panel .panel-closer {
+          margin: 0;
+          height: 100%;
+          width: 50px;
+          background-color: #9C27B0; }
+          .family .left-panel .panel-closer svg {
+            color: #ffffff;
+            width: 30px;
+            transition: all .5s; }
+        .family .left-panel.closed .hide-panel {
+          width: 0; }
+        .family .left-panel.closed .panel-closer svg {
+          transform: rotateY(180deg); } }
     .family .left-panel .back-button {
       font-family: "AddisAbaba";
       color: #ffffff; }
@@ -60,7 +83,7 @@
     height: 100%;
     overflow: auto;
     display: block;
-    background: #E1BEE7;
+    background: ghostwhite;
     padding: 16px; }
     .family .right-panel .container {
       min-height: 100%; }

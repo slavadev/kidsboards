@@ -1,0 +1,23 @@
+<div class="left-panel"
+     flex="none" ng-class="{'closed': panelClosed}" layout="row">
+    <div class="hide-panel" flex="none">
+        <div class="scroll-container">
+            <div class="content-container" layout="column"
+                 layout-align="center center"
+                 md-theme="dark"
+                 ng-transclude
+            >
+            </div>
+        </div>
+    </div>
+    <div hide-gt-xs
+         ng-click="togglePanel()"
+         class="panel-closer noselect"
+         flex="none"
+         layout="column"
+         layout-align="center center">
+        <span ng-class="{'closed': panelClosed}" class="noselect"><svg class="noselect">
+                        <use xlink:href="#arrow-left"/>
+                    </svg></span>
+    </div>
+</div>

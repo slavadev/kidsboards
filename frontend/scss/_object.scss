@@ -27,15 +27,47 @@
 
   .left-panel {
     width: 250px;
-    overflow: hidden;
-    .scroll-container {
-      width: 280px;
+    z-index: 2;
+    .hide-panel {
+      overflow: hidden;
+      width: 250px;
       height:100%;
-      overflow: auto;
-      .content-container {
-        width: 250px;
-        min-height: 100%;
-        padding: 16px;
+      background-color: $color-first;
+      transition: all .5s;
+      .scroll-container {
+        width: 320px;
+        height:100%;
+        overflow: auto;
+        .content-container {
+          width: 250px;
+          min-height: 100%;
+          padding: 16px;
+        }
+      }
+    }
+    @media only screen and (max-width: $layout-breakpoint-xs) {
+      transition: all .5s;
+      width: 50px;
+      .panel-closer {
+        margin: 0;
+        height: 100%;
+        width: 50px;
+        background-color: $color-first;
+        svg {
+          color: $color-white;
+          width: 30px;
+          transition: all .5s;
+        }
+      }
+      &.closed {
+        .hide-panel {
+          width: 0;
+        }
+        .panel-closer {
+          svg {
+            transform: rotateY(180deg);
+          }
+        }
       }
     }
     background-color: $color-first;
@@ -57,7 +89,7 @@
     height: 100%;
     overflow: auto;
     display: block;
-    background: $color-grey;
+    background: $color-back;
     padding: 16px;
     .container {
       min-height: 100%;
