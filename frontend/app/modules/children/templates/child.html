@@ -13,11 +13,7 @@
                  text="Enter new name"
                  update-method="childCtrl.update()"></div>
         </div>
-        <md-button show-in-adult-mode ng-click="childCtrl.delete()"
-                   class="delete-button"
-                   flex="none"
-        >Delete
-        </md-button>
+        <delete-button action="childCtrl.delete()" flex="none"></delete-button>
         <adult-mode flex="none"></adult-mode>
         <logout flex="none"></logout>
     </left-panel>

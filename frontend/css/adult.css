@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "AddisAbaba";
+  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSketch";
+  src: url("/css/fonts/KGSecondChancesSketch.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSolid";
+  src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
+
+.adult {
+  min-height: 100%;
+  color: #ffffff;
+  background-color: #9C27B0;
+  font-family: "AddisAbaba"; }
+  .adult h1 {
+    margin: 0; }
+  .adult .delete-button {
+    color: #FF4081; }

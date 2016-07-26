@@ -11,7 +11,7 @@
     var vm = this;
     loginService.forceAdultMode();
     vm.step = 1;
-    vm.name = 'Adult';
+    vm.name = '';
     vm.nothing = function(){
       return $q.when();
     };

@@ -1,19 +1,16 @@
-<div>
-    <logout></logout>
-    <button ui-sref="app.family">Back to Family</button>
-    <div ng-show="adultCtrl.step == 1">
-        <h1>Name:</h1>
-        <h1 editable-text="adultCtrl.name"
-            update-method="adultCtrl.nothing()"
-            only-edit="true"
-        ></h1>
+<div class="adult_new">
+    <div editable-text="adultCtrl.name"
+         text="Enter an adult's name"
+         update-method="adultCtrl.nothing()"
+         only-edit="true"
+         ng-show="adultCtrl.step == 1">
     </div>
-    <div ng-show="adultCtrl.step == 2">
-        <h1>Image:</h1>
-        <div editable-image="adultCtrl.photo_url"
-             update-method="adultCtrl.create()"
-             image-banks="['adult-photos']"
-             only-edit="true"
-             ng-show="adultCtrl.step == 2"></div>
+    <div ng-show="adultCtrl.step == 2" class="first-background"></div>
+    <div editable-image="adultCtrl.photo_url"
+         text="Choose a photo"
+         update-method="adultCtrl.create()"
+         image-banks="['adult-photos']"
+         only-edit="true"
+         ng-show="adultCtrl.step == 2">
     </div>
 </div>

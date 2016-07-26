@@ -1,0 +1,7 @@
+@import 'globals';
+@import 'fonts';
+@import 'object_new';
+
+.adult_new {
+  @include object_new
+}

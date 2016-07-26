@@ -1,13 +1,20 @@
-<div>
-    <logout></logout>
-    <adult-mode></adult-mode>
-    <button ui-sref="app.family">Back to Family</button>
-    <h1>Name:</h1>
-    <h1 editable-text="adultCtrl.adult.name"
-        update-method="adultCtrl.update()"></h1>
-    <h1>Image:</h1>
-    <div editable-image="adultCtrl.adult.photo_url"
-        update-method="adultCtrl.update()"
-        image-banks="['adult-photos']"></div>
-    <button show-in-adult-mode ng-click="adultCtrl.delete()">Delete</button>
+<div class="adult" layout="column" layout-align="stretch center">
+    <div flex="none" layout="column" layout-align="center center">
+        <md-button ui-sref="app.family" class="back-button"
+
+        >Back to the family
+        </md-button>
+    </div>
+    <div flex="noshrink" layout="column" layout-align="center center">
+        <div editable-image="adultCtrl.adult.photo_url"
+             text="Choose a photo"
+             update-method="adultCtrl.update()"
+             image-banks="['child-photos']"></div>
+        <div editable-text="adultCtrl.adult.name"
+             text="Enter new name"
+             update-method="adultCtrl.update()"></div>
+    </div>
+    <delete-button action="adultCtrl.delete()" flex="none"></delete-button>
+    <adult-mode flex="none"></adult-mode>
+    <logout flex="none"></logout>
 </div>
