@@ -12,7 +12,7 @@
     loginService.forceAdultMode();
     vm.id = $stateParams.id;
     vm.step = 1;
-    vm.name = 'Goal';
+    vm.name = '';
     vm.nothing = function(){
       return $q.when();
     };
