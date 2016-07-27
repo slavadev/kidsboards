@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       post '/register' => 'user#register'
       post '/login' => 'user#login'
       post '/logout' => 'user#logout'
-      get '/confirm/:token' => 'user#confirm'
+      get '/confirm' => 'user#confirm'
       post '/request' => 'user#request_recovery'
       post '/recovery' => 'user#recovery'
       patch '/pin' => 'user#pin_set'

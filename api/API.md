@@ -101,7 +101,7 @@ Possible responses:
 
 Confirms user's email.
 
-`` GET /api/v1/user/confirm/:token ``
+`` GET /api/v1/user/confirm ``
 
 Parameters:
 

@@ -71,6 +71,20 @@
       });
 
     /**
+     * Confirm page
+     */
+    $stateProvider
+      .state('app.confirm', {
+        url  : "^/confirm/:token",
+        views: {
+          'content': {
+            controller  : "confirmController",
+            templateUrl : "/app/modules/index/templates/confirm.html"
+          }
+        }
+      });
+
+    /**
      * Create new family page
      */
     $stateProvider

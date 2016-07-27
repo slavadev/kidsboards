@@ -6,7 +6,7 @@ class Mailer < ActionMailer::Base
   # @param [String] email
   # @param [String] code
   def confirmation_email(email, code)
-    @url = ENV['SITE_HOST'] + '/api/v1/user/confirm/' + code
+    @url = ENV['SITE_CONFIRM_LINK'] + '/' + code
     mail(to: email, subject: 'Thanks for registration in That\'s a boy!')
   end
 

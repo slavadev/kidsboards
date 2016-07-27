@@ -21,7 +21,7 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     # get code from email
     confirmation_email = ActionMailer::Base.deliveries.last
     text = confirmation_email.body.to_s
-    string_to_find = ENV['SITE_HOST'] + '/api/v1/user/confirm/'
+    string_to_find = ENV['SITE_CONFIRM_LINK'] + '/'
     regexp = Regexp.new(Regexp.escape(string_to_find) + '\w*')
     code = text.scan(regexp).first.to_s.gsub(string_to_find, '')
 

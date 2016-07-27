@@ -24,7 +24,10 @@
         email   : email,
         password: password
       }).then(function (response) {
-        return login(email, password);
+        if(response){
+          return login(email, password);
+        }
+        reject();
       });
     }
 
@@ -56,6 +59,16 @@
         password: password,
         errorHandler: errorHandlerService.recoveryErrorHandler
       }).then(function (response) {
+        return response;
+      });
+    }
+
+    function confirm(token) {
+      localStorageService.set("token", token);
+      return loginResource.get({
+        action  : 'confirm'
+      }).then(function (response) {
+        localStorageService.remove("token");
         return response;
       });
     }
@@ -113,6 +126,7 @@
       register       : register,
       requestRecovery: requestRecovery,
       recovery       : recovery,
+      confirm        : confirm,
       // Adult mode
       setPin         : setPin,
       enterAdultMode : enterAdultMode,
