@@ -24,6 +24,9 @@
         $state.go('app.child', {id: vm.child_id});
       });
     };
+    vm.range = function(n){
+      return new Array(n);
+    };
     vm.add = function(){
       vm.step = 2;
       vm.mode = 'add'

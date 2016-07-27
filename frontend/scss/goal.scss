@@ -1,0 +1,91 @@
+@import 'globals';
+@import 'fonts';
+@import 'object';
+
+.goal {
+  @include object;
+
+  .right-panel {
+    .points {
+      color: $color-second;
+    }
+
+    .remove-button {
+      color: $color-second;
+    }
+
+    .add-button {
+      color: $color-first;
+    }
+
+    .images {
+      max-width: 900px;
+      .image {
+        margin: 5px;
+        svg {
+          fill: $color-first;
+          width: 50px;
+          height: 50px;
+        }
+        &.nonactive {
+          svg {
+            fill: $color-grey;
+          }
+        }
+      }
+    }
+  }
+
+
+
+  .choose-adult-popup {
+    height: 100%;
+    background-color: $color-second;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    transition: all .5s;
+    overflow: auto;
+    z-index: 10;
+    &.ng-hide {
+      height: 0;
+      overflow: hidden;
+    }
+
+    .adults-container {
+      min-height: 100%;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .adult-item {
+      padding: 0;
+      text-transform: none;
+      font-family: "AddisAbaba";
+      background-color: $color-white;
+    }
+    p {
+      font-family: "AddisAbaba";
+    }
+
+    .add-adult {
+      height: 264px;
+      line-height: 264px;
+      width: 200px;
+      background-color: $color-white;
+      font-family: "AddisAbaba";
+    }
+
+    .second-background {
+      background-color: $color-second;
+       display: block;
+       height: 100%;
+       width: 100%;
+       position: absolute;
+       top: 0;
+       left: 0;
+     }
+  }
+}

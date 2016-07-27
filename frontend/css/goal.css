@@ -1,0 +1,159 @@
+@font-face {
+  font-family: "AddisAbaba";
+  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSketch";
+  src: url("/css/fonts/KGSecondChancesSketch.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSolid";
+  src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "AddisAbaba";
+  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSketch";
+  src: url("/css/fonts/KGSecondChancesSketch.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "KGSecondChancesSolid";
+  src: url("/css/fonts/KGSecondChancesSolid.ttf") format("truetype"); }
+
+.goal {
+  height: 100%;
+  width: 100%; }
+  .goal h1 {
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    font-family: "AddisAbaba"; }
+  .goal div.ng-hide .editable-text-popup {
+    height: 0 !important; }
+  .goal div.ng-hide .editable-image-popup {
+    height: 0 !important; }
+  .goal div.ng-hide .num-pad {
+    height: 0 !important;
+    overflow: hidden; }
+  .goal .left-panel {
+    width: 250px;
+    z-index: 2;
+    background-color: #9C27B0; }
+    .goal .left-panel .hide-panel {
+      overflow: hidden;
+      width: 250px;
+      height: 100%;
+      background-color: #9C27B0;
+      transition: all .5s; }
+      .goal .left-panel .hide-panel .scroll-container {
+        width: 320px;
+        height: 100%;
+        overflow: auto; }
+        .goal .left-panel .hide-panel .scroll-container .content-container {
+          width: 250px;
+          min-height: 100%;
+          padding: 16px; }
+    @media only screen and (max-width: 600px) {
+      .goal .left-panel {
+        transition: all .5s;
+        width: 50px; }
+        .goal .left-panel .panel-closer {
+          margin: 0;
+          height: 100%;
+          width: 50px;
+          background-color: #9C27B0; }
+          .goal .left-panel .panel-closer svg {
+            color: #ffffff;
+            width: 30px;
+            transition: all .5s; }
+        .goal .left-panel.closed .hide-panel {
+          width: 0; }
+        .goal .left-panel.closed .panel-closer svg {
+          transform: rotateY(180deg); } }
+    .goal .left-panel .back-button {
+      font-family: "AddisAbaba";
+      color: #ffffff; }
+    .goal .left-panel .delete-button {
+      color: #FF4081; }
+    .goal .left-panel .control-buttons .md-button {
+      color: #ffffff; }
+  .goal .right-panel {
+    height: 100%;
+    overflow: auto;
+    display: block;
+    background: ghostwhite;
+    padding: 16px; }
+    .goal .right-panel .container {
+      min-height: 100%; }
+    .goal .right-panel h1 {
+      color: #9C27B0; }
+    .goal .right-panel .item {
+      padding: 0;
+      text-transform: none;
+      font-family: "AddisAbaba";
+      background-color: #ffffff; }
+    .goal .right-panel p {
+      font-family: "AddisAbaba"; }
+    .goal .right-panel .item-add {
+      height: 264px;
+      line-height: 264px;
+      width: 200px;
+      background-color: #ffffff;
+      font-family: "AddisAbaba"; }
+  .goal .right-panel .points {
+    color: #FF4081; }
+  .goal .right-panel .remove-button {
+    color: #FF4081; }
+  .goal .right-panel .add-button {
+    color: #9C27B0; }
+  .goal .right-panel .images {
+    max-width: 900px; }
+    .goal .right-panel .images .image {
+      margin: 5px; }
+      .goal .right-panel .images .image svg {
+        fill: #9C27B0;
+        width: 50px;
+        height: 50px; }
+      .goal .right-panel .images .image.nonactive svg {
+        fill: #E1BEE7; }
+  .goal .choose-adult-popup {
+    height: 100%;
+    background-color: #FF4081;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    transition: all .5s;
+    overflow: auto;
+    z-index: 10; }
+    .goal .choose-adult-popup.ng-hide {
+      height: 0;
+      overflow: hidden; }
+    .goal .choose-adult-popup .adults-container {
+      min-height: 100%;
+      max-width: 1000px;
+      margin: auto; }
+    .goal .choose-adult-popup .adult-item {
+      padding: 0;
+      text-transform: none;
+      font-family: "AddisAbaba";
+      background-color: #ffffff; }
+    .goal .choose-adult-popup p {
+      font-family: "AddisAbaba"; }
+    .goal .choose-adult-popup .add-adult {
+      height: 264px;
+      line-height: 264px;
+      width: 200px;
+      background-color: #ffffff;
+      font-family: "AddisAbaba"; }
+    .goal .choose-adult-popup .second-background {
+      background-color: #FF4081;
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }

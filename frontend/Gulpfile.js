@@ -2,6 +2,8 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 var svgmin = require('gulp-svgmin');
 var svgstore = require('gulp-svgstore');
 var inject = require('gulp-inject');
