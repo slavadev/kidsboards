@@ -122,6 +122,7 @@
       } else if (response.status == 500) {
         handle500(response.data);
       }
+      reject();
     }
 
     function recoveryErrorHandler(response) {
@@ -134,6 +135,7 @@
       } else if (response.status == 500) {
         handle500(response.data);
       }
+      reject();
     }
 
     return {

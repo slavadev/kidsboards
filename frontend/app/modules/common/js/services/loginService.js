@@ -23,11 +23,8 @@
         action  : 'register',
         email   : email,
         password: password
-      }).then(function (response) {
-        if(response){
-          return login(email, password);
-        }
-        reject();
+      }).then(function () {
+        return login(email, password);
       });
     }
 

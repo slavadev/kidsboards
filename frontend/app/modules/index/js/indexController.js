@@ -8,11 +8,13 @@
   indexController.$inject = ['loginService', '$state', '$scope'];
 
   function indexController(loginService, $state, $scope) {
+    var vm = this;
+
     if (loginService.getToken()) {
       $state.go('app.family');
+    } else {
+      vm.show = true;
     }
-
-    var vm = this;
 
     vm.login = function () {
       $scope.loginForm.$setSubmitted();
