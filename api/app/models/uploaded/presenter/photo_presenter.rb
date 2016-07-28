@@ -11,7 +11,7 @@ class Uploaded::Presenter::PhotoPresenter
   def photo_to_hash
     {
       id: @photo.id,
-      url: ENV['UPLOAD_HOST'] + @photo.file.url
+      url: ENV['UPLOAD_HOST'] + @photo.file.url(:small)
     }
   end
 end
