@@ -17,9 +17,9 @@ class Uploaded::Photo < ActiveRecord::Base
   belongs_to :user, inverse_of: :photos, class_name: 'User::User'
 
   has_attached_file :file,
-                    url: '/images/:hash/:id/:style/image.:extension',
+                    url: '/photos/:hash/:id/:style/image.:extension',
                     styles: { :small => '400x400#' },
-                    path: ENV['UPLOAD_FOLDER'] + '/images/:hash/:id/:style/image.:extension',
+                    path: ENV['UPLOAD_FOLDER'] + '/photos/:hash/:id/:style/image.:extension',
                     hash_secret: 'asd1we1478yasdhbjhqbekhjqb',
                     use_timestamp: false
 

@@ -83,12 +83,8 @@ div[image] {
   height: 200px;
   width: 200px;
   display: block;
-  background: url(/images/dino.jpg) repeat center center fixed;
-  background-size: 200px;
-  &.loaded {
-    background: no-repeat center center;
-    background-size: cover;
-  }
+  background: url(/images/loading.jpg) no-repeat center center;
+  background-size: cover;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

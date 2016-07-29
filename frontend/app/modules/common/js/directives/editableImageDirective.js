@@ -5,9 +5,9 @@
     .module('thatsaboy.common')
     .directive('editableImage', editableImage);
 
-  editableImage.$inject = ['photoUploadService', '$http', '$q', '$timeout'];
+  editableImage.$inject = ['photoUploadService', '$http', '$q', '$timeout', '$location'];
 
-  function editableImage(photoUploadService, $http, $q, $timeout) {
+  function editableImage(photoUploadService, $http, $q, $timeout, $location) {
 
     return {
       restrict   : 'A',
@@ -29,7 +29,7 @@
         angular.forEach($scope.imageBanks, function (bank) {
           var imagePromise = $http.get('/json/' + bank + '.json').then(function (response) {
             angular.forEach(response.data, function (image) {
-              $scope.images.push({url: image});
+              $scope.images.push({url: $location.protocol() + '://' + $location.host() + image});
             });
           });
           imageBankPromises.push(imagePromise);
