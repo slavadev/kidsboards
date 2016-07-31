@@ -1,5 +1,5 @@
 FROM node
-WORKDIR /api/public
+WORKDIR /home/app/static
 RUN apt-get update
 RUN apt-get install -y ruby
 RUN gem install sass

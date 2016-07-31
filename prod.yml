@@ -1,8 +1,14 @@
 # Needed to keep code
-code:
+code_api:
   image: debian:jessie
   volumes:
     - ./api:/home/app/webapp
+
+# Needed to keep code for frontend
+code_frontend:
+  image: debian:jessie
+  volumes:
+    - ./frontend:/home/app/static
 
 # Needed to keep data
 data:
@@ -34,7 +40,8 @@ api:
   build: .
   dockerfile: ./docker/prod/api/Dockerfile
   volumes_from:
-    - code:rw
+    - code_api:rw
+    - code_frontend:ro
     - data:rw
     - logs:rw
   ports:
@@ -49,8 +56,16 @@ migrator:
   dockerfile: ./docker/prod/migrator/Dockerfile
   command: bash /docker/migrator/migrate.sh
   volumes_from:
-    - code:rw
+    - code_api:rw
   links:
     - postgres
   env_file: docker/prod/.env
+
+# All about the frontend is here
+frontend:
+  build: .
+  dockerfile: ./docker/prod/frontend/Dockerfile
+  command: bash -c "npm install && bower install --allow-root && gulp build"
+  volumes_from:
+    - code_frontend:rw
 

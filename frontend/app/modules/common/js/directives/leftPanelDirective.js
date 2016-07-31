@@ -13,14 +13,14 @@
       replace: true,
       transclude: true,
       templateUrl: '/app/modules/common/templates/left-panel.html',
-      controller: function ($scope) {
+      controller: ['$scope', function ($scope) {
         $scope.panelClosed = true;
         $scope.togglePanel = function(){
           $timeout(function () {
             $scope.panelClosed = !$scope.panelClosed;
           }, 10);
         };
-      }
+      }]
     };
   }
 })();

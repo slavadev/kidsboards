@@ -73,6 +73,6 @@ tester:
 frontend:
   build: .
   dockerfile: ./docker/dev/frontend/Dockerfile
-  command: bash -c "npm install && bower install --allow-root && gulp build"
+  command: bash -c "npm install && bower install --allow-root && gulp build-dev"
   volumes_from:
     - data_frontend:rw

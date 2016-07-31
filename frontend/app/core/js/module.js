@@ -2,7 +2,8 @@
   'use strict';
   
   angular
-    .module('thatsaboy',[
+    .module('thatsaboy',[,
+      'templates',
       'thatsaboy.core',
       'ngMaterial',
       'ngMessages',

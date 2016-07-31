@@ -7,7 +7,7 @@
 
   showInAdultMode.$inject = ['loginService'];
 
-  function showInAdultMode(loginService, $timeout) {
+  function showInAdultMode(loginService) {
     return {
       restrict: 'A',
       link    : function ($scope, element, attrs, ctrl) {

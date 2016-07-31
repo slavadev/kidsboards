@@ -5,7 +5,7 @@
     .module('thatsaboy.common')
     .directive('showInAdultMode', showInAdultMode);
 
-  showInAdultMode.$inject = ['loginService'];
+  showInAdultMode.$inject = ['loginService', '$timeout'];
 
   function showInAdultMode(loginService, $timeout) {
     return {

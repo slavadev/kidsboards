@@ -22,7 +22,8 @@ api/.byebug_history
 /.yardoc
 /api/doc
 /api/coverage
-pgdata/pgdata
+pgdata
+pgdata_dev
 frontend/photos/
 api/.yardoc/
 api/.bundle/

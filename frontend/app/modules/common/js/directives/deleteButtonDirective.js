@@ -16,7 +16,7 @@
       scope: {
         'action': '&'
       },
-      controller: function($scope) {
+      controller: ['$scope', function($scope) {
         $scope.delete = function(ev) {
           var confirm = $mdDialog.confirm()
             .title('Are you sure?')
@@ -29,7 +29,7 @@
           }, function() {
           });
         };
-      }
+      }]
     };
   }
 })();

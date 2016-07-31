@@ -21,7 +21,6 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN rm /etc/nginx/nginx.conf
 ADD ./docker/prod/api/nginx.conf /etc/nginx/nginx.conf
 ADD ./docker/prod/api/webapp.conf /etc/nginx/sites-enabled/webapp.conf
-ADD ./docker/prod/api/imageresizer.conf /etc/nginx/sites-enabled/imageresizer.conf
 ADD ./docker/prod/api/upload.conf /etc/nginx/sites-enabled/upload.conf
 ADD ./docker/prod/api/webapp-env.conf /etc/nginx/main.d/webapp-env.conf
 

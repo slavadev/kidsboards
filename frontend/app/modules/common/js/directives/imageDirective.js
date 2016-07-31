@@ -14,7 +14,7 @@
       scope     : {
         image: '='
       },
-      controller: function ($scope) {
+      controller: ['$scope', function ($scope) {
         $scope.$watch('image', onAttrChange);
 
         function onAttrChange() {
@@ -36,7 +36,7 @@
         }
 
 
-      },
+      }],
       link      : {
         post: function (scope, element, attrs) {
 

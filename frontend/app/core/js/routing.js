@@ -111,9 +111,9 @@
             controllerAs: "familyCtrl",
             templateUrl : "/app/modules/family/templates/family.html",
             resolve     : {
-              family: function (familyRepository) {
+              family: ['familyRepository', function (familyRepository) {
                 return familyRepository.get();
-              }
+              }]
             }
           }
         }
@@ -146,13 +146,13 @@
             controllerAs: "adultCtrl",
             templateUrl : "/app/modules/adults/templates/adult.html",
             resolve     : {
-              adult: function (familyRepository, $stateParams) {
+              adult: ['familyRepository', '$stateParams', function (familyRepository, $stateParams) {
                 return familyRepository.get().then(function(family){
                   return family.adults.filter(function(adult) {
                     return adult.id.toString() === $stateParams.id;
                   })[0]
                 });
-              }
+              }]
             }
           }
         }
@@ -185,16 +185,16 @@
             controllerAs: "childCtrl",
             templateUrl : "/app/modules/children/templates/child.html",
             resolve     : {
-              child: function (familyRepository, $stateParams) {
+              child: ['familyRepository', '$stateParams', function (familyRepository, $stateParams) {
                 return familyRepository.get().then(function(family){
                   return family.children.filter(function(child) {
                     return child.id.toString() === $stateParams.id;
                   })[0]
                 });
-              },
-              goals: function (childRepository, $stateParams) {
+              }],
+              goals: ['childRepository', '$stateParams', function (childRepository, $stateParams) {
                 return childRepository.getGoals($stateParams.id);
-              }
+              }]
             }
           }
         }
@@ -227,14 +227,14 @@
             controllerAs: "goalCtrl",
             templateUrl : "/app/modules/goals/templates/goal.html",
             resolve     : {
-              goal: function (goalRepository, $stateParams) {
+              goal: ['goalRepository', '$stateParams', function (goalRepository, $stateParams) {
                 return goalRepository.get($stateParams.id);
-              },
-              adults: function (familyRepository) {
+              }],
+              adults: ['familyRepository', function (familyRepository) {
                 return familyRepository.get().then(function(family){
                   return family.adults;
                 });
-              }
+              }]
             }
           }
         }
