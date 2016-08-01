@@ -14,7 +14,7 @@ data_frontend:
 data_postgres:
   image: debian:jessie
   volumes:
-    - ./pgdata:/var/lib/postgresql/data
+    - ./pgdata_dev:/var/lib/postgresql/data
 
 # DB container
 postgres:

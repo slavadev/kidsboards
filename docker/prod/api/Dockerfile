@@ -1,4 +1,4 @@
-FROM phusion/passenger-ruby22
+FROM phusion/passenger-ruby23
 
 # bundler
 RUN mkdir /home/app/webapp
@@ -10,7 +10,7 @@ RUN bundle install --path /home/app/bundle
 # user setup
 USER app
 ENV HOME /home/app
-RUN bundle install --path /home/app/bundle
+#RUN bundle install --path /home/app/bundle
 
 # back to root
 USER root
@@ -21,7 +21,6 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN rm /etc/nginx/nginx.conf
 ADD ./docker/prod/api/nginx.conf /etc/nginx/nginx.conf
 ADD ./docker/prod/api/webapp.conf /etc/nginx/sites-enabled/webapp.conf
-ADD ./docker/prod/api/upload.conf /etc/nginx/sites-enabled/upload.conf
 ADD ./docker/prod/api/webapp-env.conf /etc/nginx/main.d/webapp-env.conf
 
 # ending

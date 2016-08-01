@@ -5,10 +5,10 @@ class User::PinCheckTest < ActionDispatch::IntegrationTest
     # prepare
     token = login
     pin = Faker::Number.number(4).to_s
-    patch '/api/v1/user/pin', token: token, pin: pin
+    patch '/v1/user/pin', token: token, pin: pin
 
     # action 1
-    get '/api/v1/user/pin', token: token, pin: pin
+    get '/v1/user/pin', token: token, pin: pin
 
     # check results
     assert_response 200
@@ -17,7 +17,7 @@ class User::PinCheckTest < ActionDispatch::IntegrationTest
 
     # action 2
     pin = Faker::Number.number(4).to_s
-    get '/api/v1/user/pin', token: token, pin: pin
+    get '/v1/user/pin', token: token, pin: pin
 
     # check results
     assert_response 200
@@ -31,7 +31,7 @@ class User::PinCheckTest < ActionDispatch::IntegrationTest
 
     # action 1
     pin = Faker::Number.number(3).to_s
-    patch '/api/v1/user/pin', token: token, pin: pin
+    patch '/v1/user/pin', token: token, pin: pin
 
     # check results
     assert_response 422
@@ -40,7 +40,7 @@ class User::PinCheckTest < ActionDispatch::IntegrationTest
 
     # action 2
     pin = Faker::Number.number(5).to_s
-    patch '/api/v1/user/pin', token: token, pin: pin
+    patch '/v1/user/pin', token: token, pin: pin
 
     # check results
     assert_response 422
@@ -49,7 +49,7 @@ class User::PinCheckTest < ActionDispatch::IntegrationTest
 
     # action 3
     pin = '00a0'
-    patch '/api/v1/user/pin', token: token, pin: pin
+    patch '/v1/user/pin', token: token, pin: pin
 
     # check results
     assert_response 422
@@ -57,7 +57,7 @@ class User::PinCheckTest < ActionDispatch::IntegrationTest
     assert_includes json['pin'], 'has wrong format'
 
     # action 4
-    patch '/api/v1/user/pin', token: token
+    patch '/v1/user/pin', token: token
 
     # check results
     assert_response 422
@@ -71,7 +71,7 @@ class User::PinCheckTest < ActionDispatch::IntegrationTest
 
     # action
     pin = Faker::Number.number(4).to_s
-    get '/api/v1/user/pin', token: token, pin: pin
+    get '/v1/user/pin', token: token, pin: pin
 
     # check results
     assert_response 401
@@ -80,7 +80,7 @@ class User::PinCheckTest < ActionDispatch::IntegrationTest
   test 'pin check fail without token' do
     # action
     pin = Faker::Number.number(4).to_s
-    get '/api/v1/user/pin', pin: pin
+    get '/v1/user/pin', pin: pin
 
     # check results
     assert_response 401

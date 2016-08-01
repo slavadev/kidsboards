@@ -8,7 +8,7 @@ class User::ConfirmationTest < ActionDispatch::IntegrationTest
     params = { email: email, password: password }
 
     # register
-    post '/api/v1/user/register', params
+    post '/v1/user/register', params
     json = JSON.parse(response.body)
     id = json['id']
 
@@ -20,7 +20,7 @@ class User::ConfirmationTest < ActionDispatch::IntegrationTest
     code = text.scan(regexp).first.to_s.gsub(string_to_find, '')
 
     # check token
-    get '/api/v1/user/confirm?token=' + code
+    get '/v1/user/confirm?token=' + code
     assert_response :success
     token = User::Token.where(code: code, token_type: User::Token::TYPE_CONFIRMATION).first
     user = User::User.find_by_id(id)
@@ -33,7 +33,7 @@ class User::ConfirmationTest < ActionDispatch::IntegrationTest
     code = Faker::Lorem.characters(10)
 
     # check token
-    get '/api/v1/user/confirm?token=' + code
+    get '/v1/user/confirm?token=' + code
     assert_response 401
   end
 end

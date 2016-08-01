@@ -10,7 +10,7 @@
 
   function goalRepository(resourceWrapService) {
 
-    var goalResource = resourceWrapService.wrap('/api/v1/goal/:id/:action');
+    var goalResource = resourceWrapService.wrap('goal/:id/:action');
 
     function get(id) {
       return goalResource.get({id: id});

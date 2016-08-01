@@ -5,12 +5,12 @@ class Family::ChildDeleteTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     url = Faker::Internet.url
-    post '/api/v1/family/child', token: token, name: name, photo_url: url
+    post '/v1/family/child', token: token, name: name, photo_url: url
     json = JSON.parse(response.body)
     id = json['id']
 
     # action
-    delete "/api/v1/family/child/#{id}", token: token
+    delete "/v1/family/child/#{id}", token: token
 
     # check results
     assert_response 204
@@ -23,7 +23,7 @@ class Family::ChildDeleteTest < ActionDispatch::IntegrationTest
 
     # action 1
     id = Faker::Number.number(9)
-    delete "/api/v1/family/child/#{id}", token: token
+    delete "/v1/family/child/#{id}", token: token
 
     # check results
     assert_response 422
@@ -31,7 +31,7 @@ class Family::ChildDeleteTest < ActionDispatch::IntegrationTest
     assert_includes json['id'], 'does not exist'
 
     # action 2
-    delete '/api/v1/family/child', token: token
+    delete '/v1/family/child', token: token
 
     # check results
     assert_response 422
@@ -44,13 +44,13 @@ class Family::ChildDeleteTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     url = Faker::Internet.url
-    post '/api/v1/family/child', token: token, name: name, photo_url: url
+    post '/v1/family/child', token: token, name: name, photo_url: url
     json = JSON.parse(response.body)
     id = json['id']
     token = login
 
     # action
-    delete "/api/v1/family/child/#{id}", token: token
+    delete "/v1/family/child/#{id}", token: token
 
     # check results
     assert_response 403
@@ -61,7 +61,7 @@ class Family::ChildDeleteTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
 
     # action
-    delete "/api/v1/family/child/#{id}", token: token
+    delete "/v1/family/child/#{id}", token: token
 
     # check results
     assert_response 401
@@ -71,7 +71,7 @@ class Family::ChildDeleteTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
 
     # action
-    delete "/api/v1/family/child/#{id}"
+    delete "/v1/family/child/#{id}"
 
     # check results
     assert_response 401

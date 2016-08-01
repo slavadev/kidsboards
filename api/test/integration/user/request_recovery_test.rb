@@ -8,7 +8,7 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
     params = { email: email, password: password }
 
     # register
-    post '/api/v1/user/register', params
+    post '/v1/user/register', params
 
     # check results
     json = JSON.parse(response.body)
@@ -17,7 +17,7 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
     params = { email: email }
 
     # action
-    post '/api/v1/user/request', params
+    post '/v1/user/request', params
 
     # get code from email
     assert_response :success
@@ -40,7 +40,7 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
     params = { email: email }
 
     # action
-    post '/api/v1/user/request', params
+    post '/v1/user/request', params
 
     # check results
     assert_response :success
@@ -48,7 +48,7 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
 
   test 'request recovery fail without email' do
     # action
-    post '/api/v1/user/request'
+    post '/v1/user/request'
 
     # check results
     assert_response 422

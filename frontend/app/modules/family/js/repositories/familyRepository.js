@@ -10,7 +10,7 @@
 
   function familyRepository(resourceWrapService){
 
-    var familyResource = resourceWrapService.wrap('/api/v1/family/');
+    var familyResource = resourceWrapService.wrap('family/');
 
     function get() {
       return familyResource.get({});

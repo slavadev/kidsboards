@@ -10,7 +10,7 @@
 
   function adultRepository(resourceWrapService) {
 
-    var adultResource = resourceWrapService.wrap('/api/v1/family/adult/:id');
+    var adultResource = resourceWrapService.wrap('family/adult/:id');
 
     function create(name, photo_url) {
       return adultResource.save({name: name, photo_url: photo_url});

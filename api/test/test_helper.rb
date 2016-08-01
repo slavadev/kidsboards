@@ -23,13 +23,13 @@ class ActiveSupport::TestCase
   # Code that need to be executed before each test
   def setup
     DatabaseCleaner.start
-    FileUtils.rm_rf('public/images')
+    FileUtils.rm_rf('public/photos')
   end
 
   # Code that need to be executed after each test
   def teardown
     DatabaseCleaner.clean
-    FileUtils.rm_rf('public/images')
+    FileUtils.rm_rf('public/photos')
   end
 
   # Quick login and returns token code
@@ -37,8 +37,8 @@ class ActiveSupport::TestCase
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = { email: email, password: password }
-    post '/api/v1/user/register', params
-    post '/api/v1/user/login', params
+    post '/v1/user/register', params
+    post '/v1/user/login', params
     json = JSON.parse(response.body)
     json['token']
   end

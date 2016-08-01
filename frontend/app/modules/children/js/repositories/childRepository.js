@@ -10,7 +10,7 @@
 
   function childRepository(resourceWrapService) {
 
-    var childResource = resourceWrapService.wrap('/api/v1/family/child/:id/:action');
+    var childResource = resourceWrapService.wrap('family/child/:id/:action');
 
     function create(name, photo_url) {
       return childResource.save({name: name, photo_url: photo_url});

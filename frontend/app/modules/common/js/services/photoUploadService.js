@@ -8,12 +8,13 @@
   photoUploadService.$inject = [
     'loginService',
     'Upload',
-    '$http'
+    '$http',
+    'apiLinkService'
   ];
 
-  function photoUploadService(loginService, Upload, $http) {
+  function photoUploadService(loginService, Upload, $http, apiLinkService) {
 
-    var url = '/api/v1/uploaded/photo';
+    var url = apiLinkService.createUrl('uploaded/photo');
 
     function upload(file) {
       return Upload.upload({

@@ -6,7 +6,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', token: token, name: name, photo_url: photo_url
     json = JSON.parse(response.body)
     id = json['id']
 
@@ -14,7 +14,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     name = Faker::Name.name
     photo_url = Faker::Internet.url
     target = Faker::Number.number(2).to_i
-    post "/api/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
 
     # check results
     assert_response :success
@@ -33,14 +33,14 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', token: token, name: name, photo_url: photo_url
     json = JSON.parse(response.body)
     id = json['id']
 
     # action
     name = Faker::Name.name
     target = Faker::Number.number(2).to_i
-    post "/api/v1/family/child/#{id}/goal", token: token, name: name, target: target
+    post "/v1/family/child/#{id}/goal", token: token, name: name, target: target
 
     # check results
     assert_response :success
@@ -59,12 +59,12 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', token: token, name: name, photo_url: photo_url
     json = JSON.parse(response.body)
     id = json['id']
 
     # action 1
-    post "/api/v1/family/child/#{id}/goal", token: token
+    post "/v1/family/child/#{id}/goal", token: token
 
     # check results
     assert_response 422
@@ -76,7 +76,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     name = Faker::Lorem.characters(300)
     photo_url = 'fqweeqw'
     target = 1000
-    post "/api/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
 
     # check results
     assert_response 422
@@ -87,7 +87,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
 
     # action 3
     target = -1
-    post "/api/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
 
     # check results
     assert_response 422
@@ -96,7 +96,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
 
     # action 4
     target = 2.5
-    post "/api/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
 
     # check results
     assert_response 422
@@ -105,7 +105,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
 
     # action 5
     id = Faker::Number.number(9)
-    post "/api/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
 
     # check results
     assert_response 422
@@ -113,7 +113,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     assert_includes json['id'], 'does not exist'
 
     # action 6
-    post '/api/v1/family/child/goal', token: token, name: name, photo_url: photo_url, target: target
+    post '/v1/family/child/goal', token: token, name: name, photo_url: photo_url, target: target
 
     # check results
     assert_response 422
@@ -128,13 +128,13 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     name = Faker::Name.name
     photo_url = Faker::Internet.url
     target = Faker::Number.number(2).to_i
-    post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', token: token, name: name, photo_url: photo_url
     json = JSON.parse(response.body)
     id = json['id']
 
     # action
     token = login
-    post "/api/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
 
     # check results
     assert_response 403
@@ -146,7 +146,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
 
     # action
-    post "/api/v1/family/child/#{id}/goal", token: token
+    post "/v1/family/child/#{id}/goal", token: token
 
     # check results
     assert_response 401
@@ -158,7 +158,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
 
     # action
-    post "/api/v1/family/child/#{id}/goal"
+    post "/v1/family/child/#{id}/goal"
 
     # check results
     assert_response 401

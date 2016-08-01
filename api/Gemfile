@@ -9,6 +9,9 @@ gem 'lograge'
 # files
 gem 'paperclip'
 
+# CORS
+gem 'rack-cors', :require => 'rack/cors'
+
 gem 'minitest-rails'
 group :test do
   gem 'minitest-focus'

@@ -92,6 +92,7 @@ GEM
     pkg-config (1.1.7)
     powerpack (0.1.1)
     rack (1.6.4)
+    rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.4)
@@ -160,6 +161,7 @@ DEPENDENCIES
   paperclip
   passenger
   pg
+  rack-cors
   rails (= 4.2.4)
   rubocop
   spring

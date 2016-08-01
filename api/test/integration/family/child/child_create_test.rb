@@ -8,7 +8,7 @@ class Family::ChildCreateTest < ActionDispatch::IntegrationTest
     # action
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', token: token, name: name, photo_url: photo_url
 
     # check results
     assert_response :success
@@ -26,7 +26,7 @@ class Family::ChildCreateTest < ActionDispatch::IntegrationTest
 
     # action
     name = Faker::Name.name
-    post '/api/v1/family/child', token: token, name: name
+    post '/v1/family/child', token: token, name: name
 
     # check results
     assert_response :success
@@ -43,7 +43,7 @@ class Family::ChildCreateTest < ActionDispatch::IntegrationTest
     token = login
 
     # action 1
-    post '/api/v1/family/child', token: token
+    post '/v1/family/child', token: token
 
     # check results
     assert_response 422
@@ -53,7 +53,7 @@ class Family::ChildCreateTest < ActionDispatch::IntegrationTest
     # action 2
     name = Faker::Lorem.characters(300)
     photo_url = 'fqweeqw'
-    post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', token: token, name: name, photo_url: photo_url
 
     # check results
     assert_response 422
@@ -64,7 +64,7 @@ class Family::ChildCreateTest < ActionDispatch::IntegrationTest
     # action 3
     name = Faker::Lorem.characters(300)
     photo_url = 'ftp://asdasd.ru'
-    post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', token: token, name: name, photo_url: photo_url
 
     # check results
     assert_response 422
@@ -80,7 +80,7 @@ class Family::ChildCreateTest < ActionDispatch::IntegrationTest
     # action
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/api/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', token: token, name: name, photo_url: photo_url
 
     # check results
     assert_response 401
@@ -90,7 +90,7 @@ class Family::ChildCreateTest < ActionDispatch::IntegrationTest
     # action
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/api/v1/family/child', name: name, photo_url: photo_url
+    post '/v1/family/child', name: name, photo_url: photo_url
 
     # check results
     assert_response 401

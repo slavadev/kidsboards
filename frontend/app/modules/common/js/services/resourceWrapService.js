@@ -5,9 +5,9 @@
     .module('thatsaboy.common')
     .factory('resourceWrapService', resourceWrapService);
 
-  resourceWrapService.$inject = ['$resource', 'localStorageService', 'errorHandlerService'];
+  resourceWrapService.$inject = ['$resource', 'localStorageService', 'errorHandlerService', 'apiLinkService'];
 
-  function resourceWrapService($resource, localStorageService, errorHandlerService) {
+  function resourceWrapService($resource, localStorageService, errorHandlerService, apiLinkService) {
 
     function getToken() {
       return localStorageService.get("token");
@@ -34,7 +34,7 @@
 
     return {
       wrap: function (url) {
-        var resource = $resource(url,
+        var resource = $resource(apiLinkService.createUrl(url),
           {
             id: '@id',
             action: '@action',

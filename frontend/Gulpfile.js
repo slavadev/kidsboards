@@ -54,6 +54,7 @@ var paths = {
       'app/modules/common/js/services/loginService.js',
       'app/modules/common/js/services/resourceWrapService.js',
       'app/modules/common/js/services/errorHandlerService.js',
+      'app/modules/common/js/services/apiLinkService.js',
       // family
       'app/modules/family/family.js',
       'app/modules/family/js/repositories/familyRepository.js',

@@ -16,7 +16,7 @@
 
     exitAdultMode();
 
-    var loginResource = resourceWrapService.wrap('/api/v1/user/:action');
+    var loginResource = resourceWrapService.wrap('user/:action');
 
     function register(email, password) {
       return loginResource.post({

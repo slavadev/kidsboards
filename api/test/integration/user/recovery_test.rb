@@ -8,13 +8,13 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
     params = { email: email, password: password }
 
     # register
-    post '/api/v1/user/register', params
+    post '/v1/user/register', params
 
     # check results
     params = { email: email }
 
     # action
-    post '/api/v1/user/request', params
+    post '/v1/user/request', params
 
     # get code from email
     confirmation_email = ActionMailer::Base.deliveries.last
@@ -26,7 +26,7 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
     # check token
     password = Faker::Internet.password
     params = { password: password, token: code }
-    post '/api/v1/user/recovery', params
+    post '/v1/user/recovery', params
 
     assert_response 204
     token = User::Token.where(code: code, token_type: User::Token::TYPE_RECOVERY).first
@@ -34,7 +34,7 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
 
     # check new password
     params = { email: email, password: password }
-    post '/api/v1/user/login', params
+    post '/v1/user/login', params
 
     # check results
     assert_response 200
@@ -47,13 +47,13 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
     params = { email: email, password: password }
 
     # register
-    post '/api/v1/user/register', params
+    post '/v1/user/register', params
 
     # check results
     params = { email: email }
 
     # action
-    post '/api/v1/user/request', params
+    post '/v1/user/request', params
 
     # get code from email
     confirmation_email = ActionMailer::Base.deliveries.last
@@ -65,7 +65,7 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
     # check token
     password = 'asd'
     params = { password: password, token: code }
-    post '/api/v1/user/recovery', params
+    post '/v1/user/recovery', params
 
     # check results
     assert_response 422
@@ -74,7 +74,7 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
 
     # check token
     params = { token: code }
-    post '/api/v1/user/recovery', params
+    post '/v1/user/recovery', params
 
     # check results
     assert_response 422
@@ -83,14 +83,14 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
   end
 
   test 'recovery fail wrong token' do
-    post '/api/v1/user/recovery', token: login
+    post '/v1/user/recovery', token: login
 
     # check results
     assert_response 401
   end
 
   test 'recovery fail without token' do
-    post '/api/v1/user/recovery'
+    post '/v1/user/recovery'
 
     # check results
     assert_response 401

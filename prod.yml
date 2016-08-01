@@ -1,71 +1,105 @@
-# Needed to keep code
-code_api:
-  image: debian:jessie
-  volumes:
-    - ./api:/home/app/webapp
+version: '2'
+services:
+  # Needed to keep code
+  code_api:
+    image: debian:jessie
+    volumes:
+      - ./api:/home/app/webapp
 
-# Needed to keep code for frontend
-code_frontend:
-  image: debian:jessie
-  volumes:
-    - ./frontend:/home/app/static
+  # Needed to keep code for frontend
+  code_frontend:
+    image: debian:jessie
+    volumes:
+      - ./frontend:/home/app/static
 
-# Needed to keep data
-data:
-  image: debian:jessie
-  volumes:
-    - ./data:/home/app/data
+  # Needed to keep data
+  data:
+    image: debian:jessie
+    volumes:
+      - ./data:/home/app/data
 
-# Needed to keep data for db
-data_postgres:
-  image: debian:jessie
-  volumes:
-    - ./pgdata:/var/lib/postgresql/data
+  # Needed to keep data for db
+  data_postgres:
+    image: debian:jessie
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
 
-# Needed to keep logs
-logs:
-  image: debian:jessie
-  volumes:
-    - ./logs:/home/app/logs
+  # Needed to keep logs
+  logs:
+    image: debian:jessie
+    volumes:
+      - ./logs:/home/app/logs
 
-# DB container
-postgres:
-  image: postgres
-  env_file: docker/prod/.env
-  volumes_from:
-      - data_postgres:rw
+  # DB container
+  postgres:
+    image: postgres
+    env_file: docker/prod/.env
+    volumes_from:
+        - data_postgres:rw
 
-# All about the rails is here
-api:
-  build: .
-  dockerfile: ./docker/prod/api/Dockerfile
-  volumes_from:
-    - code_api:rw
-    - code_frontend:ro
-    - data:rw
-    - logs:rw
-  ports:
-    - "80:80"
-  links:
-    - postgres
-  env_file: docker/prod/.env
+  # All about the rails is here
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/prod/api/Dockerfile
+    volumes_from:
+      - code_api:rw
+      - code_frontend:ro
+      - data:rw
+      - logs:rw
+    depends_on:
+      - postgres
+    environment:
+      - VIRTUAL_HOST=api.thatsaboy.dev,api.thatsaboy.com
+    env_file: docker/prod/.env
 
-# Running migrations
-migrator:
-  build: .
-  dockerfile: ./docker/prod/migrator/Dockerfile
-  command: bash /docker/migrator/migrate.sh
-  volumes_from:
-    - code_api:rw
-  links:
-    - postgres
-  env_file: docker/prod/.env
+  # All about the static files is here
+  static:
+    build:
+      context: .
+      dockerfile: ./docker/prod/static/Dockerfile
+    volumes_from:
+      - code_api:rw
+      - code_frontend:ro
+      - data:rw
+      - logs:rw
+    environment:
+      - VIRTUAL_HOST=upload.thatsaboy.dev,thatsaboy.dev,upload.thatsaboy.com,thatsaboy.com
+    env_file: docker/prod/.env
 
-# All about the frontend is here
-frontend:
-  build: .
-  dockerfile: ./docker/prod/frontend/Dockerfile
-  command: bash -c "npm install && bower install --allow-root && gulp build"
-  volumes_from:
-    - code_frontend:rw
+  # Proxy
+  proxy:
+    build:
+      context: .
+      dockerfile: ./docker/prod/proxy/Dockerfile
+    links:
+      - api
+      - static
+    ports:
+      - "80:80"
+      - "1936:1936"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file: docker/prod/.env
+
+  # Running migrations
+  migrator:
+    build:
+      context: .
+      dockerfile: ./docker/prod/migrator/Dockerfile
+    command: bash /docker/migrator/migrate.sh
+    volumes_from:
+      - code_api:rw
+    depends_on:
+      - postgres
+    env_file: docker/prod/.env
+
+  # All about the frontend is here
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/prod/frontend/Dockerfile
+    command: bash -c "npm install && bower install --allow-root && gulp build"
+    volumes_from:
+      - code_frontend:rw
 

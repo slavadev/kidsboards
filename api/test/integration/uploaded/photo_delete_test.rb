@@ -6,12 +6,12 @@ class Uploaded::PhotoDeleteTest < ActionDispatch::IntegrationTest
     token = login
 
     file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
-    post '/api/v1/uploaded/photo', token: token, file: file
+    post '/v1/uploaded/photo', token: token, file: file
     json = JSON.parse(response.body)
     id = json['id']
 
     # action
-    delete "/api/v1/uploaded/photo/#{id}", token: token
+    delete "/v1/uploaded/photo/#{id}", token: token
 
     # check results
     assert_response 204
@@ -24,13 +24,13 @@ class Uploaded::PhotoDeleteTest < ActionDispatch::IntegrationTest
     token = login
 
     file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
-    post '/api/v1/uploaded/photo', token: token, file: file
+    post '/v1/uploaded/photo', token: token, file: file
     json = JSON.parse(response.body)
     id = json['id']
     token = login
 
     # action
-    delete "/api/v1/uploaded/photo/#{id}", token: token
+    delete "/v1/uploaded/photo/#{id}", token: token
 
     # check results
     assert_response 403
@@ -42,7 +42,7 @@ class Uploaded::PhotoDeleteTest < ActionDispatch::IntegrationTest
 
     # action 1
     id = Faker::Number.number(9)
-    delete "/api/v1/uploaded/photo/#{id}", token: token
+    delete "/v1/uploaded/photo/#{id}", token: token
 
     # check results
     assert_response 422
@@ -50,7 +50,7 @@ class Uploaded::PhotoDeleteTest < ActionDispatch::IntegrationTest
     assert_includes json['id'], 'does not exist'
 
     # action 2
-    delete '/api/v1/uploaded/photo', token: token
+    delete '/v1/uploaded/photo', token: token
 
     # check results
     assert_response 422
@@ -64,13 +64,13 @@ class Uploaded::PhotoDeleteTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
 
     # action 1
-    delete "/api/v1/uploaded/photo/#{id}", token: token
+    delete "/v1/uploaded/photo/#{id}", token: token
 
     # check results
     assert_response 401
 
     # action 2
-    delete "/api/v1/uploaded/photo/#{id}"
+    delete "/v1/uploaded/photo/#{id}"
 
     # check results
     assert_response 401
