@@ -44,7 +44,6 @@ services:
       dockerfile: ./docker/prod/api/Dockerfile
     volumes_from:
       - code_api:rw
-      - code_frontend:ro
       - data:rw
       - logs:rw
     depends_on:
@@ -87,7 +86,6 @@ services:
     build:
       context: .
       dockerfile: ./docker/prod/migrator/Dockerfile
-    command: bash /docker/migrator/migrate.sh
     volumes_from:
       - code_api:rw
     depends_on:
