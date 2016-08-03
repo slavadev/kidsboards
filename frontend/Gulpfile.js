@@ -103,8 +103,9 @@ var paths = {
       'css/num-pad.css'
     ]
   },
-  images: [ 'images/**/*'],
-  json:   [ 'json/**/*']
+  images: [ 'images/**/*' ],
+  json:   [ 'json/**/*' ],
+  fonts:  [ 'css/fonts/**/*' ]
 };
 
 gulp.task('clean', function () {
@@ -206,6 +207,11 @@ gulp.task('json', function() {
     .pipe(gulp.dest('dist/json'));
 });
 
+gulp.task('fonts', function() {
+  return gulp.src(paths.fonts)
+    .pipe(gulp.dest('dist/css/fonts'));
+});
+
 gulp.task('watch', ['sass:watch']);
 
 gulp.task('build-dev',['svgstore', 'sass']);
@@ -215,7 +221,7 @@ gulp.task('build', function(callback){
 
   runSequence(
     ['svgstore', 'sass'],
-    ['images', 'templates', 'jsbuild', 'cssbuild', 'json'],
+    ['images', 'templates', 'jsbuild', 'cssbuild', 'json', 'fonts'],
     'index-dist',
     callback);
 });

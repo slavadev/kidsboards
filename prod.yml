@@ -93,11 +93,10 @@ services:
     env_file: docker/prod/.env
 
   # All about the frontend is here
-  frontend:
+  frontend-updator:
     build:
       context: .
-      dockerfile: ./docker/prod/frontend/Dockerfile
-    command: bash -c "npm install && bower install --allow-root && gulp build"
+      dockerfile: ./docker/prod/frontend-updator/Dockerfile
     volumes_from:
       - code_frontend:rw
 
