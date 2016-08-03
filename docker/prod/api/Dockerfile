@@ -1,5 +1,8 @@
 FROM phusion/passenger-ruby23
 
+RUN apt-get update
+RUN apt-get install -y imagemagick
+
 # bundler
 RUN mkdir /home/app/webapp
 WORKDIR /home/app/webapp

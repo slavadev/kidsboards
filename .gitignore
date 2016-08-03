@@ -27,5 +27,4 @@ pgdata
 pgdata_dev
 frontend/photos/
 api/.yardoc/
-api/.bundle/
 thatsaboy.iml
