@@ -103,7 +103,7 @@
           .textContent('The link is broken or has already been used.')
           .ok('Ok')
       );
-      $state.go('app.index');
+      $state.go('app.index', null, {reload: true});
     }
 
     function handle403(data) {
