@@ -1,4 +1,4 @@
-# Thatsaboy (WORK IN PROGRESS)
+# Thatsaboy
 
 [![Code Climate](https://codeclimate.com/github/korolvs/thatsaboy/badges/gpa.svg)](https://codeclimate.com/github/korolvs/thatsaboy) 
 [![Test Coverage](https://codeclimate.com/github/korolvs/thatsaboy/badges/coverage.svg)](https://codeclimate.com/github/korolvs/thatsaboy/coverage) 
@@ -19,18 +19,13 @@ Thatsaboy is a website which helps you to manage your children.
 
 With bright illustrations **Thatsaboy** makes this process more interesting for children.
 
-## Progress
-
-Backend - 95%
-
-Frontend - 50%
-
 ## Used tools
 
 ### Backend
  - [Ruby on Rails](http://rubyonrails.org/)
  - [Phusion Passenger](https://www.phusionpassenger.com/)
  - [Nginx](http://nginx.org/)
+ - [HAProxy](http://www.haproxy.org/)
  - [PostgreSQL](http://www.postgresql.org/)
  - [Minitest](https://github.com/seattlerb/minitest)
  - [YARD](http://yardoc.org/)
@@ -38,7 +33,7 @@ Frontend - 50%
 
 ### Frontend 
  - [AngularJS](https://angularjs.org/)
- - [PostCSS](https://github.com/postcss/postcss)
+ - [SASS](http://sass-lang.com/)
  - [Gulp](http://gulpjs.com/)
 
 ## Documentation
@@ -78,7 +73,9 @@ docker-compose -f dev.yml up
 Build 
 
 ```
-docker-compose -f prod.yml build
+# Run as user with UID 1000
+
+./run_setup.sh
 ``` 
 
 Run
