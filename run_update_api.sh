@@ -10,7 +10,7 @@ docker-compose -f prod.yml build api
 docker-compose -f prod.yml scale api=$MAX_NUM_OF_CONTAINERS
 
 # waiting for new containers
-sleep 30
+sleep 90
 
 # removing old containers
 for ((i=$FIRST_NUM;i<$NUM_OF_CONTAINERS+$FIRST_NUM;i++))

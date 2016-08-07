@@ -32,6 +32,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # scripts
 RUN usermod -u 1000 app
+RUN mkdir -p /etc/my_init.d
+ADD ./docker/prod/api/curl_to_warmup.sh /etc/my_init.d/curl_to_warmup.sh
 
 CMD ["/sbin/my_init"]
 
