@@ -37,7 +37,11 @@ class User::Command::RegisterCommand < Core::Command
     @token_repository.save!(token)
     family = Family::Family.new(user)
     @family_repository.save!(family)
-    @mailer_service.send_confirmation(user.email, token.code)
+    begin
+      @mailer_service.send_confirmation(user.email, token.code)
+    rescue => e
+      logger.error e.message
+    end
     { id: user.id }
   end
 end
