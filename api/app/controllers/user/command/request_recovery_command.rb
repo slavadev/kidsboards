@@ -12,9 +12,9 @@ class User::Command::RequestRecoveryCommand < Core::Command
   # @see User::Service::MailerService
   def initialize(params)
     super(params)
-    @user_repository = User::Repository::UserRepository.new
-    @token_repository = User::Repository::TokenRepository.new
-    @mailer_service = User::Service::MailerService.new
+    @user_repository = User::Repository::UserRepository.get
+    @token_repository = User::Repository::TokenRepository.get
+    @mailer_service = User::Service::MailerService.get
   end
 
   # Rules for authorization

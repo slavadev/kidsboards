@@ -24,9 +24,9 @@ class Goal::Command::GoalCreateCommand < Core::Command
   def initialize(params)
     super(params)
     @child_model = Family::Child
-    @authorization_service = User::Service::AuthorizationService.new
-    @goal_repository = Goal::Repository::GoalRepository.new
-    @person_repository = Family::Repository::PersonRepository.new(@child_model)
+    @authorization_service = User::Service::AuthorizationService.get
+    @goal_repository = Goal::Repository::GoalRepository.get
+    @person_repository = Family::Repository::PersonRepository.get(@child_model)
   end
 
 

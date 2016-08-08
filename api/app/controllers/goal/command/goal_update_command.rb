@@ -20,7 +20,7 @@ class Goal::Command::GoalUpdateCommand < Core::Command
   # @see Goal::Repository::GoalRepository
   def initialize(params)
     super(params)
-    @goal_repository = Goal::Repository::GoalRepository.new
+    @goal_repository = Goal::Repository::GoalRepository.get
   end
 
   # Runs command

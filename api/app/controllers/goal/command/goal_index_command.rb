@@ -18,10 +18,10 @@ class Goal::Command::GoalIndexCommand < Core::Command
   def initialize(params)
     super(params)
     @child_model = Family::Child
-    @goal_repository = Goal::Repository::GoalRepository.new
-    @goal_service = Goal::Service::GoalService.new
-    @person_repository = Family::Repository::PersonRepository.new(@child_model)
-    @person_presenter_class = Family::Presenter::PersonPresenter
+    @goal_repository = Goal::Repository::GoalRepository.get
+    @goal_service = Goal::Service::GoalService.get
+    @person_repository = Family::Repository::PersonRepository.get(@child_model)
+    @person_presenter = Family::Presenter::PersonPresenter.get
   end
 
   # Runs command
@@ -29,7 +29,7 @@ class Goal::Command::GoalIndexCommand < Core::Command
   def execute
     child = @person_repository.find(id)
     is_completed = completed.nil? ? nil : completed == 'true'
-    goals = @person_presenter_class.new(child).child_goals_to_hash(is_completed)
+    goals = @person_presenter.child_goals_to_hash(child, is_completed)
     { goals: goals }
   end
 end

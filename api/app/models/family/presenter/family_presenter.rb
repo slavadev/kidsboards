@@ -1,19 +1,14 @@
 # Contains methods to show families
-class Family::Presenter::FamilyPresenter
-  # Creates a presenter
-  # @param [Family::Family] family
-  def initialize(family)
-    @family = family
-  end
-
+class Family::Presenter::FamilyPresenter < Core::Presenter
   # Converts attributes to hash
+  # @param [Family::Family] family
   # @return [Hash]
-  def family_to_hash
+  def family_to_hash(family)
     {
-      name: @family.name,
-      photo_url: @family.photo_url,
-      adults: @family.adults.not_deleted,
-      children: @family.children.not_deleted
+      name: family.name,
+      photo_url: family.photo_url,
+      adults: family.adults.not_deleted,
+      children: family.children.not_deleted
     }
   end
 end

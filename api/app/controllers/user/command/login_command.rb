@@ -13,8 +13,8 @@ class User::Command::LoginCommand < Core::Command
   # @see User::Repository::TokenRepository
   def initialize(params)
     super(params)
-    @user_repository = User::Repository::UserRepository.new
-    @token_repository = User::Repository::TokenRepository.new
+    @user_repository = User::Repository::UserRepository.get
+    @token_repository = User::Repository::TokenRepository.get
   end
 
   # Checks if the email and password are right

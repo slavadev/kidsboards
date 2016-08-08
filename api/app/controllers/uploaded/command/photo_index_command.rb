@@ -9,9 +9,9 @@ class Uploaded::Command::PhotoIndexCommand < Core::Command
   # @see Uploaded::Presenter::PhotoPresenter
   def initialize(params)
     super(params)
-    @authorization_service = User::Service::AuthorizationService.new
-    @photo_repository = Uploaded::Repository::PhotoRepository.new
-    @photo_presenter_class = Uploaded::Presenter::PhotoPresenter
+    @authorization_service = User::Service::AuthorizationService.get
+    @photo_repository = Uploaded::Repository::PhotoRepository.get
+    @photo_presenter = Uploaded::Presenter::PhotoPresenter.get
   end
 
   # Runs command
@@ -19,7 +19,7 @@ class Uploaded::Command::PhotoIndexCommand < Core::Command
   def execute
     user = @authorization_service.get_user_by_token_code(token)
     photos = @photo_repository.find_actual_by_user(user)
-    photos = photos.map { |photo| @photo_presenter_class.new(photo).photo_to_hash }
+    photos = photos.map { |photo| @photo_presenter.photo_to_hash(photo) }
     { photos: photos }
   end
 end

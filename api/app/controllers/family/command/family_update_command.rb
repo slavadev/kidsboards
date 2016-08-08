@@ -12,8 +12,8 @@ class Family::Command::FamilyUpdateCommand < Core::Command
   # @see Family::Repository::FamilyRepository
   def initialize(params)
     super(params)
-    @authorization_service = User::Service::AuthorizationService.new
-    @family_repository = Family::Repository::FamilyRepository.new
+    @authorization_service = User::Service::AuthorizationService.get
+    @family_repository = Family::Repository::FamilyRepository.get
   end
 
   # Runs command

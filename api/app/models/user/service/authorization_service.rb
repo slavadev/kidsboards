@@ -1,9 +1,9 @@
 # Contains methods to work with tokens and users
-class User::Service::AuthorizationService
+class User::Service::AuthorizationService < Core::Service
   # Sets all variables
   # @see User::Repository::TokenRepository
   def initialize
-    @token_repository = User::Repository::TokenRepository.new
+    @token_repository = User::Repository::TokenRepository.get
   end
 
   # Gets the token for command according to authorization rules

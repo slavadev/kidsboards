@@ -6,8 +6,8 @@ class User::Command::LogoutCommand < Core::Command
   # @see User::Repository::TokenRepository
   def initialize(params)
     super(params)
-    @authorization_service = User::Service::AuthorizationService.new
-    @token_repository = User::Repository::TokenRepository.new
+    @authorization_service = User::Service::AuthorizationService.get
+    @token_repository = User::Repository::TokenRepository.get
   end
 
   # Runs command

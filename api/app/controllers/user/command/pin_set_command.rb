@@ -13,8 +13,8 @@ class User::Command::PinSetCommand < Core::Command
   # @see User::Repository::UserRepository
   def initialize(params)
     super(params)
-    @authorization_service = User::Service::AuthorizationService.new
-    @user_repository = User::Repository::UserRepository.new
+    @authorization_service = User::Service::AuthorizationService.get
+    @user_repository = User::Repository::UserRepository.get
   end
 
   # Runs command

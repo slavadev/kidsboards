@@ -1,5 +1,5 @@
 # Contains methods to work with goals
-class Goal::Service::GoalService
+class Goal::Service::GoalService < Core::Service
   # Adds or removes points
   # @param [Goal::Goal] goal
   # @param [Family::Adult] adult
@@ -8,7 +8,7 @@ class Goal::Service::GoalService
   def change_points(goal, adult, diff)
     real_diff = goal.change_points(diff)
     action = Goal::Action.new(goal.user, goal, adult, real_diff)
-    Goal::Repository::ActionRepository.new.save!(action)
+    Goal::Repository::ActionRepository.get.save!(action)
     goal
   end
 end

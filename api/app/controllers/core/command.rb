@@ -27,7 +27,7 @@ class Core::Command
 
   # Checks that command can be executed by the user
   def check_authorization
-    User::Service::AuthorizationService.new.get_token_by_command self
+    User::Service::AuthorizationService.get.get_token_by_command self
   end
 
   # Checks that all params are correct

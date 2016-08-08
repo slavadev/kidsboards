@@ -1,5 +1,7 @@
 # Contains common methods for repositories
 class Core::Repository
+  include Core::Multitone
+
   # Saves an object
   # @param [ActiveRecord::Base] model
   # @return [ActiveRecord::Base]

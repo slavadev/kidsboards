@@ -11,14 +11,14 @@ class Goal::Command::GoalViewCommand < Core::Command
   # @see Goal::Repository::GoalRepository
   def initialize(params)
     super(params)
-    @goal_repository = Goal::Repository::GoalRepository.new
-    @goal_presenter_class = Goal::Presenter::GoalPresenter
+    @goal_repository = Goal::Repository::GoalRepository.get
+    @goal_presenter = Goal::Presenter::GoalPresenter.get
   end
 
   # Runs command
   # @return [Hash]
   def execute
     goal = goal_repository.find(id)
-    @goal_presenter_class.new(goal).goal_to_hash_with_full_info
+    @goal_presenter.goal_to_hash_with_full_info(goal)
   end
 end

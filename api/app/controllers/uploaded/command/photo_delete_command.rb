@@ -12,7 +12,7 @@ class Uploaded::Command::PhotoDeleteCommand < Core::Command
   # @see Uploaded::Repository::PhotoRepository
   def initialize(params)
     super(params)
-    @photo_repository = Uploaded::Repository::PhotoRepository.new
+    @photo_repository = Uploaded::Repository::PhotoRepository.get
   end
 
   # Runs command

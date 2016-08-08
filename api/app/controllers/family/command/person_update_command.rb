@@ -14,7 +14,7 @@ class Family::Command::PersonUpdateCommand < Core::Command
   # @see Family::Repository::PersonRepository
   def initialize(params)
     super(params)
-    @person_repository = Family::Repository::PersonRepository.new(@model)
+    @person_repository = Family::Repository::PersonRepository.get(@model)
   end
 
   # Runs command

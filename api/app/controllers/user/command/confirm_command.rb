@@ -7,9 +7,9 @@ class User::Command::ConfirmCommand < Core::Command
   # @see User::Repository::TokenRepository
   def initialize(params)
     super(params)
-    @authorization_service = User::Service::AuthorizationService.new
-    @user_repository = User::Repository::UserRepository.new
-    @token_repository = User::Repository::TokenRepository.new
+    @authorization_service = User::Service::AuthorizationService.get
+    @user_repository = User::Repository::UserRepository.get
+    @token_repository = User::Repository::TokenRepository.get
   end
 
   # Rules for authorization

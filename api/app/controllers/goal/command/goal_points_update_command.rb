@@ -20,10 +20,10 @@ class Goal::Command::GoalPointsUpdateCommand < Core::Command
   def initialize(params)
     super(params)
     @adult_model = Family::Adult
-    @authorization_service = User::Service::AuthorizationService.new
-    @goal_service = Goal::Service::GoalService.new
-    @goal_repository = Goal::Repository::GoalRepository.new
-    @person_repository = Family::Repository::PersonRepository.new(@adult_model)
+    @authorization_service = User::Service::AuthorizationService.get
+    @goal_service = Goal::Service::GoalService.get
+    @goal_repository = Goal::Repository::GoalRepository.get
+    @person_repository = Family::Repository::PersonRepository.get(@adult_model)
   end
 
   # Runs command

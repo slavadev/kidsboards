@@ -12,8 +12,8 @@ class Family::Command::PersonDeleteCommand < Core::Command
   # @see Family::Repository::PersonRepository
   def initialize(params)
     super(params)
-    @authorization_service = User::Service::AuthorizationService.new
-    @person_repository = Family::Repository::PersonRepository.new(model)
+    @authorization_service = User::Service::AuthorizationService.get
+    @person_repository = Family::Repository::PersonRepository.get(model)
   end
 
   # Runs command

@@ -5,7 +5,7 @@ class Core::Validator::OwnerValidator < ActiveModel::EachValidator
   # @see User::Service::AuthorizationService
   def initialize(params)
     super(params)
-    @authorization_service = User::Service::AuthorizationService.new
+    @authorization_service = User::Service::AuthorizationService.get
   end
 
   # Validation function

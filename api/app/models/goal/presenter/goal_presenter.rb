@@ -1,43 +1,40 @@
 # Contains methods to show goals
-class Goal::Presenter::GoalPresenter
-  # Creates a presenter
-  # @param [Goal::Gaol] goal
-  def initialize(goal)
-    @goal = goal
-  end
-  
+class Goal::Presenter::GoalPresenter < Core::Presenter
   # Gets hash from goal
+  # @param [Goal::Gaol] goal
   # @return [Hash]
-  def goal_to_hash
+  def goal_to_hash(goal)
     {
-      id: @goal.id,
-      name: @goal.name,
-      photo_url: @goal.photo_url,
-      target: @goal.target,
-      current: @goal.current
+      id: goal.id,
+      name: goal.name,
+      photo_url: goal.photo_url,
+      target: goal.target,
+      current: goal.current
     }
   end
 
   # Gets hash with full info from goal
+  # @param [Goal::Gaol] goal
   # @return [Hash]
-  def goal_to_hash_with_full_info
+  def goal_to_hash_with_full_info(goal)
     {
-      id: @goal.id,
-      name: @goal.name,
-      photo_url: @goal.photo_url,
-      target: @goal.target,
-      current: @goal.current,
-      created_at: @goal.created_at,
-      actions: get_actions
+      id: goal.id,
+      name: goal.name,
+      photo_url: goal.photo_url,
+      target: goal.target,
+      current: goal.current,
+      created_at: goal.created_at,
+      actions: get_actions(goal)
     }
   end
 
   private
 
   # Gets goal's actions
+  # @param [Goal::Gaol] goal
   # @return [Hash]
-  def get_actions
-    @goal.actions.map do |action|
+  def get_actions(goal)
+    goal.actions.map do |action|
       {
         adult: {
           id: action.adult.id,

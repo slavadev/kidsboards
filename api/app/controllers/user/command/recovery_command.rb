@@ -12,9 +12,9 @@ class User::Command::RecoveryCommand < Core::Command
   # @see User::Service::AuthorizationService
   def initialize(params)
     super(params)
-    @user_repository = User::Repository::UserRepository.new
-    @token_repository = User::Repository::TokenRepository.new
-    @authorization_service = User::Service::AuthorizationService.new
+    @user_repository = User::Repository::UserRepository.get
+    @token_repository = User::Repository::TokenRepository.get
+    @authorization_service = User::Service::AuthorizationService.get
   end
 
   # Rules for authorization

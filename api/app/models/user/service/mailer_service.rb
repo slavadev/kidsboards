@@ -1,5 +1,5 @@
 # Contains methods to work with emails
-class User::Service::MailerService
+class User::Service::MailerService < Core::Service
   # Sends an email with confirmation code to user
   # @param [String] email
   # @param [String] code
