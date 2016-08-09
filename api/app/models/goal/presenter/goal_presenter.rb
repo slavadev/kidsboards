@@ -34,7 +34,7 @@ class Goal::Presenter::GoalPresenter < Core::Presenter
   # @param [Goal::Gaol] goal
   # @return [Hash]
   def get_actions(goal)
-    goal.actions.map do |action|
+    goal.actions.includes(:adult).map do |action|
       {
         adult: {
           id: action.adult.id,
