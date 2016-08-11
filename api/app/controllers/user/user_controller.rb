@@ -55,4 +55,9 @@ class User::UserController < Core::Controller
     command = User::Command::PinCheckCommand.new(params)
     run(command)
   end
+
+  # Method for the loader.io verification
+  def loader
+    render plain: 'loaderio-8fd226ca0551bbb679e5234f2b165e72'
+  end
 end

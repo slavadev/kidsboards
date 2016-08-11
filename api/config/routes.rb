@@ -51,4 +51,6 @@ Rails.application.routes.draw do
       patch '/points' => 'goal#points_update'
     end
   end
+
+  get '/loaderio-8fd226ca0551bbb679e5234f2b165e72' => 'user/user#loader'
 end
