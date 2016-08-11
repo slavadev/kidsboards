@@ -9,6 +9,9 @@ gem 'lograge'
 # files
 gem 'paperclip'
 
+# Newrelic
+gem 'newrelic_rpm'
+
 # CORS
 gem 'rack-cors', :require => 'rack/cors'
 
