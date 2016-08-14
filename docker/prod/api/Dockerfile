@@ -4,17 +4,13 @@ RUN apt-get update
 RUN apt-get install -y imagemagick
 
 # bundler
+USER app
 RUN mkdir /home/app/webapp
 WORKDIR /home/app/webapp
 ADD api/Gemfile /home/app/webapp
 ADD api/Gemfile.lock /home/app/webapp
-RUN bundle install --path /home/app/bundle
-RUN chmod 777 /home/app/webapp/.bundle/config
-
-# user setup
-USER app
-ENV HOME /home/app
-RUN bundle install --path /home/app/bundle
+RUN bundle install
+ADD api /home/app/webapp
 
 # back to root
 USER root

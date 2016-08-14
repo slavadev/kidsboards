@@ -45,7 +45,6 @@ services:
       context: .
       dockerfile: ./docker/prod/api/Dockerfile
     volumes_from:
-      - code_api:rw
       - data:rw
       - logs:rw
     depends_on:
@@ -88,8 +87,6 @@ services:
     build:
       context: .
       dockerfile: ./docker/prod/migrator/Dockerfile
-    volumes_from:
-      - code_api:rw
     depends_on:
       - postgres
     env_file: docker/prod/.env

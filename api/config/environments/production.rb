@@ -51,6 +51,8 @@ Rails.application.configure do
     { time: event.time }
   end
 
+  Rails.logger = ActiveSupport::Logger.new('/home/app/logs/rails-errors.log')
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
