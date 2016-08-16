@@ -30,7 +30,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN usermod -u 1000 app
 RUN mkdir -p /etc/my_init.d
 ADD ./docker/prod/api/curl_to_warmup.sh /etc/my_init.d/curl_to_warmup.sh
-ADD ./docker/prod/api/run_puma.sh /etc/my_init.d/run_puma.sh
+ADD ./docker/prod/api/run_unicorn.sh /etc/my_init.d/run_unicorn.sh
 
 CMD ["/sbin/my_init"]
 
