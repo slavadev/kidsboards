@@ -86,12 +86,10 @@ GEM
       mimemagic (= 0.3.0)
     parser (2.3.1.2)
       ast (~> 2.2)
-    passenger (5.0.29)
-      rack
-      rake (>= 0.8.1)
     pg (0.18.4)
     pkg-config (1.1.7)
     powerpack (0.1.1)
+    puma (3.6.0)
     rack (1.6.4)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -161,8 +159,8 @@ DEPENDENCIES
   minitest-rails
   newrelic_rpm
   paperclip
-  passenger
   pg
+  puma
   rack-cors
   rails (= 4.2.4)
   rubocop
