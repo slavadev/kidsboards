@@ -1,16 +1,16 @@
 # Family controller
 class Family::FamilyController < Core::Controller
   # Updates family info
-  # @see Family::Command::FamilyUpdateCommand
+  # @see Family::FamilyUpdateCommand
   def update
-    command = Family::Command::FamilyUpdateCommand.new(params)
+    command = Family::FamilyUpdateCommand.new(params)
     run(command)
   end
 
   # Views family info
-  # @see Family::Command::FamilyViewCommand
+  # @see Family::FamilyViewCommand
   def view
-    command = Family::Command::FamilyViewCommand.new(params)
+    command = Family::FamilyViewCommand.new(params)
     run(command)
   end
 end

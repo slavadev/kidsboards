@@ -47,3 +47,6 @@ staging:
 
 production:
   <<: *default_settings
+
+aws:
+  <<: *default_settings

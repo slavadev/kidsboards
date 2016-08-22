@@ -1,0 +1,24 @@
+# Check pin command
+class User::PinCheckCommand < Core::Command
+  attr_accessor :pin
+
+  validates :pin, presence: true
+  validates :pin, length: { is: 4 }
+  validates :pin, format: { with: /\d{4}/,
+                            message: 'has wrong format' }
+
+  # Sets all services
+  # @param [Object] params
+  # @see User::AuthorizationService
+  def initialize(params)
+    super(params)
+    @authorization_service = User::AuthorizationService.get
+  end
+
+  # Runs command
+  # @return [Hash]
+  def execute
+    user = @authorization_service.get_user_by_token_code(token)
+    { equal: user.pin == pin }
+  end
+end

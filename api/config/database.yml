@@ -14,3 +14,7 @@ test:
 production:
   <<: *default
   database: <%= ENV['POSTGRES_DB'] %>
+
+aws:
+  <<: *default
+  database: <%= ENV['POSTGRES_DB'] %>

@@ -1,23 +1,23 @@
 # Photo controller
 class Uploaded::PhotoController < Core::Controller
   # Creates a new image
-  # @see Uploaded::Command::PhotoCreateCommand
+  # @see Uploaded::PhotoCreateCommand
   def create
-    command = Uploaded::Command::PhotoCreateCommand.new(params)
+    command = Uploaded::PhotoCreateCommand.new(params)
     run(command)
   end
 
   # Gets list of photos
-  # @see Uploaded::Command::PhotoIndexCommand
+  # @see Uploaded::PhotoIndexCommand
   def index
-    command = Uploaded::Command::PhotoIndexCommand.new(params)
+    command = Uploaded::PhotoIndexCommand.new(params)
     run(command)
   end
 
   # Deletes a photo
-  # @see Uploaded::Command::PhotoDeleteCommand
+  # @see Uploaded::PhotoDeleteCommand
   def delete
-    command = Uploaded::Command::PhotoDeleteCommand.new(params)
+    command = Uploaded::PhotoDeleteCommand.new(params)
     run(command)
   end
 end

@@ -1,0 +1,47 @@
+version: '2'
+services:
+  # All about the rails is here
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-api
+    environment:
+      - VIRTUAL_HOST=api.thatsaboy.dev,api.thatsaboy.com
+    env_file: .env-aws
+
+  # All about the static files is here
+  static:
+    build:
+      context: .
+      dockerfile: Dockerfile-static
+    environment:
+      - VIRTUAL_HOST=upload.thatsaboy.dev,thatsaboy.dev,upload.thatsaboy.com,thatsaboy.com
+    env_file: .env-aws
+
+  # Proxy
+  proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile-proxy
+    links:
+      - api
+      - static
+    depends_on:
+      - api
+      - static
+    ports:
+      - "80:80"
+      - "1936:1936"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file: .env-aws
+
+  # Running migrations
+  migrator:
+    build:
+      context: .
+      dockerfile: Dockerfile-migrator
+    depends_on:
+      - postgres
+    env_file: .env-aws
+

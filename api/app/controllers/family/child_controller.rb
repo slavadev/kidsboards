@@ -1,26 +1,26 @@
 # Child controller
 class Family::ChildController < Core::Controller
   # Creates a child
-  # @see Family::Command::PersonCreateCommand
+  # @see Family::PersonCreateCommand
   def create
     params['model'] = Family::Child
-    command = Family::Command::PersonCreateCommand.new(params)
+    command = Family::PersonCreateCommand.new(params)
     run(command)
   end
 
   # Updates a child
-  # @see Family::Command::PersonUpdateCommand
+  # @see Family::PersonUpdateCommand
   def update
     params['model'] = Family::Child
-    command = Family::Command::PersonUpdateCommand.new(params)
+    command = Family::PersonUpdateCommand.new(params)
     run(command)
   end
 
   # Deletes a child
-  # @see Family::Command::PersonDeleteCommand
+  # @see Family::PersonDeleteCommand
   def delete
     params['model'] = Family::Child
-    command = Family::Command::PersonDeleteCommand.new(params)
+    command = Family::PersonDeleteCommand.new(params)
     run(command)
   end
 end

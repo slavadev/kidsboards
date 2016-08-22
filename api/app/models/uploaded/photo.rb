@@ -1,4 +1,4 @@
-require "#{Rails.root}/app/controllers/core/interpolations"
+require "#{Rails.root}/app/infrastructure/core/interpolations"
 # Photo class
 # Fields:
 #  [Integer]        id

@@ -1,30 +1,30 @@
 # Goal controller
 class Goal::GoalController < Core::Controller
   # Shows a goal
-  # @see Goal::Command::GoalViewCommand
+  # @see Goal::GoalViewCommand
   def view
-    command = Goal::Command::GoalViewCommand.new(params)
+    command = Goal::GoalViewCommand.new(params)
     run(command)
   end
 
   # Updates a goal
-  # @see Goal::Command::GoalUpdateCommand
+  # @see Goal::GoalUpdateCommand
   def update
-    command = Goal::Command::GoalUpdateCommand.new(params)
+    command = Goal::GoalUpdateCommand.new(params)
     run(command)
   end
 
   # Deletes a goal
-  # @see Goal::Command::GoalDeleteCommand
+  # @see Goal::GoalDeleteCommand
   def delete
-    command = Goal::Command::GoalDeleteCommand.new(params)
+    command = Goal::GoalDeleteCommand.new(params)
     run(command)
   end
 
   # Adds or removes points
-  # @see Goal::Command::GoalPointsUpdateCommand
+  # @see Goal::GoalPointsUpdateCommand
   def points_update
-    command = Goal::Command::GoalPointsUpdateCommand.new(params)
+    command = Goal::GoalPointsUpdateCommand.new(params)
     run(command)
   end
 end

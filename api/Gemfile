@@ -33,3 +33,7 @@ end
 group :production do
   gem 'unicorn'
 end
+
+group :aws do
+  gem 'unicorn'
+end
