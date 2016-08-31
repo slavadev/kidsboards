@@ -85,15 +85,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     env_file: docker/prod/.env
 
-  # Running migrations
-  migrator:
-    build:
-      context: .
-      dockerfile: ./docker/prod/migrator/Dockerfile
-    depends_on:
-      - postgres
-    env_file: docker/prod/.env
-
   # All about the frontend is here
   frontend-updator:
     build:

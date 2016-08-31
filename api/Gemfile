@@ -8,6 +8,7 @@ gem 'lograge'
 
 # files
 gem 'paperclip'
+gem 'aws-sdk', '~> 2.3.0'
 
 # Newrelic
 gem 'newrelic_rpm'

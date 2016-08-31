@@ -5,7 +5,7 @@ development: &default
   pool: 5
   username: <%= ENV['POSTGRES_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
-  host: postgres
+  host: <%= ENV['POSTGRES_HOST'] %>
 
 test:
   <<: *default

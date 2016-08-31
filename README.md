@@ -23,7 +23,7 @@ With bright illustrations **Thatsaboy** makes this process more interesting for 
 
 ### Backend
  - [Ruby on Rails](http://rubyonrails.org/)
- - [Phusion Passenger](https://www.phusionpassenger.com/)
+ - [Unicorn](https://unicorn.bogomips.org/)
  - [Nginx](http://nginx.org/)
  - [HAProxy](http://www.haproxy.org/)
  - [PostgreSQL](http://www.postgresql.org/)
@@ -81,5 +81,5 @@ Build
 Run
 
 ```
-docker-compose -f prod.yml up
+./run_docker_prod up
 ```
