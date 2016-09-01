@@ -16,7 +16,7 @@ services:
   data:
     image: debian:jessie
     volumes:
-      - ./data:/home/app/data
+      - ./data:/data
 
   # Needed to keep data for db
   data_postgres:
@@ -45,12 +45,13 @@ services:
       context: .
       dockerfile: ./docker/prod/api/Dockerfile
     volumes_from:
-      - data:rw
       - logs:rw
     depends_on:
       - postgres
     environment:
       - VIRTUAL_HOST=api.thatsaboy.dev,api.thatsaboy.com
+    links:
+      - "s3:upload.thatsaboy.com"
     env_file: docker/prod/.env
 
   # All about the static files is here
@@ -92,4 +93,12 @@ services:
       dockerfile: ./docker/prod/frontend-updator/Dockerfile
     volumes_from:
       - code_frontend:rw
+
+  s3:
+    build:
+      context: .
+      dockerfile: ./docker/prod/s3/Dockerfile
+    volumes_from:
+      - data:rw
+    env_file: docker/prod/.env
 

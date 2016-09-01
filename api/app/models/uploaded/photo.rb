@@ -16,27 +16,37 @@ class Uploaded::Photo < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :photos, class_name: 'User::User'
 
-  if Rails.env == 'aws'
-    has_attached_file :file,
-                      url: ':s3_domain_url',
-                      styles: { :small => '400x400#' },
-                      path: '/photos/:hash/:id/:style/image.:extension',
-                      hash_secret: ENV['HASH_SECRET'],
-                      use_timestamp: false,
-                      :storage => :s3,
-                      :s3_region => 'eu-west-1',
-                      :s3_credentials => {:bucket => ENV['S3_BUCKET'],
-                                          :access_key_id => ENV['S3_ACCESS_KEY_ID'],
-                                          :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']}
-  else
-    has_attached_file :file,
-                      url: '/photos/:hash/:id/:style/image.:extension',
-                      styles: { :small => '400x400#' },
-                      path: ENV['UPLOAD_FOLDER'] + '/photos/:hash/:id/:style/image.:extension',
-                      hash_secret: ENV['HASH_SECRET'],
-                      use_timestamp: false
+  # Options for file storage
+  options = {
+      :url           => '/photos/:hash/:id/:style/image.:extension',
+      :styles        => { :small => '400x400#' },
+      :path          => ENV['UPLOAD_FOLDER'] + '/photos/:hash/:id/:style/image.:extension',
+      :hash_secret   => ENV['HASH_SECRET'],
+      :use_timestamp => false
+  }
+
+  # Options for S3 and Minio
+  if %w(aws production).include? Rails.env
+    options.merge! ({
+        :url            => ':s3_domain_url',
+        :path           => '/photos/:hash/:id/:style/image.:extension',
+        :storage        => :s3,
+        :s3_host_name   => ENV['S3_HOST_NAME'],
+        :s3_region      => 'eu-west-1',
+        :s3_credentials => { :bucket            => ENV['S3_BUCKET'],
+                             :access_key_id     => ENV['S3_ACCESS_KEY_ID'],
+                             :secret_access_key => ENV['S3_SECRET_ACCESS_KEY'] }
+    })
   end
 
+  # Options only for Minio
+  if Rails.env == 'production'
+    options.merge! ({
+        :s3_options     => { endpoint: ENV['S3_ENDPOINT'] }
+    })
+  end
+
+  has_attached_file :file, options
 
   validates_attachment_presence :file
   validates_attachment_content_type :file, content_type: %r{\Aimage/.*\Z}

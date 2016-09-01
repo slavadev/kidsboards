@@ -1,0 +1,56 @@
+{
+  "version": "6",
+  "credential": {
+    "accessKey": "asdasdasdasd",
+    "secretKey": "asdasdasdasd"
+  },
+  "region": "eu-west-1",
+  "logger": {
+    "console": {
+      "enable": true,
+      "level": "error"
+    },
+    "file": {
+      "enable": false,
+      "fileName": "",
+      "level": "error"
+    },
+    "syslog": {
+      "enable": false,
+      "address": "",
+      "level": "debug"
+    }
+  },
+  "notify": {
+    "amqp": {
+      "1": {
+        "enable": false,
+        "url": "",
+        "exchange": "",
+        "routingKey": "",
+        "exchangeType": "",
+        "mandatory": false,
+        "immediate": false,
+        "durable": false,
+        "internal": false,
+        "noWait": false,
+        "autoDeleted": false
+      }
+    },
+    "elasticsearch": {
+      "1": {
+        "enable": false,
+        "url": "",
+        "index": ""
+      }
+    },
+    "redis": {
+      "1": {
+        "enable": false,
+        "address": "",
+        "password": "",
+        "key": ""
+      }
+    }
+  }
+}
