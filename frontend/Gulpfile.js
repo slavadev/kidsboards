@@ -191,8 +191,8 @@ gulp.task('templates', function () {
 gulp.task('index-dist', function() {
   gulp.src('index.html')
     .pipe(htmlreplace({
-      'css': ['css/vendor' + ver + '.min.css', 'css/app' + ver + '.min.css'],
-      'js': ['js/vendor' + ver + '.min.js', 'templates/templates' + ver + '.js', 'js/app' + ver + '.min.js']
+      'css': ['/css/vendor' + ver + '.min.css', '/css/app' + ver + '.min.css'],
+      'js': ['/js/vendor' + ver + '.min.js', '/templates/templates' + ver + '.js', '/js/app' + ver + '.min.js']
     }))
     .pipe(gulp.dest('dist/'));
 });
