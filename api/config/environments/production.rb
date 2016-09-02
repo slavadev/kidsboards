@@ -43,15 +43,10 @@ Rails.application.configure do
   # config.force_ssl = true
 
   # Use a different logger
+  require 'syslogger'
+  config.logger = Syslogger.new("Thatsaboy", Syslog::LOG_PID, Syslog::LOG_LOCAL7)
   config.lograge.enabled = true
-  config.log_level = :warn
-  config.lograge.logger = ActiveSupport::Logger.new('/home/app/logs/rails.log')
-  # add time to lograge
-  config.lograge.custom_options = lambda do |event|
-    { time: event.time }
-  end
-
-  Rails.logger = ActiveSupport::Logger.new('/home/app/logs/rails-errors.log')
+  config.lograge.formatter = Lograge::Formatters::Json.new
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -75,7 +70,4 @@ Rails.application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
-
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
 end

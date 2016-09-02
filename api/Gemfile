@@ -4,6 +4,7 @@ gem 'pg'
 gem 'rails', '4.2.4'
 
 # logs
+gem 'syslogger'
 gem 'lograge'
 
 # files

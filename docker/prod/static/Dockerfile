@@ -1,6 +1,7 @@
 FROM phusion/passenger-ruby23
 
 RUN mkdir /home/app/webapp
+RUN mkdir /home/app/logs
 WORKDIR /home/app/webapp
 
 # nginx setup

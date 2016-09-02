@@ -24,12 +24,6 @@ services:
     volumes:
       - ./pgdata:/var/lib/postgresql/data
 
-  # Needed to keep logs
-  logs:
-    image: debian:jessie
-    volumes:
-      - ./logs:/home/app/logs
-
   # DB container
   postgres:
     image: postgres
@@ -44,8 +38,6 @@ services:
     build:
       context: .
       dockerfile: ./docker/prod/api/Dockerfile
-    volumes_from:
-      - logs:rw
     depends_on:
       - postgres
     environment:
@@ -63,7 +55,6 @@ services:
       - code_api:rw
       - code_frontend:ro
       - data:rw
-      - logs:rw
     environment:
       - VIRTUAL_HOST=upload.thatsaboy.dev,thatsaboy.dev,upload.thatsaboy.com,thatsaboy.com
     env_file: docker/prod/.env
