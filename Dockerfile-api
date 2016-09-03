@@ -16,6 +16,7 @@ ADD api /home/app/webapp
 USER root
 
 # Loggly setup
+RUN mkdir /home/app/logs
 RUN apt-get install -y rsyslog telnet wget
 ADD ./docker/prod/api/loggly/configure-linux.sh /configure-linux.sh
 ADD ./docker/prod/api/loggly/21-nginx-loggly.conf /etc/rsyslog.d/21-nginx-loggly.conf
