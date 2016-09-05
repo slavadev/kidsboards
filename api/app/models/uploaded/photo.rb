@@ -31,6 +31,7 @@ class Uploaded::Photo < ActiveRecord::Base
         :url            => ':s3_alias_url',
         :path           => '/photos/:hash/:id/:style/image.:extension',
         :storage        => :s3,
+        :s3_protocol    => 'http',
         :s3_host_alias  => ENV['S3_HOST_NAME'],
         :s3_region      => 'eu-west-1',
         :s3_credentials => { :bucket            => ENV['S3_BUCKET'],
