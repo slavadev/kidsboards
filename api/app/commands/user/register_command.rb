@@ -40,7 +40,7 @@ class User::RegisterCommand < Core::Command
     begin
       @mailer_service.send_confirmation(user.email, token.code)
     rescue => e
-      Rails.logger.error e.message
+      Rails.logger.error 'Mail sending error: ' + e.message
     end
     { id: user.id }
   end

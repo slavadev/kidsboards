@@ -44,9 +44,10 @@ Rails.application.configure do
 
   # Use a different logger
   require 'syslogger'
-  config.logger = Syslogger.new("Thatsaboy", Syslog::LOG_PID, Syslog::LOG_LOCAL7)
+  config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("Thatsaboy", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Json.new
+  config.log_level = :warn
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
