@@ -6,13 +6,13 @@ class User::LogoutTest < ActionDispatch::IntegrationTest
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = { email: email, password: password }
-    post '/v1/user/register', params
-    post '/v1/user/login', params
+    post '/v1/user/register', params: params
+    post '/v1/user/login', params: params
     json = JSON.parse(response.body)
     token = json['token']
 
     # action
-    post '/v1/user/logout', token: token
+    post '/v1/user/logout', params: { token: token }
 
     # check results
     assert_response 204
@@ -31,7 +31,7 @@ class User::LogoutTest < ActionDispatch::IntegrationTest
 
   test 'logout fail wrong token' do
     # action
-    post '/v1/user/logout', token: Faker::Lorem.characters(10)
+    post '/v1/user/logout', params: { token: Faker::Lorem.characters(10) }
 
     # check results
     assert_response 401

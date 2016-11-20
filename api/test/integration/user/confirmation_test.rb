@@ -8,7 +8,7 @@ class User::ConfirmationTest < ActionDispatch::IntegrationTest
     params = { email: email, password: password }
 
     # register
-    post '/v1/user/register', params
+    post '/v1/user/register', params: params
     json = JSON.parse(response.body)
     id = json['id']
 

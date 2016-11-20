@@ -6,21 +6,21 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/v1/family/adult', token: token, name: name, photo_url: photo_url
+    post '/v1/family/adult', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     adult_id = json['id']
-    post '/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     id = json['id']
     target = Faker::Number.number(2).to_i
-    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", params: { token: token, name: name, photo_url: photo_url, target: target }
     json = JSON.parse(response.body)
     id = json['id']
 
     # action 1
     diff = Faker::Number.number(1).to_i + 1
     diff0 = diff
-    patch "/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
+    patch "/v1/goal/#{id}/points", params: { token: token, adult_id: adult_id, diff: diff }
 
     # check results
     assert_response 200
@@ -33,7 +33,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
 
     # action 2
     diff = - Faker::Number.number(1).to_i - diff
-    patch "/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
+    patch "/v1/goal/#{id}/points", params: { token: token, adult_id: adult_id, diff: diff }
 
     # check results
     assert_response 200
@@ -46,7 +46,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
 
     # action 3
     diff = Faker::Number.number(1).to_i + target
-    patch "/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
+    patch "/v1/goal/#{id}/points", params: { token: token, adult_id: adult_id, diff: diff }
 
     # check results
     assert_response 200
@@ -66,7 +66,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     diff = Faker::Number.decimal(2)
 
     # action 1
-    patch "/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
+    patch "/v1/goal/#{id}/points", params: { token: token, adult_id: adult_id, diff: diff }
 
     # check results
     assert_response 422
@@ -76,7 +76,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     assert_includes json['diff'], 'must be an integer'
 
     # action 2
-    patch '/v1/goal/points', token: token
+    patch '/v1/goal/points', params: { token: token }
 
     # check results
     assert_response 422
@@ -91,21 +91,21 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/v1/family/adult', token: token, name: name, photo_url: photo_url
+    post '/v1/family/adult', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     adult_id = json['id']
-    post '/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     id = json['id']
     target = Faker::Number.number(2).to_i
-    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", params: { token: token, name: name, photo_url: photo_url, target: target }
     json = JSON.parse(response.body)
     id = json['id']
     diff = Faker::Number.number(1).to_i
 
     # action 1
-    delete "/v1/goal/#{id}", token: token
-    patch "/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
+    delete "/v1/goal/#{id}", params: { token: token }
+    patch "/v1/goal/#{id}/points", params: { token: token, adult_id: adult_id, diff: diff }
 
     # check results
     assert_response 422
@@ -118,21 +118,21 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     token1 = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/v1/family/adult', token: token1, name: name, photo_url: photo_url
+    post '/v1/family/adult', params: { token: token1, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     adult_id = json['id']
     token = login
-    post '/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     id = json['id']
     target = Faker::Number.number(2).to_i
-    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", params: { token: token, name: name, photo_url: photo_url, target: target }
     json = JSON.parse(response.body)
     id = json['id']
     diff = Faker::Number.number(1).to_i
 
     # action 1
-    patch "/v1/goal/#{id}/points", token: token, adult_id: adult_id, diff: diff
+    patch "/v1/goal/#{id}/points", params: { token: token, adult_id: adult_id, diff: diff }
 
     # check results
     assert_response 422
@@ -140,7 +140,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     assert_includes json['adult_id'], 'does not exist'
 
     # action 2
-    patch "/v1/goal/#{id}/points", token: token1, adult_id: adult_id, diff: diff
+    patch "/v1/goal/#{id}/points", params: { token: token1, adult_id: adult_id, diff: diff }
 
     # check results
     assert_response 403
@@ -152,7 +152,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
 
     # action
-    patch "/v1/goal/#{id}/points", token: token
+    patch "/v1/goal/#{id}/points", params: { token: token }
 
     # check results
     assert_response 401

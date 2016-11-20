@@ -5,12 +5,12 @@ class Family::AdultDeleteTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     url = Faker::Internet.url
-    post '/v1/family/adult', token: token, name: name, photo_url: url
+    post '/v1/family/adult', params: { token: token, name: name, photo_url: url }
     json = JSON.parse(response.body)
     id = json['id']
 
     # action
-    delete "/v1/family/adult/#{id}", token: token
+    delete "/v1/family/adult/#{id}", params: { token: token }
 
     # check results
     assert_response 204
@@ -23,7 +23,7 @@ class Family::AdultDeleteTest < ActionDispatch::IntegrationTest
 
     # action 1
     id = Faker::Number.number(9)
-    delete "/v1/family/adult/#{id}", token: token
+    delete "/v1/family/adult/#{id}", params: { token: token }
 
     # check results
     assert_response 422
@@ -31,7 +31,7 @@ class Family::AdultDeleteTest < ActionDispatch::IntegrationTest
     assert_includes json['id'], 'does not exist'
 
     # action 2
-    delete '/v1/family/adult', token: token
+    delete '/v1/family/adult', params: { token: token }
 
     # check results
     assert_response 422
@@ -44,13 +44,13 @@ class Family::AdultDeleteTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     url = Faker::Internet.url
-    post '/v1/family/adult', token: token, name: name, photo_url: url
+    post '/v1/family/adult', params: { token: token, name: name, photo_url: url }
     json = JSON.parse(response.body)
     id = json['id']
     token = login
 
     # action
-    delete "/v1/family/adult/#{id}", token: token
+    delete "/v1/family/adult/#{id}", params: { token: token }
 
     # check results
     assert_response 403
@@ -61,7 +61,7 @@ class Family::AdultDeleteTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
 
     # action
-    delete "/v1/family/adult/#{id}", token: token
+    delete "/v1/family/adult/#{id}", params: { token: token }
 
     # check results
     assert_response 401

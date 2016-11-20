@@ -1,25 +1,15 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
-require 'rails'
-require 'active_model/railtie'
-require 'active_record/railtie'
-require 'active_job/railtie'
-require 'rake/testtask'
-require 'action_controller/railtie'
-require 'action_mailer/railtie'
-require 'action_view/railtie'
-require 'sprockets/railtie'
-require 'minitest/rails/railtie'
+require 'rails/all'
 
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module Thatsaboy
   class Application < Rails::Application
-    # Some AR warnings
-    config.active_record.raise_in_transactional_callbacks = true
-
     # CORS
-    config.middleware.insert_before 0, 'Rack::Cors' do
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
         resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :patch, :options, :head]

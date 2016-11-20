@@ -37,13 +37,19 @@ class ActiveSupport::TestCase
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = { email: email, password: password }
-    post '/v1/user/register', params
-    post '/v1/user/login', params
+    post '/v1/user/register', params: params
+    post '/v1/user/login', params: params
     json = JSON.parse(response.body)
     json['token']
   end
 
   # Assert one array to include in other
   def assert_includes_like(what, where)
+  end
+end
+
+class ActionMailer::MessageDelivery
+  def deliver_later
+    deliver_now
   end
 end

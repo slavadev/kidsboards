@@ -5,14 +5,14 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     id = json['id']
 
     # action
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    put "/v1/family/child/#{id}", token: token, name: name, photo_url: photo_url
+    put "/v1/family/child/#{id}", params: { token: token, name: name, photo_url: photo_url }
 
     # check results
     assert_response 204
@@ -25,13 +25,13 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     id = json['id']
 
     # action 1
     name = Faker::Name.name
-    put "/v1/family/child/#{id}", token: token, name: name
+    put "/v1/family/child/#{id}", params: { token: token, name: name }
 
     # check results
     assert_response 204
@@ -41,7 +41,7 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
 
     # action 2
     photo_url = Faker::Internet.url
-    put "/v1/family/child/#{id}", token: token, photo_url: photo_url
+    put "/v1/family/child/#{id}", params: { token: token, photo_url: photo_url }
 
     # check results
     assert_response 204
@@ -57,7 +57,7 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
     name = Faker::Lorem.characters(300)
     photo_url = 'fqweeqw'
-    put "/v1/family/child/#{id}", token: token, name: name, photo_url: photo_url
+    put "/v1/family/child/#{id}", params: { token: token, name: name, photo_url: photo_url }
 
     # check results
     assert_response 422
@@ -67,7 +67,7 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     assert_includes json['photo_url'], 'is a bad uri'
 
     # action 2
-    put '/v1/family/child', token: token
+    put '/v1/family/child', params: { token: token }
 
     # check results
     assert_response 422
@@ -80,15 +80,15 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     id = json['id']
 
     # action
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    delete "/v1/family/child/#{id}", token: token
-    put "/v1/family/child/#{id}", token: token, name: name, photo_url: photo_url
+    delete "/v1/family/child/#{id}", params: { token: token }
+    put "/v1/family/child/#{id}", params: { token: token, name: name, photo_url: photo_url }
 
     # check results
     assert_response 422
@@ -100,7 +100,7 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     id = json['id']
     token = login
@@ -108,7 +108,7 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     # action
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    put "/v1/family/child/#{id}", token: token, name: name, photo_url: photo_url
+    put "/v1/family/child/#{id}", params: { token: token, name: name, photo_url: photo_url }
 
     # check results
     assert_response 403
@@ -119,7 +119,7 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
 
     # action
-    put "/v1/family/child/#{id}", token: token
+    put "/v1/family/child/#{id}", params: { token: token }
 
     # check results
     assert_response 401

@@ -8,7 +8,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
     # action
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    put '/v1/family', token: token, name: name, photo_url: photo_url
+    put '/v1/family', params: { token: token, name: name, photo_url: photo_url }
 
     # check results
     assert_response 204
@@ -24,7 +24,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
 
     # action
     photo_url = Faker::Internet.url
-    put '/v1/family', token: token, photo_url: photo_url
+    put '/v1/family', params: { token: token, photo_url: photo_url }
 
     # check results
     assert_response 204
@@ -40,7 +40,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
 
     # action
     name = Faker::Name.name
-    put '/v1/family', token: token, name: name
+    put '/v1/family', params: { token: token, name: name }
 
     # check results
     assert_response 204
@@ -57,7 +57,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
     # action 1
     name = Faker::Lorem.characters(300)
     photo_url = 'fqweeqw'
-    put '/v1/family', token: token, name: name, photo_url: photo_url
+    put '/v1/family', params: { token: token, name: name, photo_url: photo_url }
 
     # check results
     assert_response 422
@@ -68,7 +68,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
     # action 2
     name = Faker::Lorem.characters(300)
     photo_url = 'ftp://asdasd.ru'
-    put '/v1/family', token: token, name: name, photo_url: photo_url
+    put '/v1/family', params: { token: token, name: name, photo_url: photo_url }
 
     # check results
     assert_response 422
@@ -84,7 +84,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
     # action
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    put '/v1/family', token: token, name: name, photo_url: photo_url
+    put '/v1/family', params: { token: token, name: name, photo_url: photo_url }
 
     # check results
     assert_response 401
@@ -94,7 +94,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
     # action
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    put '/v1/family', name: name, photo_url: photo_url
+    put '/v1/family', params: { name: name, photo_url: photo_url }
 
     # check results
     assert_response 401

@@ -6,10 +6,10 @@ class User::LoginTest < ActionDispatch::IntegrationTest
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = { email: email, password: password }
-    post '/v1/user/register', params
+    post '/v1/user/register', params: params
 
     # action
-    post '/v1/user/login', params
+    post '/v1/user/login', params: params
 
     # check results
     assert_response 200
@@ -28,7 +28,7 @@ class User::LoginTest < ActionDispatch::IntegrationTest
     params = { email: email, password: password }
 
     # action
-    post '/v1/user/login', params
+    post '/v1/user/login', params: params
 
     # check results
     assert_response 422
@@ -55,11 +55,11 @@ class User::LoginTest < ActionDispatch::IntegrationTest
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = { email: email, password: password }
-    post '/v1/user/register', params
+    post '/v1/user/register', params: params
 
     params['email'] = Faker::Internet.free_email
     # action
-    post '/v1/user/login', params
+    post '/v1/user/login', params: params
 
     # check results
     assert_response 422
@@ -72,11 +72,11 @@ class User::LoginTest < ActionDispatch::IntegrationTest
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = { email: email, password: password }
-    post '/v1/user/register', params
+    post '/v1/user/register', params: params
 
     params['password'] = Faker::Internet.password
     # action
-    post '/v1/user/login', params
+    post '/v1/user/login', params: params
 
     # check results
     assert_response 422

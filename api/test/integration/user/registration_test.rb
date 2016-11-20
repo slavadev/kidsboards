@@ -8,7 +8,7 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     params = { email: email, password: password }
 
     # action
-    post '/v1/user/register', params
+    post '/v1/user/register', params: params
 
     # check results
     assert_response :success
@@ -42,7 +42,7 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     params = { email: email, password: password }
 
     # action
-    post '/v1//user/register', params
+    post '/v1//user/register', params: params
 
     # check results
     assert_response 422
@@ -69,10 +69,10 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     email = Faker::Internet.free_email
     password = Faker::Internet.password
     params = { email: email, password: password }
-    post '/v1//user/register', params
+    post '/v1//user/register', params: params
 
     # action
-    post '/v1//user/register', params
+    post '/v1//user/register', params: params
 
     # check results
     assert_response 422

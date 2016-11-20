@@ -6,16 +6,16 @@ class Family::GoalDeleteTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     id = json['id']
     target = Faker::Number.number(2).to_i
-    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", params: { token: token, name: name, photo_url: photo_url, target: target }
     json = JSON.parse(response.body)
     id = json['id']
 
     # action
-    delete "/v1/goal/#{id}", token: token
+    delete "/v1/goal/#{id}", params: { token: token }
 
     # check results
     assert_response 204
@@ -30,7 +30,7 @@ class Family::GoalDeleteTest < ActionDispatch::IntegrationTest
 
     # action 1
     id = Faker::Number.number(9)
-    delete "/v1/goal/#{id}", token: token
+    delete "/v1/goal/#{id}", params: { token: token }
 
     # check results
     assert_response 422
@@ -38,7 +38,7 @@ class Family::GoalDeleteTest < ActionDispatch::IntegrationTest
     assert_includes json['id'], 'does not exist'
 
     # action 2
-    delete '/v1/goal', token: token
+    delete '/v1/goal', params: { token: token }
 
     # check results
     assert_response 422
@@ -51,17 +51,17 @@ class Family::GoalDeleteTest < ActionDispatch::IntegrationTest
     token = login
     name = Faker::Name.name
     photo_url = Faker::Internet.url
-    post '/v1/family/child', token: token, name: name, photo_url: photo_url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
     json = JSON.parse(response.body)
     id = json['id']
     target = Faker::Number.number(2).to_i
-    post "/v1/family/child/#{id}/goal", token: token, name: name, photo_url: photo_url, target: target
+    post "/v1/family/child/#{id}/goal", params: { token: token, name: name, photo_url: photo_url, target: target }
     json = JSON.parse(response.body)
     id = json['id']
     token = login
 
     # action
-    delete "/v1/goal/#{id}", token: token
+    delete "/v1/goal/#{id}", params: { token: token }
 
     # check results
     assert_response 403
@@ -73,7 +73,7 @@ class Family::GoalDeleteTest < ActionDispatch::IntegrationTest
     id = Faker::Number.number(9)
 
     # action
-    delete "/v1/goal/#{id}", token: token
+    delete "/v1/goal/#{id}", params: { token: token }
 
     # check results
     assert_response 401

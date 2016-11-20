@@ -8,23 +8,23 @@ class Uploaded::PhotoIndexTest < ActionDispatch::IntegrationTest
     ids = []
     file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
 
-    post '/v1/uploaded/photo', token: token, file: file
+    post '/v1/uploaded/photo', params: { token: token, file: file }
     json = JSON.parse(response.body)
     ids.push(json['id'])
     urls.push(json['url'])
 
-    post '/v1/uploaded/photo', token: token, file: file
+    post '/v1/uploaded/photo', params: { token: token, file: file }
     json = JSON.parse(response.body)
     ids.push(json['id'])
     urls.push(json['url'])
 
-    post '/v1/uploaded/photo', token: token, file: file
+    post '/v1/uploaded/photo', params: { token: token, file: file }
     json = JSON.parse(response.body)
     ids.push(json['id'])
     urls.push(json['url'])
 
     # action
-    get '/v1/uploaded/photo', token: token
+    get '/v1/uploaded/photo', params: { token: token }
     json = JSON.parse(response.body)
     photo_ids = json['photos'].map { |x| x['id'] }
     photo_urls = json['photos'].map { |x| x['url'] }
@@ -43,7 +43,7 @@ class Uploaded::PhotoIndexTest < ActionDispatch::IntegrationTest
     token = login
 
     # action
-    get '/v1/uploaded/photo', token: token
+    get '/v1/uploaded/photo', params: { token: token }
     json = JSON.parse(response.body)
     photo_ids = json['photos'].map { |x| x['id'] }
     photo_urls = json['photos'].map { |x| x['url'] }
@@ -58,7 +58,7 @@ class Uploaded::PhotoIndexTest < ActionDispatch::IntegrationTest
     token = Faker::Lorem.characters(10)
 
     # action 1
-    get '/v1/uploaded/photo', token: token
+    get '/v1/uploaded/photo', params: { token: token }
 
     # check results
     assert_response 401
