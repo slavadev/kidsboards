@@ -108,18 +108,13 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     post "/v1/family/child/#{id}/goal", params: { token: token, name: name, photo_url: photo_url, target: target }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
+    assert_response 404
 
     # action 6
     post '/v1/family/child/goal', params: { token: token, name: name, photo_url: photo_url, target: target }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
-    assert_includes json['id'], 'can\'t be blank'
+    assert_response 404
   end
 
   test 'goal create wrong user' do

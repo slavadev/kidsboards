@@ -8,7 +8,7 @@
 #  [DateTime]       updated_at
 #  [User::User]     user
 class Family::Child < ActiveRecord::Base
-  extend Core::Deletable
+  include Core::Trait::Deletable
 
   validates :name, presence: true, allow_blank: true, length: { maximum: 50 }
   validates :photo_url, length: { maximum: 100 }

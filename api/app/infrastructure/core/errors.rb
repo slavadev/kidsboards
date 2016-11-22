@@ -8,6 +8,10 @@ class Core::Errors
     end
   end
 
+  # Bad request error
+  class BadRequest < StandardError
+  end
+
   # Not found error
   class NotFoundError < StandardError
   end

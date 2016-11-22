@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Thatsaboy
   class Application < Rails::Application
+    # Libs
+    config.autoload_paths += %W(#{config.root}/lib)
     # CORS
     config.middleware.insert_before 0, Rack::Cors do
       allow do

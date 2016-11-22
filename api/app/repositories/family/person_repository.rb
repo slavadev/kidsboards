@@ -1,6 +1,5 @@
 # Contains methods to work with adults and children entities
 class Family::PersonRepository < Core::Repository
-  include Core::Deletable
   # Sets all variables
   # @see Family::Child
   # @see Family::Adult

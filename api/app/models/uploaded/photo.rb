@@ -12,7 +12,7 @@ require "#{Rails.root}/app/infrastructure/core/interpolations"
 #  [User::User]     user
 #  [Object]         file
 class Uploaded::Photo < ActiveRecord::Base
-  extend Core::Deletable
+  include Core::Trait::Deletable
 
   belongs_to :user, inverse_of: :photos, class_name: 'User::User'
 

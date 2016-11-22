@@ -1,7 +1,5 @@
 # Common controller methods
-class Core::Controller < ActionController::Base
-  around_action Core::Filter::ErrorRenderer
-
+class Core::Controller < ApplicationController
   # Runs the action
   # @param [Core::Command] command
   def run(command)

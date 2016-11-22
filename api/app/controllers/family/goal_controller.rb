@@ -1,16 +1,36 @@
 # Goal controller
-class Family::GoalController < Core::Controller
+class Family::GoalController < ApplicationController
+  before_action :authorize!, :get_child
   # Creates a new goal
-  # @see Goal::GoalCreateCommand
   def create
-    command = Goal::GoalCreateCommand.new(params)
-    run(command)
+    goal = Goal::Goal.create(create_params)
+    goal.user = @user
+    goal.child = @child
+    goal.current = 0
+    goal.save!
+    render json: { id: goal.id }
   end
 
   # Gets list of goals
-  # @see Goal::GoalIndexCommand
   def index
-    command = Goal::GoalIndexCommand.new(params)
-    run(command)
+    completed = params[:completed]
+    goals = @child.goals.not_deleted
+    unless completed.nil?
+      goals = completed == 'true' ? goals.completed : goals.not_completed
+    end
+    render json: goals, each_serializer: Goal::GoalShortSerializer
+  end
+
+  private
+
+  def create_params
+    params.permit(:target, :name, :photo_url)
+  end
+
+  # Loads the child from DB
+  def get_child
+    id = params[:id]
+    @child = Family::Child.not_deleted.find(id)
+    raise Core::Errors::ForbiddenError unless @child.user == @user
   end
 end

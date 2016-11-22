@@ -9,7 +9,7 @@
 #  [User::User]      user
 #  [Goal::Action][]  actions
 class Family::Adult < ActiveRecord::Base
-  extend Core::Deletable
+  include Core::Trait::Deletable
 
   validates :name, presence: true, allow_blank: true, length: { maximum: 50 }
   validates :photo_url, length: { maximum: 100 }

@@ -61,29 +61,33 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
   test 'goal points update with wrong params' do
     # prepare
     token = login
-    adult_id = Faker::Number.number(9)
-    id = Faker::Number.number(9)
+    name = Faker::Name.name
+    photo_url = Faker::Internet.url
+    post '/v1/family/adult', params: { token: token, name: name, photo_url: photo_url }
+    json = JSON.parse(response.body)
+    adult_id = json['id']
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
+    json = JSON.parse(response.body)
+    id = json['id']
+    target = Faker::Number.number(2).to_i
+    post "/v1/family/child/#{id}/goal", params: { token: token, name: name, photo_url: photo_url, target: target }
+    json = JSON.parse(response.body)
+    id = json['id']
     diff = Faker::Number.decimal(2)
 
     # action 1
     patch "/v1/goal/#{id}/points", params: { token: token, adult_id: adult_id, diff: diff }
 
     # check results
-    assert_response 422
+    assert_response 400
     json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
-    assert_includes json['adult_id'], 'does not exist'
-    assert_includes json['diff'], 'must be an integer'
+    assert_equal json['error'], 'Diff should be an Integer'
 
     # action 2
     patch '/v1/goal/points', params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'can\'t be blank'
-    assert_includes json['adult_id'], 'can\'t be blank'
-    assert_includes json['diff'], 'is not a number'
+    assert_response 404
   end
 
   test 'goal points update while the goal is deleted' do
@@ -108,9 +112,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     patch "/v1/goal/#{id}/points", params: { token: token, adult_id: adult_id, diff: diff }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
+    assert_response 404
   end
 
   test 'goal points update with wrong user' do
@@ -135,9 +137,7 @@ class Family::GoalPointsUpdateTest < ActionDispatch::IntegrationTest
     patch "/v1/goal/#{id}/points", params: { token: token, adult_id: adult_id, diff: diff }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['adult_id'], 'does not exist'
+    assert_response 403
 
     # action 2
     patch "/v1/goal/#{id}/points", params: { token: token1, adult_id: adult_id, diff: diff }

@@ -25,8 +25,8 @@
     }
 
     function getGoals(id) {
-      return childResource.get({id: id, action: 'goal'}).then(function(response){
-        return response.goals;
+      return childResource.query({id: id, action: 'goal'}).then(function(response){
+        return response;
       });
     }
 

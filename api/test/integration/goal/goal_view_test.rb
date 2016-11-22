@@ -81,18 +81,13 @@ class Family::GoalViewTest < ActionDispatch::IntegrationTest
     get "/v1/goal/#{id}", params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
+    assert_response 404
 
     # action 2
     get '/v1/goal', params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
-    assert_includes json['id'], 'can\'t be blank'
+    assert_response 404
   end
 
   test 'goal view wrong user' do
@@ -134,9 +129,7 @@ class Family::GoalViewTest < ActionDispatch::IntegrationTest
     get "/v1/goal/#{id}", params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
+    assert_response 404
   end
 
   test 'goal view wrong token' do

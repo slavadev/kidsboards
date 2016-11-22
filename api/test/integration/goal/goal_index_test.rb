@@ -30,13 +30,13 @@ class Family::GoalIndexTest < ActionDispatch::IntegrationTest
     # check results
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal 2, json['goals'].count
+    assert_equal 2, json.count
     (0..1).each do |i|
-      assert_equal goals[i][:id], json['goals'][i]['id']
-      assert_equal goals[i][:photo_url], json['goals'][i]['photo_url']
-      assert_equal goals[i][:name], json['goals'][i]['name']
-      assert_equal goals[i][:target], json['goals'][i]['target']
-      assert_equal 0, json['goals'][i]['current']
+      assert_equal goals[i][:id], json[i]['id']
+      assert_equal goals[i][:photo_url], json[i]['photo_url']
+      assert_equal goals[i][:name], json[i]['name']
+      assert_equal goals[i][:target], json[i]['target']
+      assert_equal 0, json[i]['current']
     end
   end
 
@@ -55,7 +55,7 @@ class Family::GoalIndexTest < ActionDispatch::IntegrationTest
     # check results
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal 0, json['goals'].count
+    assert_equal 0, json.count
   end
 
   test 'goal index with filters success' do
@@ -91,7 +91,7 @@ class Family::GoalIndexTest < ActionDispatch::IntegrationTest
     # check results
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal 3, json['goals'].count
+    assert_equal 3, json.count
 
     # action 2
     get "/v1/family/child/#{child_id}/goal", params: { token: token, completed: false }
@@ -99,10 +99,10 @@ class Family::GoalIndexTest < ActionDispatch::IntegrationTest
     # check results
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal 2, json['goals'].count
+    assert_equal 2, json.count
     (0..1).each do |i|
-      assert_equal goals[i][:id], json['goals'][i]['id']
-      assert_equal 0, json['goals'][i]['current']
+      assert_equal goals[i][:id], json[i]['id']
+      assert_equal 0, json[i]['current']
     end
 
     # action 2
@@ -111,9 +111,9 @@ class Family::GoalIndexTest < ActionDispatch::IntegrationTest
     # check results
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal 1, json['goals'].count
-    assert_equal goals[2][:id], json['goals'][0]['id']
-    assert_equal goals[2][:target], json['goals'][0]['current']
+    assert_equal 1, json.count
+    assert_equal goals[2][:id], json[0]['id']
+    assert_equal goals[2][:target], json[0]['current']
   end
 
   test 'goal index wrong params' do
@@ -125,18 +125,13 @@ class Family::GoalIndexTest < ActionDispatch::IntegrationTest
     get "/v1/family/child/#{child_id}/goal", params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
+    assert_response 404
 
     # action 2
     get '/v1/family/child/goal', params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
-    assert_includes json['id'], 'can\'t be blank'
+    assert_response 404
   end
 
   test 'goal index wrong user' do
