@@ -1,16 +1,21 @@
 # Family controller
-class Family::FamilyController < Core::Controller
+class Family::FamilyController < ApplicationController
+  before_action :authorize!, :get_family
+
   # Updates family info
-  # @see Family::FamilyUpdateCommand
   def update
-    command = Family::FamilyUpdateCommand.new(params)
-    run(command)
+    @family.update!(family_params)
   end
 
   # Views family info
-  # @see Family::FamilyViewCommand
   def view
-    command = Family::FamilyViewCommand.new(params)
-    run(command)
+    render json: @family
+  end
+
+  private
+
+  # Gets the family
+  def get_family
+    @family = @user.family
   end
 end

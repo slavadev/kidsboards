@@ -41,12 +41,8 @@ class Family::FamilyViewTest < ActionDispatch::IntegrationTest
     response_adults = json['adults']
     response_children = json['children']
     [0, 1].each do |i|
-      assert_equal adults[i]['id'], response_adults[i]['id']
-      assert_equal adults[i]['name'], response_adults[i]['name']
-      assert_equal adults[i]['photo_url'], response_adults[i]['photo_url']
-      assert_equal children[i]['id'], response_children[i]['id']
-      assert_equal children[i]['name'], response_children[i]['name']
-      assert_equal children[i]['photo_url'], response_children[i]['photo_url']
+      assert_equal adults[i], response_adults[i]
+      assert_equal children[i], response_children[i]
     end
   end
 

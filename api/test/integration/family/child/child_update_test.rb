@@ -52,9 +52,13 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
 
   test 'child update wrong params' do
     token = login
+    name = Faker::Name.name
+    photo_url = Faker::Internet.url
+    post '/v1/family/child', params: { token: token, name: name, photo_url: photo_url }
+    json = JSON.parse(response.body)
+    id = json['id']
 
     # action 1
-    id = Faker::Number.number(9)
     name = Faker::Lorem.characters(300)
     photo_url = 'fqweeqw'
     put "/v1/family/child/#{id}", params: { token: token, name: name, photo_url: photo_url }
@@ -62,18 +66,15 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     # check results
     assert_response 422
     json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
     assert_includes json['name'], 'is too long (maximum is 50 characters)'
     assert_includes json['photo_url'], 'is a bad uri'
 
     # action 2
+    id = Faker::Number.number(9)
     put '/v1/family/child', params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
-    assert_includes json['id'], 'can\'t be blank'
+    assert_response 404
   end
 
   test 'child update deleted' do
@@ -91,9 +92,7 @@ class Family::ChildUpdateTest < ActionDispatch::IntegrationTest
     put "/v1/family/child/#{id}", params: { token: token, name: name, photo_url: photo_url }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
+    assert_response 404
   end
 
   test 'child update wrong user' do

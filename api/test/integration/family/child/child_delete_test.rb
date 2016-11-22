@@ -26,18 +26,13 @@ class Family::ChildDeleteTest < ActionDispatch::IntegrationTest
     delete "/v1/family/child/#{id}", params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
+    assert_response 404
 
     # action 2
     delete '/v1/family/child', params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
-    assert_includes json['id'], 'can\'t be blank'
+    assert_response 404
   end
 
   test 'child delete wrong user' do

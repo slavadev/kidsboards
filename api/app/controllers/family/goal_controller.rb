@@ -3,7 +3,7 @@ class Family::GoalController < ApplicationController
   before_action :authorize!, :get_child
   # Creates a new goal
   def create
-    goal = Goal::Goal.create(create_params)
+    goal = Goal::Goal.create(goal_params)
     goal.user = @user
     goal.child = @child
     goal.current = 0
@@ -22,10 +22,6 @@ class Family::GoalController < ApplicationController
   end
 
   private
-
-  def create_params
-    params.permit(:target, :name, :photo_url)
-  end
 
   # Loads the child from DB
   def get_child

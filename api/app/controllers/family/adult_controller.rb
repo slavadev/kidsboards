@@ -1,26 +1,32 @@
 # Adult controller
-class Family::AdultController < Core::Controller
+class Family::AdultController < ApplicationController
+  before_action :authorize!
+  before_action :get_adult, only: [:update, :delete]
+
   # Creates an adult
-  # @see Family::PersonCreateCommand
   def create
-    params['model'] = Family::Adult
-    command = Family::PersonCreateCommand.new(params)
-    run(command)
+    adult = Family::Adult.create(person_params)
+    adult.user = @user
+    adult.save!
+    render json: { id: adult.id}
   end
 
   # Updates an adult
-  # @see Family::PersonUpdateCommand
   def update
-    params['model'] = Family::Adult
-    command = Family::PersonUpdateCommand.new(params)
-    run(command)
+    @adult.update!(person_params)
   end
 
   # Deletes an adult
-  # @see Family::PersonDeleteCommand
   def delete
-    params['model'] = Family::Adult
-    command = Family::PersonDeleteCommand.new(params)
-    run(command)
+    @adult.delete!
+  end
+
+  private
+
+  # Loads an adult from DB
+  def get_adult
+    id = params[:id]
+    @adult = Family::Adult.not_deleted.find(id)
+    raise Core::Errors::ForbiddenError unless @adult.user == @user
   end
 end
