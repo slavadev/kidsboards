@@ -26,8 +26,9 @@ class Uploaded::PhotoIndexTest < ActionDispatch::IntegrationTest
     # action
     get '/v1/uploaded/photo', params: { token: token }
     json = JSON.parse(response.body)
-    photo_ids = json['photos'].map { |x| x['id'] }
-    photo_urls = json['photos'].map { |x| x['url'] }
+    assert_response :success
+    photo_ids = json.map { |x| x['id'] }
+    photo_urls = json.map { |x| x['url'] }
 
     # check results
     ids.each do |id|
@@ -44,9 +45,10 @@ class Uploaded::PhotoIndexTest < ActionDispatch::IntegrationTest
 
     # action
     get '/v1/uploaded/photo', params: { token: token }
+    assert_response :success
     json = JSON.parse(response.body)
-    photo_ids = json['photos'].map { |x| x['id'] }
-    photo_urls = json['photos'].map { |x| x['url'] }
+    photo_ids = json.map { |x| x['id'] }
+    photo_urls = json.map { |x| x['url'] }
 
     # check results
     assert_equal [], photo_ids

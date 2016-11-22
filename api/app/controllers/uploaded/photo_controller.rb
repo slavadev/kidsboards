@@ -1,23 +1,32 @@
 # Photo controller
-class Uploaded::PhotoController < Core::Controller
+class Uploaded::PhotoController < ApplicationController
+  before_action :authorize!
+  before_action :get_photo, only: :delete
+
   # Creates a new image
-  # @see Uploaded::PhotoCreateCommand
   def create
-    command = Uploaded::PhotoCreateCommand.new(params)
-    run(command)
+    file = params[:file]
+    photo = Uploaded::Photo.new(@user, file)
+    photo.save!
+    render json: photo
   end
 
   # Gets list of photos
-  # @see Uploaded::PhotoIndexCommand
   def index
-    command = Uploaded::PhotoIndexCommand.new(params)
-    run(command)
+    render json: @user.photos.not_deleted
   end
 
   # Deletes a photo
-  # @see Uploaded::PhotoDeleteCommand
   def delete
-    command = Uploaded::PhotoDeleteCommand.new(params)
-    run(command)
+    @photo.delete!
+  end
+
+  private
+
+  # Loads the photo from DB
+  def get_photo
+    id = params[:id]
+    @photo = Uploaded::Photo.not_deleted.find(id)
+    raise Core::Errors::ForbiddenError unless @photo.user == @user
   end
 end

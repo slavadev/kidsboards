@@ -27,7 +27,7 @@
 
     function index() {
       return $http.get(url +'?token=' + loginService.getToken()).then(function(response){
-        return response.data.photos;
+        return response.data;
       });
     }
 

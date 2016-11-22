@@ -45,17 +45,13 @@ class Uploaded::PhotoDeleteTest < ActionDispatch::IntegrationTest
     delete "/v1/uploaded/photo/#{id}", params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'does not exist'
+    assert_response 404
 
     # action 2
     delete '/v1/uploaded/photo', params: { token: token }
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['id'], 'can\'t be blank'
+    assert_response 404
   end
 
   test 'photo delete fail wrong token' do

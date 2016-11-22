@@ -33,7 +33,7 @@ class Uploaded::PhotoCreateTest < ActionDispatch::IntegrationTest
     # check results
     assert_response 422
     json = JSON.parse(response.body)
-    assert_includes json['file'], 'wrong type'
+    assert_includes json['file'], 'is invalid'
 
     # action 2
     post '/v1/uploaded/photo', params: { token: token }
