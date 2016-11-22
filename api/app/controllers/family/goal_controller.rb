@@ -1,6 +1,7 @@
 # Goal controller
 class Family::GoalController < ApplicationController
   before_action :authorize!, :get_child
+
   # Creates a new goal
   def create
     goal = Goal::Goal.create(goal_params)
@@ -18,7 +19,8 @@ class Family::GoalController < ApplicationController
     unless completed.nil?
       goals = completed == 'true' ? goals.completed : goals.not_completed
     end
-    render json: goals, each_serializer: Goal::GoalShortSerializer
+    @context = :index
+    render json: goals
   end
 
   private

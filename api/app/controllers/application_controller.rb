@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   around_action Core::Filter::ErrorRenderer
+  # Scope for serializers
+  serialization_scope :context
+  attr_reader :context
 
   protected
 
