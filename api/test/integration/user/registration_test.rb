@@ -74,9 +74,10 @@ class User::RegistrationTest < ActionDispatch::IntegrationTest
     # action
     post '/v1//user/register', params: params
 
+
     # check results
     assert_response 422
     json = JSON.parse(response.body)
-    assert_includes json['email'], 'is not unique'
+    assert_includes json['email'], 'has already been taken'
   end
 end

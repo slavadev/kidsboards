@@ -8,15 +8,15 @@ class Core::Filter::ErrorRenderer
       @controller = controller
       yield
     rescue Core::Errors::BadRequest => e
-      self.render 400, JSON.generate(:error => e.message)
-    rescue Core::Errors::UnauthorizedError
-      self.render 401, JSON.generate(:error => 'Unauthorized')
-    rescue Core::Errors::ForbiddenError
-      self.render 403, JSON.generate(:error => 'Forbidden')
-    rescue Core::Errors::NotFoundError
-      self.render 404, JSON.generate(:error => 'Not Found')
-    rescue ActiveRecord::RecordNotFound
-      self.render 404, JSON.generate(:error => 'Not Found')
+      self.render 400, JSON.generate(:error => e.message || 'Bad Request')
+    rescue Core::Errors::UnauthorizedError => e
+      self.render 401, JSON.generate(:error => e.message || 'Unauthorized')
+    rescue Core::Errors::ForbiddenError => e
+      self.render 403, JSON.generate(:error => e.message || 'Forbidden')
+    rescue Core::Errors::NotFoundError => e
+      self.render 404, JSON.generate(:error => e.message || 'Not Found')
+    rescue ActiveRecord::RecordNotFound => e
+      self.render 404, JSON.generate(:error => e.message || 'Not Found')
     rescue ActiveRecord::RecordInvalid => e
       self.render 422, e.record.errors.to_json
     rescue StandardError => e

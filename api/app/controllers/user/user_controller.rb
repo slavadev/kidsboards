@@ -1,17 +1,23 @@
 # User controller
-class User::UserController < Core::Controller
+class User::UserController < ApplicationController
+  before_action :get_email_and_password, only: [:register, :login]
+  after_action :send_confirmation_email, only: :register
+
   # Method for registration
-  # @see User::RegisterCommand
   def register
-    command = User::RegisterCommand.new(params)
-    run(command)
+    @user = User::User.new(@email, @password)
+    @token = @user.create_token(User::Token::TYPE_CONFIRMATION)
+    @user.save!
+    render json: @user
   end
 
   # Method for login
-  # @see User::LoginCommand
   def login
-    command = User::LoginCommand.new(params)
-    run(command)
+    user = User::User.find_by_email(@email)
+    raise Core::Errors::UnauthorizedError, 'Wrong email or password' unless user && user.password_is_right?(@password)
+    token = user.create_token(User::Token::TYPE_LOGIN)
+    token.save!
+    render json: token
   end
 
   # Method for logout
@@ -59,5 +65,20 @@ class User::UserController < Core::Controller
   # Method for the loader.io verification
   def loader
     render plain: 'loaderio-8fd226ca0551bbb679e5234f2b165e72'
+  end
+
+  private
+
+  # Params for a user
+  def get_email_and_password
+    @email = params[:email] || ''
+    @password = params[:password] || ''
+  end
+
+  # Sends a confirmation email
+  def send_confirmation_email
+    Mailer.confirmation_email(@user.email, @token.code).deliver_later
+  rescue => e
+    Rails.logger.error 'Mail sending error: ' + e.message
   end
 end

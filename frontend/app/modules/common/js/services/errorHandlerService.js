@@ -35,8 +35,8 @@
     function notUnique(data) {
       var text = '';
       angular.forEach(data, function (attribute, name) {
-        if (attribute.indexOf('is not unique') > -1) {
-          text += ' ' + capitalize(name) + ' is already used.';
+        if (attribute.indexOf('has already been taken') > -1) {
+          text += ' ' + capitalize(name) + ' has already been taken.';
         }
       });
       return text;

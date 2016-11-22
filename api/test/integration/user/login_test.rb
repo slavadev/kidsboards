@@ -31,10 +31,9 @@ class User::LoginTest < ActionDispatch::IntegrationTest
     post '/v1/user/login', params: params
 
     # check results
-    assert_response 422
+    assert_response 401
     json = JSON.parse(response.body)
-    assert_includes json['email'], 'is invalid'
-    assert_includes json['password'], 'is too short (minimum is 6 characters)'
+    assert_equal json['error'], 'Wrong email or password'
   end
 
   test 'login fail without params' do
@@ -42,12 +41,9 @@ class User::LoginTest < ActionDispatch::IntegrationTest
     post '/v1/user/login'
 
     # check results
-    assert_response 422
+    assert_response 401
     json = JSON.parse(response.body)
-    assert_includes json['email'], 'is invalid'
-    assert_includes json['email'], 'can\'t be blank'
-    assert_includes json['password'], 'is too short (minimum is 6 characters)'
-    assert_includes json['password'], 'can\'t be blank'
+    assert_equal json['error'], 'Wrong email or password'
   end
 
   test 'login fail wrong email' do
@@ -62,9 +58,9 @@ class User::LoginTest < ActionDispatch::IntegrationTest
     post '/v1/user/login', params: params
 
     # check results
-    assert_response 422
+    assert_response 401
     json = JSON.parse(response.body)
-    assert_includes json['email'], 'Wrong email or password'
+    assert_equal json['error'], 'Wrong email or password'
   end
 
   test 'login fail wrong password' do
@@ -79,8 +75,8 @@ class User::LoginTest < ActionDispatch::IntegrationTest
     post '/v1/user/login', params: params
 
     # check results
-    assert_response 422
+    assert_response 401
     json = JSON.parse(response.body)
-    assert_includes json['email'], 'Wrong email or password'
+    assert_equal json['error'], 'Wrong email or password'
   end
 end

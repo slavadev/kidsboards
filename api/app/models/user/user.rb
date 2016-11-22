@@ -39,6 +39,7 @@ class User::User < ActiveRecord::Base
     self.email = email
     self.password = password
     self.confirmed_at = nil
+    self.family = Family::Family.new
   end
 
   # Sets the password
@@ -62,12 +63,22 @@ class User::User < ActiveRecord::Base
     self.confirmed_at = DateTime.now.utc
   end
 
+  # Creates token
+  # @param [Integer] type
+  # @return [User::Token]
+  def create_token(type)
+    token = User::Token.new(type)
+    tokens.push(token)
+    token
+  end
+
   private
 
   # Encrypts the password
   # @param [String] password
   # @return [String]
   def encrypt_password(password)
+    password = '' if password.nil?
     Digest::SHA2.hexdigest(salt + password)
   end
 
