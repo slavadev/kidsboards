@@ -20,8 +20,8 @@ class User::ConfirmationTest < ActionDispatch::IntegrationTest
     code = text.scan(regexp).first.to_s.gsub(string_to_find, '')
 
     # check token
-    get '/v1/user/confirm?token=' + code
-    assert_response :success
+    get '/v1/user/confirm?token=' + code, xhr: true
+    assert_response :no_content
     token = User::Token.where(code: code, token_type: User::Token::TYPE_CONFIRMATION).first
     user = User::User.find_by_id(id)
     assert_equal token.is_expired, true

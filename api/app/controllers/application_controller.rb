@@ -28,8 +28,8 @@ class ApplicationController < ActionController::Base
   # Checks the user
   def authorize!
     code = params[:token]
-    type = User::Token::TYPE_LOGIN
-    @token = User::Token.includes(:user).where(code: code, token_type: type).first
+    @token_type ||= User::Token::TYPE_LOGIN
+    @token = User::Token.includes(:user).where(code: code, token_type: @token_type).first
     raise Core::Errors::UnauthorizedError if @token.nil?
     @user = @token.user
   end

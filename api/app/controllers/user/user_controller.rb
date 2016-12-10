@@ -1,5 +1,7 @@
 # User controller
 class User::UserController < ApplicationController
+  before_action :set_token_type_for_confirmation, only: [:confirm]
+  before_action :authorize!, only: [:logout, :confirm]
   before_action :get_email_and_password, only: [:register, :login]
   after_action :send_confirmation_email, only: :register
 
@@ -21,17 +23,17 @@ class User::UserController < ApplicationController
   end
 
   # Method for logout
-  # @see User::LogoutCommand
   def logout
-    command = User::LogoutCommand.new(params)
-    run(command)
+    @token.expire
+    @token.save!
   end
 
-  # Method for confirm
-  # @see User::ConfirmCommand
+  # Method for confirmation
   def confirm
-    command = User::ConfirmCommand.new(params)
-    run(command)
+    @user.confirm
+    @user.save!
+    @token.expire
+    @token.save!
   end
 
   # Method for request password recovery
@@ -80,5 +82,10 @@ class User::UserController < ApplicationController
     Mailer.confirmation_email(@user.email, @token.code).deliver_later
   rescue => e
     Rails.logger.error 'Mail sending error: ' + e.message
+  end
+
+  # Checks the user for confirmation
+  def set_token_type_for_confirmation
+    @token_type = User::Token::TYPE_CONFIRMATION
   end
 end
