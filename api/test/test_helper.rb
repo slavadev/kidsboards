@@ -33,6 +33,7 @@ class ActiveSupport::TestCase
   end
 
   # Quick login and returns token code
+  # @return [String]
   def login
     email = Faker::Internet.free_email
     password = Faker::Internet.password
@@ -41,6 +42,13 @@ class ActiveSupport::TestCase
     post '/v1/user/login', params: params
     json = JSON.parse(response.body)
     json['token']
+  end
+
+  # Gets user by given token
+  # @param [String] code
+  # @return [User::User]
+  def get_user_by_token(code)
+    User::Token.where(code: code, token_type: User::Token::TYPE_LOGIN).first.user
   end
 end
 

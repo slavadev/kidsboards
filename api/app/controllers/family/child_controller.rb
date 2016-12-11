@@ -1,5 +1,5 @@
 # Child controller
-class Family::ChildController < Core::Controller
+class Family::ChildController < ApplicationController
   before_action :authorize!
   before_action :get_child, only: [:update, :delete]
 
