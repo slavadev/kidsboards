@@ -1,6 +1,5 @@
 # Error handler that render errors
 class Core::Filter::ErrorRenderer
-
   class << self
     # Handle errors and process them
     # @param [Core::Controller] controller
@@ -20,7 +19,7 @@ class Core::Filter::ErrorRenderer
     rescue ActiveRecord::RecordInvalid => e
       render 422, e.record.errors.to_json
     rescue StandardError => e
-      render 500, JSON.generate({ error: e.message, class: e.class, backtrace: e.backtrace })
+      render 500, JSON.generate(error: e.message, class: e.class, backtrace: e.backtrace)
     end
 
     # Handle errors and process them
