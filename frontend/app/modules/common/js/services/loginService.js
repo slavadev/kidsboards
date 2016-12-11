@@ -32,7 +32,8 @@
       return loginResource.post({
         action  : 'login',
         email   : email,
-        password: password
+        password: password,
+        errorHandler: errorHandlerService.loginErrorHandler
       }).then(function (response) {
         var token = response.token;
         localStorageService.set("token", token);

@@ -94,6 +94,18 @@
       $state.go('app.index');
     }
 
+    function loginHandle401(data) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.body))
+          .clickOutsideToClose(true)
+          .title('Error')
+          .textContent('Wrong email or password.')
+          .ok('Ok')
+      );
+      $state.go('app.index', null, {reload: true});
+    }
+
     function recoveryHandle401(data) {
       $mdDialog.show(
         $mdDialog.alert()
@@ -125,6 +137,19 @@
       reject();
     }
 
+    function loginErrorHandler(response) {
+      if (response.status == 401) {
+        loginHandle401(response.data);
+      } else if (response.status == 403) {
+        handle403(response.data);
+      } else if (response.status == 422) {
+        handle422(response.data);
+      } else if (response.status == 500) {
+        handle500(response.data);
+      }
+      reject();
+    }
+
     function recoveryErrorHandler(response) {
       if (response.status == 401) {
         recoveryHandle401(response.data);
@@ -140,6 +165,7 @@
 
     return {
       basicErrorHandler   : basicErrorHandler,
+      loginErrorHandler   : loginErrorHandler,
       recoveryErrorHandler: recoveryErrorHandler
     }
   }
