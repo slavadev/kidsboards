@@ -20,7 +20,7 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
     post '/v1/user/request', params: params
 
     # get code from email
-    assert_response :success
+    assert_response :no_content
     confirmation_email = ActionMailer::Base.deliveries.last
     text = confirmation_email.body.to_s
     string_to_find = ENV['SITE_RECOVERY_LINK'] + '/'
@@ -43,17 +43,14 @@ class User::RequestRecoveryTest < ActionDispatch::IntegrationTest
     post '/v1/user/request', params: params
 
     # check results
-    assert_response :success
+    assert_response :no_content
   end
 
-  test 'request recovery fail without email' do
+  test 'request recovery success without email' do
     # action
     post '/v1/user/request'
 
     # check results
-    assert_response 422
-    json = JSON.parse(response.body)
-    assert_includes json['email'], 'is invalid'
-    assert_includes json['email'], 'can\'t be blank'
+    assert_response :no_content
   end
 end

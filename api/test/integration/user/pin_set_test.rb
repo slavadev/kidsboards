@@ -10,7 +10,7 @@ class User::PinSetTest < ActionDispatch::IntegrationTest
     patch '/v1/user/pin', params: { token: token, pin: pin }
 
     # check results
-    assert_response 204
+    assert_response :no_content
     user = User::AuthorizationService.new.get_user_by_token_code(token)
     assert_equal user.pin, pin
   end

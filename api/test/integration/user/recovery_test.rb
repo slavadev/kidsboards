@@ -79,7 +79,7 @@ class User::RecoveryTest < ActionDispatch::IntegrationTest
     # check results
     assert_response 422
     json = JSON.parse(response.body)
-    assert_includes json['password'], 'can\'t be blank'
+    assert_includes json['password'], 'is too short (minimum is 6 characters)'
   end
 
   test 'recovery fail wrong token' do

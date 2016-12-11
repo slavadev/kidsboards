@@ -42,10 +42,6 @@ class ActiveSupport::TestCase
     json = JSON.parse(response.body)
     json['token']
   end
-
-  # Assert one array to include in other
-  def assert_includes_like(what, where)
-  end
 end
 
 class ActionMailer::MessageDelivery
