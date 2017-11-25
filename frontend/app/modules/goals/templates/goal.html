@@ -33,13 +33,13 @@
             <div class="images" layout="row" layout-align="center center" layout-wrap="">
                 <div class="image" ng-repeat="i in goalCtrl.range(goalCtrl.goal.current) track by $index">
                     <svg>
-                        <use xlink:href="#toy"/>
+                        <use xlink:href="#medal"/>
                     </svg>
                 </div>
                 <div class="image nonactive"
                      ng-repeat="i in goalCtrl.range(goalCtrl.goal.target - goalCtrl.goal.current) track by $index">
                     <svg>
-                        <use xlink:href="#toy"/>
+                        <use xlink:href="#medal"/>
                     </svg>
                 </div>
             </div>
