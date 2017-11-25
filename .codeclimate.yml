@@ -1,12 +1,11 @@
-engines:
+version: 2
+plugins:
   rubocop:
     enabled: true
     checks:
       Rubocop/Style/ClassAndModuleChildren:
         enabled: false
-ratings:
-   paths:
-   - api/app/**
 exclude_paths:
-- api/test/**/*
-- api/vendor/**/*
+- api/test/
+- api/vendor/
+- frontend/
