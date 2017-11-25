@@ -1,0 +1,29 @@
+version: '2'
+services:
+  api:
+    image: korolvs/kidsboards:api
+    environment:
+          - VIRTUAL_HOST=api.kidsboards.org
+    volumes:
+      - /home/app/logs
+    env_file: .env
+  static:
+    image: korolvs/kidsboards:static
+    environment:
+      - VIRTUAL_HOST=kidsboards.org
+    volumes:
+      - /home/ubuntu/data:/home/app/static/dist
+    env_file: .env
+  proxy:
+    image: dockercloud/haproxy
+    links:
+      - api
+      - static
+    depends_on:
+      - api
+      - static
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file: .env
