@@ -1,0 +1,4 @@
+--private
+app/**/*
+config/modules.rb -
+API.md

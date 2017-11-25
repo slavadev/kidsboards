@@ -73,13 +73,11 @@ docker-compose -f dev.yml up
 Build 
 
 ```
-# Run as user with UID 1000
-
-./run_setup.sh
-``` 
+docker-compose build
+```
 
 Run
 
 ```
-./run_docker_prod up
+docker-compose up
 ```
