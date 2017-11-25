@@ -12,8 +12,10 @@ md-icon {
   min-height: 352px; }
 
 .copyright {
+  margin-top: 1rem;
   color: #E1BEE7; }
   .copyright a {
+    margin-left: 0.2rem;
     color: #FF4081; }
 
 .hint {

@@ -1,6 +1,5 @@
 .index {
-  min-height: 100%;
-  background-color: #9C27B0; }
+  min-height: 100%; }
   .index .title-block {
     display: block; }
     .index .title-block h2 {
@@ -16,12 +15,23 @@
   .index h2, .index h3 {
     color: #E1BEE7;
     text-align: center; }
-  .index svg {
-    fill: #E1BEE7;
-    width: 100px;
-    height: 100px; }
-  @media (max-width: 960px) {
-    .index .steps {
-      margin-bottom: 100px; } }
+  .index h3 {
+    color: #9C27B0; }
+  .index p, .index ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #292b2c; }
+  .index ul {
+    list-style: none; }
+  .index li svg {
+    height: 2rem;
+    width: 2rem; }
   .index a {
     color: #E1BEE7; }
+  .index .index--main {
+    width: 100%; }
+  .index .index--first {
+    background-color: #9C27B0; }

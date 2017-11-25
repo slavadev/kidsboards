@@ -1,10 +1,8 @@
 <div class="index ng-hide" layout="column" layout-align="end center" ng-show="indexCtrl.show">
-    <div flex layout="column" layout-gt-sm="row">
-        <div flex layout="row" layout-align="center center">
+    <div class="index--main"flex layout="column" layout-gt-sm="row">
+        <div class="index--first" flex layout="row" layout-align="center center">
             <div flex="80" layout="column" layout-align="center center" class="title-block">
-                <img src="/images/kidsboards.png" alt="kidsboards">
-
-                <h2>Make your kid manageable</h2>
+                <h2>Kids Boards - Help your kids to achive goals!</h2>
                 <form name="loginForm">
                     <div layout="column" layout-align="center center" md-theme="dark">
                         <md-input-container>
@@ -36,39 +34,46 @@
                 <div layout="row" layout-align="center center">
                     <a ui-sref="app.request">Forgot your password?</a>
                 </div>
+                <div class="copyright" layout="row" layout-align="center center">
+                  Icons and images designed by <a href="http://www.freepik.com" title="Freepik">Freepik</a>
+                </div>
             </div>
         </div>
-        <div flex layout="row" layout-align="center center">
-            <div flex="80" layout="column" layout-align="center start" class="steps" layout-margin="">
-                <div flex layout="row" layout-align="start center" layout-margin="">
+        <div class="index--second" flex layout="row" layout-align="center center">
+            <div flex="80" layout="column" layout-align="center center" layout-margin="">
+              <div>
+                <h3>What is Kids Boards?</h3>
+                <p>Kids Boards helps you to transforms your kid's goals into a game with four small steps:</p>
+                <ul>
+                  <li flex layout="row" layout-align="start center" layout-margin="">
                     <svg>
                         <use xlink:href="#toy"/>
                     </svg>
-                    <h3 flex>Create a goal for the kid, e.g. toy or trip.</h3>
-                </div>
-                <div flex layout="row" layout-align="start center" layout-margin="">
+                    <p flex>Add a goal which your child wants to achieve</p>
+                  <li flex layout="row" layout-align="start center" layout-margin="">
                     <svg>
                         <use xlink:href="#number"/>
                     </svg>
-                    <h3 flex>Evaluate how much points is needed to reach the goal.</h3>
-                </div>
-                <div flex layout="row" layout-align="start center" layout-margin="">
+                    <p flex>Set how many "points" are needed to reach the goal</p>
+                  <li flex layout="row" layout-align="start center" layout-margin="">
                     <svg>
                         <use xlink:href="#medal"/>
                     </svg>
-                    <h3 flex>Add points for good acts and remove for bad.</h3>
-                </div>
-                <div flex layout="row" layout-align="start center" layout-margin="">
+                    <p flex>Add points or remove them depends on results</p>
+                  <li flex layout="row" layout-align="start center" layout-margin="">
                     <svg>
                         <use xlink:href="#up"/>
                     </svg>
-                    <h3 flex>Watch your kid getting better!</h3>
-                </div>
+                    <p flex>Celebrate when the goal is achieved!</p>
+                </ul>
+              </div>
+              <div>
+                <h3>The Importance of Setting Goals</h3>
+                <p>Setting goals is an important part of your child gaining some independence and realizing he has some control over his own life.
+                When your child begins to decide for himself what he wants to accomplish, he'll be motivated to complete things not only for tangible rewards but also for his own satisfaction.</p>
+              </div>
             </div>
         </div>
-    </div>
-    <div flex="none" class="copyright">
-        Icons and images designed by <a href="http://www.freepik.com" title="Freepik">Freepik</a>
     </div>
 </div>
 <div class="github-corner"><a href="https://github.com/korolvs/kidsboards" title="Fork me on GitHub">
@@ -92,5 +97,5 @@
     left: 0;
     bottom: 0;
     transform: translate(50%, -50%) rotate(45deg);
-    color: #fff;
+    color: #9C27B0;
 }</style>

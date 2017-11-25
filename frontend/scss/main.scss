@@ -17,9 +17,11 @@ md-icon {
 }
 
 .copyright {
+  margin-top: 1rem;
   color: $color-grey;
   a {
-    color: $color-second
+    margin-left: 0.2rem;
+    color: $color-second;
   }
 }
 

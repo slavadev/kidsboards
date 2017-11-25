@@ -2,7 +2,6 @@
 
 .index {
   min-height: 100%;
-  background-color: $color-first;
   .title-block {
     display: block;
     h2 {
@@ -24,24 +23,39 @@
     color: $color-grey;
     text-align: center;
   }
-  svg {
-    fill: $color-grey;
-    width: 100px;
-    height: 100px;
+
+  h3 {
+    color: $color-first;
   }
 
-  .steps {
-    h2, h3 {
-      @media (max-width: $layout-breakpoint-sm) {
+  p, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #292b2c;
+  }
 
-      }
-    }
-    @media (max-width: $layout-breakpoint-sm) {
-      margin-bottom: 100px;
+  ul {
+    list-style: none;
+  }
+
+  li {
+    svg {
+      height: 2rem;
+      width: 2rem;
     }
   }
 
   a {
     color: $color-grey;
+  }
+
+  .index--main {
+    width: 100%;
+  }
+  .index--first {
+    background-color: $color-first;
   }
 }
