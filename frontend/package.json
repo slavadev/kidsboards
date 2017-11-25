@@ -1,27 +1,27 @@
 {
-  "name": "thatsaboy",
+  "name": "kidsboards",
   "version": "0.0.1",
-  "description": "Thatsaboy is a website which helps you to manage your children.",
+  "description": "Kids Boards is a website which helps you to manage your children.",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/korolvs/thatsaboy.git"
+    "url": "git+https://github.com/korolvs/kidsboards.git"
   },
   "keywords": [
-    "thatsaboy",
     "kids",
+    "boards",
     "children",
     "manage"
   ],
   "author": "korolvs@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/korolvs/thatsaboy/issues"
+    "url": "https://github.com/korolvs/kidsboards/issues"
   },
-  "homepage": "https://github.com/korolvs/thatsaboy#readme",
+  "homepage": "https://github.com/korolvs/kidsboards#readme",
   "devDependencies": {
     "bower": "^1.7.7",
     "gulp": "^3.9.1",

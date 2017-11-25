@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular
-    .module('thatsaboy')
+    .module('kidsboards')
     .config([
       '$httpProvider',
       '$locationProvider',
@@ -13,7 +13,7 @@
                 localStorageServiceProvider,
                 $mdThemingProvider) {
 
-        localStorageServiceProvider.setPrefix('thatsaboy');
+        localStorageServiceProvider.setPrefix('kidsboards');
 
         $mdThemingProvider.theme('default')
           .primaryPalette('purple')

@@ -2,15 +2,15 @@
   'use strict';
   
   angular
-    .module('thatsaboy',[,
+    .module('kidsboards',[,
       'templates',
-      'thatsaboy.core',
+      'kidsboards.core',
       'ngMaterial',
       'ngMessages',
-      'thatsaboy.index',
-      'thatsaboy.family',
-      'thatsaboy.adults',
-      'thatsaboy.children',
-      'thatsaboy.goals'
+      'kidsboards.index',
+      'kidsboards.family',
+      'kidsboards.adults',
+      'kidsboards.children',
+      'kidsboards.goals'
     ])
 })();

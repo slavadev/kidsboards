@@ -2,7 +2,7 @@
   'use strict';
   
   angular
-    .module('thatsaboy.common')
+    .module('kidsboards.common')
     .directive('leftPanel', leftPanel);
 
   leftPanel.$inject = ['$timeout'];

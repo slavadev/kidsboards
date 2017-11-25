@@ -1,5 +1,4 @@
 @import 'globals';
-@import 'fonts';
 
 @mixin object {
   height: 100%;
@@ -9,7 +8,6 @@
     color: $color-white;
     margin: 0;
     text-align: center;
-    font-family: "AddisAbaba";
   }
 
   div.ng-hide {
@@ -72,7 +70,6 @@
     }
     background-color: $color-first;
     .back-button {
-        font-family: "AddisAbaba";
         color: $color-white;
     }
     .delete-button {
@@ -100,11 +97,7 @@
     .item {
       padding: 0;
       text-transform: none;
-      font-family: "AddisAbaba";
       background-color: $color-white;
-    }
-    p {
-      font-family: "AddisAbaba";
     }
 
     .item-add {
@@ -112,7 +105,6 @@
       line-height: 264px;
       width: 200px;
       background-color: $color-white;
-      font-family: "AddisAbaba";
     }
   }
 }

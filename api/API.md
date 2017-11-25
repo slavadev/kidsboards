@@ -2,7 +2,7 @@
 
 ## About
 
-Thatsaboy API is organized around REST. This API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. JSON(or nothing in case of 204) is returned by all API responses, including errors.
+Kids Boards API is organized around REST. This API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. JSON(or nothing in case of 204) is returned by all API responses, including errors.
 
 ### Authentication
 
@@ -10,7 +10,7 @@ Authentication to the API is performed via token-based system. In most cases tok
 
 ### Errors
 
-API uses HTTP response codes to indicate the success or failure of an API request. In general, codes 200 and 204 indicate success, codes in the 4xx range indicate an error that failed given the information provided, and 500 code indicates an error with Thatsaboy's servers (these are rare).
+API uses HTTP response codes to indicate the success or failure of an API request. In general, codes 200 and 204 indicate success, codes in the 4xx range indicate an error that failed given the information provided, and 500 code indicates an error with Kids Boards' servers (these are rare).
 
 ### HTTP status code summary
 
@@ -34,7 +34,7 @@ API uses HTTP response codes to indicate the success or failure of an API reques
 
 Registers new user.
 
-`` POST api.thatsaboy.com/v1/user/register ``
+`` POST api.kidsboards.org/v1/user/register ``
 
 Parameters:
 
@@ -58,7 +58,7 @@ Response example:
 
 Checks presented email and password and returns a token if they are right.
 
-`` POST api.thatsaboy.com/v1/user/login ``
+`` POST api.kidsboards.org/v1/user/login ``
 
 Parameters:
 
@@ -86,7 +86,7 @@ Additional validation errors:
 
 Marks the token as expired.
 
-`` POST api.thatsaboy.com/v1/user/logout ``
+`` POST api.kidsboards.org/v1/user/logout ``
 
 Parameters:
 
@@ -101,7 +101,7 @@ Possible responses:
 
 Confirms user's email.
 
-`` GET api.thatsaboy.com/v1/user/confirm ``
+`` GET api.kidsboards.org/v1/user/confirm ``
 
 Parameters:
 
@@ -116,7 +116,7 @@ Possible responses:
 
 Sends an email to the user with instructions to recovery the password.
 
-`` POST api.thatsaboy.com/v1/user/request ``
+`` POST api.kidsboards.org/v1/user/request ``
 
 Parameters:
 
@@ -131,7 +131,7 @@ Possible responses:
 
 Changes user's password.
 
-`` POST api.thatsaboy.com/v1/user/recovery ``
+`` POST api.kidsboards.org/v1/user/recovery ``
 
 Parameters:
 
@@ -147,7 +147,7 @@ Possible responses:
 
 Sets a new pin code. Pin is needed to avoid children to change something. Because in this case our enemies are just kids the security level is very low.
 
-`` PATCH api.thatsaboy.com/v1/user/pin ``
+`` PATCH api.kidsboards.org/v1/user/pin ``
 
 Parameters:
 
@@ -164,7 +164,7 @@ Possible responses:
 
 Checks that the pin is correct.
 
-`` GET api.thatsaboy.com/v1/user/pin ``
+`` GET api.kidsboards.org/v1/user/pin ``
 
 Parameters:
 
@@ -191,7 +191,7 @@ Response example:
 
 Creates a photo.
 
-`` POST api.thatsaboy.com/v1/uploaded/photo ``
+`` POST api.kidsboards.org/v1/uploaded/photo ``
 
 Parameters:
 
@@ -221,7 +221,7 @@ Additional validation errors:
 
 Shows the list of photos uploaded by the user.
 
-`` GET api.thatsaboy.com/v1/uploaded/photo ``
+`` GET api.kidsboards.org/v1/uploaded/photo ``
 
 Parameters:
 
@@ -255,7 +255,7 @@ Response example:
 
 Deletes the photo.
 
-`` DELETE api.thatsaboy.com/v1/uploaded/photo/:id ``
+`` DELETE api.kidsboards.org/v1/uploaded/photo/:id ``
 
 Parameters:
 
@@ -274,7 +274,7 @@ Possible responses:
 
 Shows information about the family.
 
-`` GET api.thatsaboy.com/v1/family ``
+`` GET api.kidsboards.org/v1/family ``
 
 Parameters:
 
@@ -326,7 +326,7 @@ Response example:
 
 Updates the family.
 
-`` PUT api.thatsaboy.com/v1/family ``
+`` PUT api.kidsboards.org/v1/family ``
 
 Parameters:
 
@@ -346,7 +346,7 @@ Possible responses:
 
 Creates an adult.
 
-`` POST api.thatsaboy.com/v1/family/adult ``
+`` POST api.kidsboards.org/v1/family/adult ``
 
 Parameters:
 
@@ -372,7 +372,7 @@ Response example:
 
 Updates the adult.
 
-`` PUT api.thatsaboy.com/v1/family/adult/:id ``
+`` PUT api.kidsboards.org/v1/family/adult/:id ``
 
 Parameters:
 
@@ -391,7 +391,7 @@ Possible responses:
 
 Deletes the adult.
 
-`` DELETE api.thatsaboy.com/v1/family/adult/:id ``
+`` DELETE api.kidsboards.org/v1/family/adult/:id ``
 
 Parameters:
 
@@ -409,7 +409,7 @@ Possible responses:
 
 Creates a child.
 
-`` POST api.thatsaboy.com/v1/family/child ``
+`` POST api.kidsboards.org/v1/family/child ``
 
 Parameters:
 
@@ -435,7 +435,7 @@ Response example:
 
 Updates the child.
 
-`` PUT api.thatsaboy.com/v1/family/child/:id ``
+`` PUT api.kidsboards.org/v1/family/child/:id ``
 
 Parameters:
 
@@ -454,7 +454,7 @@ Possible responses:
 
 Deletes the child.
 
-`` DELETE api.thatsaboy.com/v1/family/child/:id ``
+`` DELETE api.kidsboards.org/v1/family/child/:id ``
 
 Parameters:
 
@@ -472,7 +472,7 @@ Possible responses:
 
 Creates a goal.
 
-`` POST api.thatsaboy.com/v1/family/child/:id/goal ``
+`` POST api.kidsboards.org/v1/family/child/:id/goal ``
 
 Parameters:
 
@@ -500,7 +500,7 @@ Response example:
 
 Shows the list of goals.
 
-`` GET api.thatsaboy.com/v1/family/child/:id/goal ``
+`` GET api.kidsboards.org/v1/family/child/:id/goal ``
 
 Parameters:
 
@@ -545,7 +545,7 @@ Response example:
 
 Shows the goal.
 
-`` GET api.thatsaboy.com/v1/file/goal/:id ``
+`` GET api.kidsboards.org/v1/file/goal/:id ``
 
 Parameters:
 
@@ -598,7 +598,7 @@ Response example:
 
 Updates the goal.
 
-`` PUT api.thatsaboy.com/v1/file/goal/:id ``
+`` PUT api.kidsboards.org/v1/file/goal/:id ``
 
 Parameters:
 
@@ -618,7 +618,7 @@ Possible responses:
 
 Deletes the goal.
 
-`` DELETE api.thatsaboy.com/v1/file/goal/:id ``
+`` DELETE api.kidsboards.org/v1/file/goal/:id ``
 
 Parameters:
 
@@ -635,7 +635,7 @@ Possible responses:
 
 Adds or removes points of the goal.
 
-`` PATCH api.thatsaboy.com/v1/file/goal/:id/points ``
+`` PATCH api.kidsboards.org/v1/file/goal/:id/points ``
 
 Parameters:
 

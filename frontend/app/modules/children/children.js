@@ -2,5 +2,5 @@
   'use strict';
 
   angular
-    .module('thatsaboy.children', ['thatsaboy.common'])
+    .module('kidsboards.children', ['kidsboards.common'])
 })();

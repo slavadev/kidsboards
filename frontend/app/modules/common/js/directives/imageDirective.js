@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.common')
+    .module('kidsboards.common')
     .directive('image', image);
 
   image.$inject = [];

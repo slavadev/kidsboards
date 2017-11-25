@@ -1,5 +1,4 @@
 @import 'globals';
-@import 'fonts';
 @import 'object';
 
 .goal {
@@ -63,11 +62,7 @@
     .adult-item {
       padding: 0;
       text-transform: none;
-      font-family: "AddisAbaba";
       background-color: $color-white;
-    }
-    p {
-      font-family: "AddisAbaba";
     }
 
     .add-adult {
@@ -75,7 +70,6 @@
       line-height: 264px;
       width: 200px;
       background-color: $color-white;
-      font-family: "AddisAbaba";
     }
 
     .second-background {

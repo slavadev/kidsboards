@@ -3,8 +3,8 @@
   'use strict';
 
   angular
-    .module('thatsaboy.index',[
-      'thatsaboy.common',
+    .module('kidsboards.index',[
+      'kidsboards.common',
     ])
 })();
 

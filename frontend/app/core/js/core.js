@@ -2,17 +2,17 @@
   'use strict';
 
   angular
-    .module('thatsaboy.core',
+    .module('kidsboards.core',
     [
       'ui.router',
       'LocalStorageModule',
-      'thatsaboy.common',
+      'kidsboards.common',
       'ngAnimate'
     ]
   );
   
   angular
-    .module('thatsaboy.core')
+    .module('kidsboards.core')
     .controller('AppController', AppController);
 
   AppController.$inject = [];

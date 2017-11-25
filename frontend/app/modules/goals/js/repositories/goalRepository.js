@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.goals')
+    .module('kidsboards.goals')
     .factory('goalRepository', goalRepository);
 
   goalRepository.$inject = ['resourceWrapService'];

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-docker-compose -f dev.yml --project-name=thatsaboydev $@
+docker-compose -f dev.yml --project-name=kidsboardsdev $@
 
 

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.children')
+    .module('kidsboards.children')
     .controller('childNewController', childNewController);
 
   childNewController.$inject = ['childRepository', 'loginService', '$scope', '$state', '$q'];

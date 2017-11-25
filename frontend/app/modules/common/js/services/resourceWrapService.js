@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.common')
+    .module('kidsboards.common')
     .factory('resourceWrapService', resourceWrapService);
 
   resourceWrapService.$inject = ['$resource', 'localStorageService', 'errorHandlerService', 'apiLinkService'];

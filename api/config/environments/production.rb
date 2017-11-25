@@ -44,7 +44,7 @@ Rails.application.configure do
 
   # Use a different logger
   require 'syslogger'
-  config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("Thatsaboy", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
+  config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("Kids Boards", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.log_level = :warn
@@ -57,7 +57,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "thatsaboy_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "kidsboards_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

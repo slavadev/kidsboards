@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.index')
+    .module('kidsboards.index')
     .controller('confirmController', confirmController);
 
   confirmController.$inject = ['loginService', '$stateParams'];

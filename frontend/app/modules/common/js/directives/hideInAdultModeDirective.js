@@ -2,7 +2,7 @@
   'use strict';
   
   angular
-    .module('thatsaboy.common')
+    .module('kidsboards.common')
     .directive('hideInAdultMode', showInAdultMode);
 
   showInAdultMode.$inject = ['loginService'];

@@ -1,7 +1,3 @@
-@font-face {
-  font-family: "AddisAbaba";
-  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
-
 .index {
   min-height: 100%;
   background-color: #9C27B0; }
@@ -10,29 +6,22 @@
     .index .title-block h2 {
       text-align: center;
       margin-top: -10px; }
-    .index .title-block button {
-      font-family: "AddisAbaba"; }
     @media (max-width: 960px) {
       .index .title-block {
         margin-top: 100px;
         margin-bottom: 100px; } }
   .index h1 {
     margin: 0;
-    color: #E1BEE7;
-    font-family: "KGSecondChancesSketch"; }
+    color: #E1BEE7; }
   .index h2, .index h3 {
     color: #E1BEE7;
-    text-align: center;
-    font-family: "AddisAbaba"; }
+    text-align: center; }
   .index svg {
     fill: #E1BEE7;
     width: 100px;
     height: 100px; }
-  .index .steps h2, .index .steps h3 {
-    font-family: "AddisAbaba"; }
   @media (max-width: 960px) {
     .index .steps {
       margin-bottom: 100px; } }
   .index a {
-    font-family: "AddisAbaba";
     color: #E1BEE7; }

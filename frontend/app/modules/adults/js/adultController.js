@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.adults')
+    .module('kidsboards.adults')
     .controller('adultController', adultController);
 
   adultController.$inject = ['adultRepository', 'adult', '$state'];

@@ -1,19 +1,10 @@
-@font-face {
-  font-family: "AddisAbaba";
-  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "AddisAbaba";
-  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
-
 .goal {
   height: 100%;
   width: 100%; }
   .goal h1 {
     color: #ffffff;
     margin: 0;
-    text-align: center;
-    font-family: "AddisAbaba"; }
+    text-align: center; }
   .goal div.ng-hide .editable-text-popup {
     height: 0 !important; }
   .goal div.ng-hide .editable-image-popup {
@@ -57,7 +48,6 @@
         .goal .left-panel.closed .panel-closer svg {
           transform: rotateY(180deg); } }
     .goal .left-panel .back-button {
-      font-family: "AddisAbaba";
       color: #ffffff; }
     .goal .left-panel .delete-button {
       color: #FF4081; }
@@ -76,16 +66,12 @@
     .goal .right-panel .item {
       padding: 0;
       text-transform: none;
-      font-family: "AddisAbaba";
       background-color: #ffffff; }
-    .goal .right-panel p {
-      font-family: "AddisAbaba"; }
     .goal .right-panel .item-add {
       height: 264px;
       line-height: 264px;
       width: 200px;
-      background-color: #ffffff;
-      font-family: "AddisAbaba"; }
+      background-color: #ffffff; }
   .goal .right-panel .points {
     color: #FF4081; }
   .goal .right-panel .remove-button {
@@ -123,16 +109,12 @@
     .goal .choose-adult-popup .adult-item {
       padding: 0;
       text-transform: none;
-      font-family: "AddisAbaba";
       background-color: #ffffff; }
-    .goal .choose-adult-popup p {
-      font-family: "AddisAbaba"; }
     .goal .choose-adult-popup .add-adult {
       height: 264px;
       line-height: 264px;
       width: 200px;
-      background-color: #ffffff;
-      font-family: "AddisAbaba"; }
+      background-color: #ffffff; }
     .goal .choose-adult-popup .second-background {
       background-color: #FF4081;
       display: block;

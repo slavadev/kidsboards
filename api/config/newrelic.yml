@@ -5,7 +5,7 @@
 #
 # Generated August 11, 2016
 #
-# This configuration file is custom generated for Thatsaboy
+# This configuration file is custom generated for Kids Boards
 #
 # For full documentation of agent configuration options, please refer to
 # https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
@@ -16,7 +16,7 @@ common: &default_settings
 
   # Your application name. Renaming here affects where data displays in New
   # Relic.  For more details, see https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/renaming-applications
-  app_name: Thatsaboy
+  app_name: Kids Boards
 
   # To disable the agent regardless of other settings, uncomment the following:
   # agent_enabled: false
@@ -30,7 +30,7 @@ common: &default_settings
 # If your application has other named environments, configure them here.
 development:
   <<: *default_settings
-  app_name: Thatsaboy (Development)
+  app_name: Kids Boards (Development)
 
   # NOTE: There is substantial overhead when running in developer mode.
   # Do not use for production or load testing.
@@ -43,7 +43,7 @@ test:
 
 staging:
   <<: *default_settings
-  app_name: Thatsaboy (Staging)
+  app_name: Kids Boards (Staging)
 
 production:
   <<: *default_settings

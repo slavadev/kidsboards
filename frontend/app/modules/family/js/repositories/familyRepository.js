@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.family')
+    .module('kidsboards.family')
     .factory('familyRepository', familyRepository);
 
   familyRepository.$inject = ['resourceWrapService'];

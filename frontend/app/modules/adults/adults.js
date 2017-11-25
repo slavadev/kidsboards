@@ -2,5 +2,5 @@
   'use strict';
 
   angular
-    .module('thatsaboy.adults', ['thatsaboy.common'])
+    .module('kidsboards.adults', ['kidsboards.common'])
 })();

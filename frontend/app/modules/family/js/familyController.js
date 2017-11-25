@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.family')
+    .module('kidsboards.family')
     .controller('familyController', familyController);
 
   familyController.$inject = ['familyRepository', 'family'];

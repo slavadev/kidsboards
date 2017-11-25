@@ -1,5 +1,4 @@
 @import 'globals';
-@import 'fonts';
 
 .editable-image {
   .image-item {
@@ -15,7 +14,6 @@
       text-align: center;
       line-height: 40px;
       background: rgba($color-first , .8);
-      font-family: "AddisAbaba";
       color: $color-white;
       transition: all 0.5s;
       &:hover {
@@ -48,7 +46,6 @@
       color: $color-white;
       margin: 0;
       text-align: center;
-      font-family: "AddisAbaba";
     }
 
     label.upload input[type="file"] {
@@ -65,7 +62,6 @@
       span {
         line-height: 200px;
         text-align: center;
-        font-family: "AddisAbaba";
         color: $color-white;
       }
     }

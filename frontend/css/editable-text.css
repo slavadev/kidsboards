@@ -1,7 +1,3 @@
-@font-face {
-  font-family: "AddisAbaba";
-  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
-
 .editable-text .md-button {
   color: #ffffff; }
 
@@ -22,7 +18,6 @@
   .editable-text .editable-text-popup h1 {
     color: #ffffff;
     margin: 0;
-    text-align: center;
-    font-family: "AddisAbaba"; }
+    text-align: center; }
   .editable-text .editable-text-popup md-input-container {
     margin-bottom: 0; }

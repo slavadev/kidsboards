@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.common')
+    .module('kidsboards.common')
     .directive('editableImage', editableImage);
 
   editableImage.$inject = ['photoUploadService', '$http', '$q', '$timeout', '$location'];

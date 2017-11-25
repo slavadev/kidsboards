@@ -4,7 +4,7 @@
   /**
    * Application routing
    */
-  angular.module('thatsaboy')
+  angular.module('kidsboards')
     .config(routing);
 
   routing.$inject = ['$stateProvider', '$urlRouterProvider'];

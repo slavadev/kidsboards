@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('thatsaboy.index')
+    .module('kidsboards.index')
     .controller('requestRecoveryController', requestRecoveryController);
 
   requestRecoveryController.$inject = ['loginService', '$scope'];

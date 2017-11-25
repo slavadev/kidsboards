@@ -1,19 +1,10 @@
-@font-face {
-  font-family: "AddisAbaba";
-  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "AddisAbaba";
-  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
-
 .child {
   height: 100%;
   width: 100%; }
   .child h1 {
     color: #ffffff;
     margin: 0;
-    text-align: center;
-    font-family: "AddisAbaba"; }
+    text-align: center; }
   .child div.ng-hide .editable-text-popup {
     height: 0 !important; }
   .child div.ng-hide .editable-image-popup {
@@ -57,7 +48,6 @@
         .child .left-panel.closed .panel-closer svg {
           transform: rotateY(180deg); } }
     .child .left-panel .back-button {
-      font-family: "AddisAbaba";
       color: #ffffff; }
     .child .left-panel .delete-button {
       color: #FF4081; }
@@ -76,13 +66,9 @@
     .child .right-panel .item {
       padding: 0;
       text-transform: none;
-      font-family: "AddisAbaba";
       background-color: #ffffff; }
-    .child .right-panel p {
-      font-family: "AddisAbaba"; }
     .child .right-panel .item-add {
       height: 264px;
       line-height: 264px;
       width: 200px;
-      background-color: #ffffff;
-      font-family: "AddisAbaba"; }
+      background-color: #ffffff; }

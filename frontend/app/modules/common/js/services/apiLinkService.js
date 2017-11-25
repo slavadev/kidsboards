@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('thatsaboy.common')
+  angular.module('kidsboards.common')
     .factory('apiLinkService', apiLinkService);
 
 
@@ -11,11 +11,11 @@
     function createUrl(link){
       var host = '';
       switch ($location.host()) {
-        case 'thatsaboy.dev':
-          host = 'http://api.thatsaboy.dev/';
+        case 'kidsboards.dev':
+          host = 'http://api.kidsboards.dev/';
           break;
         default :
-          host = 'http://api.thatsaboy.com/';
+          host = 'http://api.kidsboards.com/';
           break;
       }
 

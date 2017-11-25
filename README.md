@@ -1,14 +1,14 @@
-# Thatsaboy
+# Kids Boards
 
-[![Code Climate](https://codeclimate.com/github/korolvs/thatsaboy/badges/gpa.svg)](https://codeclimate.com/github/korolvs/thatsaboy) 
-[![Test Coverage](https://codeclimate.com/github/korolvs/thatsaboy/badges/coverage.svg)](https://codeclimate.com/github/korolvs/thatsaboy/coverage) 
-[![Build Status](https://travis-ci.org/korolvs/thatsaboy.svg)](https://travis-ci.org/korolvs/thatsaboy)
-[![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://www.rubydoc.info/github/korolvs/thatsaboy/frames)
+[![Code Climate](https://codeclimate.com/github/korolvs/kidsboards/badges/gpa.svg)](https://codeclimate.com/github/korolvs/kidsboards) 
+[![Test Coverage](https://codeclimate.com/github/korolvs/kidsboards/badges/coverage.svg)](https://codeclimate.com/github/korolvs/kidsboards/coverage) 
+[![Build Status](https://travis-ci.org/korolvs/kidsboards.svg)](https://travis-ci.org/korolvs/kidsboards)
+[![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://www.rubydoc.info/github/korolvs/kidsboards/frames)
 
 ## About
 **Make your kid manageable**
 
-Thatsaboy is a website which helps you to manage your children.
+Kids Boards is a website which helps you to manage your children.
 
 **How it works?** 
 
@@ -17,7 +17,7 @@ Thatsaboy is a website which helps you to manage your children.
  - Add points for good acts and remove for bad
  - Watch how your kid is getting better
 
-With bright illustrations **Thatsaboy** makes this process more interesting for children.
+With bright illustrations **Kids Boards** makes this process more interesting for children.
 
 ## Used tools
 
@@ -37,8 +37,8 @@ With bright illustrations **Thatsaboy** makes this process more interesting for 
  - [Gulp](http://gulpjs.com/)
 
 ## Documentation
- - API Reference ([RubyDoc](http://www.rubydoc.info/github/korolvs/thatsaboy/file/api/API.md), [GitHub](https://github.com/korolvs/thatsaboy/blob/master/api/API.md))
- - [Docs on rubydoc.info](http://www.rubydoc.info/github/korolvs/thatsaboy/frames)
+ - API Reference ([RubyDoc](http://www.rubydoc.info/github/korolvs/kidsboards/file/api/API.md), [GitHub](https://github.com/korolvs/kidsboards/blob/master/api/API.md))
+ - [Docs on rubydoc.info](http://www.rubydoc.info/github/korolvs/kidsboards/frames)
  
 ## Prerequisites
  - [Install Docker](http://docs.docker.com/linux/started/)

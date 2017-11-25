@@ -44,7 +44,7 @@ Rails.application.configure do
 
   # Use a different logger
   require 'syslogger'
-  config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("Thatsaboy", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
+  config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("Kids Boards", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.log_level = :warn

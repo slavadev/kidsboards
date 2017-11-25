@@ -1,19 +1,10 @@
-@font-face {
-  font-family: "AddisAbaba";
-  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
-
-@font-face {
-  font-family: "AddisAbaba";
-  src: url("/css/fonts/AddisAbaba.ttf") format("truetype"); }
-
 .adult_new {
   min-height: 100%;
   background-color: #FF4081; }
   .adult_new h1 {
     color: #ffffff;
     margin: 0;
-    text-align: center;
-    font-family: "AddisAbaba"; }
+    text-align: center; }
   .adult_new div.ng-hide .editable-text-popup {
     height: 0 !important; }
   .adult_new div.ng-hide .editable-image-popup {

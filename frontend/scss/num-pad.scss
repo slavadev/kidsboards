@@ -1,5 +1,4 @@
 @import 'globals';
-@import 'fonts';
 
 .num-pad {
   height: 100%;
@@ -20,7 +19,6 @@
     color: $color-white;
     margin: 0;
     text-align: center;
-    font-family: "AddisAbaba";
   }
   .num-pad-container {
     min-height: 100%;

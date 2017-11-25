@@ -1,5 +1,4 @@
 @import 'globals';
-@import 'fonts';
 
 .index {
   min-height: 100%;
@@ -10,9 +9,6 @@
       text-align: center;
       margin-top: -10px;
     }
-    button {
-      font-family: "AddisAbaba";
-    }
     @media (max-width: $layout-breakpoint-sm) {
       margin-top: 100px;
       margin-bottom: 100px;
@@ -22,13 +18,11 @@
   h1 {
     margin: 0;
     color: $color-grey;
-    font-family: "KGSecondChancesSketch";
   }
 
   h2, h3 {
     color: $color-grey;
     text-align: center;
-    font-family: "AddisAbaba";
   }
   svg {
     fill: $color-grey;
@@ -38,7 +32,6 @@
 
   .steps {
     h2, h3 {
-      font-family: "AddisAbaba";
       @media (max-width: $layout-breakpoint-sm) {
 
       }
@@ -49,7 +42,6 @@
   }
 
   a {
-    font-family: "AddisAbaba";
     color: $color-grey;
   }
 }

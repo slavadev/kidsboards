@@ -1,19 +1,19 @@
 {
-  "name": "thatsaboy",
-  "description": "Thatsaboy is a website which helps you to manage your children.",
+  "name": "kidsboards",
+  "description": "Kids Boards is a website which helps you to manage your children.",
   "main": "index.html",
   "authors": [
     "korolvs@gmail.com"
   ],
   "license": "ISC",
   "keywords": [
-    "thatsaboy",
     "kids",
+    "boards",
     "children",
     "manage"
   ],
   "moduleType": [],
-  "homepage": "http://thatsaboy.com",
+  "homepage": "http://kidsboards.com",
   "private": true,
   "ignore": [
     "**/.*",

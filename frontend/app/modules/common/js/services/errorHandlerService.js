@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('thatsaboy.common')
+  angular.module('kidsboards.common')
     .factory('errorHandlerService', errorHandlerService);
 
 
