@@ -68,6 +68,21 @@ tester:
   links:
     - postgres
   env_file: docker/dev/.env
+  environment:
+    - CI
+    - TRAVIS
+    - TRAVIS_BRANCH
+    - TRAVIS_PULL_REQUEST
+    - TRAVIS_JOB_ID
+    - TRAVIS_REPO_SLUG
+    - TRAVIS_JOB_NUMBER
+    - TRAVIS_COMMIT
+    - TRAVIS_RUBY_VERSION
+    - CODECOV_TOKEN
+    - CODECOV_FLAG
+    - CODECOV_FLAGS
+    - CODECOV_SLUG
+    - CODECOV_URL
 
 # All about the frontend is here
 frontend:
