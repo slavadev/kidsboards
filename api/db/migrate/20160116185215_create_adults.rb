@@ -1,4 +1,4 @@
-class CreateAdults < ActiveRecord::Migration
+class CreateAdults < ActiveRecord::Migration[5.1]
   def change
     create_table :adults do |t|
       t.index      :id
