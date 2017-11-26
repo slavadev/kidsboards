@@ -82,7 +82,6 @@ tester:
     - CODECOV_FLAG
     - CODECOV_FLAGS
     - CODECOV_SLUG
-    - CODECOV_URL
 
 # All about the frontend is here
 frontend:
