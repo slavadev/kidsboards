@@ -47,7 +47,7 @@ class Family::FamilyUpdateTest < ActionDispatch::IntegrationTest
     user = get_user_by_token(token)
     family = user.family
     assert_equal name, family.name
-    assert_equal nil, family.photo_url
+    assert_nil family.photo_url
   end
 
   test 'family update fail wrong params' do

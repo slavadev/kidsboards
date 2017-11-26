@@ -1,7 +1,7 @@
 # Kids Boards
 
 [![Code Climate](https://codeclimate.com/github/korolvs/kidsboards/badges/gpa.svg)](https://codeclimate.com/github/korolvs/kidsboards)
-[![Test Coverage](https://codeclimate.com/github/korolvs/kidsboards/badges/coverage.svg)](https://codeclimate.com/github/korolvs/kidsboards/coverage)
+[![codecov](https://codecov.io/gh/korolvs/kidsboards/branch/master/graph/badge.svg)](https://codecov.io/gh/korolvs/kidsboards)
 [![Build Status](https://travis-ci.org/korolvs/kidsboards.svg)](https://travis-ci.org/korolvs/kidsboards)
 [![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://www.rubydoc.info/github/korolvs/kidsboards/frames)
 

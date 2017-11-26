@@ -35,7 +35,7 @@ class Family::ChildCreateTest < ActionDispatch::IntegrationTest
     child = Family::Child.where(id: id).first
     assert_not_nil child
     assert_equal name, child.name
-    assert_equal nil, child.photo_url
+    assert_nil child.photo_url
   end
 
   test 'child create wrong params' do

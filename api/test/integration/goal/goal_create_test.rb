@@ -49,7 +49,7 @@ class Family::GoalCreateTest < ActionDispatch::IntegrationTest
     goal = Goal::Goal.where(id: id).first
     assert_not_nil goal
     assert_equal name, goal.name
-    assert_equal nil, goal.photo_url
+    assert_nil goal.photo_url
     assert_equal target, goal.target
     assert_equal 0, goal.current
   end

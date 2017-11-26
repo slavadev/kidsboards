@@ -35,7 +35,7 @@ class Family::AdultCreateTest < ActionDispatch::IntegrationTest
     adult = Family::Adult.where(id: id).first
     assert_not_nil adult
     assert_equal name, adult.name
-    assert_equal nil, adult.photo_url
+    assert_nil adult.photo_url
   end
 
   test 'adult create wrong params' do

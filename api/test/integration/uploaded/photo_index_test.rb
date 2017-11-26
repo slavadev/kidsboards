@@ -6,22 +6,14 @@ class Uploaded::PhotoIndexTest < ActionDispatch::IntegrationTest
     token = login
     urls = []
     ids = []
-    file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
 
-    post '/v1/uploaded/photo', params: { token: token, file: file }
-    json = JSON.parse(response.body)
-    ids.push(json['id'])
-    urls.push(json['url'])
-
-    post '/v1/uploaded/photo', params: { token: token, file: file }
-    json = JSON.parse(response.body)
-    ids.push(json['id'])
-    urls.push(json['url'])
-
-    post '/v1/uploaded/photo', params: { token: token, file: file }
-    json = JSON.parse(response.body)
-    ids.push(json['id'])
-    urls.push(json['url'])
+    3.times do
+      file = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
+      post '/v1/uploaded/photo', params: { token: token, file: file }
+      json = JSON.parse(response.body)
+      ids.push(json['id'])
+      urls.push(json['url'])
+    end
 
     # action
     get '/v1/uploaded/photo', params: { token: token }
