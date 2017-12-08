@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'pg'
 gem 'rails'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'tzinfo-data'
 
 # logs
 gem 'syslogger'
