@@ -43,7 +43,10 @@ class Uploaded::Photo < ActiveRecord::Base
   # Options only for Minio
   if Rails.env == 'production'
     options.merge! ({
-        :s3_options     => { endpoint: ENV['S3_ENDPOINT'] }
+        :s3_options     => {
+          endpoint: ENV['S3_ENDPOINT'],
+          force_path_style: true
+        }
     })
   end
 

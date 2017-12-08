@@ -4,3 +4,4 @@
   angular
     .module('kidsboards.adults', ['kidsboards.common'])
 })();
+
