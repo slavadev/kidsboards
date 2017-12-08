@@ -15,7 +15,7 @@
           host = 'http://api.kidsboards.dev/';
           break;
         default :
-          host = 'http://api.kidsboards.com/';
+          host = 'http://api.kidsboards.org/';
           break;
       }
 
