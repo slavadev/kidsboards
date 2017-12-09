@@ -44,7 +44,7 @@ Rails.application.configure do
 
   # Use a different logger
   require 'syslogger'
-  config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("Kids Boards", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
+  config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("KidsBoards", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.log_level = :warn
@@ -60,7 +60,6 @@ Rails.application.configure do
       :authentication => :plain,
       :address => ENV['SMTP_ADDRESS'],
       :port => ENV['SMTP_PORT'],
-      :domain => ENV['SMTP_DOMAIN'],
       :user_name => ENV['SMTP_USER'],
       :password => ENV['SMTP_PASSWORD']
   }

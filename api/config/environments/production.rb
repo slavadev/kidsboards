@@ -44,7 +44,7 @@ Rails.application.configure do
 
   # Use a different logger
   require 'syslogger'
-  config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("Kids Boards", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
+  config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("KidsBoards", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.log_level = :warn
@@ -59,6 +59,14 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "kidsboards_#{Rails.env}"
   config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :authentication => :plain,
+      :address => ENV['SMTP_ADDRESS'],
+      :port => ENV['SMTP_PORT'],
+      :user_name => ENV['SMTP_USER'],
+      :password => ENV['SMTP_PASSWORD']
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
