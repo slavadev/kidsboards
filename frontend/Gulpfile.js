@@ -29,6 +29,7 @@ var paths = {
       'bower_components/angular-local-storage/dist/angular-local-storage.min.js',
       'bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js',
       'bower_components/ng-file-upload/ng-file-upload.min.js',
+      'bower_components/cookieconsent/build/cookieconsent.min.js',
       'app/js/**/*.js'
     ],
     app: [
@@ -85,7 +86,8 @@ var paths = {
   },
   css: {
     vendor: [
-      'bower_components/angular-material/angular-material.css'
+      'bower_components/angular-material/angular-material.css',
+      'bower_components/cookieconsent/build/cookieconsent.min.css'
     ],
     app: [
       'css/main.css',
