@@ -31,24 +31,25 @@ class Uploaded::Photo < ActiveRecord::Base
         :url            => ':s3_alias_url',
         :path           => '/photos/:hash/:id/:style/image.:extension',
         :storage        => :s3,
+        :preserve_files => true,
         :s3_protocol    => 'http',
         :s3_host_alias  => ENV['S3_HOST_NAME'],
-        :s3_region      => 'eu-west-1',
-        :s3_credentials => { :bucket            => ENV['S3_BUCKET'],
-                             :access_key_id     => ENV['S3_ACCESS_KEY_ID'],
+        :s3_region      => ENV['S3_REGION'],
+        :bucket         => ENV['S3_BUCKET'],
+        :s3_credentials => { :access_key_id     => ENV['S3_ACCESS_KEY_ID'],
                              :secret_access_key => ENV['S3_SECRET_ACCESS_KEY'] }
     })
   end
 
   # Options only for Minio
-  if Rails.env == 'production'
-    options.merge! ({
-        :s3_options     => {
-          endpoint: ENV['S3_ENDPOINT'],
-          force_path_style: true
-        }
-    })
-  end
+  # if Rails.env == 'production'
+  #   options.merge! ({
+  #       :s3_options     => {
+  #         endpoint: ENV['S3_ENDPOINT'],
+  #         force_path_style: true
+  #       }
+  #   })
+  # end
 
   has_attached_file :file, options
 
