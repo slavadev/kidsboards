@@ -212,6 +212,11 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('dist/css/fonts'));
 });
 
+gulp.task('_redirects', function() {
+  return gulp.src('_redirects')
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('watch', ['sass:watch']);
 
 gulp.task('build-dev',['svgstore', 'sass']);
@@ -221,7 +226,7 @@ gulp.task('build', function(callback){
 
   runSequence(
     ['svgstore', 'sass'],
-    ['images', 'templates', 'jsbuild', 'cssbuild', 'json', 'fonts'],
+    ['images', 'templates', 'jsbuild', 'cssbuild', 'json', 'fonts', '_redirects'],
     'index-dist',
     callback);
 });
