@@ -41,7 +41,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - VIRTUAL_HOST=api.kidsboards.dev,api.kidsboards.org
+      - VIRTUAL_HOST=api.kidsboards.local,api.kidsboards.org
     links:
       - "s3:upload.kidsboards.org"
     env_file: docker/prod/.env
@@ -56,7 +56,7 @@ services:
       - code_frontend:ro
       - data:rw
     environment:
-      - VIRTUAL_HOST=upload.kidsboards.dev,kidsboards.dev,upload.kidsboards.org,kidsboards.org
+      - VIRTUAL_HOST=upload.kidsboards.local,kidsboards.dev,upload.kidsboards.org,kidsboards.org
     env_file: docker/prod/.env
 
   # Proxy

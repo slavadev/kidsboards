@@ -11,8 +11,8 @@
     function createUrl(link){
       var host = '';
       switch ($location.host()) {
-        case 'kidsboards.dev':
-          host = 'http://api.kidsboards.dev/';
+        case 'kidsboards.local':
+          host = 'http://api.kidsboards.local/';
           break;
         default :
           host = 'http://api.kidsboards.org/';
