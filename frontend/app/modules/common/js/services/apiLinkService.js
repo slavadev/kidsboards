@@ -15,7 +15,7 @@
           host = 'http://api.kidsboards.local/';
           break;
         default :
-          host = 'http://api.kidsboards.org/';
+          host = 'https://kidsboards-api.herokuapp.com/';
           break;
       }
 
