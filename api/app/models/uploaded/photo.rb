@@ -32,7 +32,7 @@ class Uploaded::Photo < ActiveRecord::Base
         :path           => '/photos/:hash/:id/:style/image.:extension',
         :storage        => :s3,
         :preserve_files => true,
-        :s3_protocol    => 'https',
+        :s3_protocol    => ENV['S3_PROTOCOL'],
         :s3_host_alias  => ENV['S3_HOST_NAME'],
         :s3_region      => ENV['S3_REGION'],
         :bucket         => ENV['S3_BUCKET'],
