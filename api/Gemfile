@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.5.1'
 
 gem 'pg'
 gem 'rails'
@@ -35,9 +36,9 @@ group :development do
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'puma'
 end
 
 group :aws do
-  gem 'unicorn'
+  gem 'puma'
 end

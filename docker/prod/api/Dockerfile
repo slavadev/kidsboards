@@ -38,7 +38,7 @@ RUN usermod -u 1000 app
 RUN mkdir -p /etc/my_init.d
 ADD ./docker/prod/api/run/curl_to_warmup.sh /etc/my_init.d/curl_to_warmup.sh
 ADD ./docker/prod/api/run/prepare_loggly.sh /etc/my_init.d/prepare_loggly.sh
-ADD ./docker/prod/api/run/run_unicorn.sh /etc/my_init.d/run_unicorn.sh
+ADD ./docker/prod/api/run/run_unicorn.sh /etc/my_init.d/run_puma.sh
 
 CMD ["/sbin/my_init"]
 
