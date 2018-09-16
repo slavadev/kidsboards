@@ -1,4 +1,5 @@
 @import 'globals';
+@import 'object_new';
 
 md-icon {
   width: 100%;
@@ -96,3 +97,24 @@ div[image] {
                                   not supported by any browser */
 }
 
+.loading {
+  height: 100%;
+  background-color: $color-second;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  transition: all 0.5s;
+  overflow: auto;
+  z-index: 10;
+  &.ng-hide {
+    height: 0;
+    overflow: hidden;
+  }
+  h1 {
+    color: $color-white;
+    margin: 0;
+    text-align: center;
+  }
+}

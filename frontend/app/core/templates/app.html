@@ -1,1 +1,10 @@
-<ui-view name="content"></ui-view>
+<div class="full">
+  <div class="loading ng-hide" ng-show='AppCtrl.loading' md-theme="dark" layout="column"
+                                          layout-align="center center">
+    <div layout="column"
+         layout-align="center center">
+      <h1>Loading application. Please wait a second...</h1>
+    </div>
+  </div>
+  <ui-view name="content" ng-show='AppCtrl.wokeup'></ui-view>
+</div>

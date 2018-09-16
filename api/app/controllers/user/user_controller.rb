@@ -64,9 +64,9 @@ class User::UserController < ApplicationController
     render json: { equal: @user.pin == params[:pin] }
   end
 
-  # Method for the loader.io verification
-  def loader
-    render plain: 'loaderio-8fd226ca0551bbb679e5234f2b165e72'
+  # Method for waking up an application(for Heroku)
+  def wakeup
+    render plain: 'Good morning!'
   end
 
   private

@@ -71,6 +71,15 @@
       });
     }
 
+    function wakeup() {
+      return loginResource.get({
+        action  : 'wakeup'
+      }).then(function (response) {
+        localStorageService.remove("token");
+        return response;
+      });
+    }
+
     function logout() {
       localStorageService.remove("token");
       return $q.when();
